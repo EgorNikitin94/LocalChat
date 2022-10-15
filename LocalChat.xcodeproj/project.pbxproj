@@ -7,15 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50301AD928F6121B0041CFFD /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AD828F6121B0041CFFD /* RootView.swift */; };
+		50301AE028F619900041CFFD /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301ADF28F619900041CFFD /* ConversationViewModel.swift */; };
+		50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE128F61BA90041CFFD /* ContentMessageView.swift */; };
+		50301AE428F61C280041CFFD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE328F61C280041CFFD /* MessageView.swift */; };
+		503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EA28FA0ACD00DE8ED0 /* AppColors.swift */; };
+		503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */; };
+		503836F328FA0D7700DE8ED0 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F228FA0D7700DE8ED0 /* View+extensions.swift */; };
+		503836F628FA117B00DE8ED0 /* PrifileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F528FA117B00DE8ED0 /* PrifileView.swift */; };
+		503836F828FA167C00DE8ED0 /* DialogListRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */; };
+		505410A628F21849006D4875 /* DialogsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410A528F21849006D4875 /* DialogsListView.swift */; };
+		505410A828F21862006D4875 /* DialogsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410A728F21862006D4875 /* DialogsListViewModel.swift */; };
+		505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410A928F219D2006D4875 /* DialogListRowView.swift */; };
+		505410AC28F21A28006D4875 /* AppModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410AB28F21A28006D4875 /* AppModels.swift */; };
 		50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAC228EF8626004B5199 /* LocalChatApp.swift */; };
 		50DEEAC528EF8626004B5199 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAC428EF8626004B5199 /* ContentView.swift */; };
 		50DEEAC728EF8629004B5199 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DEEAC628EF8629004B5199 /* Assets.xcassets */; };
 		50DEEACA28EF8629004B5199 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DEEAC928EF8629004B5199 /* Preview Assets.xcassets */; };
 		50DEEACC28EF8629004B5199 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEACB28EF8629004B5199 /* Persistence.swift */; };
 		50DEEACF28EF8629004B5199 /* LocalChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEACD28EF8629004B5199 /* LocalChat.xcdatamodeld */; };
+		50DEEAD628EF87E1004B5199 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAD528EF87E1004B5199 /* LogInView.swift */; };
+		50DEEAD828EF8805004B5199 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAD728EF8805004B5199 /* LogInViewModel.swift */; };
+		50DEEADA28EF8C6D004B5199 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */; };
+		50E1D44E28F8BBD8004B88D6 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1D44D28F8BBD8004B88D6 /* ConversationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50301AD828F6121B0041CFFD /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		50301ADF28F619900041CFFD /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
+		50301AE128F61BA90041CFFD /* ContentMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMessageView.swift; sourceTree = "<group>"; };
+		50301AE328F61C280041CFFD /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		503836EA28FA0ACD00DE8ED0 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdaptiveForgroundColor.swift; sourceTree = "<group>"; };
+		503836F228FA0D7700DE8ED0 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
+		503836F528FA117B00DE8ED0 /* PrifileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrifileView.swift; sourceTree = "<group>"; };
+		503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListRowViewModel.swift; sourceTree = "<group>"; };
+		505410A528F21849006D4875 /* DialogsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsListView.swift; sourceTree = "<group>"; };
+		505410A728F21862006D4875 /* DialogsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsListViewModel.swift; sourceTree = "<group>"; };
+		505410A928F219D2006D4875 /* DialogListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListRowView.swift; sourceTree = "<group>"; };
+		505410AB28F21A28006D4875 /* AppModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModels.swift; sourceTree = "<group>"; };
 		50DEEABF28EF8626004B5199 /* LocalChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DEEAC228EF8626004B5199 /* LocalChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalChatApp.swift; sourceTree = "<group>"; };
 		50DEEAC428EF8626004B5199 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -23,6 +53,10 @@
 		50DEEAC928EF8629004B5199 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50DEEACB28EF8629004B5199 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		50DEEACE28EF8629004B5199 /* LocalChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalChat.xcdatamodel; sourceTree = "<group>"; };
+		50DEEAD528EF87E1004B5199 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		50DEEAD728EF8805004B5199 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		50E1D44D28F8BBD8004B88D6 /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +70,149 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50301ADA28F618E10041CFFD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				50DEEAD528EF87E1004B5199 /* LogInView.swift */,
+				50DEEAD728EF8805004B5199 /* LogInViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		50301ADB28F618ED0041CFFD /* DialogsList */ = {
+			isa = PBXGroup;
+			children = (
+				505410A528F21849006D4875 /* DialogsListView.swift */,
+				505410A728F21862006D4875 /* DialogsListViewModel.swift */,
+				505410A928F219D2006D4875 /* DialogListRowView.swift */,
+				503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */,
+			);
+			path = DialogsList;
+			sourceTree = "<group>";
+		};
+		50301ADC28F619410041CFFD /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				50301ADF28F619900041CFFD /* ConversationViewModel.swift */,
+				50E1D44D28F8BBD8004B88D6 /* ConversationView.swift */,
+				50301AE128F61BA90041CFFD /* ContentMessageView.swift */,
+				50301AE328F61C280041CFFD /* MessageView.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
+		503836E228FA034100DE8ED0 /* AppLayer */ = {
+			isa = PBXGroup;
+			children = (
+				50DEEAC228EF8626004B5199 /* LocalChatApp.swift */,
+			);
+			path = AppLayer;
+			sourceTree = "<group>";
+		};
+		503836E328FA037600DE8ED0 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				503836F028FA0C0500DE8ED0 /* Common */,
+				503836EF28FA0BD900DE8ED0 /* Modules */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		503836E428FA03AA00DE8ED0 /* CoreLayer */ = {
+			isa = PBXGroup;
+			children = (
+				503836E828FA08CF00DE8ED0 /* TCP */,
+				503836E928FA08E300DE8ED0 /* CoreData */,
+			);
+			path = CoreLayer;
+			sourceTree = "<group>";
+		};
+		503836E528FA043300DE8ED0 /* BisnesLogicLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BisnesLogicLayer;
+			sourceTree = "<group>";
+		};
+		503836E628FA08A300DE8ED0 /* Helpers & Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				503836F228FA0D7700DE8ED0 /* View+extensions.swift */,
+				503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */,
+			);
+			path = "Helpers & Extensions";
+			sourceTree = "<group>";
+		};
+		503836E728FA08B000DE8ED0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				503836EA28FA0ACD00DE8ED0 /* AppColors.swift */,
+				50DEEAC628EF8629004B5199 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		503836E828FA08CF00DE8ED0 /* TCP */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TCP;
+			sourceTree = "<group>";
+		};
+		503836E928FA08E300DE8ED0 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				50DEEACB28EF8629004B5199 /* Persistence.swift */,
+				50DEEACD28EF8629004B5199 /* LocalChat.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		503836EE28FA0B2F00DE8ED0 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				50301AD828F6121B0041CFFD /* RootView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		503836EF28FA0BD900DE8ED0 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				503836EE28FA0B2F00DE8ED0 /* Root */,
+				50301ADA28F618E10041CFFD /* Login */,
+				50301ADB28F618ED0041CFFD /* DialogsList */,
+				503836F428FA115000DE8ED0 /* Profile */,
+				50301ADC28F619410041CFFD /* Conversation */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		503836F028FA0C0500DE8ED0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				50DEEAC428EF8626004B5199 /* ContentView.swift */,
+				50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		503836F128FA0C7100DE8ED0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				505410AB28F21A28006D4875 /* AppModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		503836F428FA115000DE8ED0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				503836F528FA117B00DE8ED0 /* PrifileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		50DEEAB628EF8626004B5199 = {
 			isa = PBXGroup;
 			children = (
@@ -55,11 +232,13 @@
 		50DEEAC128EF8626004B5199 /* LocalChat */ = {
 			isa = PBXGroup;
 			children = (
-				50DEEAC228EF8626004B5199 /* LocalChatApp.swift */,
-				50DEEAC428EF8626004B5199 /* ContentView.swift */,
-				50DEEAC628EF8629004B5199 /* Assets.xcassets */,
-				50DEEACB28EF8629004B5199 /* Persistence.swift */,
-				50DEEACD28EF8629004B5199 /* LocalChat.xcdatamodeld */,
+				503836E228FA034100DE8ED0 /* AppLayer */,
+				503836E428FA03AA00DE8ED0 /* CoreLayer */,
+				503836E528FA043300DE8ED0 /* BisnesLogicLayer */,
+				503836E328FA037600DE8ED0 /* PresentationLayer */,
+				503836F128FA0C7100DE8ED0 /* Models */,
+				503836E628FA08A300DE8ED0 /* Helpers & Extensions */,
+				503836E728FA08B000DE8ED0 /* Resources */,
 				50DEEAC828EF8629004B5199 /* Preview Content */,
 			);
 			path = LocalChat;
@@ -143,9 +322,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505410A828F21862006D4875 /* DialogsListViewModel.swift in Sources */,
+				50DEEAD628EF87E1004B5199 /* LogInView.swift in Sources */,
+				503836F628FA117B00DE8ED0 /* PrifileView.swift in Sources */,
 				50DEEACC28EF8629004B5199 /* Persistence.swift in Sources */,
+				50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */,
+				505410A628F21849006D4875 /* DialogsListView.swift in Sources */,
+				505410AC28F21A28006D4875 /* AppModels.swift in Sources */,
+				503836F328FA0D7700DE8ED0 /* View+extensions.swift in Sources */,
 				50DEEACF28EF8629004B5199 /* LocalChat.xcdatamodeld in Sources */,
+				50E1D44E28F8BBD8004B88D6 /* ConversationView.swift in Sources */,
+				50301AE028F619900041CFFD /* ConversationViewModel.swift in Sources */,
+				50DEEADA28EF8C6D004B5199 /* BackgroundView.swift in Sources */,
 				50DEEAC528EF8626004B5199 /* ContentView.swift in Sources */,
+				50301AD928F6121B0041CFFD /* RootView.swift in Sources */,
+				50301AE428F61C280041CFFD /* MessageView.swift in Sources */,
+				503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */,
+				503836F828FA167C00DE8ED0 /* DialogListRowViewModel.swift in Sources */,
+				503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */,
+				505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */,
+				50DEEAD828EF8805004B5199 /* LogInViewModel.swift in Sources */,
 				50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
