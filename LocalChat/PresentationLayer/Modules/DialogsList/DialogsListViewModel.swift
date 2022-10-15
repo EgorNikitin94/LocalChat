@@ -10,15 +10,15 @@ import Combine
 
 class DialogsListViewModel: ObservableObject {
   
-  @Published var dialigs: [Dialog] = DialogsListViewModel.mockDialogs()
+  @Published var dialogs: [DialogListRowViewModel] = DialogsListViewModel.mockDialogs()
   
   private(set) var cancellableSet: Set<AnyCancellable> = []
   
   init() {
-    
+
   }
   
-  static func mockDialogs() -> [Dialog] {
+  static func mockDialogs() -> [DialogListRowViewModel] {
     var dialogs = [Dialog]()
     let me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
     let user1 = User(type: .anotherUser, name: "John Poster", passsword: "1123", avatar: UIImage(named: "mock_1"), isOnline: true)
@@ -46,7 +46,9 @@ class DialogsListViewModel: ObservableObject {
     let user7 = User(type: .anotherUser, name: "Vladimir Rezanov", passsword: "1123", avatar: nil, isOnline: true)
     dialogs.append(Dialog(user: user7, lastMessage: nil))
     
-    return dialogs
+    return dialogs.map { dialog in
+      DialogListRowViewModel(dialog: dialog)
+    }
   }
 }
 

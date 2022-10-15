@@ -15,16 +15,16 @@ struct DialogsListView: View {
   
   var body: some View {
     NavigationStack {
-      List(viewModel.dialigs, rowContent: { dialog in
-        NavigationLink(value: dialog) {
-          DialogListRowView(dialog: dialog)
+      List(viewModel.dialogs, rowContent: { dialogVM in
+        NavigationLink(value: dialogVM) {
+          DialogListRowView(dialogVM: dialogVM)
         }
       })
       .listStyle(.plain)
       .padding(.horizontal, -15)
       .navigationTitle("Team")
-      .navigationDestination(for: Dialog.self) { dialog in
-        ConversationView(user: dialog.user)
+      .navigationDestination(for: DialogListRowViewModel.self) { dialogVM in
+        ConversationView(user: dialogVM.baseModel.user)
       }
       .toolbar {
         NavigationLink {

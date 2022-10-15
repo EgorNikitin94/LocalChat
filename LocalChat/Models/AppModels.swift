@@ -24,44 +24,11 @@ struct User {
   }
 }
 
-struct Dialog: Identifiable, Hashable {
-  static func == (lhs: Dialog, rhs: Dialog) -> Bool {
-    return lhs.id.uuidString == rhs.id.uuidString
-  }
-  func hash(into hasher: inout Hasher) {
-       hasher.combine(id)
-   }
-  
+struct Dialog {
   let id: UUID = UUID()
   let user: User
   let lastMessage: Message?
   var unreadCount: Int = 0
-  
-  var lastMessageDate: String? {
-    guard let lastMessageDate = lastMessage?.date else { return nil }
-    let gregorian: Calendar = Calendar(identifier: .gregorian)
-    
-    let monthDay = "d MMM";
-    
-    let dateFormatter = DateFormatter()
-    dateFormatter.timeStyle = .short
-    
-    let now = gregorian.dateComponents([.year, .month, .day], from: Date())
-    let d = gregorian.dateComponents([.year, .month, .day], from: lastMessageDate)
-    
-    if now.year == d.year && now.month == d.month && now.day == d.day {
-  //    formatter.dateFormat = @"h:mma";
-      dateFormatter.dateStyle = .none
-      dateFormatter.timeStyle = .short
-      //    return NSLocalizedString(@"today", nil);
-    } else if now.year == d.year {
-      dateFormatter.dateFormat = monthDay;
-    } else {
-      dateFormatter.dateFormat = "d MMM, YYYY"
-    }
-    
-    return dateFormatter.string(from: lastMessageDate)
-  }
 }
 
 struct Message: Identifiable {
