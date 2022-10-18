@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct PrifileView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        .navigationBarTitle(Text("Profile"), displayMode: .inline)
-    }
+  var body: some View {
+    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+      .navigationBarTitle(Text("Profile"), displayMode: .inline)
+  }
 }
 
 struct PrifileView_Previews: PreviewProvider {
-    static var previews: some View {
-        PrifileView()
+  static var previews: some View {
+    NavigationView {
+      PrifileView()
     }
+  }
 }

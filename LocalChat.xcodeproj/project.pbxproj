@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		5006DEE028FB4DE200BBAC2A /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEDF28FB4DE200BBAC2A /* TimeManager.swift */; };
 		5006DEE228FB58E200BBAC2A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEE128FB58E200BBAC2A /* AvatarView.swift */; };
+		5006DEE428FC973F00BBAC2A /* AutorisationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEE328FC973F00BBAC2A /* AutorisationService.swift */; };
+		5006DEE628FC975300BBAC2A /* DialogsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEE528FC975300BBAC2A /* DialogsService.swift */; };
+		5006DEE828FC976400BBAC2A /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEE728FC976400BBAC2A /* MessageService.swift */; };
+		5006DEEA28FC99D600BBAC2A /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEE928FC99D600BBAC2A /* BadgeView.swift */; };
+		5006DEEC28FC9EA700BBAC2A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEEB28FC9EA700BBAC2A /* UserService.swift */; };
 		50301AD928F6121B0041CFFD /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AD828F6121B0041CFFD /* RootView.swift */; };
 		50301AE028F619900041CFFD /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301ADF28F619900041CFFD /* ConversationViewModel.swift */; };
 		50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE128F61BA90041CFFD /* ContentMessageView.swift */; };
@@ -37,6 +42,11 @@
 /* Begin PBXFileReference section */
 		5006DEDF28FB4DE200BBAC2A /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		5006DEE128FB58E200BBAC2A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		5006DEE328FC973F00BBAC2A /* AutorisationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorisationService.swift; sourceTree = "<group>"; };
+		5006DEE528FC975300BBAC2A /* DialogsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsService.swift; sourceTree = "<group>"; };
+		5006DEE728FC976400BBAC2A /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		5006DEE928FC99D600BBAC2A /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
+		5006DEEB28FC9EA700BBAC2A /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		50301AD828F6121B0041CFFD /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		50301ADF28F619900041CFFD /* ConversationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 		50301AE128F61BA90041CFFD /* ContentMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMessageView.swift; sourceTree = "<group>"; };
@@ -134,6 +144,10 @@
 		503836E528FA043300DE8ED0 /* BisnesLogicLayer */ = {
 			isa = PBXGroup;
 			children = (
+				5006DEE328FC973F00BBAC2A /* AutorisationService.swift */,
+				5006DEEB28FC9EA700BBAC2A /* UserService.swift */,
+				5006DEE528FC975300BBAC2A /* DialogsService.swift */,
+				5006DEE728FC976400BBAC2A /* MessageService.swift */,
 			);
 			path = BisnesLogicLayer;
 			sourceTree = "<group>";
@@ -199,6 +213,7 @@
 				50DEEAC428EF8626004B5199 /* ContentView.swift */,
 				50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */,
 				5006DEE128FB58E200BBAC2A /* AvatarView.swift */,
+				5006DEE928FC99D600BBAC2A /* BadgeView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -328,7 +343,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5006DEEC28FC9EA700BBAC2A /* UserService.swift in Sources */,
 				505410A828F21862006D4875 /* DialogsListViewModel.swift in Sources */,
+				5006DEE828FC976400BBAC2A /* MessageService.swift in Sources */,
 				50DEEAD628EF87E1004B5199 /* LogInView.swift in Sources */,
 				503836F628FA117B00DE8ED0 /* PrifileView.swift in Sources */,
 				50DEEACC28EF8629004B5199 /* Persistence.swift in Sources */,
@@ -342,6 +359,8 @@
 				50DEEADA28EF8C6D004B5199 /* BackgroundView.swift in Sources */,
 				50DEEAC528EF8626004B5199 /* ContentView.swift in Sources */,
 				50301AD928F6121B0041CFFD /* RootView.swift in Sources */,
+				5006DEEA28FC99D600BBAC2A /* BadgeView.swift in Sources */,
+				5006DEE628FC975300BBAC2A /* DialogsService.swift in Sources */,
 				5006DEE028FB4DE200BBAC2A /* TimeManager.swift in Sources */,
 				50301AE428F61C280041CFFD /* MessageView.swift in Sources */,
 				503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */,
@@ -351,6 +370,7 @@
 				505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */,
 				50DEEAD828EF8805004B5199 /* LogInViewModel.swift in Sources */,
 				50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */,
+				5006DEE428FC973F00BBAC2A /* AutorisationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
