@@ -23,7 +23,7 @@ struct LocalChatApp: App {
   
   var body: some Scene {
     WindowGroup {
-      RootView()
+      moduleAssembly.assemblyDialogsList()
       //.environment(\.managedObjectContext, persistenceController.container.viewContext)
     }
   }

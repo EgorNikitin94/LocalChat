@@ -12,8 +12,8 @@ struct ConversationView: View {
   
   @Environment(\.colorScheme) private var colorScheme
   
-  init (user: User) {
-    viewModel = ConversationViewModel(user: user)
+  init (viewModel: ConversationViewModel) {
+    self.viewModel = viewModel
   }
   
   var body: some View {
@@ -76,14 +76,21 @@ struct ConversationView: View {
       .padding([.bottom, .leading, .trailing])
       .background(colorScheme == .light ? Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 0.7)) : Color(uiColor: .systemGray6))
     }
-    .navigationBarTitle(Text(viewModel.mockData.toUser.name), displayMode: .inline)
+    .navigationBarTitle(Text(viewModel.dialog.user.name), displayMode: .inline)
   }
 }
 
 struct ConversationView_Previews: PreviewProvider {
+  
+  static var dialog: Dialog {
+    let me = User(type: .selfUser, name: "Egor", passsword: "123", avatar: UIImage(named: "Me"), isOnline: true)
+    let user3 = User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
+    return Dialog(user: user3, lastMessage: Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Sorry!"))
+  }
+  
   static var previews: some View {
     NavigationStack {
-      ConversationView(user: User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false))
+      moduleAssembly.assemblyConversation(for: dialog)
     }
   }
 }

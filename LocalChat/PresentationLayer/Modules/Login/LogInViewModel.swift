@@ -18,9 +18,13 @@ class LogInViewModel: ObservableObject {
   
   @Published var bottonDisabled: Bool = true
   
+  let service: AuthServiceProtocol
+  
   private(set) var cancellableSet: Set<AnyCancellable> = []
   
-  init() {
+  init(service: AuthServiceProtocol) {
+    self.service = service
+    
     isNameValidPublisher
       .receive(on: RunLoop.main)
       .assign(to: \.hidePasswordInput, on: self)

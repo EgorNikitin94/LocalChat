@@ -9,14 +9,7 @@ import SwiftUI
 
 struct LogInView: View {
   
-  @ObservedObject var viewModel: LogInViewModel = LogInViewModel()
-  
-  @Binding var rootView : RootViewState
-  
-  //  init(rootView: Binding<RootViewState>) {
-  //    self.rootView = rootView
-  //    self.viewModel = LogInViewModel()
-  //  }
+  @ObservedObject var viewModel: LogInViewModel
   
   var body: some View {
     NavigationStack {
@@ -43,7 +36,7 @@ struct LogInView: View {
         .animation(.easeIn, value: viewModel.hidePasswordInput)
         .transition(.slide)
         Button {
-          rootView = .dialogs
+          //rootView = .dialogs
         } label: {
           Text("Sigh In")
             .foregroundColor(.white)
@@ -67,6 +60,6 @@ struct LogInView: View {
 
 struct LogInView_Previews: PreviewProvider {
   static var previews: some View {
-    LogInView(rootView: .constant(.autorize))
+    moduleAssembly.assemblyAuth()
   }
 }

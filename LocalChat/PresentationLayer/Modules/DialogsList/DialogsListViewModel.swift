@@ -12,16 +12,12 @@ class DialogsListViewModel: ObservableObject {
   
   @Published var dialogs: [DialogListRowViewModel] = []
   
-  private var dialogsService: MockDialogsService//any DialogsServiceProtocol
+  private var dialogsService: DialogsServiceProtocol
   
   private(set) var cancellableSet: Set<AnyCancellable> = []
   
-  init() {
-    self.dialogsService = MockDialogsService()
-    
-    let allItemsSubscription = dialogsService.$models.sink { items in
-        
-    }
+  init(service: DialogsServiceProtocol) {
+    self.dialogsService = service
     
     dialogs = dialogsService.getDialogsList().map({ dialog in
       DialogListRowViewModel(dialog: dialog)

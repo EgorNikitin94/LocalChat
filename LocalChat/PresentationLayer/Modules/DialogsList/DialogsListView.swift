@@ -9,9 +9,7 @@ import SwiftUI
 
 struct DialogsListView: View {
   
-  @ObservedObject var viewModel: DialogsListViewModel = DialogsListViewModel()
-  
-  @Binding var rootView : RootViewState
+  @ObservedObject var viewModel: DialogsListViewModel
   
   var body: some View {
     NavigationStack {
@@ -24,11 +22,11 @@ struct DialogsListView: View {
       .padding(.horizontal, -15)
       .navigationTitle("Team")
       .navigationDestination(for: DialogListRowViewModel.self) { dialogVM in
-        ConversationView(user: dialogVM.baseModel.user)
+        moduleAssembly.assemblyConversation(for: dialogVM.baseModel)
       }
       .toolbar {
         NavigationLink {
-          PrifileView()
+          moduleAssembly.assemblyProfile()
         } label: {
           Image(systemName: "gearshape.fill")
         }
@@ -39,6 +37,6 @@ struct DialogsListView: View {
 
 struct DialogsListView_Previews: PreviewProvider {
   static var previews: some View {
-    DialogsListView(rootView: .constant(.dialogs))
+    moduleAssembly.assemblyDialogsList()
   }
 }

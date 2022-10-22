@@ -8,13 +8,13 @@
 import UIKit
 import Combine
 
-protocol DialogsServiceProtocol: ObservableObject {
+protocol DialogsServiceProtocol {
   var models: [Dialog] { get }
   func getDialogsList() -> [Dialog]
 }
 
 class DialogsService: DialogsServiceProtocol {
-  var models: [Dialog] = []
+  private(set) var models: [Dialog] = []
   func getDialogsList() -> [Dialog] {
     return []
   }
@@ -22,11 +22,11 @@ class DialogsService: DialogsServiceProtocol {
 
 class MockDialogsService: DialogsServiceProtocol {
   
-  @Published var models: [Dialog] = []
+  private(set) var models: [Dialog] = []
     
   func getDialogsList() -> [Dialog] {
     var dialogs = [Dialog]()
-    let me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
+    let me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: UIImage(named: "Me"), isOnline: true)
     let user1 = User(type: .anotherUser, name: "John Poster", passsword: "1123", avatar: UIImage(named: "mock_1"), isOnline: true)
     var dialog1 = Dialog(user: user1, lastMessage: Message(from: user1, to: me, date: Date(), text: "Hallo! Whats the problem?"))
     dialog1.unreadCount = 10
