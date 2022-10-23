@@ -23,6 +23,8 @@
 		503836F628FA117B00DE8ED0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F528FA117B00DE8ED0 /* ProfileView.swift */; };
 		503836F828FA167C00DE8ED0 /* DialogListRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */; };
 		5038624629034860003071B6 /* ModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038624529034860003071B6 /* ModuleAssembly.swift */; };
+		5038624A2904554D003071B6 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503862492904554D003071B6 /* AuthView.swift */; };
+		5038624C29045554003071B6 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038624B29045554003071B6 /* AuthViewModel.swift */; };
 		505410A628F21849006D4875 /* DialogsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410A528F21849006D4875 /* DialogsListView.swift */; };
 		505410A828F21862006D4875 /* DialogsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410A728F21862006D4875 /* DialogsListViewModel.swift */; };
 		505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410A928F219D2006D4875 /* DialogListRowView.swift */; };
@@ -33,8 +35,6 @@
 		50DEEACA28EF8629004B5199 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DEEAC928EF8629004B5199 /* Preview Assets.xcassets */; };
 		50DEEACC28EF8629004B5199 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEACB28EF8629004B5199 /* Persistence.swift */; };
 		50DEEACF28EF8629004B5199 /* LocalChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEACD28EF8629004B5199 /* LocalChat.xcdatamodeld */; };
-		50DEEAD628EF87E1004B5199 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAD528EF87E1004B5199 /* LogInView.swift */; };
-		50DEEAD828EF8805004B5199 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAD728EF8805004B5199 /* LogInViewModel.swift */; };
 		50DEEADA28EF8C6D004B5199 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */; };
 		50E1D44E28F8BBD8004B88D6 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1D44D28F8BBD8004B88D6 /* ConversationView.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +56,8 @@
 		503836F528FA117B00DE8ED0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListRowViewModel.swift; sourceTree = "<group>"; };
 		5038624529034860003071B6 /* ModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleAssembly.swift; sourceTree = "<group>"; };
+		503862492904554D003071B6 /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		5038624B29045554003071B6 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		505410A528F21849006D4875 /* DialogsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsListView.swift; sourceTree = "<group>"; };
 		505410A728F21862006D4875 /* DialogsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsListViewModel.swift; sourceTree = "<group>"; };
 		505410A928F219D2006D4875 /* DialogListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListRowView.swift; sourceTree = "<group>"; };
@@ -67,8 +69,6 @@
 		50DEEAC928EF8629004B5199 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50DEEACB28EF8629004B5199 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		50DEEACE28EF8629004B5199 /* LocalChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalChat.xcdatamodel; sourceTree = "<group>"; };
-		50DEEAD528EF87E1004B5199 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
-		50DEEAD728EF8805004B5199 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		50E1D44D28F8BBD8004B88D6 /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,15 +84,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		50301ADA28F618E10041CFFD /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				50DEEAD528EF87E1004B5199 /* LogInView.swift */,
-				50DEEAD728EF8805004B5199 /* LogInViewModel.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		50301ADB28F618ED0041CFFD /* DialogsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,7 +182,7 @@
 		503836EF28FA0BD900DE8ED0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				50301ADA28F618E10041CFFD /* Login */,
+				5038624D2904555D003071B6 /* Auth */,
 				50301ADB28F618ED0041CFFD /* DialogsList */,
 				503836F428FA115000DE8ED0 /* Profile */,
 				50301ADC28F619410041CFFD /* Conversation */,
@@ -224,6 +215,15 @@
 				503836F528FA117B00DE8ED0 /* ProfileView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		5038624D2904555D003071B6 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				503862492904554D003071B6 /* AuthView.swift */,
+				5038624B29045554003071B6 /* AuthViewModel.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		50DEEAB628EF8626004B5199 = {
@@ -335,10 +335,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5038624C29045554003071B6 /* AuthViewModel.swift in Sources */,
 				5006DEEC28FC9EA700BBAC2A /* UserService.swift in Sources */,
 				505410A828F21862006D4875 /* DialogsListViewModel.swift in Sources */,
 				5006DEE828FC976400BBAC2A /* MessageService.swift in Sources */,
-				50DEEAD628EF87E1004B5199 /* LogInView.swift in Sources */,
 				503836F628FA117B00DE8ED0 /* ProfileView.swift in Sources */,
 				50DEEACC28EF8629004B5199 /* Persistence.swift in Sources */,
 				50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */,
@@ -360,7 +360,7 @@
 				503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */,
 				5006DEE228FB58E200BBAC2A /* AvatarView.swift in Sources */,
 				505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */,
-				50DEEAD828EF8805004B5199 /* LogInViewModel.swift in Sources */,
+				5038624A2904554D003071B6 /* AuthView.swift in Sources */,
 				50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */,
 				5006DEE428FC973F00BBAC2A /* AuthService.swift in Sources */,
 			);

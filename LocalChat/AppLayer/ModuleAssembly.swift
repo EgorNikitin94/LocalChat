@@ -30,7 +30,7 @@ fileprivate final class ServiceAssebly {
 }
 
 protocol ModileAssembly {
-  func assemblyAuth() -> LogInView
+  func assemblyAuth() -> AuthView
   func assemblyDialogsList() -> DialogsListView
   func assemblyConversation(for dialog: Dialog) -> ConversationView
   func assemblyProfile() -> ProfileView
@@ -42,9 +42,9 @@ final class ModuleAssemblyImp: ModileAssembly {
   
   fileprivate init() {}
   
-  func assemblyAuth() -> LogInView {
-    let vm = LogInViewModel(service: serviceAssembly.authService)
-    return LogInView(viewModel: vm)
+  func assemblyAuth() -> AuthView {
+    let vm = AuthViewModel(service: serviceAssembly.authService)
+    return AuthView(viewModel: vm)
   }
   
   func assemblyDialogsList() -> DialogsListView {

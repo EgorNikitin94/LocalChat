@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct LogInView: View {
+struct AuthView: View {
   
-  @ObservedObject var viewModel: LogInViewModel
+  @ObservedObject var viewModel: AuthViewModel
   
   var body: some View {
     NavigationStack {
@@ -36,7 +36,7 @@ struct LogInView: View {
         .animation(.easeIn, value: viewModel.hidePasswordInput)
         .transition(.slide)
         Button {
-          //rootView = .dialogs
+          //
         } label: {
           Text("Sigh In")
             .foregroundColor(.white)

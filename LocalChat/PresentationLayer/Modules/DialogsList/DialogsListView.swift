@@ -12,24 +12,22 @@ struct DialogsListView: View {
   @ObservedObject var viewModel: DialogsListViewModel
   
   var body: some View {
-    NavigationStack {
-      List(viewModel.dialogs, rowContent: { dialogVM in
-        NavigationLink(value: dialogVM) {
-          DialogListRowView(dialogVM: dialogVM)
-        }
-      })
-      .listStyle(.plain)
-      .padding(.horizontal, -15)
-      .navigationTitle("Team")
-      .navigationDestination(for: DialogListRowViewModel.self) { dialogVM in
+    List(viewModel.dialogs, rowContent: { dialogVM in
+      NavigationLink {
         moduleAssembly.assemblyConversation(for: dialogVM.baseModel)
+        
+      } label: {
+        DialogListRowView(dialogVM: dialogVM)
       }
-      .toolbar {
-        NavigationLink {
-          moduleAssembly.assemblyProfile()
-        } label: {
-          Image(systemName: "gearshape.fill")
-        }
+    })
+    .listStyle(.plain)
+    .padding(.horizontal, -15)
+    .navigationBarTitle(Text("Team"), displayMode: .automatic)
+    .toolbar {
+      NavigationLink {
+        moduleAssembly.assemblyProfile()
+      } label: {
+        Image(systemName: "gearshape.fill")
       }
     }
   }
@@ -37,6 +35,8 @@ struct DialogsListView: View {
 
 struct DialogsListView_Previews: PreviewProvider {
   static var previews: some View {
-    moduleAssembly.assemblyDialogsList()
+    NavigationStack {
+      moduleAssembly.assemblyDialogsList()
+    }
   }
 }

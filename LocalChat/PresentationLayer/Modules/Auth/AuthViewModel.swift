@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class LogInViewModel: ObservableObject {
+class AuthViewModel: ObservableObject {
   
   @Published var name: String = ""
   
