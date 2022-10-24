@@ -15,14 +15,14 @@ struct DialogsListView: View {
     List(viewModel.dialogs, rowContent: { dialogVM in
       NavigationLink {
         moduleAssembly.assemblyConversation(for: dialogVM.baseModel)
-        
       } label: {
         DialogListRowView(dialogVM: dialogVM)
       }
     })
     .listStyle(.plain)
     .padding(.horizontal, -15)
-    .navigationBarTitle(Text("Team"), displayMode: .automatic)
+    .navigationTitle("Team")
+    .navigationBarTitleDisplayMode(.automatic)
     .toolbar {
       NavigationLink {
         moduleAssembly.assemblyProfile()

@@ -12,10 +12,6 @@ struct ConversationView: View {
   
   @Environment(\.colorScheme) private var colorScheme
   
-  init (viewModel: ConversationViewModel) {
-    self.viewModel = viewModel
-  }
-  
   var body: some View {
     VStack(spacing: 0) {
       List {
@@ -76,7 +72,8 @@ struct ConversationView: View {
       .padding([.bottom, .leading, .trailing])
       .background(colorScheme == .light ? Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 0.7)) : Color(uiColor: .systemGray6))
     }
-    .navigationBarTitle(Text(viewModel.dialog.user.name), displayMode: .inline)
+    .navigationTitle(viewModel.dialog.user.name)
+    .navigationBarTitleDisplayMode(.inline)
   }
 }
 
