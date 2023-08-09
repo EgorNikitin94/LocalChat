@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class AuthViewModel: ObservableObject {
+final class AuthViewModel: ObservableObject, Completeable, Navigable {
   
   @Published var name: String = ""
   
@@ -17,6 +17,8 @@ class AuthViewModel: ObservableObject {
   @Published var hidePasswordInput: Bool = true
   
   @Published var bottonDisabled: Bool = true
+  
+  let didComplete = PassthroughSubject<AuthViewModel, Never>()
   
   let service: AuthServiceProtocol
   

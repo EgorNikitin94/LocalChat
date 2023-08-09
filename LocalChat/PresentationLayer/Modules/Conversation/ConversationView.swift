@@ -14,19 +14,21 @@ struct ConversationView: View {
   
   var body: some View {
     VStack(spacing: 0) {
-      List {
-        ForEach(viewModel.realTimeMessages.reversed()) { msg in
-          MessageView(currentMessage: msg)
-            .listRowSeparator(.hidden)
-            .scaleEffect(x: 1, y: -1, anchor: .center)
+      ScrollView(.vertical) {
+        LazyVStack(alignment: .leading) {
+          ForEach(viewModel.realTimeMessages.reversed()) { msg in
+            MessageView(currentMessage: msg)
+              .scaleEffect(x: 1, y: -1, anchor: .center)
+              .padding(.horizontal)
+              .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
+          }
         }
       }
       .onTapGesture {
         hideKeyboard()
       }
       .scaleEffect(x: 1, y: -1, anchor: .center)
-      .listStyle(.plain)
-      //.padding(.vertical)
+      .padding(.bottom)
       
       Divider()
         .background(content: {
@@ -34,6 +36,14 @@ struct ConversationView: View {
         })
       
       HStack(alignment: .bottom) {
+        Button {
+          //
+        } label: {
+          Image(systemName: "paperclip.circle.fill")
+            .resizable()
+        }
+        .frame(width: 30, height: 30)
+        
         TextField("Write a message...", text: $viewModel.inputText, axis: .vertical)
           .padding(.horizontal)
           .frame(minHeight: CGFloat(30))
@@ -51,7 +61,6 @@ struct ConversationView: View {
             RoundedRectangle(cornerRadius: 20)
               .stroke(Color(uiColor: .systemGray2), lineWidth: 1)
           }
-          .animation(.easeIn(duration: 0.2), value: viewModel.hideSendButton)
         
         if !viewModel.hideSendButton {
             Button {
@@ -61,12 +70,12 @@ struct ConversationView: View {
             } label: {
               Image(systemName: "arrow.up.circle.fill")
                 .resizable()
-                .transition(.move(edge: .trailing).animation(.easeIn))
-                .animation(.easeIn(duration: 0.2), value: viewModel.hideSendButton)
             }
+            .transition(AnyTransition.scale.combined(with: .opacity))
             .frame(width: 30, height: 30)
         }
       }
+      .animation(.easeIn(duration: 0.2), value: viewModel.hideSendButton)
       .padding(.top)
       .frame(minHeight: CGFloat(50))
       .padding([.bottom, .leading, .trailing])

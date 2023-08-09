@@ -12,7 +12,7 @@ struct TimeManagerHalper {
     guard let lastMessageDate = date else { return nil }
     let gregorian: Calendar = Calendar(identifier: .gregorian)
     
-    let monthDay = "d MMM";
+    let monthDay = "d MMM"
     
     let dateFormatter = DateFormatter()
     dateFormatter.timeStyle = .short

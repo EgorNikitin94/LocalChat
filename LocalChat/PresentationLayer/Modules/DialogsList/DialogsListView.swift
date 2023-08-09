@@ -13,22 +13,27 @@ struct DialogsListView: View {
   
   var body: some View {
     List(viewModel.dialogs, rowContent: { dialogVM in
-      NavigationLink {
-        moduleAssembly.assemblyConversation(for: dialogVM.baseModel)
-      } label: {
+//      NavigationLink {
+//      } label: {
         DialogListRowView(dialogVM: dialogVM)
-      }
+        .onTapGesture {
+          viewModel.openConversation(for: dialogVM)
+        }
+//      }
     })
     .listStyle(.plain)
     .padding(.horizontal, -15)
     .navigationTitle("Team")
     .navigationBarTitleDisplayMode(.automatic)
+    .navigationBarBackButtonHidden()
     .toolbar {
-      NavigationLink {
-        moduleAssembly.assemblyProfile()
-      } label: {
+//      NavigationLink {
+//        viewModel.openProfile()
+//      } label: {
         Image(systemName: "gearshape.fill")
-      }
+        .onTapGesture {
+          viewModel.openProfile()
+        }
     }
   }
 }

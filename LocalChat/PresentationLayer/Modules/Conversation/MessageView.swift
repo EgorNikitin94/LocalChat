@@ -35,7 +35,8 @@ struct MessageView: View {
         Spacer()
       }
       ContentMessageView(contentMessage: currentMessage.text,
-                         isCurrentUser: currentMessage.from.isCurrentUser)
+                         isCurrentUser: currentMessage.from.isCurrentUser,
+                         date: currentMessage.date)
     }
   }
 }
