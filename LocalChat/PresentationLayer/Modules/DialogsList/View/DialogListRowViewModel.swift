@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct DialogListRowViewModel: Identifiable, Hashable {
+struct DialogListRowViewModel: Identifiable, Hashable, Equatable {
   let id: UUID
   let userName: String
   let lastMessageText: String?

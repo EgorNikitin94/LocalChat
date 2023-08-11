@@ -39,8 +39,8 @@ class ConversationModel: ObservableObject, ConversationModelStateProtocol {
 
 // MARK: - Actions
 extension ConversationModel: ConversationModelActionsProtocol {  
-  func configure(with dialog: Dialog) {
-    navTitle = dialog.user.name
+  func configure(with peer: User) {
+    navTitle = peer.name
   }
   
   func didLoad(messages: [Message]) {

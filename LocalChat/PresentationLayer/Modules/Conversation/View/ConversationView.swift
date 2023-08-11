@@ -108,7 +108,7 @@ struct ConversationView_Previews: PreviewProvider {
   
   static var previews: some View {
     NavigationStack {
-      ConversationAssembly().build(dialog: dialog, moduleOutput: nil, completion: nil)
+      ConversationAssembly().build(peer: dialog.user, moduleOutput: nil, completion: nil)
     }
   }
 }

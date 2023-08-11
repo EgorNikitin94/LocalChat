@@ -17,14 +17,14 @@ class ConversationIntent {
   private let messgeService: MessageServiceProtocol = MockMessageService()
   private let userService: UserServiceProtocol = MockUserService()
   
-  private var dialog: Dialog
+  private var peer: User
   private var realTimeMessages: [Message] = []
 
-  init(dialog: Dialog, model: (ConversationModelActionsProtocol & ConversationModelRouterProtocol)?, moduleOutput: ConversationModuleOutput?) {
+  init(peer: User, model: (ConversationModelActionsProtocol & ConversationModelRouterProtocol)?, moduleOutput: ConversationModuleOutput?) {
     self.model = model
     self.routeModel = model
     self.moduleOutput = moduleOutput
-    self.dialog = dialog
+    self.peer = peer
   }
   
 }
@@ -32,13 +32,13 @@ class ConversationIntent {
 // MARK: - ConversationIntentProtocol
 extension ConversationIntent: ConversationIntentProtocol {
   func viewOnAppear() {
-    model?.configure(with: dialog)
-    realTimeMessages = messgeService.getMessages(for: dialog, user: userService.currentUser)
+    model?.configure(with: peer)
+    realTimeMessages = messgeService.getMessages(for: peer, user: userService.currentUser)
     model?.didLoad(messages: realTimeMessages)
   }
   
   func sendMessage(with inputText: String) {
-    let newMessage = Message(from: userService.currentUser, to: dialog.user, date: Date(), text: inputText)
+    let newMessage = Message(from: userService.currentUser, to: peer, date: Date(), text: inputText)
     realTimeMessages.append(newMessage)
     model?.didSendMessage(messsage: newMessage)
   }

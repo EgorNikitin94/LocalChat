@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ConversationModelActionsProtocol: AnyObject {
-  func configure(with dialog: Dialog)
+  func configure(with peer: User)
   func didLoad(messages: [Message])
   func didSendMessage(messsage: Message)
 }
