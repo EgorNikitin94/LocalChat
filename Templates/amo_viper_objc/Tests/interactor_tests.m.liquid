@@ -1,0 +1,36 @@
+{% include 'header' %}
+
+#import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+
+#import "{{ prefix }}{{ module_info.name }}Interactor.h"
+#import "{{ prefix }}{{ module_info.name }}InteractorOutput.h"
+
+@interface {{ prefix }}{{ module_info.name }}InteractorTests : XCTestCase
+
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Interactor *interactor;
+@property (strong, nonatomic) id<{{ prefix }}{{ module_info.name }}InteractorOutput> outputMock;
+
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}InteractorTests
+
+- (void)setUp {
+    [super setUp];
+
+    _interactor = [{{ prefix }}{{ module_info.name }}Interactor new];
+    _outputMock = OCMProtocolMock(@protocol({{ prefix }}{{ module_info.name }}InteractorOutput));
+    _interactor.output = _outputMock;
+}
+
+- (void)tearDown {
+    _interactor = nil;
+    _outputMock = nil;
+
+    [super tearDown];
+}
+
+#pragma mark - {{ prefix }}{{ module_info.name }}InteractorInput
+
+
+@end

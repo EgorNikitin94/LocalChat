@@ -1,0 +1,57 @@
+//
+//  {{ prefix }}{{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+final class {{ prefix }}{{ module_info.name }}Assembly: NSObject {
+
+    private var view = {{ prefix }}{{ module_info.name }}ViewController(nibName: "{{ prefix }}{{ module_info.name }}ViewController", bundle: Bundle.main)
+    private var presenter = {{ prefix }}{{ module_info.name }}Presenter()
+    private var router = {{ prefix }}{{ module_info.name }}Router()
+    private var interactor = {{ prefix }}{{ module_info.name }}Interactor()
+
+    // MARK: - Public method
+    @objc func assembleModule(moduleOutput: {{ prefix }}{{ module_info.name }}ModuleOutput,
+                              transition: (({{ prefix }}{{ module_info.name }}RouterInput) -> Void)?,
+                              completion: (({{ prefix }}{{ module_info.name }}ModuleInput) -> Void)?) {
+        
+        configureDependenciesWithModuleOutput(moduleOutput: moduleOutput)
+        
+        view.setupViewReadyBlock {
+            self.addChildComponents()
+            if let completion = completion {
+                completion(self.presenter)
+            }
+        }
+        
+        if let transition = transition {
+            transition(router)
+        }
+        
+    }
+    
+    // MARK: - Child components
+    private func addChildComponents() {
+        // Present child submodules here
+    }
+    
+    // MARK: - Configure dependencies
+    private func configureDependenciesWithModuleOutput(moduleOutput: {{ prefix }}{{ module_info.name }}ModuleOutput) {
+        presenter.view = view
+        view.output = presenter
+        
+        presenter.router = router
+        router.view = view
+        
+        presenter.interactor = interactor
+        interactor.output = presenter
+        
+        presenter.moduleOutput = moduleOutput
+    }
+
+}

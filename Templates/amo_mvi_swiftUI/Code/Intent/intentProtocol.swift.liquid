@@ -1,0 +1,15 @@
+{% include 'header' %}
+
+import Foundation
+
+protocol {{ prefix }}{{ module_info.name }}IntentProtocol: AnyObject {
+  func viewOnAppear()
+}
+
+@objc protocol {{ prefix }}{{ module_info.name }}ModuleInput: AnyObject {
+  
+}
+
+@objc protocol {{ prefix }}{{ module_info.name }}ModuleOutput: AnyObject {
+  
+}

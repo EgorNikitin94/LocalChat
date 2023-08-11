@@ -1,0 +1,85 @@
+{% include 'header' %}
+
+#import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+
+#import "{{ prefix }}{{ module_info.name }}Router.h"
+
+@interface {{ prefix }}{{ module_info.name }}RouterTests : XCTestCase
+
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Router *router;
+@property (nonatomic, strong) UIViewController *viewMock;
+
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}RouterTests
+
+- (void)setUp {
+    [super setUp];
+
+    _router = [{{ prefix }}{{ module_info.name }}Router new];
+    _viewMock = OCMClassMock([UIViewController class]);
+    _router.view = _viewMock;
+}
+
+- (void)tearDown {
+    _router = nil;
+    _viewMock = nil;
+
+    [super tearDown];
+}
+
+#pragma mark - {{ prefix }}{{ module_info.name }}RouterInput
+- (void)testCloseModuleOnNavigationControllerStack {
+
+    // given
+    UINavigationController *mockNavController = OCMClassMock([UINavigationController class]);
+    [OCMStub([_viewMock navigationController]) andReturn:mockNavController];
+
+    // when
+    [_router closeModule];
+
+    // then
+    OCMVerify([mockNavController popViewControllerAnimated:YES]);
+    [(id)mockNavController stopMocking];
+    mockNavController = nil;
+}
+
+- (void)testCloseModuleWithoutNavigationControllerStack {
+
+    // when
+    [_router closeModule];
+
+    // then
+    OCMVerify([_viewMock dismissViewControllerAnimated:YES completion:nil]);
+}
+
+- (void)testOpenModuleFromWindow {
+
+    // given
+    UIWindow *mockWindow = OCMClassMock([UIWindow class]);
+
+    // when
+    [_router openModuleFromWindow:mockWindow];
+
+    // then
+    OCMVerify([mockWindow setRootViewController:_viewMock]);
+    [(id)mockWindow stopMocking];
+    mockWindow = nil;
+}
+
+- (void)testOpenModuleFromViewController {
+
+    // given
+    UIViewController *mockViewController = OCMClassMock([UIViewController class]);
+
+    // when
+    [_router openModuleFromViewController:mockViewController];
+
+    // then
+    OCMVerify([mockViewController presentViewController:_viewMock animated:YES completion:nil]);
+    [(id)mockViewController stopMocking];
+    mockViewController = nil;
+}
+
+@end

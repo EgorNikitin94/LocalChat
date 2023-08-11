@@ -53,10 +53,7 @@ final class ModuleAssemblyImp: ModileAssembly {
   }
   
   func assemblyConversation(for dialog: Dialog) -> ConversationView {
-    let vm = ConversationViewModel(dialog: dialog,
-                                   messgeService: serviceAssembly.messageService,
-                                   userService: serviceAssembly.userService)
-    return ConversationView(viewModel: vm)
+    return ConversationAssembly().build(dialog: dialog, moduleOutput: nil, completion: nil) as! ConversationView
   }
   
   func assemblyProfile() -> ProfileView {

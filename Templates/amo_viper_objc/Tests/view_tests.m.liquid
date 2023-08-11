@@ -1,0 +1,70 @@
+{% include 'header' %}
+
+#import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+#import "{{ prefix }}{{ module_info.name }}ViewOutput.h"
+
+
+@interface {{ prefix }}{{ module_info.name }}ViewControllerTests : XCTestCase
+
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}ViewController *viewController;
+@property (strong, nonatomic) id <{{ prefix }}{{ module_info.name }}ViewOutput> outputMock;
+
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}ViewControllerTests
+
+- (void)setUp {
+    [super setUp];
+
+    _viewController = [{{ prefix }}{{ module_info.name }}ViewController new];
+    _outputMock = OCMProtocolMock(@protocol({{ prefix }}{{ module_info.name }}ViewOutput));
+
+    _viewController.output = _outputMock;
+}
+
+- (void)tearDown {
+    _viewController = nil;
+    _outputMock = nil;
+
+    [super tearDown];
+}
+
+#pragma mark - Lifecycle
+- (void)testSuccessViewDidLoad {
+
+    // given
+    {{ prefix }}{{ module_info.name }}ViewController *partialMockViewController = OCMPartialMock(_viewController);
+
+    // when
+    [partialMockViewController viewDidLoad];
+
+    // then
+    OCMVerify([self.outputMock didTriggerViewReadyEvent]);
+    [(id)partialMockViewController stopMocking];
+    partialMockViewController = nil;
+}
+
+- (void)testSuccessViewWillAppear {
+
+    // given
+    {{ prefix }}{{ module_info.name }}ViewController *partialMockViewController = OCMPartialMock(_viewController);
+
+    // when
+    [partialMockViewController viewWillAppear:YES];
+
+    // then
+    OCMVerify([self.outputMock didTriggerViewWillAppearEvent]);
+    [(id)partialMockViewController stopMocking];
+    partialMockViewController = nil;
+}
+
+#pragma mark - {{ prefix }}{{ module_info.name }}ViewInput
+
+
+#pragma mark - Actions
+
+
+@end

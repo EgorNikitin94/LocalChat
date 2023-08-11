@@ -1,0 +1,46 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+final class {{ prefix }}{{ module_info.name }}Presenter: NSObject {
+    
+    weak var view: {{ prefix }}{{ module_info.name }}ViewInput?
+    var interactor: {{ prefix }}{{ module_info.name }}InteractorInput?
+    var router: {{ prefix }}{{ module_info.name }}RouterInput?
+    weak var moduleOutput: {{ prefix }}{{ module_info.name }}ModuleOutput?
+    
+    // MARK: - Private
+    
+}
+
+
+// MARK: - Module Input
+extension {{ prefix }}{{ module_info.name }}Presenter: {{ prefix }}{{ module_info.name }}ModuleInput {
+    
+}
+
+
+// MARK: - Interactor Output
+extension {{ prefix }}{{ module_info.name }}Presenter: {{ prefix }}{{ module_info.name }}InteractorOutput {
+    
+}
+
+
+// MARK: - View Output
+extension {{ prefix }}{{ module_info.name }}Presenter: {{ prefix }}{{ module_info.name }}ViewOutput {
+    
+    func didTriggerViewReadyEvent() {
+        
+    }
+    
+    func didTriggerViewWillAppearEvent() {
+        
+    }
+    
+}

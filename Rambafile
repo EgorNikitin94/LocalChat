@@ -1,0 +1,24 @@
+### Headers settings
+company: Egor Nikitin
+
+### Xcode project settings
+project_name: LocalChat
+xcodeproj_path: LocalChat.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: LocalChat
+
+# The file path for new modules
+project_file_path: /LocalChat/PresentationLayer
+
+# The Xcode group path to new modules
+project_group_path: /LocalChat/PresentationLayer
+
+### Templates
+catalogs:
+- 'https://git.amocrm.ru/ios/viper-templates'
+templates:
+- {name: amo_viper_objc}
+- {name: amo_viper_swift}
+- {name: amo_mvi_swiftUI}

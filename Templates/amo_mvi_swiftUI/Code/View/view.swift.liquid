@@ -1,0 +1,23 @@
+{% include 'header' %}
+
+import SwiftUI
+
+struct {{ prefix }}{{ module_info.name }}View: View {
+  
+  @StateObject var container: MVIContainer<{{ prefix }}{{ module_info.name }}IntentProtocol, {{ prefix }}{{ module_info.name }}ModelStateProtocol>
+  
+  private var intent: {{ prefix }}{{ module_info.name }}IntentProtocol { container.intent }
+  private var model: {{ prefix }}{{ module_info.name }}ModelStateProtocol { container.model }
+  
+  var body: some View {
+    Text("Hallo amo module")
+      .onAppear(perform: intent.viewOnAppear)
+      .modifier({{ prefix }}{{ module_info.name }}Router(subjects: model.routerSubject, intent: intent))
+  }
+}
+
+struct {{ prefix }}{{ module_info.name }}View_Previews: PreviewProvider {
+  static var previews: some View {
+    {{ prefix }}{{ module_info.name }}Assembly().build(moduleOutput: nil, completion: nil)
+  }
+}

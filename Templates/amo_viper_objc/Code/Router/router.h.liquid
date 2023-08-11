@@ -1,0 +1,8 @@
+{% include 'header' %}
+
+#import "BaseRouter.h"
+#import "{{ prefix }}{{ module_info.name }}RouterInput.h"
+
+@interface {{ prefix }}{{ module_info.name }}Router : BaseRouter<{{ prefix }}{{ module_info.name }}RouterInput>
+
+@end

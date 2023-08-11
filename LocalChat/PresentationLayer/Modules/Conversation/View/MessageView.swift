@@ -38,6 +38,7 @@ struct MessageView: View {
                          isCurrentUser: currentMessage.from.isCurrentUser,
                          date: currentMessage.date)
     }
+    .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
   }
 }
 

@@ -1,0 +1,30 @@
+{% include 'header' %}
+
+import Foundation
+
+class {{ prefix }}{{ module_info.name }}Intent {
+
+  private weak var model:{{ prefix }}{{ module_info.name }}ModelActionsProtocol?
+  private weak var routeModel:{{ prefix }}{{ module_info.name }}ModelRouterProtocol?
+  private weak var moduleOutput:{{ prefix }}{{ module_info.name }}ModuleOutput?
+
+  init(model: ({{ prefix }}{{ module_info.name }}ModelActionsProtocol & {{ prefix }}{{ module_info.name }}ModelRouterProtocol)?, moduleOutput:{{ prefix }}{{ module_info.name }}ModuleOutput?) {
+    self.model = model
+    self.routeModel = model
+    self.moduleOutput = moduleOutput
+  }
+  
+}
+
+// MARK: - {{ prefix }}{{ module_info.name }}IntentProtocol
+extension {{ prefix }}{{ module_info.name }}Intent: {{ prefix }}{{ module_info.name }}IntentProtocol {
+  func viewOnAppear() {
+    //
+  }
+}
+
+
+// MARK: - {{ prefix }}{{ module_info.name }}ModuleInput
+extension {{ prefix }}{{ module_info.name }}Intent: {{ prefix }}{{ module_info.name }}ModuleInput {
+  
+}

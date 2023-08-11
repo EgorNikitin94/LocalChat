@@ -1,0 +1,35 @@
+# Template information section
+name: amo_viper_swift
+summary: Generamba swift module template for VIPER architecture (with assembly)
+author: Egor Nikitin
+version: 1.0.0
+license: MIT
+
+# The declarations for code files
+
+code_files:
+# Assembly
+- {name: Assembly/Assembly.swift, path: Code/Assembly/assembly.swift.liquid}
+
+# Interactor layer
+- {name: Interactor/InteractorInOut.swift, path: Code/Interactor/interactorInOut.swift.liquid}
+- {name: Interactor/Interactor.swift, path: Code/Interactor/interactor.swift.liquid}
+
+# Presenter layer
+- {name: Presenter/ModuleInOut.swift, path: Code/Presenter/moduleInOut.swift.liquid}
+- {name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid}
+
+# Router layer
+- {name: Router/RouterInput.swift, path: Code/Router/routerInput.swift.liquid}
+- {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
+
+# View layer
+- {name: View/ViewInOut.swift,  path: Code/View/viewInOut.swift.liquid}
+- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
+- {name: View/ViewController.xib, path: Code/View/viewcontroller.xib.liquid}
+
+# The declarations for test files
+test_files:
+
+# Template dependencies
+dependencies:

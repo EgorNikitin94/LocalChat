@@ -1,0 +1,33 @@
+{% include 'header' %}
+
+import SwiftUI
+
+class {{ prefix }}{{ module_info.name }}Assembly {
+
+// MARK: - Public
+  func build(moduleOutput: {{ prefix }}{{ module_info.name }}ModuleOutput?, completion: (({{ prefix }}{{ module_info.name }}ModuleInput?) -> Void)?) -> some View {
+    let model = buildModel()
+    let intent = buildIntent(model: model, moduleOutput: moduleOutput)
+    let view = buildView(model: model, intent: intent)
+    completion?(intent as {{ prefix }}{{ module_info.name }}ModuleInput)
+    return view
+  }
+  
+  // MARK: - Private
+  private func buildModel() -> {{ prefix }}{{ module_info.name }}Model {
+    {{ prefix }}{{ module_info.name }}Model()
+}
+  
+  private func buildIntent(model: {{ prefix }}{{ module_info.name }}Model, moduleOutput: {{ prefix }}{{ module_info.name }}ModuleOutput?) -> {{ prefix }}{{ module_info.name }}Intent {
+    {{ prefix }}{{ module_info.name }}Intent(model: model, moduleOutput: moduleOutput)
+}
+  
+  private func buildView(model: {{ prefix }}{{ module_info.name }}Model, intent: {{ prefix }}{{ module_info.name }}Intent) -> some View {
+    let container = MVIContainer(
+      intent: intent as {{ prefix }}{{ module_info.name }}IntentProtocol,
+      model: model as {{ prefix }}{{ module_info.name }}ModelStateProtocol,
+      modelChangePublisher: model.objectWillChange)
+    return {{ prefix }}{{ module_info.name }}View(container: container)
+  }
+  
+}

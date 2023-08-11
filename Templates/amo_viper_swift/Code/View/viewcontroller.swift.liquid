@@ -1,0 +1,46 @@
+//
+//  {{ module_info.name }}{{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+final class {{ prefix }}{{ module_info.name }}ViewController: UIViewController {
+        
+    var output: {{ prefix }}{{ module_info.name }}ViewOutput?
+    var viewReadyBlock: (() -> Void)?
+    
+    // MARK: - Lifecycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        output?.didTriggerViewWillAppearEvent()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if isViewLoaded, let viewReadyBlock = viewReadyBlock {
+            viewReadyBlock()
+            self.viewReadyBlock = nil
+        }
+        
+        output?.didTriggerViewReadyEvent()
+    }
+    
+    // MARK: - Public
+    func setupViewReadyBlock(block: @escaping () -> Void) {
+        viewReadyBlock = block;
+    }
+
+    // MARK: - Private
+
+}
+
+
+// MARK: - View Input
+extension {{ prefix }}{{ module_info.name }}ViewController: {{ prefix }}{{ module_info.name }}ViewInput {
+    
+}

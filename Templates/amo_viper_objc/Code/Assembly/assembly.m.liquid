@@ -1,0 +1,91 @@
+{% include 'header' %}
+
+#import <UIKit/UIKit.h>
+
+#import "{{ prefix }}{{ module_info.name }}Assembly.h"
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+#import "{{ prefix }}{{ module_info.name }}Presenter.h"
+#import "{{ prefix }}{{ module_info.name }}Router.h"
+#import "{{ prefix }}{{ module_info.name }}Interactor.h"
+
+static NSString *{{ prefix }}{{ module_info.name }}ViewControllerIdentifier = @"{{ prefix }}{{ module_info.name }}ViewController";
+static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName = <#(nonnull NSString *)#>;
+
+
+@interface {{ prefix }}{{ module_info.name }}Assembly ()
+
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}ViewController *view;
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Presenter *presenter;
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Router *router;
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Interactor *interactor;
+
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}Assembly
+
+#pragma mark - Public
++ (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(BaseRouter<{{ prefix }}{{ module_info.name }}RouterInput> *router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion {
+  [[{{ prefix }}{{ module_info.name }}Assembly new] assembleModuleWithOutput:moduleOutput transitionBlock:transitionBlock completion:completion];
+}
+
+#pragma mark private instance method analog
+- (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(BaseRouter<{{ prefix }}{{ module_info.name }}RouterInput> *router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion {
+  [self buildComponents];
+  [self configureDependenciesWithModuleOutput:moduleOutput];
+
+  [_view setupViewReadyBlock:^{
+    [self addChildComponents];
+      if (completion) {
+        completion(_presenter);
+      }
+  }];
+
+  if (transitionBlock) {
+    transitionBlock(_router);
+  }
+}
+
+#pragma mark - Child components
+- (void)addChildComponents {
+  // Present child submodules here
+}
+
+#pragma mark - Private
+#pragma mark - Dependencies
+- (void)buildComponents {
+  _view = [self view{{ module_info.name }}];
+  _presenter = [self presenter{{ module_info.name }}];
+  _router = [self router{{ module_info.name }}];
+  _interactor = [self interactor{{ module_info.name }}];
+}
+- (void)configureDependenciesWithModuleOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput {
+  _presenter.view = _view;
+  _view.output = _presenter;
+
+  _presenter.router = _router;
+  _router.view = _view;
+
+  _presenter.interactor = _interactor;
+  _interactor.output = _presenter;
+
+  _presenter.moduleOutput = moduleOutput;
+}
+
+#pragma mark - Factory methods
+- ({{ prefix }}{{ module_info.name }}ViewController *)view{{ module_info.name }} {
+  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName
+                                                         bundle:[NSBundle mainBundle]];
+  {{ prefix }}{{ module_info.name }}ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:{{ prefix }}{{ module_info.name }}ViewControllerIdentifier];
+  return vc;
+}
+- ({{ prefix }}{{ module_info.name }}Presenter *)presenter{{ module_info.name }} {
+  return [[{{ prefix }}{{ module_info.name }}Presenter alloc] init];
+}
+- ({{ prefix }}{{ module_info.name }}Router *)router{{ module_info.name }} {
+  return [[{{ prefix }}{{ module_info.name }}Router alloc] init];
+}
+- ({{ prefix }}{{ module_info.name }}Interactor *)interactor{{ module_info.name }} {
+  return [[{{ prefix }}{{ module_info.name }}Interactor alloc] init];
+}
+
+@end

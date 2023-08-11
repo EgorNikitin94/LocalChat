@@ -1,0 +1,32 @@
+# Template information section
+name: amo_mvi_swiftUI
+summary: Generamba swift module template for MVI architecture using SwiftUI framework
+author: Egor Nikitin
+version: 1.0.0
+license: MIT
+
+# The declarations for code files
+
+code_files:
+# Assembly
+- {name: Assembly/Assembly.swift, path: Code/Assembly/assembly.swift.liquid}
+
+# Intent layer
+- {name: Intent/IntentProtocol.swift, path: Code/Intent/intentProtocol.swift.liquid}
+- {name: Intent/Intent.swift, path: Code/Intent/intent.swift.liquid}
+
+# Model layer
+- {name: Model/ModelProtocol.swift, path: Code/Model/modelProtocol.swift.liquid}
+- {name: Model/Model.swift, path: Code/Model/model.swift.liquid}
+
+# Router layer
+- {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
+
+# View layer
+- {name: View/View.swift, path: Code/View/view.swift.liquid}
+
+# The declarations for test files
+test_files:
+
+# Template dependencies
+dependencies:

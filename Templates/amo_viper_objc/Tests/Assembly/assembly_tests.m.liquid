@@ -1,0 +1,119 @@
+{% include 'header' %}
+
+#import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+
+#import "{{ prefix }}{{ module_info.name }}Assembly.h"
+#import "{{ prefix }}{{ module_info.name }}Assembly_Testable.h"
+
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+#import "{{ prefix }}{{ module_info.name }}Presenter.h"
+#import "{{ prefix }}{{ module_info.name }}Interactor.h"
+#import "{{ prefix }}{{ module_info.name }}Router.h"
+
+#import "{{ prefix }}{{ module_info.name }}ViewOutput.h"
+#import "{{ prefix }}{{ module_info.name }}InteractorInput.h"
+#import "{{ prefix }}{{ module_info.name }}ModuleOutput.h"
+
+@interface {{ prefix }}{{ module_info.name }}AssemblyTests : XCTestCase
+
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Assembly *assembly;
+
+@property (strong, nonatomic) id<{{ prefix }}{{ module_info.name }}ModuleOutput> moduleOutputMock;
+
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}AssemblyTests
+
+- (void)setUp {
+    [super setUp];
+
+    _moduleOutputMock = OCMProtocolMock(@protocol({{ prefix }}{{ module_info.name }}ModuleOutput));
+    _assembly = [[{{ prefix }}{{ module_info.name }}Assembly alloc] init];
+    [_assembly assembleModuleWithOutput:_moduleOutputMock
+                    transitionBlock:nil
+                         completion:nil];
+}
+
+- (void)tearDown {
+    [(id)_moduleOutputMock stopMocking];
+    _moduleOutputMock = nil;
+    _assembly = nil;
+
+    [super tearDown];
+}
+
+- (void)testThatAssemblyCreatesView {
+
+    // given
+    Class targetClass = [{{ prefix }}{{ module_info.name }}ViewController class];
+    Protocol *outputProtocol = @protocol({{ prefix }}{{ module_info.name }}ViewOutput);
+
+    // when
+    {{ prefix }}{{ module_info.name }}ViewController *object = _assembly.view;
+
+    // then
+    XCTAssert([object isKindOfClass:targetClass]);
+    XCTAssert([object.output conformsToProtocol:outputProtocol]);
+}
+- (void)testThatAssemblyCreatesPresenter {
+
+    // given
+    Class targetClass = [{{ prefix }}{{ module_info.name }}Presenter class];
+    Protocol *viewInputProtocol = @protocol({{ prefix }}{{ module_info.name }}ViewInput);
+    Protocol *interactorInputProtocol = @protocol({{ prefix }}{{ module_info.name }}InteractorInput);
+    Protocol *routerInputProtocol = @protocol({{ prefix }}{{ module_info.name }}RouterInput);
+    Protocol *moduleOutputProtocol = @protocol({{ prefix }}{{ module_info.name }}ModuleOutput);
+
+    // when
+    {{ prefix }}{{ module_info.name }}Presenter *object = _assembly.presenter;
+
+    // then
+    XCTAssert([object isKindOfClass:targetClass]);
+    XCTAssert([object.view conformsToProtocol:viewInputProtocol]);
+    XCTAssert([object.interactor conformsToProtocol:interactorInputProtocol]);
+    XCTAssert([object.router conformsToProtocol:routerInputProtocol]);
+    XCTAssert([object.moduleOutput conformsToProtocol:moduleOutputProtocol]);
+}
+- (void)testThatAssemblyCreatesInteractor {
+
+    // given
+    Class targetClass = [{{ prefix }}{{ module_info.name }}Interactor class];
+    Protocol *outputProtocol = @protocol({{ prefix }}{{ module_info.name }}InteractorOutput);
+
+    // when
+    {{ prefix }}{{ module_info.name }}Interactor *object = _assembly.interactor;
+
+    // then
+    XCTAssert([object isKindOfClass:targetClass]);
+    XCTAssert([object.output conformsToProtocol:outputProtocol]);
+}
+- (void)testThatAssemblyCreatesRouter {
+
+    // given
+    Class targetClass = [{{ prefix }}{{ module_info.name }}Router class];
+    Class viewClass = [UIViewController class];
+
+    // when
+    {{ prefix }}{{ module_info.name }}Router *object = _assembly.router;
+
+    // then
+    XCTAssert([object isKindOfClass:targetClass]);
+    XCTAssert([object.view isKindOfClass:viewClass]);
+}
+- (void)testThatAssemblyReturnsRouterInput {
+
+    // given
+    Protocol *routerInputProtocol = @protocol({{ prefix }}{{ module_info.name }}RouterInput);
+
+    // when
+    __block id result;
+    [_assembly assembleModuleWithOutput:_moduleOutputMock transitionBlock:^(id<{{ prefix }}{{ module_info.name }}RouterInput> router) {
+        result = router;
+    } completion:nil];
+
+    // then
+    XCTAssert([result conformsToProtocol:routerInputProtocol]);
+}
+
+@end

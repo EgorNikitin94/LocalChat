@@ -1,0 +1,16 @@
+{% include 'header' %}
+
+import Foundation
+
+protocol {{ prefix }}{{ module_info.name }}ModelActionsProtocol: AnyObject {
+  
+}
+
+protocol {{ prefix }}{{ module_info.name }}ModelStateProtocol {
+  var routerSubject:{{ prefix }}{{ module_info.name }}Router.Subjects { get }
+}
+
+// MARK: - Route
+protocol {{ prefix }}{{ module_info.name }}ModelRouterProtocol: AnyObject {
+  
+}

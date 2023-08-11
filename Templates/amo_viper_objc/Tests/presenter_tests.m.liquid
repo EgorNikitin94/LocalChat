@@ -1,0 +1,74 @@
+{% include 'header' %}
+
+#import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+
+#import "{{ prefix }}{{ module_info.name }}Presenter.h"
+
+#import "{{ prefix }}{{ module_info.name }}InteractorInput.h"
+#import "{{ prefix }}{{ module_info.name }}ViewInput.h"
+#import "{{ prefix }}{{ module_info.name }}RouterInput.h"
+
+@interface {{ prefix }}{{ module_info.name }}PresenterTests : XCTestCase
+
+@property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Presenter *presenter;
+@property (strong, nonatomic) id<{{ prefix }}{{ module_info.name }}InteractorInput> interactorMock;
+@property (strong, nonatomic) id<{{ prefix }}{{ module_info.name }}ViewInput> viewMock;
+@property (strong, nonatomic) id<{{ prefix }}{{ module_info.name }}RouterInput> routerMock;
+
+@end
+
+@implementation {{ prefix }}{{ module_info.name }}PresenterTests
+
+- (void)setUp {
+    [super setUp];
+
+    _presenter = [{{ prefix }}{{ module_info.name }}Presenter new];
+    _interactorMock = OCMProtocolMock(@protocol({{ prefix }}{{ module_info.name }}InteractorInput));
+    _viewMock = OCMProtocolMock(@protocol({{ prefix }}{{ module_info.name }}ViewInput));
+    _routerMock = OCMProtocolMock(@protocol({{ prefix }}{{ module_info.name }}RouterInput));
+
+    _presenter.interactor = _interactorMock;
+    _presenter.view = _viewMock;
+    _presenter.router = _routerMock;
+}
+
+- (void)tearDown {
+    self.presenter = nil;
+    self.interactorMock = nil;
+    self.viewMock = nil;
+    self.routerMock = nil;
+
+    [super tearDown];
+}
+
+#pragma mark - {{ prefix }}{{ module_info.name }}ModuleInput
+
+
+#pragma mark - {{ prefix }}{{ module_info.name }}ViewOutput
+- (void)testSuccessSetupView {
+
+    // given
+
+    // when
+    [self.presenter didTriggerViewReadyEvent];
+
+    // then
+    XCTAssertTrue(NO);
+}
+
+- (void)testHandleViewAppearing {
+
+    // given
+
+    // when
+    [self.presenter didTriggerViewWillAppearEvent];
+
+    // then
+    XCTAssertTrue(NO);
+}
+
+#pragma mark - {{ prefix }}{{ module_info.name }}InteractorOutput
+
+
+@end
