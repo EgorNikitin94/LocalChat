@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CocoaAsyncSocket
 
 final class TcpTramsport: NSObject, URLSessionStreamDelegate {
   private let urlSession: URLSession = URLSession.shared

@@ -38,14 +38,14 @@
 		5067ED0D2A843F7F00C5FA11 /* RouterCloseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */; };
 		5067ED0E2A843F7F00C5FA11 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */; };
 		507F398A2909C678002571DB /* TcpTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpTransport.swift */; };
-		507F398D2909CD61002571DB /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F398C2909CD61002571DB /* CoreDataStore.swift */; };
+		509D7A952A87BFB80025C0B9 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509D7A942A87BFB80025C0B9 /* GRDB */; };
+		509D7A982A87C9FF0025C0B9 /* SQLiteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */; };
+		509D7A9B2A87FA1B0025C0B9 /* MessageDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */; };
+		509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 509D7A9D2A881BF80025C0B9 /* CocoaAsyncSocket */; };
 		50B3C5252919A9B70089A376 /* FileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B3C5242919A9B70089A376 /* FileStore.swift */; };
 		50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAC228EF8626004B5199 /* LocalChatApp.swift */; };
-		50DEEAC528EF8626004B5199 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAC428EF8626004B5199 /* ContentView.swift */; };
 		50DEEAC728EF8629004B5199 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DEEAC628EF8629004B5199 /* Assets.xcassets */; };
 		50DEEACA28EF8629004B5199 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DEEAC928EF8629004B5199 /* Preview Assets.xcassets */; };
-		50DEEACC28EF8629004B5199 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEACB28EF8629004B5199 /* Persistence.swift */; };
-		50DEEACF28EF8629004B5199 /* LocalChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEACD28EF8629004B5199 /* LocalChat.xcdatamodeld */; };
 		50DEEADA28EF8C6D004B5199 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */; };
 		55EF727C8971C458581570A2 /* ConversationIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C753E34038BC6BBA02FF5551 /* ConversationIntent.swift */; };
 		609EA7EF519A91E8229A20D7 /* ConversationIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E724A6072C3B2EC58817D5EC /* ConversationIntentProtocol.swift */; };
@@ -105,15 +105,13 @@
 		5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
 		5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		507F39892909C678002571DB /* TcpTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpTransport.swift; sourceTree = "<group>"; };
-		507F398C2909CD61002571DB /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteStore.swift; sourceTree = "<group>"; };
+		509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDisplayItem.swift; sourceTree = "<group>"; };
 		50B3C5242919A9B70089A376 /* FileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStore.swift; sourceTree = "<group>"; };
 		50DEEABF28EF8626004B5199 /* LocalChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DEEAC228EF8626004B5199 /* LocalChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalChatApp.swift; sourceTree = "<group>"; };
-		50DEEAC428EF8626004B5199 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		50DEEAC628EF8629004B5199 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50DEEAC928EF8629004B5199 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		50DEEACB28EF8629004B5199 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		50DEEACE28EF8629004B5199 /* LocalChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalChat.xcdatamodel; sourceTree = "<group>"; };
 		50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		51463633A601257E81FC34EB /* ConversationModelProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationModelProtocol.swift; sourceTree = "<group>"; };
 		51F172826E2E07E7269C2E93 /* DialogsListModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DialogsListModel.swift; sourceTree = "<group>"; };
@@ -144,6 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */,
+				509D7A952A87BFB80025C0B9 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				503836E828FA08CF00DE8ED0 /* TCP */,
-				503836E928FA08E300DE8ED0 /* CoreData */,
+				509D7A962A87C9E00025C0B9 /* SQLiteStore */,
 				507F398B2909C6A5002571DB /* FileStore */,
 			);
 			path = CoreLayer;
@@ -275,16 +275,6 @@
 			path = TCP;
 			sourceTree = "<group>";
 		};
-		503836E928FA08E300DE8ED0 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				507F398C2909CD61002571DB /* CoreDataStore.swift */,
-				50DEEACB28EF8629004B5199 /* Persistence.swift */,
-				50DEEACD28EF8629004B5199 /* LocalChat.xcdatamodeld */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 		503836EF28FA0BD900DE8ED0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				5067ECFC2A843F7F00C5FA11 /* MVIComponents */,
-				50DEEAC428EF8626004B5199 /* ContentView.swift */,
 				50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */,
 				5006DEE128FB58E200BBAC2A /* AvatarView.swift */,
 				5006DEE928FC99D600BBAC2A /* BadgeView.swift */,
@@ -363,6 +352,22 @@
 				50B3C5242919A9B70089A376 /* FileStore.swift */,
 			);
 			path = FileStore;
+			sourceTree = "<group>";
+		};
+		509D7A962A87C9E00025C0B9 /* SQLiteStore */ = {
+			isa = PBXGroup;
+			children = (
+				509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */,
+			);
+			path = SQLiteStore;
+			sourceTree = "<group>";
+		};
+		509D7A992A87F9E50025C0B9 /* DisplayItems */ = {
+			isa = PBXGroup;
+			children = (
+				509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */,
+			);
+			path = DisplayItems;
 			sourceTree = "<group>";
 		};
 		50DEEAB628EF8626004B5199 = {
@@ -453,6 +458,7 @@
 		A30C4F815FAE55B93614BE78 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				509D7A992A87F9E50025C0B9 /* DisplayItems */,
 				51463633A601257E81FC34EB /* ConversationModelProtocol.swift */,
 				F88E90376B302EC834871DA2 /* ConversationModel.swift */,
 			);
@@ -580,6 +586,10 @@
 			dependencies = (
 			);
 			name = LocalChat;
+			packageProductDependencies = (
+				509D7A942A87BFB80025C0B9 /* GRDB */,
+				509D7A9D2A881BF80025C0B9 /* CocoaAsyncSocket */,
+			);
 			productName = LocalChat;
 			productReference = 50DEEABF28EF8626004B5199 /* LocalChat.app */;
 			productType = "com.apple.product-type.application";
@@ -608,6 +618,10 @@
 				Base,
 			);
 			mainGroup = 50DEEAB628EF8626004B5199;
+			packageReferences = (
+				509D7A932A87BFB80025C0B9 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				509D7A9C2A881BF80025C0B9 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
+			);
 			productRefGroup = 50DEEAC028EF8626004B5199 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -637,17 +651,16 @@
 				5038624C29045554003071B6 /* AuthViewModelOld.swift in Sources */,
 				5006DEEC28FC9EA700BBAC2A /* UserService.swift in Sources */,
 				5006DEE828FC976400BBAC2A /* MessageService.swift in Sources */,
-				50DEEACC28EF8629004B5199 /* Persistence.swift in Sources */,
+				509D7A982A87C9FF0025C0B9 /* SQLiteStore.swift in Sources */,
 				50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */,
 				5067ED092A843F7F00C5FA11 /* RouterSheetModifier.swift in Sources */,
 				5067ED072A843F7F00C5FA11 /* MVIContainer.swift in Sources */,
 				505410AC28F21A28006D4875 /* AppModels.swift in Sources */,
 				507F398A2909C678002571DB /* TcpTransport.swift in Sources */,
+				509D7A9B2A87FA1B0025C0B9 /* MessageDisplayItem.swift in Sources */,
 				503836F328FA0D7700DE8ED0 /* View+extensions.swift in Sources */,
-				50DEEACF28EF8629004B5199 /* LocalChat.xcdatamodeld in Sources */,
 				5067ED0E2A843F7F00C5FA11 /* RouterProtocol.swift in Sources */,
 				50DEEADA28EF8C6D004B5199 /* BackgroundView.swift in Sources */,
-				50DEEAC528EF8626004B5199 /* ContentView.swift in Sources */,
 				50B3C5252919A9B70089A376 /* FileStore.swift in Sources */,
 				5006DEEA28FC99D600BBAC2A /* BadgeView.swift in Sources */,
 				5006DEE628FC975300BBAC2A /* DialogsService.swift in Sources */,
@@ -658,7 +671,6 @@
 				503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */,
 				503836F828FA167C00DE8ED0 /* DialogListRowViewModel.swift in Sources */,
 				503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */,
-				507F398D2909CD61002571DB /* CoreDataStore.swift in Sources */,
 				5006DEE228FB58E200BBAC2A /* AvatarView.swift in Sources */,
 				505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */,
 				5038624A2904554D003071B6 /* AuthViewOld.swift in Sources */,
@@ -896,18 +908,37 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCVersionGroup section */
-		50DEEACD28EF8629004B5199 /* LocalChat.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				50DEEACE28EF8629004B5199 /* LocalChat.xcdatamodel */,
-			);
-			currentVersion = 50DEEACE28EF8629004B5199 /* LocalChat.xcdatamodel */;
-			path = LocalChat.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
+/* Begin XCRemoteSwiftPackageReference section */
+		509D7A932A87BFB80025C0B9 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
 		};
-/* End XCVersionGroup section */
+		509D7A9C2A881BF80025C0B9 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/robbiehanson/CocoaAsyncSocket";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		509D7A942A87BFB80025C0B9 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 509D7A932A87BFB80025C0B9 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+		509D7A9D2A881BF80025C0B9 /* CocoaAsyncSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 509D7A9C2A881BF80025C0B9 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */;
+			productName = CocoaAsyncSocket;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 50DEEAB728EF8626004B5199 /* Project object */;
 }

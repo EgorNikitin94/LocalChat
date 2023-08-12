@@ -21,6 +21,14 @@ struct DialogsListView: View {
       LazyVStack(spacing: 15) {
         ForEach(model.dialogs) { dialogVM in
           DialogListRowView(dialogVM: dialogVM)
+            .contextMenu {
+              Button {
+                //
+              } label: {
+                Text("закрепить")
+              }
+
+            }
             .onTapGesture {
               intent.openConversation(for: dialogVM)
             }

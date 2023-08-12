@@ -12,7 +12,7 @@ import Combine
 class ConversationModel: ObservableObject, ConversationModelStateProtocol {
   let routerSubject = ConversationRouter.Subjects()
   
-  @Published var realTimeMessages: [Message] = []
+  @Published var realTimeMessages: [MessageDisplayItem] = []
   @Published var inputText: String = ""
   @Published var hideSendButton: Bool = true
   @Published var navTitle: String = ""
@@ -35,6 +35,26 @@ class ConversationModel: ObservableObject, ConversationModelStateProtocol {
       }
       .eraseToAnyPublisher()
   }
+  
+  private func prepareDisplayItems(_ displayItems: [MessageDisplayItem]) -> [MessageDisplayItem] {
+    var isFromCurrent: Bool? = nil
+    var array: [MessageDisplayItem] = []
+    displayItems.forEach { item in
+      let itemForAdd = item
+      if isFromCurrent == nil {
+        isFromCurrent = item.isFromCurrentUser
+        itemForAdd.isEndOfSequence = true
+      }
+      
+      if isFromCurrent != itemForAdd.isFromCurrentUser {
+        isFromCurrent = item.isFromCurrentUser
+        itemForAdd.isEndOfSequence = true
+      }
+      
+      array.append(itemForAdd)
+    }
+    return array
+  }
 }
 
 // MARK: - Actions
@@ -44,7 +64,8 @@ extension ConversationModel: ConversationModelActionsProtocol {
   }
   
   func didLoad(messages: [Message]) {
-    realTimeMessages = messages.reversed()
+    let displayItems = messages.reversed().map({ MessageDisplayItem(with: $0) })
+    realTimeMessages = prepareDisplayItems(displayItems)
   }
   
   func didSendMessage(messsage: Message) {
@@ -52,7 +73,12 @@ extension ConversationModel: ConversationModelActionsProtocol {
       inputText = ""
     }
     withAnimation(.spring()) {
-      realTimeMessages.insert(messsage, at: 0)
+      let messageDisplayItem = MessageDisplayItem(with: messsage)
+      if let previusFirst = realTimeMessages.first, previusFirst.isFromCurrentUser == messageDisplayItem.isFromCurrentUser {
+        previusFirst.isEndOfSequence = false
+      }
+      messageDisplayItem.isEndOfSequence = true
+      realTimeMessages.insert(messageDisplayItem, at: 0)
     }
   }
 }

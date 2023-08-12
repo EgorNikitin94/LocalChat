@@ -19,13 +19,13 @@ struct ConversationView: View {
   
   var body: some View {
     VStack(spacing: 0) {
-      ScrollView(.vertical) {
+      ScrollView(.vertical, showsIndicators: false) {
         LazyVStack(alignment: .leading) {
           Color.clear.padding(.bottom, 5)
           ForEach(model.realTimeMessages) { msg in
             MessageView(currentMessage: msg)
               .scaleEffect(x: 1, y: -1, anchor: .center)
-              .padding(.horizontal)
+              .padding(.horizontal, 5)
           }
           Color.clear.padding(.bottom, 5)
         }
@@ -33,16 +33,20 @@ struct ConversationView: View {
       .onTapGesture {
         hideKeyboard()
       }
+//      .overlay(alignment: .topTrailing ,content: {
+//        Button {
+//          //
+//        } label: {
+//          Image(systemName: "arrowtriangle.down.circle.fill")
+//            .resizable()
+//            .frame(width: 30, height: 30)
+//            .scaleEffect(x: 1, y: -1, anchor: .center)
+//            .padding()
+//        }
+//
+//      })
       .scaleEffect(x: 1, y: -1, anchor: .center)
       .animation(.spring(), value: model.realTimeMessages)
-      .background(content: {
-        if colorScheme == .light {
-          Image("ChatBackgroundWhite").resizable()
-        } else {
-          Image("ChatBackgroundBlack").resizable()
-        }
-      })
-      
       Divider()
         .background(content: {
           Color.gray
@@ -96,6 +100,20 @@ struct ConversationView: View {
     .navigationBarTitleDisplayMode(.inline)
     .onAppear(perform: intent.viewOnAppear)
     .modifier(ConversationRouter(subjects: model.routerSubject, intent: intent))
+    .background(content: {
+      if colorScheme == .light {
+        Image("ChatBackgroundWhite")
+          .resizable()
+          .scaledToFill()
+          .ignoresSafeArea()
+      } else {
+        Image("ChatBackgroundBlack")
+          .resizable()
+          .scaledToFill()
+          .ignoresSafeArea()
+      }
+    })
+    
   }
 }
 
@@ -109,6 +127,7 @@ struct ConversationView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
       ConversationAssembly().build(peer: dialog.user, moduleOutput: nil, completion: nil)
+        .preferredColorScheme(.light)
     }
   }
 }

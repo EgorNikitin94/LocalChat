@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct MessageView: View {
-  var currentMessage: Message
+  @StateObject var currentMessage: MessageDisplayItem
   @Environment(\.colorScheme) private var colorScheme
   
   var body: some View {
-    HStack(alignment: .bottom, spacing: 15) {
+    HStack(alignment: .bottom, spacing: 5) {
       if !currentMessage.from.isCurrentUser {
         if let avatar = currentMessage.from.avatar {
           Image(uiImage: avatar)
@@ -34,9 +34,7 @@ struct MessageView: View {
       } else {
         Spacer()
       }
-      ContentMessageView(contentMessage: currentMessage.text,
-                         isCurrentUser: currentMessage.from.isCurrentUser,
-                         date: currentMessage.date)
+      ContentMessageView(currentMessage: currentMessage)
     }
     .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
   }
@@ -47,6 +45,6 @@ struct MessageView_Previews: PreviewProvider {
   static let user3 = User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
   static let message  = Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "There are a lot of premium iOS templates on iosapptemplates.com")
   static var previews: some View {
-    MessageView(currentMessage: message)
+    MessageView(currentMessage: MessageDisplayItem(with: message))
   }
 }
