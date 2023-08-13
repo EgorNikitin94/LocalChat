@@ -11,6 +11,7 @@ import Foundation
 protocol ConversationIntentProtocol: AnyObject {
   func viewOnAppear()
   func sendMessage(with inputText: String)
+  func openMediaPicker()
 }
 
 @objc protocol ConversationModuleInput: AnyObject {

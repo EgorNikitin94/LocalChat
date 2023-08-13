@@ -11,6 +11,9 @@
 		077BFCEFE2B82A8B94BE5300 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8351BB16D96AAD205E0405 /* ConversationView.swift */; };
 		10299AECB23133D1FC03752B /* DialogsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F299032538B24D18F2B045 /* DialogsListView.swift */; };
 		2183F719875BB0BE5C631AAE /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8026B2EEB459BDC27CB5DA9E /* ProfileModel.swift */; };
+		24F501EFF5623B3739B5F834 /* MediaPickerIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D46D4CB8796D953650BEC5 /* MediaPickerIntentProtocol.swift */; };
+		33E52F196F82C30AF72ECF6B /* MediaPickerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9305200D8A9F2A24C95443 /* MediaPickerIntent.swift */; };
+		419221B49D282D386C0E0D1B /* MediaPickerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201348514212B3149E9D2272 /* MediaPickerRouter.swift */; };
 		4EAF4713629BE4FAC511112D /* DialogsListIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E2C22E4FBCFD1618EE3AAB /* DialogsListIntentProtocol.swift */; };
 		5006DEE028FB4DE200BBAC2A /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEDF28FB4DE200BBAC2A /* TimeManager.swift */; };
 		5006DEE228FB58E200BBAC2A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEE128FB58E200BBAC2A /* AvatarView.swift */; };
@@ -59,14 +62,18 @@
 		A9C95046EF0F612A0D8CF98A /* ProfileIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C3D77B0DD915BD248AA995 /* ProfileIntentProtocol.swift */; };
 		B3888F1D68552FD227650DC6 /* AuthIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA50BF0B73649DC0F7803A0 /* AuthIntentProtocol.swift */; };
 		B57501DCDA7FD7067F3356C0 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0239D9CC793918EF6D9F87 /* AuthModel.swift */; };
+		B59A935B7D961446B8FA3234 /* MediaPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569E9D5392E53F02317A2B9D /* MediaPickerModel.swift */; };
 		BF47D9FA3F35C8113BF2FAB6 /* DialogsListIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1102950004D7DDDBED74B281 /* DialogsListIntent.swift */; };
 		CC3AC42616D1E20AF34119E1 /* DialogsListModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAFA470D621A91CC985AC38 /* DialogsListModelProtocol.swift */; };
+		D340135EF06585F39EA7C10B /* MediaPickerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CC2B2CC884E4F772C0BBAB /* MediaPickerAssembly.swift */; };
 		D41EBB73E3DF069FC4F97C8E /* DialogsListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB0EE17D8602E29BDC6A670 /* DialogsListAssembly.swift */; };
 		D4D3781E053C53E7CD0C28A4 /* AuthAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8417C6B1BF1A2C695EFC386 /* AuthAssembly.swift */; };
 		DB54EE370D6BDC2AC27C2F84 /* ConversationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA444DBC9BE63508E44460D /* ConversationRouter.swift */; };
 		DE6A51D9BD604EDCEAD75CCE /* DialogsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48506FA651CF1090D4426FFD /* DialogsListRouter.swift */; };
 		E13339B9670D802A2D47FE6E /* ConversationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89585BC03F0BB6F57A7A6EE5 /* ConversationAssembly.swift */; };
 		E64E94063FD561526681B5A4 /* AuthModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3E8E4255757F4F51C1EA5F /* AuthModelProtocol.swift */; };
+		E6968AE3AEFC9D0B6E0A7B98 /* MediaPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6228007A28B530A93E0E3 /* MediaPickerView.swift */; };
+		E952031A2931B1186D4E5515 /* MediaPickerModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA47831B21369817050EA6E8 /* MediaPickerModelProtocol.swift */; };
 		E9DA5AD2E69C3A0716DAD223 /* ConversationModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51463633A601257E81FC34EB /* ConversationModelProtocol.swift */; };
 		F1FBFEAF04F94FF45BDF1AA1 /* AuthIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531145FDBF328CCE083045E1 /* AuthIntent.swift */; };
 		FEC07D5FB2E1E7F96C82B5AF /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6930B334BC456E1B2AF8CCE4 /* AuthRouter.swift */; };
@@ -78,6 +85,8 @@
 		012AAF03AC15EAE0CFC32479 /* ProfileAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileAssembly.swift; sourceTree = "<group>"; };
 		1102950004D7DDDBED74B281 /* DialogsListIntent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DialogsListIntent.swift; sourceTree = "<group>"; };
 		19431000421480C12F3A384D /* ProfileModelProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileModelProtocol.swift; sourceTree = "<group>"; };
+		1A9305200D8A9F2A24C95443 /* MediaPickerIntent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaPickerIntent.swift; sourceTree = "<group>"; };
+		201348514212B3149E9D2272 /* MediaPickerRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaPickerRouter.swift; sourceTree = "<group>"; };
 		3F8351BB16D96AAD205E0405 /* ConversationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		48506FA651CF1090D4426FFD /* DialogsListRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DialogsListRouter.swift; sourceTree = "<group>"; };
 		4AE8F774648A9E7216555B16 /* ProfileRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
@@ -120,8 +129,11 @@
 		51463633A601257E81FC34EB /* ConversationModelProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationModelProtocol.swift; sourceTree = "<group>"; };
 		51F172826E2E07E7269C2E93 /* DialogsListModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DialogsListModel.swift; sourceTree = "<group>"; };
 		531145FDBF328CCE083045E1 /* AuthIntent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthIntent.swift; sourceTree = "<group>"; };
+		569E9D5392E53F02317A2B9D /* MediaPickerModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaPickerModel.swift; sourceTree = "<group>"; };
 		58F299032538B24D18F2B045 /* DialogsListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DialogsListView.swift; sourceTree = "<group>"; };
 		5BB44FD67BCB0378C32F5195 /* ProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		63CC2B2CC884E4F772C0BBAB /* MediaPickerAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaPickerAssembly.swift; sourceTree = "<group>"; };
+		67D46D4CB8796D953650BEC5 /* MediaPickerIntentProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaPickerIntentProtocol.swift; sourceTree = "<group>"; };
 		6930B334BC456E1B2AF8CCE4 /* AuthRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		8026B2EEB459BDC27CB5DA9E /* ProfileModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		84C3D77B0DD915BD248AA995 /* ProfileIntentProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileIntentProtocol.swift; sourceTree = "<group>"; };
@@ -133,11 +145,13 @@
 		B8417C6B1BF1A2C695EFC386 /* AuthAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthAssembly.swift; sourceTree = "<group>"; };
 		BEA444DBC9BE63508E44460D /* ConversationRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationRouter.swift; sourceTree = "<group>"; };
 		C753E34038BC6BBA02FF5551 /* ConversationIntent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationIntent.swift; sourceTree = "<group>"; };
+		CDF6228007A28B530A93E0E3 /* MediaPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaPickerView.swift; sourceTree = "<group>"; };
 		DB0239D9CC793918EF6D9F87 /* AuthModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		E724A6072C3B2EC58817D5EC /* ConversationIntentProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationIntentProtocol.swift; sourceTree = "<group>"; };
 		ECB0EE17D8602E29BDC6A670 /* DialogsListAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DialogsListAssembly.swift; sourceTree = "<group>"; };
 		F6E2C22E4FBCFD1618EE3AAB /* DialogsListIntentProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DialogsListIntentProtocol.swift; sourceTree = "<group>"; };
 		F88E90376B302EC834871DA2 /* ConversationModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
+		FA47831B21369817050EA6E8 /* MediaPickerModelProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaPickerModelProtocol.swift; sourceTree = "<group>"; };
 		FDA50BF0B73649DC0F7803A0 /* AuthIntentProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AuthIntentProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +175,15 @@
 				C753E34038BC6BBA02FF5551 /* ConversationIntent.swift */,
 			);
 			path = Intent;
+			sourceTree = "<group>";
+		};
+		0258A1A5E28792E050E68326 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA47831B21369817050EA6E8 /* MediaPickerModelProtocol.swift */,
+				569E9D5392E53F02317A2B9D /* MediaPickerModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		0426DF014E0F92D09EE67586 /* Model */ = {
@@ -212,6 +235,16 @@
 				ECB0EE17D8602E29BDC6A670 /* DialogsListAssembly.swift */,
 			);
 			path = Assembly;
+			sourceTree = "<group>";
+		};
+		503410F72A897210002E9CEF /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				503A491A2A892F0F001ACBC5 /* ChatBubble */,
+				50301AE328F61C280041CFFD /* MessageView.swift */,
+				50301AE128F61BA90041CFFD /* ContentMessageView.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		503836E228FA034100DE8ED0 /* AppLayer */ = {
@@ -287,6 +320,7 @@
 				C1A099E47740B4EEA855574B /* Profile */,
 				E24047286C92E703DEA172A6 /* DialogsList */,
 				AF3F67D4803C98CEC801CBD3 /* Conversation */,
+				6D9AF4AD6B93AF9DA2BEA1C2 /* MediaPicker */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -442,12 +476,32 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		6070F47809DFFED8372A6C09 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				201348514212B3149E9D2272 /* MediaPickerRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		69A0C817891F30DA755BF15A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				8A25D0F73C1E7FE276A8A3DF /* AuthView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		6D9AF4AD6B93AF9DA2BEA1C2 /* MediaPicker */ = {
+			isa = PBXGroup;
+			children = (
+				C6D47E5920F835891725DB13 /* Assembly */,
+				910D09CE7336CC0690EA95E3 /* Intent */,
+				0258A1A5E28792E050E68326 /* Model */,
+				6070F47809DFFED8372A6C09 /* Router */,
+				94BDE1D2D441668BF1C29A1D /* View */,
+			);
+			path = MediaPicker;
 			sourceTree = "<group>";
 		};
 		841B25353B0279C6A4909404 /* Model */ = {
@@ -466,6 +520,23 @@
 				DB0239D9CC793918EF6D9F87 /* AuthModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		910D09CE7336CC0690EA95E3 /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+				67D46D4CB8796D953650BEC5 /* MediaPickerIntentProtocol.swift */,
+				1A9305200D8A9F2A24C95443 /* MediaPickerIntent.swift */,
+			);
+			path = Intent;
+			sourceTree = "<group>";
+		};
+		94BDE1D2D441668BF1C29A1D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CDF6228007A28B530A93E0E3 /* MediaPickerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A30C4F815FAE55B93614BE78 /* Model */ = {
@@ -501,10 +572,8 @@
 		B2517816E0E4AB311BD49B17 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				503A491A2A892F0F001ACBC5 /* ChatBubble */,
+				503410F72A897210002E9CEF /* Messages */,
 				3F8351BB16D96AAD205E0405 /* ConversationView.swift */,
-				50301AE128F61BA90041CFFD /* ContentMessageView.swift */,
-				50301AE328F61C280041CFFD /* MessageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -533,6 +602,14 @@
 			isa = PBXGroup;
 			children = (
 				89585BC03F0BB6F57A7A6EE5 /* ConversationAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		C6D47E5920F835891725DB13 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				63CC2B2CC884E4F772C0BBAB /* MediaPickerAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -723,6 +800,13 @@
 				2183F719875BB0BE5C631AAE /* ProfileModel.swift in Sources */,
 				8C57544A33DF111C355CEF53 /* ProfileRouter.swift in Sources */,
 				7C7803E8654F09E11C0C9392 /* ProfileView.swift in Sources */,
+				D340135EF06585F39EA7C10B /* MediaPickerAssembly.swift in Sources */,
+				24F501EFF5623B3739B5F834 /* MediaPickerIntentProtocol.swift in Sources */,
+				33E52F196F82C30AF72ECF6B /* MediaPickerIntent.swift in Sources */,
+				E952031A2931B1186D4E5515 /* MediaPickerModelProtocol.swift in Sources */,
+				B59A935B7D961446B8FA3234 /* MediaPickerModel.swift in Sources */,
+				419221B49D282D386C0E0D1B /* MediaPickerRouter.swift in Sources */,
+				E6968AE3AEFC9D0B6E0A7B98 /* MediaPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

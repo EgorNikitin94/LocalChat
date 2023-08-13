@@ -93,5 +93,7 @@ extension ConversationModel: ConversationModelActionsProtocol {
 
 // MARK: - Route
 extension ConversationModel: ConversationModelRouterProtocol {
-  
+  func openMediaPicker() {
+    routerSubject.screen.send(.mediaPicker)
+  }
 }

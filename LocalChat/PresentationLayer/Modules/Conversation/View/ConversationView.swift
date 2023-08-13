@@ -54,7 +54,7 @@ struct ConversationView: View {
       
       HStack(alignment: .bottom) {
         Button {
-          //
+          intent.openMediaPicker()
         } label: {
           Image(systemName: "paperclip.circle.fill")
             .resizable()

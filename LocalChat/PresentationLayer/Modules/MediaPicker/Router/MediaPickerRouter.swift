@@ -1,31 +1,31 @@
 //
-//  ConversationRouter.swift
+//  MediaPickerRouter.swift
 //  LocalChat
 //
-//  Created by Egor Nikitin on 10/08/2023.
+//  Created by Egor Nikitin on 13/08/2023.
 //  Copyright © 2023 Egor Nikitin. All rights reserved.
 //
 
 import SwiftUI
 
-struct ConversationRouter: RouterProtocol {
+struct MediaPickerRouter: RouterProtocol {
   typealias RouterScreenType = ScreenType
   typealias RouterAlertType = AlertScreen
   
   let subjects: Subjects
-  let intent: ConversationIntentProtocol
+  let intent: MediaPickerIntentProtocol
 }
 
 // MARK: - Navigation Screens
 
-extension ConversationRouter {
+extension MediaPickerRouter {
   enum ScreenType: RouterScreenProtocol {
-    case mediaPicker
+    case testNavigation(param: Any)
     
     var routeType: RouterScreenPresentationType {
       switch self {
-      case .mediaPicker:
-        return .sheet
+      case .testNavigation:
+        return .navigationLink
       }
     }
   }
@@ -33,9 +33,8 @@ extension ConversationRouter {
   @ViewBuilder
   func makeScreen(type: RouterScreenType) -> some View {
     switch type {
-    case .mediaPicker:
-      MediaPickerAssembly().build(moduleOutput: intent as? MediaPickerModuleOutput, completion: nil)
-        .presentationDetents([.height(UIScreen.main.bounds.height * 0.4), .height(UIScreen.main.bounds.height * 0.8)])
+    case .testNavigation(_):
+      Text("Hallo new amo module!")
     }
   }
   
@@ -44,7 +43,7 @@ extension ConversationRouter {
 
 // MARK: - Alerts
 
-extension ConversationRouter {
+extension MediaPickerRouter {
   enum AlertScreen: RouterAlertScreenProtocol {
     case defaultAlert(title: String, message: String?)
   }

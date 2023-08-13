@@ -42,10 +42,19 @@ extension ConversationIntent: ConversationIntentProtocol {
     realTimeMessages.append(newMessage)
     model?.didSendMessage(messsage: newMessage)
   }
+  
+  func openMediaPicker() {
+    routeModel?.openMediaPicker()
+  }
 }
 
 
 // MARK: - ConversationModuleInput
 extension ConversationIntent: ConversationModuleInput {
+  
+}
+
+// MARK: - MediaPickerModuleOutput
+extension ConversationIntent: MediaPickerModuleOutput {
   
 }

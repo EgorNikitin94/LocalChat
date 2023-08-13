@@ -26,5 +26,5 @@ protocol ConversationModelStateProtocol {
 
 // MARK: - Route
 protocol ConversationModelRouterProtocol: AnyObject {
-  
+  func openMediaPicker()
 }
