@@ -27,6 +27,8 @@
 		503836F828FA167C00DE8ED0 /* DialogListRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */; };
 		5038624A2904554D003071B6 /* AuthViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503862492904554D003071B6 /* AuthViewOld.swift */; };
 		5038624C29045554003071B6 /* AuthViewModelOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038624B29045554003071B6 /* AuthViewModelOld.swift */; };
+		503A491C2A892F2A001ACBC5 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A491B2A892F2A001ACBC5 /* ChatBubble.swift */; };
+		503A491E2A892F3B001ACBC5 /* ChatBubbleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A491D2A892F3B001ACBC5 /* ChatBubbleShape.swift */; };
 		505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410A928F219D2006D4875 /* DialogListRowView.swift */; };
 		505410AC28F21A28006D4875 /* AppModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410AB28F21A28006D4875 /* AppModels.swift */; };
 		5067ED072A843F7F00C5FA11 /* MVIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ECFD2A843F7F00C5FA11 /* MVIContainer.swift */; };
@@ -94,6 +96,8 @@
 		503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListRowViewModel.swift; sourceTree = "<group>"; };
 		503862492904554D003071B6 /* AuthViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewOld.swift; sourceTree = "<group>"; };
 		5038624B29045554003071B6 /* AuthViewModelOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModelOld.swift; sourceTree = "<group>"; };
+		503A491B2A892F2A001ACBC5 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		503A491D2A892F3B001ACBC5 /* ChatBubbleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleShape.swift; sourceTree = "<group>"; };
 		505410A928F219D2006D4875 /* DialogListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListRowView.swift; sourceTree = "<group>"; };
 		505410AB28F21A28006D4875 /* AppModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModels.swift; sourceTree = "<group>"; };
 		5067ECFD2A843F7F00C5FA11 /* MVIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVIContainer.swift; sourceTree = "<group>"; };
@@ -315,6 +319,15 @@
 			path = AuthOld;
 			sourceTree = "<group>";
 		};
+		503A491A2A892F0F001ACBC5 /* ChatBubble */ = {
+			isa = PBXGroup;
+			children = (
+				503A491B2A892F2A001ACBC5 /* ChatBubble.swift */,
+				503A491D2A892F3B001ACBC5 /* ChatBubbleShape.swift */,
+			);
+			path = ChatBubble;
+			sourceTree = "<group>";
+		};
 		5067ECFC2A843F7F00C5FA11 /* MVIComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +501,7 @@
 		B2517816E0E4AB311BD49B17 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				503A491A2A892F0F001ACBC5 /* ChatBubble */,
 				3F8351BB16D96AAD205E0405 /* ConversationView.swift */,
 				50301AE128F61BA90041CFFD /* ContentMessageView.swift */,
 				50301AE328F61C280041CFFD /* MessageView.swift */,
@@ -679,6 +693,7 @@
 				E13339B9670D802A2D47FE6E /* ConversationAssembly.swift in Sources */,
 				609EA7EF519A91E8229A20D7 /* ConversationIntentProtocol.swift in Sources */,
 				5067ED0D2A843F7F00C5FA11 /* RouterCloseModifier.swift in Sources */,
+				503A491C2A892F2A001ACBC5 /* ChatBubble.swift in Sources */,
 				55EF727C8971C458581570A2 /* ConversationIntent.swift in Sources */,
 				E9DA5AD2E69C3A0716DAD223 /* ConversationModelProtocol.swift in Sources */,
 				5067ED082A843F7F00C5FA11 /* RouterScreenProtocol.swift in Sources */,
@@ -687,6 +702,7 @@
 				DB54EE370D6BDC2AC27C2F84 /* ConversationRouter.swift in Sources */,
 				077BFCEFE2B82A8B94BE5300 /* ConversationView.swift in Sources */,
 				D41EBB73E3DF069FC4F97C8E /* DialogsListAssembly.swift in Sources */,
+				503A491E2A892F3B001ACBC5 /* ChatBubbleShape.swift in Sources */,
 				4EAF4713629BE4FAC511112D /* DialogsListIntentProtocol.swift in Sources */,
 				BF47D9FA3F35C8113BF2FAB6 /* DialogsListIntent.swift in Sources */,
 				CC3AC42616D1E20AF34119E1 /* DialogsListModelProtocol.swift in Sources */,

@@ -25,7 +25,7 @@ struct ConversationView: View {
           ForEach(model.realTimeMessages) { msg in
             MessageView(currentMessage: msg)
               .scaleEffect(x: 1, y: -1, anchor: .center)
-              .padding(.horizontal, 5)
+              .padding(.horizontal, 10)
           }
           Color.clear.padding(.bottom, 5)
         }
@@ -46,7 +46,7 @@ struct ConversationView: View {
 //
 //      })
       .scaleEffect(x: 1, y: -1, anchor: .center)
-      .animation(.spring(), value: model.realTimeMessages)
+      .animation(model.isInitialState ? nil : .spring(), value: model.realTimeMessages)
       Divider()
         .background(content: {
           Color.gray
@@ -98,6 +98,14 @@ struct ConversationView: View {
     }
     .navigationTitle(model.navTitle)
     .navigationBarTitleDisplayMode(.inline)
+    .toolbar(content: {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        if let di = model.avatarDisplayItem {
+          AvatarView(displayItem: di, needShowOnline: false)
+            .frame(width: 35, height: 35)
+        }
+      }
+    })
     .onAppear(perform: intent.viewOnAppear)
     .modifier(ConversationRouter(subjects: model.routerSubject, intent: intent))
     .background(content: {

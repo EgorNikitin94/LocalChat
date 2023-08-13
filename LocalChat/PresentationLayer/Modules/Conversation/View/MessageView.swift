@@ -14,27 +14,31 @@ struct MessageView: View {
   var body: some View {
     HStack(alignment: .bottom, spacing: 5) {
       if !currentMessage.from.isCurrentUser {
-        if let avatar = currentMessage.from.avatar {
-          Image(uiImage: avatar)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 40, height: 40)
-            .clipShape(Circle())
-        } else {
-          ZStack {
-            Color(.lightGray)
-              .clipShape(Circle())
-              .frame(width: 40, height: 40)
-            Text("\(currentMessage.from.name.first?.description ?? "")")
-              .foregroundColor(colorScheme == .light ? .white : .black)
-              .font(.title)
-              .bold()
-          }
-        }
+//        if let avatar = currentMessage.from.avatar {
+//          Image(uiImage: avatar)
+//            .resizable()
+//            .aspectRatio(contentMode: .fill)
+//            .frame(width: 40, height: 40)
+//            .clipShape(Circle())
+//        } else {
+//          ZStack {
+//            Color(.lightGray)
+//              .clipShape(Circle())
+//              .frame(width: 40, height: 40)
+//            Text("\(currentMessage.from.name.first?.description ?? "")")
+//              .foregroundColor(colorScheme == .light ? .white : .black)
+//              .font(.title)
+//              .bold()
+//          }
+//        }
       } else {
         Spacer()
       }
       ContentMessageView(currentMessage: currentMessage)
+      
+      if !currentMessage.from.isCurrentUser {
+        Spacer()
+      }
     }
     .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
   }

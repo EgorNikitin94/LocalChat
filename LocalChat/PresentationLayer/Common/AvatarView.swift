@@ -6,30 +6,35 @@
 //
 
 import SwiftUI
+import Combine
 
 enum AvatarViewSize {
   case large
   case small
 }
 
-struct AvatarView: View {
+class AvatarDisplayItem: ObservableObject {
   let type: AvatarViewSize
-  let avatar: UIImage?
-  let userName: String
-  let isOnline: Bool
+  @Published var avatar: UIImage?
+  @Published var userName: String
+  @Published var isOnline: Bool
   
-  @Environment(\.colorScheme) private var colorScheme
-  
-  init(with vm: DialogListRowViewModel) {
+  init(with user: User) {
     self.type = .large
-    self.avatar = vm.userAvatar
-    self.userName = vm.userName
-    self.isOnline = vm.isUserOnline
+    self.avatar = user.avatar
+    self.userName = user.name
+    self.isOnline = user.isOnline
   }
+}
+
+struct AvatarView: View {
+  @StateObject var displayItem: AvatarDisplayItem
+  let needShowOnline: Bool
+  @Environment(\.colorScheme) private var colorScheme
   
   var body: some View {
     ZStack {
-      if let image = avatar {
+      if let image = displayItem.avatar {
         Image(uiImage: image)
           .resizable()
           .aspectRatio(contentMode: .fill)
@@ -39,7 +44,7 @@ struct AvatarView: View {
           Color(.lightGray)
             .clipShape(Circle())
            
-          Text("\(userName.first?.description ?? "")")
+          Text("\(displayItem.userName.first?.description ?? "")")
             .foregroundColor(colorScheme == .light ? .white : .black)
             .font(.largeTitle)
             .bold()
@@ -54,8 +59,7 @@ struct AvatarView: View {
           .clipShape(Circle())
       }
       .offset(x: 20, y: 22)
-      .isHidden(!isOnline)
+      .isHidden(needShowOnline ? !displayItem.isOnline : true)
     }
-    .frame(width: 60, height: 60)
   }
 }

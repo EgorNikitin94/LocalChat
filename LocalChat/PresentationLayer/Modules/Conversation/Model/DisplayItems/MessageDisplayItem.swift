@@ -25,7 +25,7 @@ class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
   }
   
   func hash(into hasher: inout Hasher) {
-    
+    hasher.combine(id)
   }
   
   init(with message: Message) {

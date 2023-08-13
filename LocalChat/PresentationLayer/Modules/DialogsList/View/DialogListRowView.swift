@@ -19,7 +19,8 @@ struct DialogListRowView: View {
   
   var body: some View {
     HStack {
-      AvatarView(with: dialogVM)
+      AvatarView(displayItem: AvatarDisplayItem(with: dialogVM.baseModel.user), needShowOnline: true)
+        .frame(width: 60, height: 60)
       HStack {
         VStack(spacing: 3) {
           HStack {

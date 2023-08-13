@@ -17,7 +17,9 @@ protocol ConversationModelActionsProtocol: AnyObject {
 protocol ConversationModelStateProtocol {
   var routerSubject:ConversationRouter.Subjects { get }
   var realTimeMessages: [MessageDisplayItem] { get }
+  var isInitialState: Bool { get }
   var navTitle: String { get }
+  var avatarDisplayItem: AvatarDisplayItem? { get }
   var inputText: String { get set }
   var hideSendButton: Bool { get }
 }

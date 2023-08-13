@@ -12,9 +12,12 @@ import Combine
 class ConversationModel: ObservableObject, ConversationModelStateProtocol {
   let routerSubject = ConversationRouter.Subjects()
   
+  @Published var avatarDisplayItem: AvatarDisplayItem?
   @Published var realTimeMessages: [MessageDisplayItem] = []
+  @Published var isInitialState: Bool = true
   @Published var inputText: String = ""
   @Published var hideSendButton: Bool = true
+  @Published var chatImage: UIImage?
   @Published var navTitle: String = ""
   
   private(set) var cancellableSet: Set<AnyCancellable> = []
@@ -60,12 +63,17 @@ class ConversationModel: ObservableObject, ConversationModelStateProtocol {
 // MARK: - Actions
 extension ConversationModel: ConversationModelActionsProtocol {  
   func configure(with peer: User) {
+    avatarDisplayItem = AvatarDisplayItem(with: peer)
     navTitle = peer.name
   }
   
   func didLoad(messages: [Message]) {
     let displayItems = messages.reversed().map({ MessageDisplayItem(with: $0) })
     realTimeMessages = prepareDisplayItems(displayItems)
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      self.isInitialState.toggle()
+    }
   }
   
   func didSendMessage(messsage: Message) {
