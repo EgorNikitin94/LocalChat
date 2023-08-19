@@ -6,17 +6,19 @@
 //  Copyright © 2023 Egor Nikitin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol MediaPickerModelActionsProtocol: AnyObject {
+  func didLoadPhotosFromLibrary(_ images: [UIImage])
   
 }
 
 protocol MediaPickerModelStateProtocol {
+  var imagesDisplayItems: [PhotoDisplayItem] { get }
   var routerSubject:MediaPickerRouter.Subjects { get }
 }
 
 // MARK: - Route
 protocol MediaPickerModelRouterProtocol: AnyObject {
-  
+  func closeModule()
 }

@@ -10,6 +10,7 @@ import Foundation
 
 protocol MediaPickerIntentProtocol: AnyObject {
   func viewOnAppear()
+  func closeModule()
 }
 
 @objc protocol MediaPickerModuleInput: AnyObject {

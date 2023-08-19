@@ -15,10 +15,49 @@ struct MediaPickerView: View {
   private var intent: MediaPickerIntentProtocol { container.intent }
   private var model: MediaPickerModelStateProtocol { container.model }
   
+  private let columns = [
+    GridItem(.adaptive(minimum: 100))
+  ]
+  
   var body: some View {
-    Text("Hallo amo module")
+    NavigationStack {
+      TabView {
+        ScrollView {
+          LazyVGrid(columns: columns, spacing: 5) {
+            ForEach(model.imagesDisplayItems, id: \.self) { item in
+              Image(uiImage: item.image)
+                .resizable()
+                .frame(height: 100)
+                .onTapGesture {
+                  //
+                }
+            }
+          }
+          .padding(5)
+        }
+        .tabItem {
+          Image(systemName: "photo.stack")
+          Text("Фото")
+        }
+        
+        Text("")
+          .tabItem {
+            Image(systemName: "folder")
+            Text("Файлы")
+          }
+      }
+      .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button {
+            intent.closeModule()
+          } label: {
+            Text("закрыть")
+          }
+        }
+      }
       .onAppear(perform: intent.viewOnAppear)
       .modifier(MediaPickerRouter(subjects: model.routerSubject, intent: intent))
+    }
   }
 }
 
