@@ -16,6 +16,7 @@ class MediaPickerIntent {
   private weak var moduleOutput: MediaPickerModuleOutput?
   
   private var allPhotos: [UIImage] = []
+  private var selectedPhotos: [UIImage] = []
 
   init(model: (MediaPickerModelActionsProtocol & MediaPickerModelRouterProtocol)?, moduleOutput:MediaPickerModuleOutput?) {
     self.model = model
@@ -71,6 +72,11 @@ extension MediaPickerIntent: MediaPickerIntentProtocol {
         break
       }
     }
+  }
+  
+  func didSelectItem(_ item: PhotoDisplayItem) {
+    selectedPhotos.append(item.image)
+    model?.didSelectItem(item)
   }
   
   func closeModule() {

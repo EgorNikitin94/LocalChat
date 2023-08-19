@@ -10,7 +10,7 @@ import UIKit
 
 protocol MediaPickerModelActionsProtocol: AnyObject {
   func didLoadPhotosFromLibrary(_ images: [UIImage])
-  
+  func didSelectItem(_ item: PhotoDisplayItem)
 }
 
 protocol MediaPickerModelStateProtocol {

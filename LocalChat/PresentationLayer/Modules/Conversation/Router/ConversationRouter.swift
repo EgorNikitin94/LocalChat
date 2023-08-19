@@ -35,7 +35,7 @@ extension ConversationRouter {
     switch type {
     case .mediaPicker:
       MediaPickerAssembly().build(moduleOutput: intent as? MediaPickerModuleOutput, completion: nil)
-        .presentationDetents([.height(UIScreen.main.bounds.height * 0.7), .large])
+        .presentationDetents([.height(UIScreen.main.bounds.height * 0.65), .large])
     }
   }
   

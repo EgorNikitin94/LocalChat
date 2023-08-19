@@ -10,6 +10,7 @@ import Foundation
 
 protocol MediaPickerIntentProtocol: AnyObject {
   func viewOnAppear()
+  func didSelectItem(_ item: PhotoDisplayItem)
   func closeModule()
 }
 

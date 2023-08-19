@@ -32,6 +32,9 @@
 		5038624C29045554003071B6 /* AuthViewModelOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038624B29045554003071B6 /* AuthViewModelOld.swift */; };
 		503A491C2A892F2A001ACBC5 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A491B2A892F2A001ACBC5 /* ChatBubble.swift */; };
 		503A491E2A892F3B001ACBC5 /* ChatBubbleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A491D2A892F3B001ACBC5 /* ChatBubbleShape.swift */; };
+		505121DE2A917A5800EAE4B0 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 505121DD2A917A5800EAE4B0 /* SwiftProtobuf */; };
+		505121E02A917A5800EAE4B0 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 505121DF2A917A5800EAE4B0 /* SwiftProtobufPluginLibrary */; };
+		505121E22A917A5800EAE4B0 /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 505121E12A917A5800EAE4B0 /* protoc-gen-swift */; };
 		505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410A928F219D2006D4875 /* DialogListRowView.swift */; };
 		505410AC28F21A28006D4875 /* AppModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505410AB28F21A28006D4875 /* AppModels.swift */; };
 		5067ED072A843F7F00C5FA11 /* MVIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ECFD2A843F7F00C5FA11 /* MVIContainer.swift */; };
@@ -160,8 +163,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505121E22A917A5800EAE4B0 /* protoc-gen-swift in Frameworks */,
+				505121E02A917A5800EAE4B0 /* SwiftProtobufPluginLibrary in Frameworks */,
 				509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */,
 				509D7A952A87BFB80025C0B9 /* GRDB in Frameworks */,
+				505121DE2A917A5800EAE4B0 /* SwiftProtobuf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +686,9 @@
 			packageProductDependencies = (
 				509D7A942A87BFB80025C0B9 /* GRDB */,
 				509D7A9D2A881BF80025C0B9 /* CocoaAsyncSocket */,
+				505121DD2A917A5800EAE4B0 /* SwiftProtobuf */,
+				505121DF2A917A5800EAE4B0 /* SwiftProtobufPluginLibrary */,
+				505121E12A917A5800EAE4B0 /* protoc-gen-swift */,
 			);
 			productName = LocalChat;
 			productReference = 50DEEABF28EF8626004B5199 /* LocalChat.app */;
@@ -712,6 +721,7 @@
 			packageReferences = (
 				509D7A932A87BFB80025C0B9 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 				509D7A9C2A881BF80025C0B9 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
+				505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
 			);
 			productRefGroup = 50DEEAC028EF8626004B5199 /* Products */;
 			projectDirPath = "";
@@ -1011,6 +1021,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		509D7A932A87BFB80025C0B9 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/GRDB.swift.git";
@@ -1030,6 +1048,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		505121DD2A917A5800EAE4B0 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		505121DF2A917A5800EAE4B0 /* SwiftProtobufPluginLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobufPluginLibrary;
+		};
+		505121E12A917A5800EAE4B0 /* protoc-gen-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = "protoc-gen-swift";
+		};
 		509D7A942A87BFB80025C0B9 /* GRDB */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 509D7A932A87BFB80025C0B9 /* XCRemoteSwiftPackageReference "GRDB.swift" */;

@@ -17,6 +17,15 @@
         "branch" : "master",
         "revision" : "e83f3eb25ef4d5a36a13dbee98f8ac67e24e5c8f"
       }
+    },
+    {
+      "identity" : "swift-protobuf",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-protobuf.git",
+      "state" : {
+        "revision" : "ce20dc083ee485524b802669890291c0d8090170",
+        "version" : "1.22.1"
+      }
     }
   ],
   "version" : 2
