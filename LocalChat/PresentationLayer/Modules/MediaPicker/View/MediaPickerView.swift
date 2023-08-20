@@ -21,7 +21,7 @@ struct MediaPickerView: View {
   
   var body: some View {
     NavigationStack {
-      TabView {
+      VStack {
         ScrollView {
           LazyVGrid(columns: columns, spacing: 5) {
             ForEach(model.imagesDisplayItems) { item in
@@ -30,17 +30,38 @@ struct MediaPickerView: View {
           }
           .padding(5)
         }
-        .tabItem {
-          Image(systemName: "photo.stack")
-          Text("Галерея")
-        }
         
-        Text("")
-          .tabItem {
-            Image(systemName: "folder")
-            Text("Файлы")
+        Group {
+          if model.selectedItemsCount > 0 {
+            Button {
+              intent.sendSelectedMedia()
+            } label: {
+              Text("Отправить: \(model.selectedItemsCount)")
+            }
+            .buttonStyle(.bordered)
+          } else {
+            ScrollView(.horizontal) {
+              HStack(spacing: 10) {
+                ForEach(model.buttons) { button in
+                  Button {
+                    intent.didTapOn(buttonType: button.type)
+                  } label: {
+                    HStack {
+                      Image(systemName: button.imageName)
+                      Text(button.title)
+                    }
+                  }
+                  .buttonStyle(.bordered)
+                }
+              }
+              .padding(.horizontal)
+            }
           }
+        }
+        .transition(.move(edge: .bottom).combined(with: .opacity))
+        .padding(.vertical, 10)
       }
+      .animation(.easeIn, value: model.selectedItemsCount > 0)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
           Button {
@@ -99,11 +120,11 @@ struct PhotoItem: View {
           Circle().stroke(Color.white, lineWidth: 2.5)
             .shadow(color: .black, radius: 10, x: -5, y: 5)
         }
-          .frame(width: 20, height: 20)
-          .padding(5)
+        .frame(width: 20, height: 20)
+        .padding(5)
+        .animation(Animation.spring(), value: item.selected)
       }//.buttonStyle(ScaleButtonStyle())
-      .animation(Animation.spring(), value: item.selected)
-
+      
     }
   }
 }

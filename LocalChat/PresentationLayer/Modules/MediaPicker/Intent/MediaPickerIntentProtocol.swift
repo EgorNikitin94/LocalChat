@@ -6,11 +6,13 @@
 //  Copyright © 2023 Egor Nikitin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol MediaPickerIntentProtocol: AnyObject {
   func viewOnAppear()
   func didSelectItem(_ item: PhotoDisplayItem)
+  func sendSelectedMedia()
+  func didTapOn(buttonType: MediaButtonType)
   func closeModule()
 }
 
@@ -19,5 +21,6 @@ protocol MediaPickerIntentProtocol: AnyObject {
 }
 
 @objc protocol MediaPickerModuleOutput: AnyObject {
-  
+  func didSelectMedia(_ media: [UIImage])
+  func didTapOn(buttonType: MediaButtonType)
 }

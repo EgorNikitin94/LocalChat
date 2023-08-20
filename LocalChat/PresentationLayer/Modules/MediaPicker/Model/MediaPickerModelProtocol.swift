@@ -15,6 +15,8 @@ protocol MediaPickerModelActionsProtocol: AnyObject {
 
 protocol MediaPickerModelStateProtocol {
   var imagesDisplayItems: [PhotoDisplayItem] { get }
+  var selectedItemsCount: Int { get }
+  var buttons: [MediaButton] { get }
   var routerSubject:MediaPickerRouter.Subjects { get }
 }
 

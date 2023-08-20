@@ -9,6 +9,12 @@
 import UIKit
 import Photos
 
+@objc enum MediaButtonType: Int {
+  case gallery
+  case camera
+  case files
+}
+
 class MediaPickerIntent {
 
   private weak var model: MediaPickerModelActionsProtocol?
@@ -77,6 +83,16 @@ extension MediaPickerIntent: MediaPickerIntentProtocol {
   func didSelectItem(_ item: PhotoDisplayItem) {
     selectedPhotos.append(item.image)
     model?.didSelectItem(item)
+  }
+  
+  func sendSelectedMedia() {
+    moduleOutput?.didSelectMedia(selectedPhotos)
+    routeModel?.closeModule()
+  }
+  
+  func didTapOn(buttonType: MediaButtonType) {
+    moduleOutput?.didTapOn(buttonType: buttonType)
+    routeModel?.closeModule()
   }
   
   func closeModule() {

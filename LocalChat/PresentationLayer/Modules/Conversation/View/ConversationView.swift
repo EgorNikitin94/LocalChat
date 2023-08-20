@@ -21,14 +21,13 @@ struct ConversationView: View {
     VStack(spacing: 0) {
       ScrollView(.vertical, showsIndicators: false) {
         LazyVStack(alignment: .leading) {
-          Color.clear.padding(.bottom, 5)
           ForEach(model.realTimeMessages) { msg in
             MessageView(currentMessage: msg)
               .scaleEffect(x: 1, y: -1, anchor: .center)
               .padding(.horizontal, 10)
           }
-          Color.clear.padding(.bottom, 5)
         }
+        .padding(.vertical, 10)
       }
       .onTapGesture {
         hideKeyboard()

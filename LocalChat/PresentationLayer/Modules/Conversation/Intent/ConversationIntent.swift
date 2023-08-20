@@ -6,7 +6,7 @@
 //  Copyright © 2023 Egor Nikitin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ConversationIntent {
 
@@ -56,5 +56,11 @@ extension ConversationIntent: ConversationModuleInput {
 
 // MARK: - MediaPickerModuleOutput
 extension ConversationIntent: MediaPickerModuleOutput {
+  func didSelectMedia(_ media: [UIImage]) {
+    print("media select count == \(media.count)")
+  }
   
+  func didTapOn(buttonType: MediaButtonType) {
+    print("open \(buttonType)")
+  }
 }

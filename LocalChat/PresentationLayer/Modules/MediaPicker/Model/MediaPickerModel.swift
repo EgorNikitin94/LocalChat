@@ -28,8 +28,18 @@ class PhotoDisplayItem: ObservableObject, Hashable, Equatable, Identifiable {
   }
 }
 
+struct MediaButton: Identifiable {
+  let id: UUID = UUID()
+  let imageName: String
+  let title: String
+  let type: MediaButtonType
+}
+
 class MediaPickerModel: ObservableObject, MediaPickerModelStateProtocol {
   @Published var imagesDisplayItems: [PhotoDisplayItem] = []
+  var buttons: [MediaButton] = [MediaButton(imageName: "photo.stack", title: "Галерея", type: .gallery),
+                                MediaButton(imageName: "camera.fill", title: "Камера", type: .camera),
+                                MediaButton(imageName: "folder.fill", title: "Файлы", type: .files)]
   @Published var selectedItemsCount: Int = 0
   let routerSubject = MediaPickerRouter.Subjects()
 }
