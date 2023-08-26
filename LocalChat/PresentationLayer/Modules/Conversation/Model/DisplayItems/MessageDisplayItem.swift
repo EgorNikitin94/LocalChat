@@ -14,6 +14,7 @@ class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
   let to: User
   var textContent: String
   let dateText: String
+  var topDateCapsuleText: String?
   @Published var isEndOfSequence: Bool = false
   
   var isFromCurrentUser: Bool {
@@ -33,6 +34,8 @@ class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
     self.from = message.from
     self.to = message.to
     self.textContent = message.text
-    self.dateText = TimeManagerHalper.makeString(from: message.date) ?? ""
+    self.dateText = TimeManagerHalper.messageTime(from: message.date) ?? ""
+    
+    self.topDateCapsuleText = TimeManagerHalper.messageTimeCapsuleTime(from: message.date) ?? ""
   }
 }

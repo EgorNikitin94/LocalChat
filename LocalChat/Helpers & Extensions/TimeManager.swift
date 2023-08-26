@@ -33,4 +33,37 @@ struct TimeManagerHalper {
     
     return dateFormatter.string(from: lastMessageDate)
   }
+  
+  static func messageTime(from date: Date?) -> String? {
+    guard let messageDate = date else { return nil }
+    let dateFormatter = DateFormatter()
+    dateFormatter.timeStyle = .short
+    dateFormatter.dateFormat = "HH:mm"
+    return dateFormatter.string(from: messageDate)
+  }
+  
+  static func messageTimeCapsuleTime(from date: Date?) -> String? {
+    guard let messageDate = date else { return nil }
+    let gregorian: Calendar = Calendar(identifier: .gregorian)
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.timeStyle = .short
+    
+    let now = gregorian.dateComponents([.year, .month, .day], from: Date())
+    let d = gregorian.dateComponents([.year, .month, .day], from: messageDate)
+    
+    if gregorian.isDateInToday(messageDate) {
+      return "today"
+    } else if d.day! >= now.day! - 7 {
+      if gregorian.isDateInYesterday(messageDate) {
+        return "yesterday"
+      } else {
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: messageDate)
+      }
+    }
+    
+    dateFormatter.dateFormat = "MMM d"
+    return dateFormatter.string(from: messageDate)
+  }
 }

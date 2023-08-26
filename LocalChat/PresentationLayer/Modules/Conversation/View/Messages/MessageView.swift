@@ -12,35 +12,48 @@ struct MessageView: View {
   @Environment(\.colorScheme) private var colorScheme
   
   var body: some View {
-    HStack(alignment: .bottom, spacing: 5) {
-      if !currentMessage.from.isCurrentUser {
-//        if let avatar = currentMessage.from.avatar {
-//          Image(uiImage: avatar)
-//            .resizable()
-//            .aspectRatio(contentMode: .fill)
-//            .frame(width: 40, height: 40)
-//            .clipShape(Circle())
-//        } else {
-//          ZStack {
-//            Color(.lightGray)
-//              .clipShape(Circle())
-//              .frame(width: 40, height: 40)
-//            Text("\(currentMessage.from.name.first?.description ?? "")")
-//              .foregroundColor(colorScheme == .light ? .white : .black)
-//              .font(.title)
-//              .bold()
-//          }
-//        }
-      } else {
-        Spacer()
+    VStack(spacing: 10) {
+      if let time = currentMessage.topDateCapsuleText {
+        Text(time)
+          .font(.system(size: 14))
+          .foregroundColor(.gray)
+          .padding(.horizontal, 6)
+          .padding(.vertical, 3)
+          .background {
+            Color(uiColor: .systemGray6)
+          }
+          .cornerRadius(17)
       }
-      ContentMessageView(currentMessage: currentMessage)
-      
-      if !currentMessage.from.isCurrentUser {
-        Spacer()
+      HStack(alignment: .bottom, spacing: 5) {
+        if !currentMessage.from.isCurrentUser {
+  //        if let avatar = currentMessage.from.avatar {
+  //          Image(uiImage: avatar)
+  //            .resizable()
+  //            .aspectRatio(contentMode: .fill)
+  //            .frame(width: 40, height: 40)
+  //            .clipShape(Circle())
+  //        } else {
+  //          ZStack {
+  //            Color(.lightGray)
+  //              .clipShape(Circle())
+  //              .frame(width: 40, height: 40)
+  //            Text("\(currentMessage.from.name.first?.description ?? "")")
+  //              .foregroundColor(colorScheme == .light ? .white : .black)
+  //              .font(.title)
+  //              .bold()
+  //          }
+  //        }
+        } else {
+          Spacer()
+        }
+        ContentMessageView(currentMessage: currentMessage)
+        
+        if !currentMessage.from.isCurrentUser {
+          Spacer()
+        }
       }
+      .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
     }
-    .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
   }
 }
 

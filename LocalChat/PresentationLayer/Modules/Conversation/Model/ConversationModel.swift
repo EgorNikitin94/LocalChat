@@ -10,8 +10,6 @@ import SwiftUI
 import Combine
 
 class ConversationModel: ObservableObject, ConversationModelStateProtocol {
-  let routerSubject = ConversationRouter.Subjects()
-  
   @Published var avatarDisplayItem: AvatarDisplayItem?
   @Published var realTimeMessages: [MessageDisplayItem] = []
   @Published var isInitialState: Bool = true
@@ -19,6 +17,8 @@ class ConversationModel: ObservableObject, ConversationModelStateProtocol {
   @Published var hideSendButton: Bool = true
   @Published var chatImage: UIImage?
   @Published var navTitle: String = ""
+  
+  let routerSubject = ConversationRouter.Subjects()
   
   private(set) var cancellableSet: Set<AnyCancellable> = []
   
@@ -41,12 +41,19 @@ class ConversationModel: ObservableObject, ConversationModelStateProtocol {
   
   private func prepareDisplayItems(_ displayItems: [MessageDisplayItem]) -> [MessageDisplayItem] {
     var isFromCurrent: Bool? = nil
+    var dateString: String? = nil
     var array: [MessageDisplayItem] = []
     displayItems.forEach { item in
       let itemForAdd = item
       if isFromCurrent == nil {
         isFromCurrent = item.isFromCurrentUser
         itemForAdd.isEndOfSequence = true
+      }
+      
+      if let dateString = dateString {
+        
+      } else {
+        dateString = item.topDateCapsuleText
       }
       
       if isFromCurrent != itemForAdd.isFromCurrentUser {
