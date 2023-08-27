@@ -13,7 +13,7 @@ struct MessageView: View {
   
   var body: some View {
     VStack(spacing: 10) {
-      if let time = currentMessage.topDateCapsuleText {
+      if let time = currentMessage.topDateCapsuleText, currentMessage.needShowTopDateCapsuleText {
         Text(time)
           .font(.system(size: 14))
           .foregroundColor(.gray)
@@ -47,6 +47,7 @@ struct MessageView: View {
           Spacer()
         }
         ContentMessageView(currentMessage: currentMessage)
+          .padding(.horizontal, currentMessage.isEndOfSequence ? 6 : 10)
         
         if !currentMessage.from.isCurrentUser {
           Spacer()

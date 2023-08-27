@@ -15,6 +15,7 @@ class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
   var textContent: String
   let dateText: String
   var topDateCapsuleText: String?
+  var needShowTopDateCapsuleText: Bool = false
   @Published var isEndOfSequence: Bool = false
   
   var isFromCurrentUser: Bool {

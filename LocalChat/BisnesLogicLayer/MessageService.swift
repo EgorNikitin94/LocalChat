@@ -38,7 +38,7 @@ class MockMessageService: MessageServiceProtocol {
             Message(from: peer, to: user, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 86400), text: "Important"),
             Message(from: peer, to: user, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 86400), text: "Use UIKit classes only from your app’s main thread or main dispatch queue, unless otherwise indicated in the documentation for those classes"),
             Message(from: peer, to: user, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 40000), text: "Hallo there!"),
-            Message(from: user, to: peer, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 30000), text: "Hi"),
+            Message(from: user, to: peer, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 30000), text: "Hi, there"),
             Message(from: peer, to: user, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 20990), text: "Leverage programmatic control over your app’s navigation behavior to set its launch state, manage transitions between size classes, respond to deep links, and more."),
             Message(from: peer, to: user, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 10000), text: "Make your widgets look great on the Lock Screen with SwiftUI."),
             Message(from: peer, to: user, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 10000), text: "SwiftUI uses a declarative syntax, so you can simply state what your user interface should do."),

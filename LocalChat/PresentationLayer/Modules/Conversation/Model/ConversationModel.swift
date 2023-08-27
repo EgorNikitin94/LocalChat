@@ -42,18 +42,26 @@ class ConversationModel: ObservableObject, ConversationModelStateProtocol {
   private func prepareDisplayItems(_ displayItems: [MessageDisplayItem]) -> [MessageDisplayItem] {
     var isFromCurrent: Bool? = nil
     var dateString: String? = nil
+    var array1: [MessageDisplayItem] = []
     var array: [MessageDisplayItem] = []
-    displayItems.forEach { item in
+    let reversedDisplayItems = displayItems.reversed()
+    for (index, item) in reversedDisplayItems.enumerated() {
+      if item.topDateCapsuleText != dateString {
+        dateString = item.topDateCapsuleText
+        item.isEndOfSequence = true
+        item.needShowTopDateCapsuleText = true
+        if index > 1 {
+          array1[index - 1].isEndOfSequence = true
+        }
+      }
+      array1.append(item)
+    }
+    let reversedArray = array1.reversed()
+    reversedArray.forEach { item in
       let itemForAdd = item
       if isFromCurrent == nil {
         isFromCurrent = item.isFromCurrentUser
         itemForAdd.isEndOfSequence = true
-      }
-      
-      if let dateString = dateString {
-        
-      } else {
-        dateString = item.topDateCapsuleText
       }
       
       if isFromCurrent != itemForAdd.isFromCurrentUser {
@@ -89,8 +97,15 @@ extension ConversationModel: ConversationModelActionsProtocol {
     }
     withAnimation(.spring()) {
       let messageDisplayItem = MessageDisplayItem(with: messsage)
-      if let previusFirst = realTimeMessages.first, previusFirst.isFromCurrentUser == messageDisplayItem.isFromCurrentUser {
-        previusFirst.isEndOfSequence = false
+      if let previusFirst = realTimeMessages.first {
+        if previusFirst.isFromCurrentUser == messageDisplayItem.isFromCurrentUser {
+          previusFirst.isEndOfSequence = false
+        } else if previusFirst.topDateCapsuleText != messageDisplayItem.topDateCapsuleText {
+          messageDisplayItem.needShowTopDateCapsuleText = true
+          if messageDisplayItem.isFromCurrentUser == previusFirst.isFromCurrentUser {
+            previusFirst.isEndOfSequence = true
+          }
+        }
       }
       messageDisplayItem.isEndOfSequence = true
       realTimeMessages.insert(messageDisplayItem, at: 0)

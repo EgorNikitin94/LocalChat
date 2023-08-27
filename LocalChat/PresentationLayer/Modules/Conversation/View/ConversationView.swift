@@ -24,7 +24,6 @@ struct ConversationView: View {
           ForEach(model.realTimeMessages) { msg in
             MessageView(currentMessage: msg)
               .scaleEffect(x: 1, y: -1, anchor: .center)
-              .padding(.horizontal, 10)
           }
         }
         .padding(.vertical, 10)
