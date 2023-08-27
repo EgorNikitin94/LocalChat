@@ -94,9 +94,28 @@ struct ConversationView: View {
       .padding([.bottom, .leading, .trailing])
       .background(colorScheme == .light ? Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 0.7)) : Color(uiColor: .systemGray6))
     }
-    .navigationTitle(model.navTitle)
     .navigationBarTitleDisplayMode(.inline)
     .toolbar(content: {
+      ToolbarItem(placement: .principal) {
+        VStack(spacing: 0) {
+          Text(model.navTitle)
+          if model.isOnline {
+            HStack(spacing: 5) {
+              Text("online")
+                .font(.system(size: 14))
+              
+              Circle()
+                .foregroundColor(.green)
+                .frame(width: 7, height: 7)
+            }
+            .padding(3)
+          } else {
+            Text(model.onlineDate)
+              .font(.system(size: 14))
+              .foregroundColor(.gray)
+          }
+        }
+      }
       ToolbarItem(placement: .navigationBarTrailing) {
         if let di = model.avatarDisplayItem {
           AvatarView(displayItem: di, needShowOnline: false)

@@ -19,6 +19,8 @@ protocol ConversationModelStateProtocol {
   var realTimeMessages: [MessageDisplayItem] { get }
   var isInitialState: Bool { get }
   var navTitle: String { get }
+  var onlineDate: String { get }
+  var isOnline: Bool { get }
   var avatarDisplayItem: AvatarDisplayItem? { get }
   var inputText: String { get set }
   var hideSendButton: Bool { get }

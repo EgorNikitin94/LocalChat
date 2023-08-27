@@ -17,6 +17,8 @@ class ConversationModel: ObservableObject, ConversationModelStateProtocol {
   @Published var hideSendButton: Bool = true
   @Published var chatImage: UIImage?
   @Published var navTitle: String = ""
+  @Published var onlineDate: String = ""
+  @Published var isOnline: Bool = false
   
   let routerSubject = ConversationRouter.Subjects()
   
@@ -80,6 +82,10 @@ extension ConversationModel: ConversationModelActionsProtocol {
   func configure(with peer: User) {
     avatarDisplayItem = AvatarDisplayItem(with: peer)
     navTitle = peer.name
+    isOnline = peer.isOnline
+    if !isOnline {
+      onlineDate = "был(а) вчера"
+    }
   }
   
   func didLoad(messages: [Message]) {
