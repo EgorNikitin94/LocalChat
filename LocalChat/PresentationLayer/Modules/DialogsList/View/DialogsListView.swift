@@ -33,18 +33,22 @@ struct DialogsListView: View {
               intent.openConversation(for: dialogVM)
             }
         }
+        .separator(showLast : false) { item in
+          Divider()
+            .padding(.leading, 15)
+        }
       }
       Color.clear.padding(.bottom, 5)
     }
     .navigationTitle("Team")
-    .navigationBarTitleDisplayMode(.automatic)
+    .navigationBarTitleDisplayMode(.inline)
     .navigationBarBackButtonHidden()
     .toolbar {
       Button {
         intent.openProfile()
       } label: {
         Image(systemName: "gearshape.fill")
-          .foregroundColor(.black)
+          .foregroundColor(.secondary)
       }
     }
     .onAppear(perform: intent.viewOnAppear)

@@ -22,6 +22,7 @@
 		5006DEE828FC976400BBAC2A /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEE728FC976400BBAC2A /* MessageService.swift */; };
 		5006DEEA28FC99D600BBAC2A /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEE928FC99D600BBAC2A /* BadgeView.swift */; };
 		5006DEEC28FC9EA700BBAC2A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEEB28FC9EA700BBAC2A /* UserService.swift */; };
+		501233792A9BF50100CDF28B /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501233782A9BF50100CDF28B /* Separator.swift */; };
 		50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE128F61BA90041CFFD /* ContentMessageView.swift */; };
 		50301AE428F61C280041CFFD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE328F61C280041CFFD /* MessageView.swift */; };
 		503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EA28FA0ACD00DE8ED0 /* AppColors.swift */; };
@@ -100,6 +101,7 @@
 		5006DEE728FC976400BBAC2A /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		5006DEE928FC99D600BBAC2A /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		5006DEEB28FC9EA700BBAC2A /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		501233782A9BF50100CDF28B /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
 		50301AE128F61BA90041CFFD /* ContentMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMessageView.swift; sourceTree = "<group>"; };
 		50301AE328F61C280041CFFD /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		503836EA28FA0ACD00DE8ED0 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				503836F228FA0D7700DE8ED0 /* View+extensions.swift */,
 				503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */,
 				5006DEDF28FB4DE200BBAC2A /* TimeManager.swift */,
+				501233782A9BF50100CDF28B /* Separator.swift */,
 			);
 			path = "Helpers & Extensions";
 			sourceTree = "<group>";
@@ -781,6 +784,7 @@
 				609EA7EF519A91E8229A20D7 /* ConversationIntentProtocol.swift in Sources */,
 				5067ED0D2A843F7F00C5FA11 /* RouterCloseModifier.swift in Sources */,
 				503A491C2A892F2A001ACBC5 /* ChatBubble.swift in Sources */,
+				501233792A9BF50100CDF28B /* Separator.swift in Sources */,
 				55EF727C8971C458581570A2 /* ConversationIntent.swift in Sources */,
 				E9DA5AD2E69C3A0716DAD223 /* ConversationModelProtocol.swift in Sources */,
 				5067ED082A843F7F00C5FA11 /* RouterScreenProtocol.swift in Sources */,
