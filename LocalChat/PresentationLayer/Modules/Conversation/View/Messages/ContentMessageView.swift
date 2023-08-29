@@ -15,17 +15,41 @@ struct ContentMessageView: View {
   var body: some View {
     ChatBubble(direction: currentMessage.isFromCurrentUser ? .right : .left,
                isEndOfSequence: currentMessage.isEndOfSequence) {
-      VStack(alignment: .trailing, spacing: 4) {
-        Text(currentMessage.textContent)
-          .font(.system(size: 16))
-        
-        Text(currentMessage.dateText)
-          .foregroundColor(currentMessage.isFromCurrentUser ? Color.white : colorScheme == .light ? Color.gray : .white)
-          .font(.system(size: 10))
+      switch currentMessage.messageContentType {
+      case .text:
+        VStack(alignment: .trailing, spacing: 4) {
+          Text(currentMessage.textContent)
+            .font(.system(size: 16))
+          
+          Text(currentMessage.dateText)
+            .foregroundColor(currentMessage.isFromCurrentUser ? Color.white : colorScheme == .light ? Color.gray : .white)
+            .font(.system(size: 10))
+        }
+        .foregroundColor(currentMessage.isFromCurrentUser ? Color.white : colorScheme == .light ? Color.black : .white)
+        .padding(10)
+        .background(currentMessage.isFromCurrentUser ? Color.blue : colorScheme == .light ? Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)) : Color(uiColor: .systemGray3))
+      case .image:
+        ZStack(alignment: .bottomTrailing) {
+          Image(uiImage: currentMessage.media!)
+            .resizable()
+            .frame(maxWidth: 300, maxHeight: 400)
+            .cornerRadius(14)
+            .padding(5)
+          
+          Text(currentMessage.dateText)
+            .foregroundColor(currentMessage.isFromCurrentUser ? Color.white : colorScheme == .light ? Color.gray : .white)
+            .font(.system(size: 10))
+            .padding(.horizontal, 6)
+            .padding(.vertical, 3)
+            .background {
+              Color(uiColor: .systemGray6)
+            }
+            .cornerRadius(17)
+            .padding(10)
+        }
+          .padding(.trailing, currentMessage.isEndOfSequence ? 4 : 0)
+          .background(currentMessage.isFromCurrentUser ? Color.blue : colorScheme == .light ? Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)) : Color(uiColor: .systemGray3))
       }
-      .foregroundColor(currentMessage.isFromCurrentUser ? Color.white : colorScheme == .light ? Color.black : .white)
-      .padding(10)
-      .background(currentMessage.isFromCurrentUser ? Color.blue : colorScheme == .light ? Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)) : Color(uiColor: .systemGray3))
     }
   }
 }

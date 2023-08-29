@@ -58,6 +58,10 @@ extension ConversationIntent: ConversationModuleInput {
 extension ConversationIntent: MediaPickerModuleOutput {
   func didSelectMedia(_ media: [UIImage]) {
     print("media select count == \(media.count)")
+    var newMessage = Message(from: userService.currentUser, to: peer, date: Date(), text: "")
+    newMessage.media = media.first
+    realTimeMessages.append(newMessage)
+    model?.didSendMessage(messsage: newMessage)
   }
   
   func didTapOn(buttonType: MediaButtonType) {

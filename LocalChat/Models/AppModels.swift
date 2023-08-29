@@ -41,4 +41,5 @@ struct Message: Identifiable, Hashable, Equatable {
   let to: User
   let date: Date
   let text: String
+  var media: UIImage? = nil
 }

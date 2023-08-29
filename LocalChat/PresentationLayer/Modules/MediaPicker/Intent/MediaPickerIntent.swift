@@ -44,7 +44,7 @@ class MediaPickerIntent {
     
     for index in 0...results.count - 1 {
       let asset = results.object(at: index)
-      let size = CGSize(width: 512, height: 512)
+      let size = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
       let image = await withCheckedContinuation { continuation in
         manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: requestOptions) { image, info in
           if let image = image {

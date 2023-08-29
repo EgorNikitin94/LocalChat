@@ -8,6 +8,11 @@
 import SwiftUI
 import Combine
 
+enum MessageContentType {
+  case text
+  case image
+}
+
 class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
   let id: UUID
   let from: User
@@ -16,10 +21,19 @@ class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
   let dateText: String
   var topDateCapsuleText: String?
   var needShowTopDateCapsuleText: Bool = false
+  var media: UIImage? = nil
   @Published var isEndOfSequence: Bool = false
   
   var isFromCurrentUser: Bool {
     from.isCurrentUser
+  }
+  
+  var messageContentType: MessageContentType {
+    if let media = media {
+      return .image
+    } else {
+      return .text
+    }
   }
   
   static func == (lhs: MessageDisplayItem, rhs: MessageDisplayItem) -> Bool {
@@ -36,6 +50,7 @@ class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
     self.to = message.to
     self.textContent = message.text
     self.dateText = TimeManagerHalper.messageTime(from: message.date) ?? ""
+    self.media = message.media
     
     self.topDateCapsuleText = TimeManagerHalper.messageTimeCapsuleTime(from: message.date) ?? ""
   }
