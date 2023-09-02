@@ -28,15 +28,36 @@ struct ContentMessageView: View {
   }
 }
 
+struct GeometryGetter: View {
+  @Binding var rect: CGRect
+  
+  var body: some View {
+    return GeometryReader { geometry in
+      self.makeView(geometry: geometry)
+    }
+  }
+  
+  func makeView(geometry: GeometryProxy) -> some View {
+    DispatchQueue.main.async {
+      self.rect = geometry.frame(in: .global)
+    }
+    
+    return Rectangle().fill(Color.clear)
+  }
+}
+
 struct TextContentMessageView: View {
   @StateObject var currentMessage: MessageDisplayItem
   
   @Environment(\.colorScheme) private var colorScheme
   
+  @State private var rect: CGRect = .zero
+  
   var body: some View {
     VStack(alignment: .trailing, spacing: 4) {
       Text(currentMessage.textContent)
         .font(.system(size: 16))
+        .background { GeometryGetter(rect: $rect) }
       
       Text(currentMessage.dateText)
         .foregroundColor(currentMessage.isFromCurrentUser ? Color.white : colorScheme == .light ? Color.gray : .white)

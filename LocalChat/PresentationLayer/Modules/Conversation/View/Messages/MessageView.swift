@@ -11,6 +11,8 @@ struct MessageView: View {
   @StateObject var currentMessage: MessageDisplayItem
   @Environment(\.colorScheme) private var colorScheme
   
+  var minBubleOffset: CGFloat = 30.0
+  
   var body: some View {
     VStack(spacing: 10) {
       if let time = currentMessage.topDateCapsuleText, currentMessage.needShowTopDateCapsuleText {
@@ -44,16 +46,16 @@ struct MessageView: View {
   //          }
   //        }
         } else {
-          Spacer()
+          Spacer(minLength: minBubleOffset)
         }
         ContentMessageView(currentMessage: currentMessage)
           .padding(.horizontal, currentMessage.isEndOfSequence ? 6 : 10)
         
         if !currentMessage.from.isCurrentUser {
-          Spacer()
+          Spacer(minLength: minBubleOffset)
         }
       }
-      .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
+      .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
     }
   }
 }

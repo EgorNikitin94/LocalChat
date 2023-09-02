@@ -15,34 +15,65 @@ struct ConversationView: View {
   private var intent: ConversationIntentProtocol { container.intent }
   private var model: ConversationModelStateProtocol { container.model }
   
+  @State var showScrollToTopButton: Bool = false
+  
   @Environment(\.colorScheme) private var colorScheme
   
   var body: some View {
     VStack(spacing: 0) {
-      ScrollView(.vertical, showsIndicators: false) {
-        LazyVStack(alignment: .leading) {
-          ForEach(model.realTimeMessages) { msg in
-            MessageView(currentMessage: msg)
-              .scaleEffect(x: 1, y: -1, anchor: .center)
+      ScrollViewReader { scrollView in
+        ScrollView(.vertical, showsIndicators: false) {
+          LazyVStack(alignment: .leading) {
+            ForEach(model.realTimeMessages) { msg in
+              MessageView(currentMessage: msg)
+                .scaleEffect(x: 1, y: -1, anchor: .center)
+                .id(msg.id)
+                .onAppear {
+                  if model.realTimeMessages.firstIndex(of: msg) == 0 {
+                    showScrollToTopButton = false
+                  }
+                }
+                .onDisappear {
+                  if model.realTimeMessages.firstIndex(of: msg) == 0 {
+                    showScrollToTopButton = true
+                  }
+                }
+            }
           }
+          .padding(.vertical, 10)
         }
-        .padding(.vertical, 10)
+        .onTapGesture {
+          hideKeyboard()
+        }
+        .overlay(alignment: .topTrailing ,content: {
+          if showScrollToTopButton {
+            Button {
+              withAnimation(.spring()) {
+                scrollView.scrollTo(model.realTimeMessages.first?.id, anchor: .bottom)
+              }
+            } label: {
+              Image(systemName: "chevron.down.circle.fill")
+                .resizable()
+                .frame(width: 35, height: 35)
+                .foregroundColor(.gray)
+                .scaleEffect(x: 1, y: -1, anchor: .center)
+                .background(content: {
+                  Group {
+                    if colorScheme == .dark {
+                      Color.black
+                    } else {
+                      Color.white
+                    }
+                  }
+                    .clipShape(Circle())
+                })
+                .padding(5)
+            }
+            .transition(.scale.combined(with: .opacity))
+          }
+        })
       }
-      .onTapGesture {
-        hideKeyboard()
-      }
-//      .overlay(alignment: .topTrailing ,content: {
-//        Button {
-//          //
-//        } label: {
-//          Image(systemName: "arrowtriangle.down.circle.fill")
-//            .resizable()
-//            .frame(width: 30, height: 30)
-//            .scaleEffect(x: 1, y: -1, anchor: .center)
-//            .padding()
-//        }
-//
-//      })
+      .animation(.spring(), value: showScrollToTopButton)
       .scaleEffect(x: 1, y: -1, anchor: .center)
       .animation(model.isInitialState ? nil : .spring(), value: model.realTimeMessages)
       Divider()
