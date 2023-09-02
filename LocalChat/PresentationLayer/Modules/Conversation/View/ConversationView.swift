@@ -16,13 +16,14 @@ struct ConversationView: View {
   private var model: ConversationModelStateProtocol { container.model }
   
   @State var showScrollToTopButton: Bool = false
+  @State var offset: CGFloat = 0.0
   
   @Environment(\.colorScheme) private var colorScheme
   
   var body: some View {
     VStack(spacing: 0) {
       ScrollViewReader { scrollView in
-        ScrollView(.vertical, showsIndicators: false) {
+        TrackableScrollView(.vertical, showIndicators: false, contentOffset: $offset) {
           LazyVStack(alignment: .leading) {
             ForEach(model.realTimeMessages) { msg in
               MessageView(currentMessage: msg)
@@ -45,6 +46,13 @@ struct ConversationView: View {
         .onTapGesture {
           hideKeyboard()
         }
+        .onChange(of: model.realTimeMessages, perform: { newValue in
+          if let newViewModel = model.realTimeMessages.first, newViewModel.isFromCurrentUser {
+            withAnimation(.spring()) {
+              scrollView.scrollTo(newViewModel.id, anchor: .bottom)
+            }
+          }
+        })
         .overlay(alignment: .topTrailing ,content: {
           if showScrollToTopButton {
             Button {
