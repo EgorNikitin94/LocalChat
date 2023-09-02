@@ -16,32 +16,28 @@ struct ConversationView: View {
   private var model: ConversationModelStateProtocol { container.model }
   
   @State var showScrollToTopButton: Bool = false
-  @State var offset: CGFloat = 0.0
+  @State var scrollProgress: CGFloat = 0.0
   
   @Environment(\.colorScheme) private var colorScheme
   
   var body: some View {
     VStack(spacing: 0) {
       ScrollViewReader { scrollView in
-        TrackableScrollView(.vertical, showIndicators: false, contentOffset: $offset) {
+        TrackableScrollView(.vertical, showIndicators: false, scrollProgress: $scrollProgress) {
           LazyVStack(alignment: .leading) {
             ForEach(model.realTimeMessages) { msg in
               MessageView(currentMessage: msg)
                 .scaleEffect(x: 1, y: -1, anchor: .center)
                 .id(msg.id)
-                .onAppear {
-                  if model.realTimeMessages.firstIndex(of: msg) == 0 {
-                    showScrollToTopButton = false
-                  }
-                }
-                .onDisappear {
-                  if model.realTimeMessages.firstIndex(of: msg) == 0 {
-                    showScrollToTopButton = true
-                  }
-                }
             }
           }
           .padding(.vertical, 10)
+        }
+        .onChange(of: scrollProgress) { scrollProgress in
+          if scrollProgress > 0.8 {
+            print("Load Next Batch")
+          }
+          showScrollToTopButton = scrollProgress > 0.28 ? true : false
         }
         .onTapGesture {
           hideKeyboard()

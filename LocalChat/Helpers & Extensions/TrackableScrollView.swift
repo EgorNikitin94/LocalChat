@@ -20,14 +20,16 @@ struct ScrollOffsetPreferenceKey: PreferenceKey {
 public struct TrackableScrollView<Content>: View where Content: View {
   let axes: Axis.Set
   let showIndicators: Bool
-  @Binding var contentOffset: CGFloat
   let content: Content
+  @State var contentOffset: CGFloat = 0.0
   @State var contentSize: CGFloat = 0.0
+  @Binding var scrollProgress: CGFloat
+  @State private var viewLoaded: Bool = false
   
-  public init(_ axes: Axis.Set = .vertical, showIndicators: Bool = true, contentOffset: Binding<CGFloat>, @ViewBuilder content: () -> Content) {
+  public init(_ axes: Axis.Set = .vertical, showIndicators: Bool = true, scrollProgress: Binding<CGFloat>, @ViewBuilder content: () -> Content) {
     self.axes = axes
     self.showIndicators = showIndicators
-    self._contentOffset = contentOffset
+    self._scrollProgress = scrollProgress
     self.content = content()
   }
   
@@ -38,29 +40,31 @@ public struct TrackableScrollView<Content>: View where Content: View {
           GeometryReader { insideProxy in
             Color.clear
               .preference(key: ScrollOffsetPreferenceKey.self, value: [self.calculateContentOffset(fromOutsideProxy: outsideProxy, insideProxy: insideProxy)])
+              .onChange(of: insideProxy.size) { newValue in
+                contentSize = newValue.height
+              }
           }
           VStack {
             self.content
           }
         }
-        .background( GeometryReader { proxy in
-          GeometryReader { proxy in
-            //self.contentSize = proxy.size.height
-            let _ = print("contentSize == \(proxy.size.height)")
-            Color.clear
-          }
-        })
+        .onAppear {
+          self.viewLoaded = true
+        }
       }
       .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
         self.contentOffset = value[0]
-        print("contentOffset == \(self.contentOffset)")
+//        print("contentOffset == \(self.contentOffset)")
+//        print("contentSize == \(self.contentSize)")
+//        print("scrollProgress == \(1.0 - (self.contentOffset / self.contentSize))")
+        self.scrollProgress = viewLoaded ? 1.0 - (self.contentOffset / self.contentSize) : 0.0
       }
     }
   }
   
   private func calculateContentOffset(fromOutsideProxy outsideProxy: GeometryProxy, insideProxy: GeometryProxy) -> CGFloat {
     if axes == .vertical {
-      return outsideProxy.frame(in: .global).maxY - insideProxy.frame(in: .global).minY
+      return outsideProxy.frame(in: .global).minY - insideProxy.frame(in: .global).minY
     } else {
       return outsideProxy.frame(in: .global).minX - insideProxy.frame(in: .global).minX
     }
