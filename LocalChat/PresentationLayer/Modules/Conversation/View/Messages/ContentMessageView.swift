@@ -46,25 +46,71 @@ struct GeometryGetter: View {
   }
 }
 
+//struct MessageContentLayout: Layout {
+//  func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+//    let first = subviews.first?.sizeThatFits(.unspecified)
+//    return proposal.replacingUnspecifiedDimensions()//CGSize(width: proposal.width ?? 0.0, height: proposal.height ?? 0.0)
+//  }
+//
+//  func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+//    //
+//  }
+//}
+
 struct TextContentMessageView: View {
+  enum TextAndDatePlacement {
+    case vstack
+    case hstack
+    case zstack
+  }
   @StateObject var currentMessage: MessageDisplayItem
   
   @Environment(\.colorScheme) private var colorScheme
   
-  @State private var rect: CGRect = .zero
+  @State private var textMessageRect: CGRect = .zero
+  @State private var dateRect: CGRect = .zero
+  @State var placement: TextAndDatePlacement = .zstack
   
   var body: some View {
-    VStack(alignment: .trailing, spacing: 4) {
+    let Layout = placement == .vstack ? AnyLayout(VStackLayout(alignment: .trailing, spacing: 4)) : (placement == .hstack ? AnyLayout(HStackLayout(alignment: .lastTextBaseline, spacing: 4)) : AnyLayout(ZStackLayout(alignment: .trailingLastTextBaseline)))
+    
+    //VStack(alignment: .trailing, spacing: 4) {
+    Layout {
+    //MessageContentLayout {
       Text(currentMessage.textContent)
         .font(.system(size: 16))
-        .background { GeometryGetter(rect: $rect) }
+        .background { GeometryGetter(rect: $textMessageRect) }
+        .onChange(of: textMessageRect) { textMessageRect in
+          calculateLayout()
+        }
       
       Text(currentMessage.dateText)
         .foregroundColor(currentMessage.isFromCurrentUser ? Color.white : colorScheme == .light ? Color.gray : .white)
         .font(.system(size: 12))
+        .background { GeometryGetter(rect: $dateRect) }
     }
     .foregroundColor(currentMessage.isFromCurrentUser ? Color.white : colorScheme == .light ? Color.black : .white)
     .padding(10)
+  }
+  
+  private func calculateLayout() {
+    let textStorage = NSTextStorage(string: currentMessage.textContent)
+    let layoutManager = NSLayoutManager()
+    textStorage.addLayoutManager(layoutManager)
+    let textContainer = NSTextContainer(size: textMessageRect.size)
+    textContainer.lineFragmentPadding = 0
+    textContainer.heightTracksTextView = true
+    layoutManager.addTextContainer(textContainer)
+    let point = layoutManager.lineFragmentRect(forGlyphAt: layoutManager.numberOfGlyphs, effectiveRange: nil)
+    if UIScreen.main.bounds.size.width * 0.7 > textMessageRect.size.width + dateRect.size.width {
+      placement = .hstack
+    } else {
+      if textMessageRect.size.width - point.maxX < dateRect.size.width + 4.0 {
+        placement = .vstack
+      } else {
+        placement = .zstack
+      }
+    }
   }
 }
 
