@@ -22,5 +22,6 @@ protocol MediaPickerModelStateProtocol {
 
 // MARK: - Route
 protocol MediaPickerModelRouterProtocol: AnyObject {
+  func presentPhotoViewer(_ item: PhotoDisplayItem)
   func closeModule()
 }

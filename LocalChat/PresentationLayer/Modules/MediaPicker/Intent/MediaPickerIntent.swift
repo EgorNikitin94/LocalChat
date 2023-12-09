@@ -23,6 +23,8 @@ class MediaPickerIntent {
   
   private var allPhotos: [UIImage] = []
   private var selectedPhotos: [UIImage] = []
+  
+  private var result: PHFetchResult<PHAsset>?
 
   init(model: (MediaPickerModelActionsProtocol & MediaPickerModelRouterProtocol)?, moduleOutput:MediaPickerModuleOutput?) {
     self.model = model
@@ -39,12 +41,13 @@ class MediaPickerIntent {
     fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
     
     let results: PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+    result = results
     
     var findedImages: [UIImage] = []
     
     for index in 0...results.count - 1 {
       let asset = results.object(at: index)
-      let size = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
+      let size = CGSize(width: 100, height: 100)
       let image = await withCheckedContinuation { continuation in
         manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: requestOptions) { image, info in
           if let image = image {
@@ -83,6 +86,11 @@ extension MediaPickerIntent: MediaPickerIntentProtocol {
   func didSelectItem(_ item: PhotoDisplayItem) {
     selectedPhotos.append(item.image)
     model?.didSelectItem(item)
+  }
+  
+  func didTapOn(_ item: PhotoDisplayItem) {
+    
+    routeModel?.presentPhotoViewer(item)
   }
   
   func sendSelectedMedia() {

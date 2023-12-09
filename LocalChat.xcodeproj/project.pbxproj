@@ -48,6 +48,7 @@
 		5067ED0D2A843F7F00C5FA11 /* RouterCloseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */; };
 		5067ED0E2A843F7F00C5FA11 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */; };
 		507F398A2909C678002571DB /* TcpTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpTransport.swift */; };
+		508359292AF42B0F00AFE301 /* DataStructures in Frameworks */ = {isa = PBXBuildFile; productRef = 508359282AF42B0F00AFE301 /* DataStructures */; };
 		509D7A952A87BFB80025C0B9 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509D7A942A87BFB80025C0B9 /* GRDB */; };
 		509D7A982A87C9FF0025C0B9 /* SQLiteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */; };
 		509D7A9B2A87FA1B0025C0B9 /* MessageDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */; };
@@ -167,6 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				508359292AF42B0F00AFE301 /* DataStructures in Frameworks */,
 				505121E22A917A5800EAE4B0 /* protoc-gen-swift in Frameworks */,
 				505121E02A917A5800EAE4B0 /* SwiftProtobufPluginLibrary in Frameworks */,
 				509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */,
@@ -695,6 +697,7 @@
 				505121DD2A917A5800EAE4B0 /* SwiftProtobuf */,
 				505121DF2A917A5800EAE4B0 /* SwiftProtobufPluginLibrary */,
 				505121E12A917A5800EAE4B0 /* protoc-gen-swift */,
+				508359282AF42B0F00AFE301 /* DataStructures */,
 			);
 			productName = LocalChat;
 			productReference = 50DEEABF28EF8626004B5199 /* LocalChat.app */;
@@ -728,6 +731,7 @@
 				509D7A932A87BFB80025C0B9 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
 				509D7A9C2A881BF80025C0B9 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
 				505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+				508359272AF42B0F00AFE301 /* XCRemoteSwiftPackageReference "DataStructures" */,
 			);
 			productRefGroup = 50DEEAC028EF8626004B5199 /* Products */;
 			projectDirPath = "";
@@ -1037,6 +1041,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		508359272AF42B0F00AFE301 /* XCRemoteSwiftPackageReference "DataStructures" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EgorNikitin94/DataStructures";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		509D7A932A87BFB80025C0B9 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/GRDB.swift.git";
@@ -1070,6 +1082,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
 			productName = "protoc-gen-swift";
+		};
+		508359282AF42B0F00AFE301 /* DataStructures */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 508359272AF42B0F00AFE301 /* XCRemoteSwiftPackageReference "DataStructures" */;
+			productName = DataStructures;
 		};
 		509D7A942A87BFB80025C0B9 /* GRDB */ = {
 			isa = XCSwiftPackageProductDependency;

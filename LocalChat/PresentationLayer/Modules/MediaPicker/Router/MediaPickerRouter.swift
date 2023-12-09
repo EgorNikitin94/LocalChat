@@ -20,12 +20,12 @@ struct MediaPickerRouter: RouterProtocol {
 
 extension MediaPickerRouter {
   enum ScreenType: RouterScreenProtocol {
-    case testNavigation(param: Any)
+    case photoViewer(image: UIImage)
     
     var routeType: RouterScreenPresentationType {
       switch self {
-      case .testNavigation:
-        return .navigationLink
+      case .photoViewer(_):
+        return .fullScreenCover
       }
     }
   }
@@ -33,8 +33,8 @@ extension MediaPickerRouter {
   @ViewBuilder
   func makeScreen(type: RouterScreenType) -> some View {
     switch type {
-    case .testNavigation(_):
-      Text("Hallo new amo module!")
+    case .photoViewer(let image):
+      PhotoViewer(image: image)
     }
   }
   

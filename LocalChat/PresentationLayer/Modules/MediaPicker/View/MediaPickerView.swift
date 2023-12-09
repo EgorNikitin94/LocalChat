@@ -84,6 +84,29 @@ struct ScaleButtonStyle: ButtonStyle {
   }
 }
 
+struct PhotoViewer: View {
+  @State var image: UIImage
+  @Environment(\.presentationMode) private var presentationMode
+  
+  var body: some View {
+    NavigationStack {
+      Image(uiImage: image)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+      
+        .toolbar {
+          ToolbarItem(placement: .navigationBarLeading) {
+            Button {
+              presentationMode.wrappedValue.dismiss()
+            } label: {
+              Text("Done")
+            }
+          }
+        }
+    }
+  }
+}
+
 struct PhotoItem: View {
   @StateObject var item: PhotoDisplayItem
   var intent: MediaPickerIntentProtocol
@@ -95,7 +118,7 @@ struct PhotoItem: View {
         .frame(height: 100)
         .cornerRadius(5)
         .onTapGesture {
-          //
+          intent.didTapOn(item)
         }
       
       Button {

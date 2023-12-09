@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ConversationView: View {
   
@@ -16,14 +17,18 @@ struct ConversationView: View {
   private var model: ConversationModelStateProtocol { container.model }
   
   @State var showScrollToTopButton: Bool = false
-  @State var scrollProgress: CGFloat = 0.0
+  private let scrollProgressPublisher: PassthroughSubject<CGFloat, Never> = PassthroughSubject<CGFloat, Never>()
   
   @Environment(\.colorScheme) private var colorScheme
   
   var body: some View {
     VStack(spacing: 0) {
       ScrollViewReader { scrollView in
-        TrackableScrollView(.vertical, showIndicators: false, scrollProgress: $scrollProgress) {
+        TrackableScrollView(
+          .vertical,
+          showIndicators: false,
+          scrollProgressPublisher: scrollProgressPublisher
+        ) {
           LazyVStack(alignment: .leading) {
             ForEach(model.realTimeMessages) { msg in
               MessageView(currentMessage: msg)
@@ -33,12 +38,12 @@ struct ConversationView: View {
           }
           .padding(.vertical, 10)
         }
-        .onChange(of: scrollProgress) { scrollProgress in
-          if scrollProgress > 0.8 {
+        .onReceive(scrollProgressPublisher, perform: { progress in
+          if progress > 0.8 {
             print("Load Next Batch")
           }
-          showScrollToTopButton = scrollProgress > 0.28 ? true : false
-        }
+          showScrollToTopButton = progress > 0.37 ? true : false
+        })
         .onTapGesture {
           hideKeyboard()
         }
@@ -49,7 +54,7 @@ struct ConversationView: View {
             }
           }
         })
-        .overlay(alignment: .topTrailing ,content: {
+        .overlay(alignment: .topTrailing, content: {
           if showScrollToTopButton {
             Button {
               withAnimation(.spring()) {
@@ -177,17 +182,27 @@ struct ConversationView: View {
   }
 }
 
-struct ConversationView_Previews: PreviewProvider {
-  static var dialog: Dialog {
+#Preview("Light") {
+  var dialog: Dialog {
     let me = User(type: .selfUser, name: "Egor", passsword: "123", avatar: UIImage(named: "Me"), isOnline: true)
     let user3 = User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
     return Dialog(user: user3, lastMessage: Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Sorry!"))
   }
   
-  static var previews: some View {
-    NavigationStack {
-      ConversationAssembly().build(peer: dialog.user, moduleOutput: nil, completion: nil)
-        .preferredColorScheme(.light)
-    }
+  return NavigationStack {
+    ConversationAssembly().build(peer: dialog.user, moduleOutput: nil, completion: nil)
+  }
+}
+
+#Preview("Dark") {
+  var dialog: Dialog {
+    let me = User(type: .selfUser, name: "Egor", passsword: "123", avatar: UIImage(named: "Me"), isOnline: true)
+    let user3 = User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
+    return Dialog(user: user3, lastMessage: Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Sorry!"))
+  }
+  
+  return NavigationStack {
+    ConversationAssembly().build(peer: dialog.user, moduleOutput: nil, completion: nil)
+      .preferredColorScheme(.dark)
   }
 }

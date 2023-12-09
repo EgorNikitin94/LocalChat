@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ScrollOffsetPreferenceKey: PreferenceKey {
   typealias Value = [CGFloat]
@@ -21,52 +22,83 @@ public struct TrackableScrollView<Content>: View where Content: View {
   let axes: Axis.Set
   let showIndicators: Bool
   let content: Content
-  @State var contentOffset: CGFloat = 0.0
-  @State var contentSize: CGFloat = 0.0
-  @Binding var scrollProgress: CGFloat
+  @State private var contentOffset: CGFloat = 0.0
+  @State private var contentSize: CGSize = .zero
+  @State private var containerSize: CGSize = .zero
   @State private var viewLoaded: Bool = false
+  private let scrollProgressPublisher: PassthroughSubject<CGFloat, Never>
   
-  public init(_ axes: Axis.Set = .vertical, showIndicators: Bool = true, scrollProgress: Binding<CGFloat>, @ViewBuilder content: () -> Content) {
+  public init(
+    _ axes: Axis.Set = .vertical,
+    showIndicators: Bool = true,
+    scrollProgressPublisher: PassthroughSubject<CGFloat, Never>,
+    @ViewBuilder content: () -> Content
+  ) {
     self.axes = axes
     self.showIndicators = showIndicators
-    self._scrollProgress = scrollProgress
+    self.scrollProgressPublisher = scrollProgressPublisher
     self.content = content()
   }
   
   public var body: some View {
     GeometryReader { outsideProxy in
-      ScrollView(self.axes, showsIndicators: self.showIndicators) {
-        ZStack(alignment: self.axes == .vertical ? .top : .leading) {
+      ScrollView(axes, showsIndicators: showIndicators) {
+        ZStack(alignment: axes == .vertical ? .top : .leading) {
           GeometryReader { insideProxy in
             Color.clear
-              .preference(key: ScrollOffsetPreferenceKey.self, value: [self.calculateContentOffset(fromOutsideProxy: outsideProxy, insideProxy: insideProxy)])
+              .preference(
+                key: ScrollOffsetPreferenceKey.self,
+                value: [calculateContentOffset(
+                  fromOutsideProxy: outsideProxy,
+                  insideProxy: insideProxy
+                )]
+              )
               .onChange(of: insideProxy.size) { newValue in
-                contentSize = newValue.height
+                contentSize = newValue
               }
           }
-          VStack {
-            self.content
-          }
-        }
-        .onAppear {
-          self.viewLoaded = true
+          content
         }
       }
+      .onAppear {
+        viewLoaded = true
+      }
+      .onChange(of: outsideProxy.size) { newValue in
+        containerSize = newValue
+      }
       .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-        self.contentOffset = value[0]
-//        print("contentOffset == \(self.contentOffset)")
-//        print("contentSize == \(self.contentSize)")
-//        print("scrollProgress == \(1.0 - (self.contentOffset / self.contentSize))")
-        self.scrollProgress = viewLoaded ? 1.0 - (self.contentOffset / self.contentSize) : 0.0
+        contentOffset = value[0]
+        
+        log(true)
+        
+        let contentSize = axes == .vertical ? contentSize.height : contentSize.width
+        let containerSize = axes == .vertical ? containerSize.height : containerSize.width
+        let scrollProgress = (containerSize + abs(contentOffset)) / contentSize
+        if viewLoaded && contentSize != 0 {
+          scrollProgressPublisher.send(scrollProgress)
+        }
       }
     }
   }
   
   private func calculateContentOffset(fromOutsideProxy outsideProxy: GeometryProxy, insideProxy: GeometryProxy) -> CGFloat {
     if axes == .vertical {
-      return outsideProxy.frame(in: .global).minY - insideProxy.frame(in: .global).minY
+      return outsideProxy.frame(in: .global).maxY - insideProxy.frame(in: .global).maxY
     } else {
       return outsideProxy.frame(in: .global).minX - insideProxy.frame(in: .global).minX
+    }
+  }
+  
+  private func log(_ enable: Bool) {
+    if enable {
+      let contentSize = axes == .vertical ? contentSize.height : contentSize.width
+      let containerSize = axes == .vertical ? containerSize.height : containerSize.width
+      print("@@@ --------------------------")
+      print("@@@ contentOffset == \(contentOffset)")
+      print("@@@ contentSize == \(contentSize)")
+      print("@@@ containerSize == \(containerSize)")
+      print("@@@ scrollProgress == \((containerSize + contentOffset) / contentSize)")
+      print("@@@ --------------------------")
     }
   }
 }

@@ -11,6 +11,7 @@ import UIKit
 protocol MediaPickerIntentProtocol: AnyObject {
   func viewOnAppear()
   func didSelectItem(_ item: PhotoDisplayItem)
+  func didTapOn(_ item: PhotoDisplayItem)
   func sendSelectedMedia()
   func didTapOn(buttonType: MediaButtonType)
   func closeModule()

@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "datastructures",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EgorNikitin94/DataStructures",
+      "state" : {
+        "branch" : "main",
+        "revision" : "63fa3d23de1cabfa81656969a358cd0da401b67e"
+      }
+    },
+    {
       "identity" : "grdb.swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/groue/GRDB.swift.git",

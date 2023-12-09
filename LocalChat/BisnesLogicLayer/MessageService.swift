@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DataStructures
 
 protocol MessageServiceProtocol {
   func getMessages(for peer: User, user: User) -> [Message]

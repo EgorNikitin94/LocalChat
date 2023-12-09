@@ -73,6 +73,10 @@ extension MediaPickerModel: MediaPickerModelActionsProtocol {
 
 // MARK: - Route
 extension MediaPickerModel: MediaPickerModelRouterProtocol {
+  func presentPhotoViewer(_ item: PhotoDisplayItem) {
+    routerSubject.screen.send(.photoViewer(image: item.image))
+  }
+  
   func closeModule() {
     routerSubject.close.send()
   }
