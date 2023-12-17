@@ -50,6 +50,7 @@ struct MessageView: View {
         }
         ContentMessageView(currentMessage: currentMessage)
           .padding(.horizontal, currentMessage.isEndOfSequence ? 6 : 10)
+          .padding(.bottom, currentMessage.isEndOfSequence ? 8 : 0)
         
         if !currentMessage.from.isCurrentUser {
           Spacer(minLength: minBubleOffset)

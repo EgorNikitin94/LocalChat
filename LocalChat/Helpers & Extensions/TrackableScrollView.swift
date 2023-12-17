@@ -43,7 +43,7 @@ public struct TrackableScrollView<Content>: View where Content: View {
   public var body: some View {
     GeometryReader { outsideProxy in
       ScrollView(axes, showsIndicators: showIndicators) {
-        ZStack(alignment: axes == .vertical ? .top : .leading) {
+        ZStack(alignment: axes == .vertical ? .bottom : .leading) {
           GeometryReader { insideProxy in
             Color.clear
               .preference(
@@ -69,11 +69,11 @@ public struct TrackableScrollView<Content>: View where Content: View {
       .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
         contentOffset = value[0]
         
-        log(true)
+        log(false)
         
         let contentSize = axes == .vertical ? contentSize.height : contentSize.width
         let containerSize = axes == .vertical ? containerSize.height : containerSize.width
-        let scrollProgress = (containerSize + abs(contentOffset)) / contentSize
+        let scrollProgress = 1 - ((containerSize + abs(contentOffset)) / contentSize)
         if viewLoaded && contentSize != 0 {
           scrollProgressPublisher.send(scrollProgress)
         }
@@ -83,7 +83,7 @@ public struct TrackableScrollView<Content>: View where Content: View {
   
   private func calculateContentOffset(fromOutsideProxy outsideProxy: GeometryProxy, insideProxy: GeometryProxy) -> CGFloat {
     if axes == .vertical {
-      return outsideProxy.frame(in: .global).maxY - insideProxy.frame(in: .global).maxY
+      return outsideProxy.frame(in: .global).minY - insideProxy.frame(in: .global).minY
     } else {
       return outsideProxy.frame(in: .global).minX - insideProxy.frame(in: .global).minX
     }

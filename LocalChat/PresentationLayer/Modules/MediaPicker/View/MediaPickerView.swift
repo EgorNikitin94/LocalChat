@@ -86,6 +86,8 @@ struct ScaleButtonStyle: ButtonStyle {
 
 struct PhotoViewer: View {
   @State var image: UIImage
+  @State private var scale: CGFloat = 1.0
+  @State private var offset: CGSize = .zero
   @Environment(\.presentationMode) private var presentationMode
   
   var body: some View {
@@ -93,6 +95,26 @@ struct PhotoViewer: View {
       Image(uiImage: image)
         .resizable()
         .aspectRatio(contentMode: .fit)
+        .scaleEffect(scale)
+        .offset(offset)
+        .onTapGesture(count: 2) {
+          withAnimation {
+            self.scale = 1.0
+            self.offset = .zero
+          }
+        }
+        .gesture(
+          DragGesture()
+            .onChanged({ value in
+              self.offset = value.translation
+            })
+        )
+        .gesture(
+          MagnificationGesture()
+            .onChanged { value in
+              self.scale = value.magnitude
+            }
+        )
       
         .toolbar {
           ToolbarItem(placement: .navigationBarLeading) {
@@ -117,6 +139,7 @@ struct PhotoItem: View {
         .resizable()
         .frame(height: 100)
         .cornerRadius(5)
+//        .matchedGeometryEffect(id: "1", in: namespace)
         .onTapGesture {
           intent.didTapOn(item)
         }
@@ -152,8 +175,7 @@ struct PhotoItem: View {
   }
 }
 
-struct MediaPickerView_Previews: PreviewProvider {
-  static var previews: some View {
-    MediaPickerAssembly().build(moduleOutput: nil, completion: nil)
-  }
+#Preview {
+  MediaPickerAssembly().build(moduleOutput: nil, completion: nil)
+    .preferredColorScheme(.dark)
 }

@@ -42,7 +42,7 @@ struct ConversationView: View {
           if progress > 0.8 {
             print("Load Next Batch")
           }
-          showScrollToTopButton = progress > 0.37 ? true : false
+          showScrollToTopButton = progress > 0.2 ? true : false
         })
         .onTapGesture {
           hideKeyboard()

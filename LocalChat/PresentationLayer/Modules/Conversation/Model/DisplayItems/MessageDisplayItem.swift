@@ -54,4 +54,12 @@ class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
     
     self.topDateCapsuleText = TimeManagerHalper.messageTimeCapsuleTime(from: message.date) ?? ""
   }
+  
+  func isEqualSender(with previews: MessageDisplayItem) -> Bool {
+    isFromCurrentUser == previews.isFromCurrentUser
+  }
+  
+  func isEqualDate(with previews: MessageDisplayItem) -> Bool {
+    topDateCapsuleText == previews.topDateCapsuleText
+  }
 }

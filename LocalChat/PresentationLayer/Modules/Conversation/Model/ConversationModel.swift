@@ -42,36 +42,24 @@ class ConversationModel: ObservableObject, ConversationModelStateProtocol {
   }
   
   private func prepareDisplayItems(_ displayItems: [MessageDisplayItem]) -> [MessageDisplayItem] {
-    var isFromCurrent: Bool? = nil
-    var dateString: String? = nil
-    var array1: [MessageDisplayItem] = []
     var array: [MessageDisplayItem] = []
-    let reversedDisplayItems = displayItems.reversed()
-    for (index, item) in reversedDisplayItems.enumerated() {
-      if item.topDateCapsuleText != dateString {
-        dateString = item.topDateCapsuleText
+    for (index, item) in displayItems.enumerated() {
+      let previewsItem: MessageDisplayItem? = index + 1 > (0..<displayItems.count - 1).upperBound ? nil : displayItems[index + 1]
+      let nextItem: MessageDisplayItem? = index - 1 < (0..<displayItems.count - 1).lowerBound ? nil : displayItems[index - 1]
+      
+      if let nextItem {
+        item.isEndOfSequence = !item.isEqualSender(with: nextItem) || !item.isEqualDate(with: nextItem)
+      } else {
         item.isEndOfSequence = true
+      }
+      
+      if let previewsItem {
+        item.needShowTopDateCapsuleText = !item.isEqualDate(with: previewsItem)
+      } else {
         item.needShowTopDateCapsuleText = true
-        if index > 1 {
-          array1[index - 1].isEndOfSequence = true
-        }
-      }
-      array1.append(item)
-    }
-    let reversedArray = array1.reversed()
-    reversedArray.forEach { item in
-      let itemForAdd = item
-      if isFromCurrent == nil {
-        isFromCurrent = item.isFromCurrentUser
-        itemForAdd.isEndOfSequence = true
       }
       
-      if isFromCurrent != itemForAdd.isFromCurrentUser {
-        isFromCurrent = item.isFromCurrentUser
-        itemForAdd.isEndOfSequence = true
-      }
-      
-      array.append(itemForAdd)
+      array.append(item)
     }
     return array
   }
