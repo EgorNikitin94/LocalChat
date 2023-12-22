@@ -24,6 +24,16 @@ class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
   var media: UIImage? = nil
   @Published var isEndOfSequence: Bool = false
   
+  var attributedString: AttributedString {
+    let attributes: [NSAttributedString.Key: Any] = [
+//                        NSAttributedString.Key.paragraphStyle: style,
+                        NSAttributedString.Key.font: 16,
+//                        NSAttributedString.Key.font: 34
+                      ]
+    let str = NSAttributedString(string: textContent, attributes: attributes)
+    return AttributedString(str)
+  }
+  
   var isFromCurrentUser: Bool {
     from.isCurrentUser
   }

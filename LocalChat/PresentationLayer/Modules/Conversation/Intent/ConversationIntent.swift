@@ -46,6 +46,12 @@ extension ConversationIntent: ConversationIntentProtocol {
   func openMediaPicker() {
     routeModel?.openMediaPicker()
   }
+  
+  func onTestIncomeMessageEvent() {
+    let newMessage = Message(from: peer, to: peer, date: Date(), text: "Some test message")
+    realTimeMessages.append(newMessage)
+    model?.didSendMessage(messsage: newMessage)
+  }
 }
 
 

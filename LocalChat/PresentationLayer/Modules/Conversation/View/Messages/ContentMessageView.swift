@@ -77,10 +77,10 @@ struct TextContentMessageView: View {
     //VStack(alignment: .trailing, spacing: 4) {
     Layout {
     //MessageContentLayout {
-      Text(currentMessage.textContent)
-        .font(.system(size: 16))
+      Text(currentMessage.attributedString)
+        //.font(.system(size: 16))
         .background { GeometryGetter(rect: $textMessageRect) }
-        .onChange(of: textMessageRect) { textMessageRect in
+        .onChange(of: textMessageRect.size) { textMessageRect in
           calculateLayout()
         }
       
@@ -94,18 +94,39 @@ struct TextContentMessageView: View {
   }
   
   private func calculateLayout() {
-    let textStorage = NSTextStorage(string: currentMessage.textContent)
+    let str = NSAttributedString(currentMessage.attributedString)
+    let textStorage = NSTextStorage(attributedString: str)
     let layoutManager = NSLayoutManager()
-    textStorage.addLayoutManager(layoutManager)
     let textContainer = NSTextContainer(size: textMessageRect.size)
     textContainer.lineFragmentPadding = 0
     textContainer.heightTracksTextView = true
     layoutManager.addTextContainer(textContainer)
-    let point = layoutManager.lineFragmentRect(forGlyphAt: layoutManager.numberOfGlyphs, effectiveRange: nil)
-    if UIScreen.main.bounds.size.width * 0.7 > textMessageRect.size.width + dateRect.size.width {
+    textStorage.addLayoutManager(layoutManager)
+    
+    textStorage.ensureAttributesAreFixed(in: NSRange(location: layoutManager.numberOfGlyphs - 1, length: 1))
+    
+    var glyphRange = NSRange()
+    
+    layoutManager.characterRange(
+      forGlyphRange: NSRange(
+        location: layoutManager.numberOfGlyphs - 1,
+        length: 1
+      ),
+      actualGlyphRange: &glyphRange
+    )
+    
+    let rect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
+    
+    if UIScreen.main.bounds.size.width * 0.7 > textMessageRect.width + dateRect.width {
       placement = .hstack
     } else {
-      if textMessageRect.size.width - point.maxX < dateRect.size.width + 4.0 {
+//      print("@(textMessageRect.minX \(textMessageRect.minX)")
+      print("@(textMessageRect.wight \(textMessageRect.size.width)")
+      print("@rect.maxX \(rect)")
+      print("@dateRect.width - 4.0 \(dateRect.width + 4.0)")
+      print("@\(currentMessage.textContent)")
+      print("@-------------------------")
+      if (textMessageRect.width) < rect.maxX + rect.width + dateRect.width + 4.0 {
         placement = .vstack
       } else {
         placement = .zstack
@@ -142,11 +163,16 @@ struct ImageContentMessageView: View {
   }
 }
 
-struct ContentMessageView_Previews: PreviewProvider {
-  static let me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
-  static let user3 = User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
-  static let message  = Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "There are a lot of premium iOS templates on iosapptemplates.com")
-  static var previews: some View {
-    ContentMessageView(currentMessage: MessageDisplayItem(with: message))
-  }
+#Preview("Light") {
+  var me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
+  let user3 = User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
+  let message  = Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Leverage programmatic control over your app’s navigation behavior to set its launch state, manage transitions between size classes, respond to deep")
+  return ContentMessageView(currentMessage: MessageDisplayItem(with: message))
+}
+
+#Preview("Dark") {
+  var me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
+  let user3 = User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
+  let message  = Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Leverage programmatic control over your app’s navigation behavior to set its launch state, manage transitions between size classes, respond to deep links, and more.")
+  return ContentMessageView(currentMessage: MessageDisplayItem(with: message)).preferredColorScheme(.dark)
 }

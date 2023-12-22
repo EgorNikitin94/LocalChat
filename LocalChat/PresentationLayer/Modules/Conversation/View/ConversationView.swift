@@ -19,6 +19,8 @@ struct ConversationView: View {
   @State var showScrollToTopButton: Bool = false
   private let scrollProgressPublisher: PassthroughSubject<CGFloat, Never> = PassthroughSubject<CGFloat, Never>()
   
+  @FocusState var isFocusedInput: Bool
+  
   @Environment(\.colorScheme) private var colorScheme
   
   var body: some View {
@@ -103,6 +105,7 @@ struct ConversationView: View {
           .padding(.horizontal)
           .frame(minHeight: CGFloat(30))
           .lineLimit(12)
+          .focused($isFocusedInput)
           .background(content: {
             if colorScheme == .light {
               Color.white
@@ -160,6 +163,9 @@ struct ConversationView: View {
         if let di = model.avatarDisplayItem {
           AvatarView(displayItem: di, needShowOnline: false)
             .frame(width: 35, height: 35)
+            .onTapGesture {
+              intent.onTestIncomeMessageEvent()
+            }
         }
       }
     })

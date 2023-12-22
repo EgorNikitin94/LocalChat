@@ -17,10 +17,10 @@ struct DialogsListView: View {
   
   var body: some View {
     ScrollView(.vertical) {
-      Color.clear.padding(.bottom, 5)
-      LazyVStack(spacing: 15) {
+      LazyVStack(spacing: 0) {
         ForEach(model.dialogs) { dialogVM in
           DialogListRowView(dialogVM: dialogVM)
+            .padding(.vertical, 15)
             .contextMenu {
               Button {
                 //
@@ -38,7 +38,6 @@ struct DialogsListView: View {
             .padding(.leading, 15)
         }
       }
-      Color.clear.padding(.bottom, 5)
     }
     .navigationTitle("Team")
     .navigationBarTitleDisplayMode(.inline)

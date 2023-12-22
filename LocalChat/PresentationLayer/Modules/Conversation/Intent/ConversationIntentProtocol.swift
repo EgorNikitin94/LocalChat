@@ -12,6 +12,7 @@ protocol ConversationIntentProtocol: AnyObject {
   func viewOnAppear()
   func sendMessage(with inputText: String)
   func openMediaPicker()
+  func onTestIncomeMessageEvent()
 }
 
 @objc protocol ConversationModuleInput: AnyObject {
