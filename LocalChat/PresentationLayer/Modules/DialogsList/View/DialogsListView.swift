@@ -46,7 +46,7 @@ struct DialogsListView: View {
       Button {
         intent.openProfile()
       } label: {
-        Image(systemName: "gearshape.fill")
+        Image(systemName: "square.and.pencil")
           .foregroundColor(.secondary)
       }
     }
