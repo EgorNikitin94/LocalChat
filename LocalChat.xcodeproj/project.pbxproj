@@ -47,13 +47,15 @@
 		5067ED0C2A843F7F00C5FA11 /* RouterAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED042A843F7F00C5FA11 /* RouterAlertModifier.swift */; };
 		5067ED0D2A843F7F00C5FA11 /* RouterCloseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */; };
 		5067ED0E2A843F7F00C5FA11 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */; };
-		507F398A2909C678002571DB /* TcpTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpTransport.swift */; };
+		507F398A2909C678002571DB /* TcpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpConnection.swift */; };
 		508359292AF42B0F00AFE301 /* DataStructures in Frameworks */ = {isa = PBXBuildFile; productRef = 508359282AF42B0F00AFE301 /* DataStructures */; };
 		509D7A952A87BFB80025C0B9 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509D7A942A87BFB80025C0B9 /* GRDB */; };
 		509D7A982A87C9FF0025C0B9 /* SQLiteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */; };
 		509D7A9B2A87FA1B0025C0B9 /* MessageDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */; };
 		509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 509D7A9D2A881BF80025C0B9 /* CocoaAsyncSocket */; };
+		50AC76582B3CD15B0083FE42 /* DataModel.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AC76572B3CD15B0083FE42 /* DataModel.pb.swift */; };
 		50B3C5252919A9B70089A376 /* FileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B3C5242919A9B70089A376 /* FileStore.swift */; };
+		50D8EE2C2B38DC26005BC57B /* SQLiteMigrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8EE2B2B38DC26005BC57B /* SQLiteMigrationManager.swift */; };
 		50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAC228EF8626004B5199 /* LocalChatApp.swift */; };
 		50DEEAC728EF8629004B5199 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DEEAC628EF8629004B5199 /* Assets.xcassets */; };
 		50DEEACA28EF8629004B5199 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DEEAC928EF8629004B5199 /* Preview Assets.xcassets */; };
@@ -125,10 +127,13 @@
 		5067ED042A843F7F00C5FA11 /* RouterAlertModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterAlertModifier.swift; sourceTree = "<group>"; };
 		5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
 		5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
-		507F39892909C678002571DB /* TcpTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpTransport.swift; sourceTree = "<group>"; };
+		507F39892909C678002571DB /* TcpConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpConnection.swift; sourceTree = "<group>"; };
 		509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteStore.swift; sourceTree = "<group>"; };
 		509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDisplayItem.swift; sourceTree = "<group>"; };
+		50AC76572B3CD15B0083FE42 /* DataModel.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.pb.swift; sourceTree = "<group>"; };
 		50B3C5242919A9B70089A376 /* FileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStore.swift; sourceTree = "<group>"; };
+		50D8EE2B2B38DC26005BC57B /* SQLiteMigrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteMigrationManager.swift; sourceTree = "<group>"; };
+		50D8EE2D2B38DDBC005BC57B /* LocalChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocalChat.entitlements; sourceTree = "<group>"; };
 		50DEEABF28EF8626004B5199 /* LocalChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DEEAC228EF8626004B5199 /* LocalChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalChatApp.swift; sourceTree = "<group>"; };
 		50DEEAC628EF8629004B5199 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -321,7 +326,7 @@
 		503836E828FA08CF00DE8ED0 /* TCP */ = {
 			isa = PBXGroup;
 			children = (
-				507F39892909C678002571DB /* TcpTransport.swift */,
+				507F39892909C678002571DB /* TcpConnection.swift */,
 			);
 			path = TCP;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				505410AB28F21A28006D4875 /* AppModels.swift */,
+				50AC76572B3CD15B0083FE42 /* DataModel.pb.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -419,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */,
+				50D8EE2B2B38DC26005BC57B /* SQLiteMigrationManager.swift */,
 			);
 			path = SQLiteStore;
 			sourceTree = "<group>";
@@ -450,6 +457,7 @@
 		50DEEAC128EF8626004B5199 /* LocalChat */ = {
 			isa = PBXGroup;
 			children = (
+				50D8EE2D2B38DDBC005BC57B /* LocalChat.entitlements */,
 				503836E228FA034100DE8ED0 /* AppLayer */,
 				503836E428FA03AA00DE8ED0 /* CoreLayer */,
 				503836E528FA043300DE8ED0 /* BisnesLogicLayer */,
@@ -762,12 +770,13 @@
 				5038624C29045554003071B6 /* AuthViewModelOld.swift in Sources */,
 				5006DEEC28FC9EA700BBAC2A /* UserService.swift in Sources */,
 				5006DEE828FC976400BBAC2A /* MessageService.swift in Sources */,
+				50D8EE2C2B38DC26005BC57B /* SQLiteMigrationManager.swift in Sources */,
 				509D7A982A87C9FF0025C0B9 /* SQLiteStore.swift in Sources */,
 				50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */,
 				5067ED092A843F7F00C5FA11 /* RouterSheetModifier.swift in Sources */,
 				5067ED072A843F7F00C5FA11 /* MVIContainer.swift in Sources */,
 				505410AC28F21A28006D4875 /* AppModels.swift in Sources */,
-				507F398A2909C678002571DB /* TcpTransport.swift in Sources */,
+				507F398A2909C678002571DB /* TcpConnection.swift in Sources */,
 				509D7A9B2A87FA1B0025C0B9 /* MessageDisplayItem.swift in Sources */,
 				503836F328FA0D7700DE8ED0 /* View+extensions.swift in Sources */,
 				5067ED0E2A843F7F00C5FA11 /* RouterProtocol.swift in Sources */,
@@ -798,6 +807,7 @@
 				5067ED082A843F7F00C5FA11 /* RouterScreenProtocol.swift in Sources */,
 				6CFAA4D9C05D313C85C64E2E /* ConversationModel.swift in Sources */,
 				5067ED0B2A843F7F00C5FA11 /* RouterNavigationViewModifier.swift in Sources */,
+				50AC76582B3CD15B0083FE42 /* DataModel.pb.swift in Sources */,
 				DB54EE370D6BDC2AC27C2F84 /* ConversationRouter.swift in Sources */,
 				077BFCEFE2B82A8B94BE5300 /* ConversationView.swift in Sources */,
 				D41EBB73E3DF069FC4F97C8E /* DialogsListAssembly.swift in Sources */,
@@ -954,6 +964,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LocalChat/LocalChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LocalChat/Preview Content\"";
@@ -985,6 +996,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LocalChat/LocalChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LocalChat/Preview Content\"";

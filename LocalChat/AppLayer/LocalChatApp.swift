@@ -12,6 +12,9 @@ class LockalChatAppDelegate: NSObject, UIApplicationDelegate {
     if #available(iOS 15, *) {
       UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
     }
+    
+    let tcpTransport = TcpConnection()
+    tcpTransport.connect()
     return true
   }
 }
