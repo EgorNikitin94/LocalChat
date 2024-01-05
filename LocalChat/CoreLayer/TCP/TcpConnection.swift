@@ -12,8 +12,8 @@ final class TcpConnection: NSObject {
   private var socket: GCDAsyncSocket?
   private let tcpQueue: DispatchQueue = DispatchQueue(label: "com.localChat.tcpQueue")
   
-  private let host = "127.0.0.1"
-  private let port: UInt16 = 80
+  private let host = "localhost"
+  private let port: UInt16 = 8080
   
   func connect() {
     tcpQueue.async {
