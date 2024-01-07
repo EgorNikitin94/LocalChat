@@ -53,6 +53,8 @@
 		5067ED0E2A843F7F00C5FA11 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */; };
 		507F398A2909C678002571DB /* TcpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpConnection.swift */; };
 		508359292AF42B0F00AFE301 /* DataStructures in Frameworks */ = {isa = PBXBuildFile; productRef = 508359282AF42B0F00AFE301 /* DataStructures */; };
+		5083C4892B4ADC9700656BEC /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083C4882B4ADC9700656BEC /* RootView.swift */; };
+		5083C48B2B4ADCAE00656BEC /* View+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083C48A2B4ADCAE00656BEC /* View+Modify.swift */; };
 		509D7A952A87BFB80025C0B9 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509D7A942A87BFB80025C0B9 /* GRDB */; };
 		509D7A982A87C9FF0025C0B9 /* SQLiteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */; };
 		509D7A9B2A87FA1B0025C0B9 /* MessageDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */; };
@@ -135,6 +137,8 @@
 		5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
 		5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		507F39892909C678002571DB /* TcpConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpConnection.swift; sourceTree = "<group>"; };
+		5083C4882B4ADC9700656BEC /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		5083C48A2B4ADCAE00656BEC /* View+Modify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Modify.swift"; sourceTree = "<group>"; };
 		509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteStore.swift; sourceTree = "<group>"; };
 		509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDisplayItem.swift; sourceTree = "<group>"; };
 		50B3C5242919A9B70089A376 /* FileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStore.swift; sourceTree = "<group>"; };
@@ -316,6 +320,7 @@
 				503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */,
 				5006DEDF28FB4DE200BBAC2A /* TimeManager.swift */,
 				501233782A9BF50100CDF28B /* Separator.swift */,
+				5083C48A2B4ADCAE00656BEC /* View+Modify.swift */,
 			);
 			path = "Helpers & Extensions";
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 		503836EF28FA0BD900DE8ED0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5083C4872B4ADC9700656BEC /* Root */,
 				5038624D2904555D003071B6 /* AuthOld */,
 				5CC713D4331946F0FFB4CDD7 /* Auth */,
 				C1A099E47740B4EEA855574B /* Profile */,
@@ -444,6 +450,14 @@
 				50B3C5242919A9B70089A376 /* FileStore.swift */,
 			);
 			path = FileStore;
+			sourceTree = "<group>";
+		};
+		5083C4872B4ADC9700656BEC /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				5083C4882B4ADC9700656BEC /* RootView.swift */,
+			);
+			path = Root;
 			sourceTree = "<group>";
 		};
 		509D7A962A87C9E00025C0B9 /* SQLiteStore */ = {
@@ -836,6 +850,7 @@
 				DB54EE370D6BDC2AC27C2F84 /* ConversationRouter.swift in Sources */,
 				077BFCEFE2B82A8B94BE5300 /* ConversationView.swift in Sources */,
 				D41EBB73E3DF069FC4F97C8E /* DialogsListAssembly.swift in Sources */,
+				5083C4892B4ADC9700656BEC /* RootView.swift in Sources */,
 				503A491E2A892F3B001ACBC5 /* ChatBubbleShape.swift in Sources */,
 				4EAF4713629BE4FAC511112D /* DialogsListIntentProtocol.swift in Sources */,
 				BF47D9FA3F35C8113BF2FAB6 /* DialogsListIntent.swift in Sources */,
@@ -844,6 +859,7 @@
 				DE6A51D9BD604EDCEAD75CCE /* DialogsListRouter.swift in Sources */,
 				10299AECB23133D1FC03752B /* DialogsListView.swift in Sources */,
 				D4D3781E053C53E7CD0C28A4 /* AuthAssembly.swift in Sources */,
+				5083C48B2B4ADCAE00656BEC /* View+Modify.swift in Sources */,
 				B3888F1D68552FD227650DC6 /* AuthIntentProtocol.swift in Sources */,
 				50410BFD2B4855C500E1D9F2 /* TcpTransport.swift in Sources */,
 				F1FBFEAF04F94FF45BDF1AA1 /* AuthIntent.swift in Sources */,
