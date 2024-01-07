@@ -24,7 +24,10 @@ struct LocalChatApp: App {
   
   var body: some Scene {
     WindowGroup {
-      RootView()
+      RootAssembly().build(
+        moduleOutput: nil,
+        completion: nil
+      )
     }
   }
 }
