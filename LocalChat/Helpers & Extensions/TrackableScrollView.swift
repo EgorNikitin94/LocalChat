@@ -53,7 +53,7 @@ public struct TrackableScrollView<Content>: View where Content: View {
                   insideProxy: insideProxy
                 )]
               )
-              .onChange(of: insideProxy.size) { newValue in
+              .onChange(of: insideProxy.size) { _, newValue in
                 contentSize = newValue
               }
           }
@@ -63,7 +63,7 @@ public struct TrackableScrollView<Content>: View where Content: View {
       .onAppear {
         viewLoaded = true
       }
-      .onChange(of: outsideProxy.size) { newValue in
+      .onChange(of: outsideProxy.size) { _, newValue in
         containerSize = newValue
       }
       .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in

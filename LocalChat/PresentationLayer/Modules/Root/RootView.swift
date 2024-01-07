@@ -85,12 +85,8 @@ struct RootView: View {
                 Image(systemName: item.imageName)
                   .resizable()
                   .frame(width: 21, height: 21)
-                  .modify({ view in
-                    if #available(iOS 17.0, *) {
-                      view
-                        .symbolEffect(.bounce.down, value: item.animationTrigger)
-                    }
-                  })
+                  .symbolEffect(.bounce.down, value: item.animationTrigger)
+                
                 Text(item.title)
                   .font(.system(size: 12))
               }
@@ -117,5 +113,5 @@ struct RootView: View {
 
 #Preview {
   RootView()
-    .preferredColorScheme(.light)
+    .preferredColorScheme(.dark)
 }

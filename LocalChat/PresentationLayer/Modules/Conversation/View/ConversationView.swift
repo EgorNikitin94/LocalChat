@@ -49,13 +49,14 @@ struct ConversationView: View {
         .onTapGesture {
           hideKeyboard()
         }
-        .onChange(of: model.realTimeMessages, perform: { newValue in
+        .onChange(of: model.realTimeMessages, {  _, newValue in
           if let newViewModel = model.realTimeMessages.first, newViewModel.isFromCurrentUser {
             withAnimation(.spring()) {
               scrollView.scrollTo(newViewModel.id, anchor: .bottom)
             }
           }
         })
+
         .overlay(alignment: .topTrailing, content: {
           if showScrollToTopButton {
             Button {

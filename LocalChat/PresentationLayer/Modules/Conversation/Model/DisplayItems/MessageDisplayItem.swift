@@ -39,7 +39,7 @@ class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
   }
   
   var messageContentType: MessageContentType {
-    if let media = media {
+    if let _ = media {
       return .image
     } else {
       return .text
