@@ -7,12 +7,17 @@
 
 import SwiftUI
 
-struct RootView: View {
+struct RootView<Contacts: View, Dialogs: View, Settings: View>: View {
   
   @StateObject var container: MVIContainer<RootIntentProtocol, RootModelStateProtocol>
   
   private var intent: RootIntentProtocol { container.intent }
   private var model: RootModelStateProtocol { container.model }
+  
+  // Child submodules
+  private(set) var contacts: Contacts
+  private(set) var dialogsList: Dialogs
+  private(set) var settings: Settings
   
   var body: some View {
     NavigationStack {
@@ -20,15 +25,13 @@ struct RootView: View {
         Group {
           switch model.state {
           case .contacts:
-            Text("Contacts")
+            contacts
               .navigationTitle("Contacts")
               .navigationBarTitleDisplayMode(.inline)
           case .chats:
-            DialogsListAssembly().build(moduleOutput: nil, completion: nil)
+            dialogsList
           case .profile:
-            ProfileAssembly().build(moduleOutput: nil, completion: nil)
-              .navigationTitle("Settings")
-              .navigationBarTitleDisplayMode(.inline)
+            settings
           }
         }
         .frame(maxHeight: .infinity)

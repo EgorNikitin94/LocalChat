@@ -19,6 +19,8 @@ struct ProfileView: View {
     Text("Hallo amo module")
       .onAppear(perform: intent.viewOnAppear)
       .modifier(ProfileRouter(subjects: model.routerSubject, intent: intent))
+      .navigationTitle("Settings")
+      .navigationBarTitleDisplayMode(.inline)
   }
 }
 

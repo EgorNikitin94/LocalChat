@@ -32,7 +32,26 @@ class RootAssembly {
       intent: intent as RootIntentProtocol,
       model: model as RootModelStateProtocol,
       modelChangePublisher: model.objectWillChange)
-    return RootView(container: container)
+    
+    let childViews = buildChildSubmodules(with: intent)
+    
+    return RootView(
+      container: container,
+      contacts: childViews.contactsView,
+      dialogsList: childViews.dialogsList,
+      settings: childViews.settings
+    )
+  }
+  
+  func buildChildSubmodules(with intent: RootIntent) -> (contactsView: some View, dialogsList: some View, settings: some View) {
+    let contacts = Text("Contacts")
+    let dialogs = DialogsListAssembly().build(moduleOutput: intent) { input in
+      intent.dialigsListInput = input
+    }
+    let settings = ProfileAssembly().build(moduleOutput: intent) { input in
+      intent.profileModuleInput = input
+    }
+    return (contacts, dialogs, settings)
   }
   
 }

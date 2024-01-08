@@ -9,9 +9,12 @@ import Foundation
 
 class RootIntent {
   
-  private weak var model:RootModelActionsProtocol?
-  private weak var routeModel:RootModelRouterProtocol?
-  private weak var moduleOutput:RootModuleOutput?
+  private weak var model: RootModelActionsProtocol?
+  private weak var routeModel: RootModelRouterProtocol?
+  private weak var moduleOutput: RootModuleOutput?
+  
+  var dialigsListInput: DialogsListModuleInput?
+  var profileModuleInput: ProfileModuleInput?
   
   init(model: (RootModelActionsProtocol & RootModelRouterProtocol)?, moduleOutput:RootModuleOutput?) {
     self.model = model
@@ -35,5 +38,15 @@ extension RootIntent: RootIntentProtocol {
 
 // MARK: - RootModuleInput
 extension RootIntent: RootModuleInput {
+  
+}
+
+// MARK: - DialogsListModuleOutput
+extension RootIntent: DialogsListModuleOutput {
+  
+}
+
+// MARK: - ProfileModuleOutput
+extension RootIntent: ProfileModuleOutput {
   
 }
