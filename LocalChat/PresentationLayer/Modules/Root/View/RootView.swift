@@ -17,21 +17,21 @@ struct RootView: View {
   var body: some View {
     NavigationStack {
       VStack(spacing: .zero) {
-        switch model.state {
-        case .contacts:
-          Text("Contacts")
-            .frame(maxHeight: .infinity)
-            .navigationTitle("Contacts")
-            .navigationBarTitleDisplayMode(.inline)
-        case .chats:
-          DialogsListAssembly().build(moduleOutput: nil, completion: nil)
-            .frame(maxHeight: .infinity)
-        case .profile:
-          ProfileAssembly().build(moduleOutput: nil, completion: nil)
-            .frame(maxHeight: .infinity)
-            .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.inline)
+        Group {
+          switch model.state {
+          case .contacts:
+            Text("Contacts")
+              .navigationTitle("Contacts")
+              .navigationBarTitleDisplayMode(.inline)
+          case .chats:
+            DialogsListAssembly().build(moduleOutput: nil, completion: nil)
+          case .profile:
+            ProfileAssembly().build(moduleOutput: nil, completion: nil)
+              .navigationTitle("Settings")
+              .navigationBarTitleDisplayMode(.inline)
+          }
         }
+        .frame(maxHeight: .infinity)
         
         CustomTabBar(
           tabBarItems: model.tabBarItems,
@@ -51,7 +51,7 @@ struct CustomTabBar: View {
   @Binding var state: RootViewTabItem.TabBarItemType
   var completion: (RootViewTabItem.TabBarItemType) -> Void
   
-  @State private var isPortretOrientation: Bool = UIDevice.current.orientation.isPortrait
+  @State private var isPortretOrientation: Bool = true
   private let orientationHasChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
   
   @Environment(\.colorScheme) private var colorScheme
@@ -72,17 +72,14 @@ struct CustomTabBar: View {
             Text(item.title)
               .font(.system(size: 12))
           }
+          .padding(.vertical, 8)
+          .padding(.horizontal, 5)
+          .frame(maxWidth: .infinity)
         })
         .foregroundColor(state == item.tabBarType ? .blue : .gray)
-        .padding(.vertical, 8)
-        .padding(.horizontal, 5)
-        
-        if item.tabBarType != .profile {
-          Spacer()
-        }
       }
     }
-    .padding(.horizontal, 40)
+    .padding(.horizontal, 20)
     .background(colorScheme == .light ? Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 0.7)) : Color(uiColor: .systemGray6))
     .onReceive(orientationHasChanged, perform: { _ in
       isPortretOrientation = UIDevice.current.orientation.isPortrait

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Observation
 
 class LockalChatAppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
@@ -18,9 +19,17 @@ class LockalChatAppDelegate: NSObject, UIApplicationDelegate {
   }
 }
 
+@Observable
+class AppState {
+  var loggin: Bool = false
+  var connectionState: Bool = false
+}
+
 @main
 struct LocalChatApp: App {
   @UIApplicationDelegateAdaptor var delegate: LockalChatAppDelegate
+  
+  @State var appState = AppState()
   
   var body: some Scene {
     WindowGroup {
@@ -29,5 +38,6 @@ struct LocalChatApp: App {
         completion: nil
       )
     }
+    .environment(appState)
   }
 }

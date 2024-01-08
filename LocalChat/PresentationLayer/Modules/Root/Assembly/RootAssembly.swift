@@ -20,11 +20,11 @@ class RootAssembly {
   
   // MARK: - Private
   private func buildModel() -> RootModel {
-  RootModel()
+    RootModel()
   }
   
   private func buildIntent(model: RootModel, moduleOutput: RootModuleOutput?) -> RootIntent {
-  RootIntent(model: model, moduleOutput: moduleOutput)
+    RootIntent(model: model, moduleOutput: moduleOutput)
   }
   
   private func buildView(model: RootModel, intent: RootIntent) -> some View {
