@@ -23,6 +23,9 @@
 		5006DEEA28FC99D600BBAC2A /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEE928FC99D600BBAC2A /* BadgeView.swift */; };
 		5006DEEC28FC9EA700BBAC2A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006DEEB28FC9EA700BBAC2A /* UserService.swift */; };
 		501233792A9BF50100CDF28B /* Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501233782A9BF50100CDF28B /* Separator.swift */; };
+		50128F532B52BD9800F88CC2 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50128F522B52BD9800F88CC2 /* RequestDispatcher.swift */; };
+		50128F572B52C2D300F88CC2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50128F562B52C2D300F88CC2 /* NetworkRequest.swift */; };
+		50128F592B52C34E00F88CC2 /* TCPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50128F582B52C34E00F88CC2 /* TCPRequest.swift */; };
 		50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE128F61BA90041CFFD /* ContentMessageView.swift */; };
 		50301AE428F61C280041CFFD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE328F61C280041CFFD /* MessageView.swift */; };
 		503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EA28FA0ACD00DE8ED0 /* AppColors.swift */; };
@@ -118,6 +121,9 @@
 		5006DEE928FC99D600BBAC2A /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		5006DEEB28FC9EA700BBAC2A /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		501233782A9BF50100CDF28B /* Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Separator.swift; sourceTree = "<group>"; };
+		50128F522B52BD9800F88CC2 /* RequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDispatcher.swift; sourceTree = "<group>"; };
+		50128F562B52C2D300F88CC2 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		50128F582B52C34E00F88CC2 /* TCPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPRequest.swift; sourceTree = "<group>"; };
 		50301AE128F61BA90041CFFD /* ContentMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMessageView.swift; sourceTree = "<group>"; };
 		50301AE328F61C280041CFFD /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		503836EA28FA0ACD00DE8ED0 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -278,6 +284,32 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
+		50128F502B52B55B00F88CC2 /* TCP */ = {
+			isa = PBXGroup;
+			children = (
+				50410BFC2B4855C500E1D9F2 /* TcpTransport.swift */,
+				507F39892909C678002571DB /* TcpConnection.swift */,
+			);
+			path = TCP;
+			sourceTree = "<group>";
+		};
+		50128F542B52BDC500F88CC2 /* RequestDispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				50128F522B52BD9800F88CC2 /* RequestDispatcher.swift */,
+			);
+			path = RequestDispatcher;
+			sourceTree = "<group>";
+		};
+		50128F552B52C2B200F88CC2 /* NetworkRequests */ = {
+			isa = PBXGroup;
+			children = (
+				50128F562B52C2D300F88CC2 /* NetworkRequest.swift */,
+				50128F582B52C34E00F88CC2 /* TCPRequest.swift */,
+			);
+			path = NetworkRequests;
+			sourceTree = "<group>";
+		};
 		503410F72A897210002E9CEF /* Messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,7 +340,7 @@
 		503836E428FA03AA00DE8ED0 /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
-				503836E828FA08CF00DE8ED0 /* TCP */,
+				503836E828FA08CF00DE8ED0 /* Transport */,
 				509D7A962A87C9E00025C0B9 /* SQLiteStore */,
 				507F398B2909C6A5002571DB /* FileStore */,
 			);
@@ -349,13 +381,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		503836E828FA08CF00DE8ED0 /* TCP */ = {
+		503836E828FA08CF00DE8ED0 /* Transport */ = {
 			isa = PBXGroup;
 			children = (
-				50410BFC2B4855C500E1D9F2 /* TcpTransport.swift */,
-				507F39892909C678002571DB /* TcpConnection.swift */,
+				50128F552B52C2B200F88CC2 /* NetworkRequests */,
+				50128F542B52BDC500F88CC2 /* RequestDispatcher */,
+				50128F502B52B55B00F88CC2 /* TCP */,
 			);
-			path = TCP;
+			path = Transport;
 			sourceTree = "<group>";
 		};
 		503836EF28FA0BD900DE8ED0 /* Modules */ = {
@@ -901,6 +934,8 @@
 				E13339B9670D802A2D47FE6E /* ConversationAssembly.swift in Sources */,
 				5083C4C72B4AE71600656BEC /* RootView.swift in Sources */,
 				609EA7EF519A91E8229A20D7 /* ConversationIntentProtocol.swift in Sources */,
+				50128F532B52BD9800F88CC2 /* RequestDispatcher.swift in Sources */,
+				50128F592B52C34E00F88CC2 /* TCPRequest.swift in Sources */,
 				5067ED0D2A843F7F00C5FA11 /* RouterCloseModifier.swift in Sources */,
 				50410BFF2B48BA9E00E1D9F2 /* LocalChat.pb.swift in Sources */,
 				503A491C2A892F2A001ACBC5 /* ChatBubble.swift in Sources */,
@@ -948,6 +983,7 @@
 				24F501EFF5623B3739B5F834 /* MediaPickerIntentProtocol.swift in Sources */,
 				33E52F196F82C30AF72ECF6B /* MediaPickerIntent.swift in Sources */,
 				E952031A2931B1186D4E5515 /* MediaPickerModelProtocol.swift in Sources */,
+				50128F572B52C2D300F88CC2 /* NetworkRequest.swift in Sources */,
 				B59A935B7D961446B8FA3234 /* MediaPickerModel.swift in Sources */,
 				419221B49D282D386C0E0D1B /* MediaPickerRouter.swift in Sources */,
 				E6968AE3AEFC9D0B6E0A7B98 /* MediaPickerView.swift in Sources */,
