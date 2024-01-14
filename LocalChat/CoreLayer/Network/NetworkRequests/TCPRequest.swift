@@ -10,7 +10,9 @@ import Foundation
 class TCPRequest: NetworkRequest {
   let id: UInt32
   var request: Request
-  var priority: RequestPriority = .standart
+  var priority: RequestPriority {
+    .standart
+  }
   
   private(set) lazy var responseStream: AsyncThrowingStream<Response, Error> = {
     AsyncThrowingStream { (continuation: AsyncThrowingStream<Response, Error>.Continuation) -> Void in

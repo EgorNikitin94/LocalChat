@@ -8,10 +8,18 @@
 import Foundation
 import DataStructures
 
+enum RequestDispatcherError: Error {
+  case canceledRequest
+}
+
 actor RequestDispatcher {
   private var pendingRequests: Queue<NetworkRequest> = Queue<NetworkRequest>()
   private var executingRequest: NetworkRequest?
-  private let tcpTransport: TcpTransport = TcpTransport()
+  private let tcpTransport: TcpTransport
+  
+  init(tcpTransport: TcpTransport) {
+    self.tcpTransport = tcpTransport
+  }
   
   func didGet(data: Data) {
     do {
@@ -25,20 +33,14 @@ actor RequestDispatcher {
     }
   }
   
-  func perform(request: NetworkRequest) async throws -> Response? {
-    var request: NetworkRequest = await TCPRequest()
-    request.request.payload = .sysInit(SysInit.with({
-      $0.appID = "df"
-      $0.appSecret = "sd"
-      $0.seeesionID = "3232"
-    }))
+  func sendRequest(_ request: NetworkRequest) async throws -> Response {
     enqueue(req: request)
     
     for try await response in request.responseStream {
       return response
     }
     
-    return nil
+    throw RequestDispatcherError.canceledRequest
   }
   
   private func next() {

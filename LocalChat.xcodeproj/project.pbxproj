@@ -55,6 +55,10 @@
 		5067ED0D2A843F7F00C5FA11 /* RouterCloseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */; };
 		5067ED0E2A843F7F00C5FA11 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */; };
 		5067F5082B53F88E0085AF56 /* RequestIdCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F5072B53F88E0085AF56 /* RequestIdCounter.swift */; };
+		5067F50C2B540DF20085AF56 /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50B2B540DF20085AF56 /* NetworkAssembly.swift */; };
+		5067F50E2B5419F30085AF56 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50D2B5419F30085AF56 /* NetworkService.swift */; };
+		5067F5102B541A0B0085AF56 /* AbstractService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50F2B541A0B0085AF56 /* AbstractService.swift */; };
+		5067F5142B541F340085AF56 /* SysInitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F5132B541F340085AF56 /* SysInitRequest.swift */; };
 		507F398A2909C678002571DB /* TcpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpConnection.swift */; };
 		508359292AF42B0F00AFE301 /* DataStructures in Frameworks */ = {isa = PBXBuildFile; productRef = 508359282AF42B0F00AFE301 /* DataStructures */; };
 		5083C48B2B4ADCAE00656BEC /* View+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083C48A2B4ADCAE00656BEC /* View+Modify.swift */; };
@@ -151,6 +155,10 @@
 		5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
 		5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		5067F5072B53F88E0085AF56 /* RequestIdCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestIdCounter.swift; sourceTree = "<group>"; };
+		5067F50B2B540DF20085AF56 /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
+		5067F50D2B5419F30085AF56 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		5067F50F2B541A0B0085AF56 /* AbstractService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractService.swift; sourceTree = "<group>"; };
+		5067F5132B541F340085AF56 /* SysInitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysInitRequest.swift; sourceTree = "<group>"; };
 		507F39892909C678002571DB /* TcpConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpConnection.swift; sourceTree = "<group>"; };
 		5083C48A2B4ADCAE00656BEC /* View+Modify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Modify.swift"; sourceTree = "<group>"; };
 		5083C48C2B4ADF6100656BEC /* View+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+If.swift"; sourceTree = "<group>"; };
@@ -353,6 +361,8 @@
 		503836E528FA043300DE8ED0 /* BisnesLogicLayer */ = {
 			isa = PBXGroup;
 			children = (
+				5067F50F2B541A0B0085AF56 /* AbstractService.swift */,
+				5067F5112B541F130085AF56 /* NetworkService */,
 				5006DEE328FC973F00BBAC2A /* AuthService.swift */,
 				5006DEEB28FC9EA700BBAC2A /* UserService.swift */,
 				5006DEE528FC975300BBAC2A /* DialogsService.swift */,
@@ -496,11 +506,37 @@
 		5067F5092B53FB520085AF56 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5067F50A2B540DCE0085AF56 /* NetworkAssembly */,
 				50128F552B52C2B200F88CC2 /* NetworkRequests */,
 				50128F542B52BDC500F88CC2 /* RequestDispatcher */,
 				503836E828FA08CF00DE8ED0 /* Transport */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		5067F50A2B540DCE0085AF56 /* NetworkAssembly */ = {
+			isa = PBXGroup;
+			children = (
+				5067F50B2B540DF20085AF56 /* NetworkAssembly.swift */,
+			);
+			path = NetworkAssembly;
+			sourceTree = "<group>";
+		};
+		5067F5112B541F130085AF56 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				5067F5122B541F230085AF56 /* Requests */,
+				5067F50D2B5419F30085AF56 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		5067F5122B541F230085AF56 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				5067F5132B541F340085AF56 /* SysInitRequest.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 		507F398B2909C6A5002571DB /* FileStore */ = {
@@ -912,6 +948,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5038624C29045554003071B6 /* AuthViewModelOld.swift in Sources */,
+				5067F5102B541A0B0085AF56 /* AbstractService.swift in Sources */,
 				5006DEEC28FC9EA700BBAC2A /* UserService.swift in Sources */,
 				5006DEE828FC976400BBAC2A /* MessageService.swift in Sources */,
 				50D8EE2C2B38DC26005BC57B /* SQLiteMigrationManager.swift in Sources */,
@@ -951,6 +988,7 @@
 				50410BFF2B48BA9E00E1D9F2 /* LocalChat.pb.swift in Sources */,
 				503A491C2A892F2A001ACBC5 /* ChatBubble.swift in Sources */,
 				501233792A9BF50100CDF28B /* Separator.swift in Sources */,
+				5067F50E2B5419F30085AF56 /* NetworkService.swift in Sources */,
 				55EF727C8971C458581570A2 /* ConversationIntent.swift in Sources */,
 				E9DA5AD2E69C3A0716DAD223 /* ConversationModelProtocol.swift in Sources */,
 				5058C02B2AA3AA7600A35D84 /* TrackableScrollView.swift in Sources */,
@@ -980,6 +1018,7 @@
 				FEC07D5FB2E1E7F96C82B5AF /* AuthRouter.swift in Sources */,
 				6F2FEDFEAB1DABC2A5C13AF1 /* AuthView.swift in Sources */,
 				5083C4C32B4AE71600656BEC /* RootModel.swift in Sources */,
+				5067F50C2B540DF20085AF56 /* NetworkAssembly.swift in Sources */,
 				007FACDA5A04F47AEBD9E84F /* ProfileAssembly.swift in Sources */,
 				A9C95046EF0F612A0D8CF98A /* ProfileIntentProtocol.swift in Sources */,
 				5067F5082B53F88E0085AF56 /* RequestIdCounter.swift in Sources */,
@@ -999,6 +1038,7 @@
 				B59A935B7D961446B8FA3234 /* MediaPickerModel.swift in Sources */,
 				419221B49D282D386C0E0D1B /* MediaPickerRouter.swift in Sources */,
 				E6968AE3AEFC9D0B6E0A7B98 /* MediaPickerView.swift in Sources */,
+				5067F5142B541F340085AF56 /* SysInitRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
