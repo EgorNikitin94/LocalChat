@@ -11,7 +11,7 @@ class TcpTransport {
   static let shared = TcpTransport()
   private var connection: TcpConnection
   
-  var requestDispatcher: RequestDispatcher?
+  weak var requestDispatcher: RequestDispatcher?
   
   init() {
     self.connection = TcpConnection()

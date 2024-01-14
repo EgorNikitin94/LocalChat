@@ -54,6 +54,7 @@
 		5067ED0C2A843F7F00C5FA11 /* RouterAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED042A843F7F00C5FA11 /* RouterAlertModifier.swift */; };
 		5067ED0D2A843F7F00C5FA11 /* RouterCloseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */; };
 		5067ED0E2A843F7F00C5FA11 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */; };
+		5067F5082B53F88E0085AF56 /* RequestIdCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F5072B53F88E0085AF56 /* RequestIdCounter.swift */; };
 		507F398A2909C678002571DB /* TcpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpConnection.swift */; };
 		508359292AF42B0F00AFE301 /* DataStructures in Frameworks */ = {isa = PBXBuildFile; productRef = 508359282AF42B0F00AFE301 /* DataStructures */; };
 		5083C48B2B4ADCAE00656BEC /* View+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083C48A2B4ADCAE00656BEC /* View+Modify.swift */; };
@@ -149,6 +150,7 @@
 		5067ED042A843F7F00C5FA11 /* RouterAlertModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterAlertModifier.swift; sourceTree = "<group>"; };
 		5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
 		5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
+		5067F5072B53F88E0085AF56 /* RequestIdCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestIdCounter.swift; sourceTree = "<group>"; };
 		507F39892909C678002571DB /* TcpConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpConnection.swift; sourceTree = "<group>"; };
 		5083C48A2B4ADCAE00656BEC /* View+Modify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Modify.swift"; sourceTree = "<group>"; };
 		5083C48C2B4ADF6100656BEC /* View+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+If.swift"; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 		50128F542B52BDC500F88CC2 /* RequestDispatcher */ = {
 			isa = PBXGroup;
 			children = (
+				5067F5072B53F88E0085AF56 /* RequestIdCounter.swift */,
 				50128F522B52BD9800F88CC2 /* RequestDispatcher.swift */,
 			);
 			path = RequestDispatcher;
@@ -340,7 +343,7 @@
 		503836E428FA03AA00DE8ED0 /* CoreLayer */ = {
 			isa = PBXGroup;
 			children = (
-				503836E828FA08CF00DE8ED0 /* Transport */,
+				5067F5092B53FB520085AF56 /* Network */,
 				509D7A962A87C9E00025C0B9 /* SQLiteStore */,
 				507F398B2909C6A5002571DB /* FileStore */,
 			);
@@ -384,8 +387,6 @@
 		503836E828FA08CF00DE8ED0 /* Transport */ = {
 			isa = PBXGroup;
 			children = (
-				50128F552B52C2B200F88CC2 /* NetworkRequests */,
-				50128F542B52BDC500F88CC2 /* RequestDispatcher */,
 				50128F502B52B55B00F88CC2 /* TCP */,
 			);
 			path = Transport;
@@ -490,6 +491,16 @@
 				5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */,
 			);
 			path = Modifier;
+			sourceTree = "<group>";
+		};
+		5067F5092B53FB520085AF56 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				50128F552B52C2B200F88CC2 /* NetworkRequests */,
+				50128F542B52BDC500F88CC2 /* RequestDispatcher */,
+				503836E828FA08CF00DE8ED0 /* Transport */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		507F398B2909C6A5002571DB /* FileStore */ = {
@@ -971,6 +982,7 @@
 				5083C4C32B4AE71600656BEC /* RootModel.swift in Sources */,
 				007FACDA5A04F47AEBD9E84F /* ProfileAssembly.swift in Sources */,
 				A9C95046EF0F612A0D8CF98A /* ProfileIntentProtocol.swift in Sources */,
+				5067F5082B53F88E0085AF56 /* RequestIdCounter.swift in Sources */,
 				FFA7A2AEFECB62C478732EC3 /* ProfileIntent.swift in Sources */,
 				50410BF72B4853F000E1D9F2 /* User.swift in Sources */,
 				FF0F26E83CA9C629BAAC4C54 /* ProfileModelProtocol.swift in Sources */,
