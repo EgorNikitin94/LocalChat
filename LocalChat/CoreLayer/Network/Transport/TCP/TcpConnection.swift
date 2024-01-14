@@ -30,6 +30,8 @@ final class TcpConnection: NSObject {
       
       do {
         try self.socket?.connect(toHost: self.host, onPort: self.port)
+        self.socket?.startTLS(nil)
+        self.socket?.readData(toLength: 5, withTimeout: -1, tag: 1)
       } catch {
         print(error.localizedDescription)
       }
@@ -60,11 +62,18 @@ extension TcpConnection: GCDAsyncSocketDelegate {
   }
   
   func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-    //
+    print("socketDidDisconnect: reason \(String(describing: err?.localizedDescription))")
   }
   
   func socketDidSecure(_ sock: GCDAsyncSocket) {
-    //
+    print("socketDidSecure:")
+    Task {
+      do {
+        let _ = try await NetworkAssembly.shared.networkService.performSysInitRequest()
+      } catch {
+        print(error.localizedDescription)
+      }
+    }
   }
   
   func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {

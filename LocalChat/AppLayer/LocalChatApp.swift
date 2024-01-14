@@ -14,7 +14,7 @@ class LockalChatAppDelegate: NSObject, UIApplicationDelegate {
       UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
     }
     
-    TcpTransport.shared.setupConnection()
+    NetworkAssembly.shared.tcpTransport.setupConnection()
     return true
   }
 }

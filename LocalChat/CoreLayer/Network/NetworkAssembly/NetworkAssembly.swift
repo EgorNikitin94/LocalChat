@@ -17,7 +17,11 @@ class NetworkAssembly {
     return requestDispatcher
   }()
   
-  private lazy var tcpTransport: TcpTransport = {
+  lazy var networkService: NetworkService = {
+    return NetworkService()
+  }()
+  
+  lazy var tcpTransport: TcpTransport = {
     let tcpTransport = TcpTransport()
     return tcpTransport
   }()
