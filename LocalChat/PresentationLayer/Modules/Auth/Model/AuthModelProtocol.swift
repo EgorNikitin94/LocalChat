@@ -22,5 +22,5 @@ protocol AuthModelStateProtocol {
 
 // MARK: - Route
 protocol AuthModelRouterProtocol: AnyObject {
-  
+  func didTapSignIn()
 }

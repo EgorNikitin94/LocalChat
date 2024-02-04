@@ -32,8 +32,6 @@
 		503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */; };
 		503836F328FA0D7700DE8ED0 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F228FA0D7700DE8ED0 /* View+extensions.swift */; };
 		503836F828FA167C00DE8ED0 /* DialogListRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */; };
-		5038624A2904554D003071B6 /* AuthViewOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503862492904554D003071B6 /* AuthViewOld.swift */; };
-		5038624C29045554003071B6 /* AuthViewModelOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5038624B29045554003071B6 /* AuthViewModelOld.swift */; };
 		503A491C2A892F2A001ACBC5 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A491B2A892F2A001ACBC5 /* ChatBubble.swift */; };
 		503A491E2A892F3B001ACBC5 /* ChatBubbleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A491D2A892F3B001ACBC5 /* ChatBubbleShape.swift */; };
 		50410BF72B4853F000E1D9F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50410BF62B4853F000E1D9F2 /* User.swift */; };
@@ -135,8 +133,6 @@
 		503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdaptiveForgroundColor.swift; sourceTree = "<group>"; };
 		503836F228FA0D7700DE8ED0 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
 		503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListRowViewModel.swift; sourceTree = "<group>"; };
-		503862492904554D003071B6 /* AuthViewOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewOld.swift; sourceTree = "<group>"; };
-		5038624B29045554003071B6 /* AuthViewModelOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModelOld.swift; sourceTree = "<group>"; };
 		503A491B2A892F2A001ACBC5 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 		503A491D2A892F3B001ACBC5 /* ChatBubbleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleShape.swift; sourceTree = "<group>"; };
 		50410BF62B4853F000E1D9F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -406,7 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				5083C4982B4AE68A00656BEC /* Root */,
-				5038624D2904555D003071B6 /* AuthOld */,
 				5CC713D4331946F0FFB4CDD7 /* Auth */,
 				C1A099E47740B4EEA855574B /* Profile */,
 				E24047286C92E703DEA172A6 /* DialogsList */,
@@ -434,15 +429,6 @@
 				50410BF52B4853CF00E1D9F2 /* ProtoModels */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		5038624D2904555D003071B6 /* AuthOld */ = {
-			isa = PBXGroup;
-			children = (
-				503862492904554D003071B6 /* AuthViewOld.swift */,
-				5038624B29045554003071B6 /* AuthViewModelOld.swift */,
-			);
-			path = AuthOld;
 			sourceTree = "<group>";
 		};
 		503A491A2A892F0F001ACBC5 /* ChatBubble */ = {
@@ -947,7 +933,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5038624C29045554003071B6 /* AuthViewModelOld.swift in Sources */,
 				5067F5102B541A0B0085AF56 /* AbstractService.swift in Sources */,
 				5006DEEC28FC9EA700BBAC2A /* UserService.swift in Sources */,
 				5006DEE828FC976400BBAC2A /* MessageService.swift in Sources */,
@@ -975,7 +960,6 @@
 				503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */,
 				5006DEE228FB58E200BBAC2A /* AvatarView.swift in Sources */,
 				505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */,
-				5038624A2904554D003071B6 /* AuthViewOld.swift in Sources */,
 				5083C4C22B4AE71600656BEC /* RootModelProtocol.swift in Sources */,
 				50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */,
 				5006DEE428FC973F00BBAC2A /* AuthService.swift in Sources */,

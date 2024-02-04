@@ -10,11 +10,14 @@ import Foundation
 
 class AuthIntent {
 
-  private weak var model:AuthModelActionsProtocol?
-  private weak var routeModel:AuthModelRouterProtocol?
-  private weak var moduleOutput:AuthModuleOutput?
+  private weak var model: AuthModelActionsProtocol?
+  private weak var routeModel: AuthModelRouterProtocol?
+  private weak var moduleOutput: AuthModuleOutput?
 
-  init(model: (AuthModelActionsProtocol & AuthModelRouterProtocol)?, moduleOutput:AuthModuleOutput?) {
+  init(
+    model: (AuthModelActionsProtocol & AuthModelRouterProtocol)?,
+    moduleOutput:AuthModuleOutput?
+  ) {
     self.model = model
     self.routeModel = model
     self.moduleOutput = moduleOutput
@@ -26,6 +29,10 @@ class AuthIntent {
 extension AuthIntent: AuthIntentProtocol {
   func viewOnAppear() {
     //
+  }
+  
+  func didTapSignIn() {
+    routeModel?.didTapSignIn()
   }
 }
 

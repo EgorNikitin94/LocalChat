@@ -10,51 +10,61 @@ import SwiftUI
 
 struct AuthView: View {
   
-  @StateObject var container: MVIContainer<AuthIntentProtocol, AuthModelStateProtocol>
+  @State var container: ModernMVIContainer<AuthIntentProtocol, AuthModelStateProtocol>
   
   private var intent: AuthIntentProtocol { container.intent }
   private var model: AuthModelStateProtocol { container.model }
   
-  @State var login: String = ""
-  @State var password: String = ""
-  
   var body: some View {
     VStack(spacing: 20) {
+      Image(.logo)
+        .resizable()
+        .frame(width: 70, height: 70)
+        .cornerRadius(10)
       Text("Welcome!")
         .font(.largeTitle)
         .bold()
       VStack(spacing: 10) {
-        TextField("Enter your login", text: $login)
+        TextField("Enter your login", text: $container.model.login)
           .authTextFieldStyle()
         
-        SecureField("Enter your password", text: $password)
-          .authTextFieldStyle()
-        
-        Button {
-          //
-        } label: {
-          Text("Sign In")
-            .font(.title3)
-            .bold()
-            .frame(maxWidth: .infinity)
-            .foregroundColor(.white)
-            .padding(.horizontal, 80)
-            .padding(.vertical)
-            .background(
-              LinearGradient(
-                colors: [
-                  .blue.opacity(0.4),
-                  .purple
-                ],
-                startPoint: .bottomLeading,
-                endPoint: .topTrailing
-              )
-            )
-            .cornerRadius(10)
+        if model.passwordFieldEnabled {
+          SecureField("Enter your password", text: $container.model.password)
+            .authTextFieldStyle()
+            .transition(.move(edge: .bottom).combined(with: .opacity))
         }
         
+        if model.buttonEnabled {
+          Button {
+            intent.didTapSignIn()
+          } label: {
+            Text("Sign In")
+              .font(.title3)
+              .bold()
+              .frame(maxWidth: .infinity)
+              .foregroundColor(.white)
+              .padding(.horizontal, 80)
+              .padding(.vertical)
+              .background(
+                LinearGradient(
+                  colors: [
+                    .blue.opacity(0.4),
+                    .purple
+                  ],
+                  startPoint: .bottomLeading,
+                  endPoint: .topTrailing
+                )
+              )
+              .cornerRadius(10)
+          }
+          .transition(.move(edge: .bottom).combined(with: .opacity))
+          .disabled(!model.buttonEnabled)
+        }
       }
     }
+    .frame(maxWidth: 400)
+    .animation(.bouncy, value: model.passwordFieldEnabled)
+    .animation(.bouncy, value: model.buttonEnabled)
     .padding(.horizontal, 40)
     .onAppear(perform: intent.viewOnAppear)
     .modifier(AuthRouter(subjects: model.routerSubject, intent: intent))

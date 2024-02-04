@@ -29,10 +29,10 @@ class AuthAssembly {
 }
   
   private func buildView(model: AuthModel, intent: AuthIntent) -> some View {
-    let container = MVIContainer(
+    let container = ModernMVIContainer(
       intent: intent as AuthIntentProtocol,
-      model: model as AuthModelStateProtocol,
-      modelChangePublisher: model.objectWillChange)
+      model: model as AuthModelStateProtocol
+    )
     return AuthView(container: container)
   }
   

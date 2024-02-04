@@ -25,7 +25,7 @@ extension AuthRouter {
     var routeType: RouterScreenPresentationType {
       switch self {
       case .testNavigation:
-        return .navigationLink
+        return .sheet
       }
     }
   }

@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import Observation
 
 final class MVIContainer<Intent, Model>: ObservableObject {
   
@@ -33,3 +34,13 @@ final class MVIContainer<Intent, Model>: ObservableObject {
   }
 }
 
+@Observable
+final class ModernMVIContainer<Intent, Model> {
+  let intent: Intent
+  var model: Model
+  
+  init(intent: Intent, model: Model) {
+    self.intent = intent
+    self.model = model
+  }
+}

@@ -7,13 +7,22 @@
 //
 
 import Foundation
-import Combine
+import Observation
 
-class AuthModel: ObservableObject, AuthModelStateProtocol {
-  @Published var login: String = ""
-  @Published var password: String = ""
-  @Published var passwordFieldEnabled = false
-  @Published var buttonEnabled = false
+@Observable
+class AuthModel: AuthModelStateProtocol {
+  var login: String = "" {
+    didSet {
+      passwordFieldEnabled = !login.isEmpty
+    }
+  }
+  var password: String = "" {
+    didSet {
+      buttonEnabled = !password.isEmpty
+    }
+  }
+  var passwordFieldEnabled = false
+  var buttonEnabled = false
   let routerSubject = AuthRouter.Subjects()
 }
 
@@ -24,5 +33,7 @@ extension AuthModel: AuthModelActionsProtocol {
 
 // MARK: - Route
 extension AuthModel: AuthModelRouterProtocol {
-  
+  func didTapSignIn() {
+    routerSubject.screen.send(.testNavigation(param: 1))
+  }
 }
