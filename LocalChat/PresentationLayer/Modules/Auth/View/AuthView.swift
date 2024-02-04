@@ -25,40 +25,31 @@ struct AuthView: View {
         .bold()
       VStack(spacing: 10) {
         TextField("Enter your login", text: $login)
-          .padding()
-          .background(
-            Color.gray
-              .opacity(0.1)
-              .clipShape(
-                RoundedRectangle(
-                  cornerRadius: 10
-                )
-              )
-          )
+          .authTextFieldStyle()
         
         SecureField("Enter your password", text: $password)
-          .padding()
-          .background(
-            Color.gray
-              .opacity(0.1)
-              .clipShape(
-                RoundedRectangle(
-                  cornerRadius: 10
-                )
-              )
-          )
+          .authTextFieldStyle()
         
         Button {
           //
         } label: {
-          Text("Sigh In")
+          Text("Sign In")
             .font(.title3)
             .bold()
             .frame(maxWidth: .infinity)
             .foregroundColor(.white)
             .padding(.horizontal, 80)
             .padding(.vertical)
-            .background(LinearGradient(colors: [.blue.opacity(0.4), .purple], startPoint: .bottomLeading, endPoint: .topTrailing))
+            .background(
+              LinearGradient(
+                colors: [
+                  .blue.opacity(0.4),
+                  .purple
+                ],
+                startPoint: .bottomLeading,
+                endPoint: .topTrailing
+              )
+            )
             .cornerRadius(10)
         }
         
@@ -67,6 +58,30 @@ struct AuthView: View {
     .padding(.horizontal, 40)
     .onAppear(perform: intent.viewOnAppear)
     .modifier(AuthRouter(subjects: model.routerSubject, intent: intent))
+  }
+}
+
+fileprivate struct AuthTextFieldStyle: ViewModifier {
+  @Environment(\.colorScheme) private var colorScheme
+  
+  func body(content: Content) -> some View {
+    content
+      .padding()
+      .background(
+        Color.gray
+          .opacity(colorScheme == .light ? 0.1 : 0.2)
+          .clipShape(
+            RoundedRectangle(
+              cornerRadius: 10
+            )
+          )
+      )
+  }
+}
+
+fileprivate extension View {
+  func authTextFieldStyle() -> some View {
+    self.modifier(AuthTextFieldStyle())
   }
 }
 

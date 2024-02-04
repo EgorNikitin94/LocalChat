@@ -13,6 +13,10 @@ protocol AuthModelActionsProtocol: AnyObject {
 }
 
 protocol AuthModelStateProtocol {
+  var login: String { get set }
+  var password: String { get set }
+  var passwordFieldEnabled: Bool { get }
+  var buttonEnabled: Bool { get }
   var routerSubject:AuthRouter.Subjects { get }
 }
 

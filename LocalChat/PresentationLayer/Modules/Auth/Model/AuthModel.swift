@@ -10,6 +10,10 @@ import Foundation
 import Combine
 
 class AuthModel: ObservableObject, AuthModelStateProtocol {
+  @Published var login: String = ""
+  @Published var password: String = ""
+  @Published var passwordFieldEnabled = false
+  @Published var buttonEnabled = false
   let routerSubject = AuthRouter.Subjects()
 }
 
