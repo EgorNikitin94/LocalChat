@@ -11,24 +11,25 @@ import Observation
 
 @Observable
 class AuthModel: AuthModelStateProtocol {
-  var login: String = "" {
-    didSet {
-      passwordFieldEnabled = !login.isEmpty
-    }
-  }
-  var password: String = "" {
-    didSet {
-      buttonEnabled = !password.isEmpty
-    }
-  }
+  var login: String = ""
+  var password: String = ""
   var passwordFieldEnabled = false
   var buttonEnabled = false
+  var state: State = .none
   let routerSubject = AuthRouter.Subjects()
+  
+  enum State: Int {
+    case none
+    case passwordFieldEnabled
+    case buttonEnabled
+  }
 }
 
 // MARK: - Actions
 extension AuthModel: AuthModelActionsProtocol {
-  
+  func changeState(_ newState: AuthModel.State) {
+    state = newState
+  }
 }
 
 // MARK: - Route

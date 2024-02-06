@@ -31,6 +31,22 @@ extension AuthIntent: AuthIntentProtocol {
     //
   }
   
+  func didChangeLogin(with value: String) {
+    if !value.isEmpty {
+      model?.changeState(.passwordFieldEnabled)
+    } else {
+      model?.changeState(.none)
+    }
+  }
+  
+  func didChangePassword(with value: String) {
+    if !value.isEmpty {
+      model?.changeState(.buttonEnabled)
+    } else {
+      model?.changeState(.passwordFieldEnabled)
+    }
+  }
+  
   func didTapSignIn() {
     routeModel?.didTapSignIn()
   }

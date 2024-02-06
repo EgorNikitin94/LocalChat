@@ -11,6 +11,8 @@ import Foundation
 protocol AuthIntentProtocol: AnyObject {
   func viewOnAppear()
   func didTapSignIn()
+  func didChangeLogin(with value: String)
+  func didChangePassword(with value: String)
 }
 
 @objc protocol AuthModuleInput: AnyObject {

@@ -9,15 +9,14 @@
 import Foundation
 
 protocol AuthModelActionsProtocol: AnyObject {
-  
+  func changeState(_ newState: AuthModel.State)
 }
 
 protocol AuthModelStateProtocol {
   var login: String { get set }
   var password: String { get set }
-  var passwordFieldEnabled: Bool { get }
-  var buttonEnabled: Bool { get }
-  var routerSubject:AuthRouter.Subjects { get }
+  var state: AuthModel.State { get }
+  var routerSubject: AuthRouter.Subjects { get }
 }
 
 // MARK: - Route

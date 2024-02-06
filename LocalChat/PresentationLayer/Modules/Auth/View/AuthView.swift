@@ -27,14 +27,20 @@ struct AuthView: View {
       VStack(spacing: 10) {
         TextField("Enter your login", text: $container.model.login)
           .authTextFieldStyle()
+          .onChange(of: model.login) { _, newValue in
+            intent.didChangeLogin(with: newValue)
+          }
         
-        if model.passwordFieldEnabled {
+        if model.state.rawValue > AuthModel.State.none.rawValue {
           SecureField("Enter your password", text: $container.model.password)
             .authTextFieldStyle()
+            .onChange(of: model.password) { _, newValue in
+              intent.didChangePassword(with: newValue)
+            }
             .transition(.move(edge: .bottom).combined(with: .opacity))
         }
         
-        if model.buttonEnabled {
+        if model.state.rawValue > AuthModel.State.passwordFieldEnabled.rawValue {
           Button {
             intent.didTapSignIn()
           } label: {
@@ -58,13 +64,11 @@ struct AuthView: View {
               .cornerRadius(10)
           }
           .transition(.move(edge: .bottom).combined(with: .opacity))
-          .disabled(!model.buttonEnabled)
         }
       }
     }
     .frame(maxWidth: 400)
-    .animation(.bouncy, value: model.passwordFieldEnabled)
-    .animation(.bouncy, value: model.buttonEnabled)
+    .animation(.bouncy, value: model.state)
     .padding(.horizontal, 40)
     .onAppear(perform: intent.viewOnAppear)
     .modifier(AuthRouter(subjects: model.routerSubject, intent: intent))
