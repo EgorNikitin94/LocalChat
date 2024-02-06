@@ -12,6 +12,7 @@ protocol DialogsListIntentProtocol: AnyObject {
   func viewOnAppear()
   func openConversation(for vm: DialogListRowViewModel)
   func openProfile()
+  func search(with query: String)
 }
 
 @objc protocol DialogsListModuleInput: AnyObject {

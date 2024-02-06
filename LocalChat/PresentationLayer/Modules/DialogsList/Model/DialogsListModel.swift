@@ -12,6 +12,8 @@ import Combine
 class DialogsListModel: ObservableObject, DialogsListModelStateProtocol {
   
   @Published var dialogs: [DialogListRowViewModel] = []
+  @Published var searchText: String = ""
+  @Published var isPresentedSearch: Bool = false
   
   let routerSubject = DialogsListRouter.Subjects()
 }

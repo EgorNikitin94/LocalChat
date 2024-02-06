@@ -18,7 +18,11 @@ class DialogsListIntent {
   
   private var dialogs: [Dialog] = []
 
-  init(model: (DialogsListModelActionsProtocol & DialogsListModelRouterProtocol)?, moduleOutput:DialogsListModuleOutput?, dialogService: DialogsServiceProtocol) {
+  init(
+    model: (DialogsListModelActionsProtocol & DialogsListModelRouterProtocol)?,
+    moduleOutput:DialogsListModuleOutput?,
+    dialogService: DialogsServiceProtocol
+  ) {
     self.model = model
     self.routeModel = model
     self.moduleOutput = moduleOutput
@@ -40,6 +44,15 @@ extension DialogsListIntent: DialogsListIntentProtocol {
       .map({ $0.user }) {
       routeModel?.openConversation(for: user)
     }
+  }
+  
+  func search(with query: String) {
+    guard !query.isEmpty else {
+      model?.didLoadDialogs(dialogs: dialogs)
+      return
+    }
+    let searchDialogs = dialogs.filter({ $0.user.name.contains(query) })
+    model?.didLoadDialogs(dialogs: searchDialogs)
   }
   
   func openProfile() {

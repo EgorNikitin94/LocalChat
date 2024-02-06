@@ -42,6 +42,7 @@ struct RootView<Contacts: View, Dialogs: View, Settings: View>: View {
             intent.didTapOnTabBarItem(with: type)
           }
       }
+      .ignoresSafeArea(.keyboard)
       .animation(.easeIn(duration: 0.2), value: model.state)
     }
     .onAppear(perform: intent.viewOnAppear)

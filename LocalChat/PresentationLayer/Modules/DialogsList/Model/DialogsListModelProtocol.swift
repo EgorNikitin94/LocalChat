@@ -14,6 +14,8 @@ protocol DialogsListModelActionsProtocol: AnyObject {
 
 protocol DialogsListModelStateProtocol {
   var dialogs: [DialogListRowViewModel] { get }
+  var searchText: String { get set }
+  var isPresentedSearch: Bool { get set }
   var routerSubject:DialogsListRouter.Subjects { get }
 }
 

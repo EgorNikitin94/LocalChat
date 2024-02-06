@@ -17,7 +17,7 @@ struct DialogsListView: View {
   
   var body: some View {
     ScrollView(.vertical) {
-      LazyVStack(spacing: 0) {
+      LazyVStack(spacing: .zero) {
         ForEach(model.dialogs) { dialogVM in
           DialogListRowView(dialogVM: dialogVM)
             .padding(.vertical, 15)
@@ -39,6 +39,16 @@ struct DialogsListView: View {
         }
       }
     }
+    .searchable(
+      text: $container.model.searchText,
+      isPresented: $container.model.isPresentedSearch
+    )
+    .scrollDismissesKeyboard(.immediately)
+    .onChange(of: model.searchText, { oldValue, newValue in
+      if oldValue != newValue {
+        intent.search(with: newValue)
+      }
+    })
     .navigationTitle("Team")
     .navigationBarTitleDisplayMode(.inline)
     .navigationBarBackButtonHidden()
