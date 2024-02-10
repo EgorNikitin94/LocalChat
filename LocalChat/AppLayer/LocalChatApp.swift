@@ -8,20 +8,6 @@
 import SwiftUI
 import Observation
 
-class LockalChatAppDelegate: NSObject, UIApplicationDelegate {
-  func application(
-    _ application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
-  ) -> Bool {
-    if #available(iOS 15, *) {
-      UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
-    }
-    
-    NetworkAssembly.shared.tcpTransport.setupConnection()
-    return true
-  }
-}
-
 @Observable
 class AppState {
   var loggin: Bool = false
@@ -30,17 +16,45 @@ class AppState {
 
 @main
 struct LocalChatApp: App {
-  @UIApplicationDelegateAdaptor var delegate: LockalChatAppDelegate
+  @Environment(\.scenePhase) var scenePhase
   
   @State var appState = AppState()
   
+  init() {
+    print("Application launched")
+    UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
+    NetworkAssembly.shared.tcpTransport.setupConnection()
+  }
+  
   var body: some Scene {
     WindowGroup {
-      RootAssembly().build(
-        moduleOutput: nil,
-        completion: nil
-      )
+      VStack {
+        if !appState.loggin {
+          AuthAssembly().build(
+            moduleOutput: nil,
+            completion: nil
+          )
+          .transition(.opacity)
+          .environment(appState)
+        } else {
+          RootAssembly().build(
+            moduleOutput: nil,
+            completion: nil
+          )
+          .transition(.opacity)
+          .environment(appState)
+        }
+      }
+      .animation(.easeIn, value: appState.loggin)
     }
-    .environment(appState)
+    .onChange(of: scenePhase, { _, newValue in
+      switch newValue {
+      case .active:
+        print("Application did enter forground")
+      case .background:
+        print("Application did enter background")
+      default: break
+      }
+    })
   }
 }

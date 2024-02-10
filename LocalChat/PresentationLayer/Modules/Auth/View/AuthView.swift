@@ -15,6 +15,8 @@ struct AuthView: View {
   private var intent: AuthIntentProtocol { container.intent }
   private var model: AuthModelStateProtocol { container.model }
   
+  @Environment(AppState.self) private var appState: AppState
+  
   var body: some View {
     VStack(spacing: 20) {
       Image(.logo)
@@ -42,7 +44,8 @@ struct AuthView: View {
         
         if model.state.rawValue > AuthModel.State.passwordFieldEnabled.rawValue {
           Button {
-            intent.didTapSignIn()
+            //intent.didTapSignIn()
+            appState.loggin = true
           } label: {
             Text("Sign In")
               .font(.title3)
