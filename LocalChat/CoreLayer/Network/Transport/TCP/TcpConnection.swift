@@ -30,8 +30,8 @@ final class TcpConnection: NSObject {
       
       do {
         try self.socket?.connect(toHost: self.host, onPort: self.port)
-        self.socket?.startTLS(nil)
-        self.socket?.readData(toLength: 5, withTimeout: -1, tag: 1)
+//        self.socket?.startTLS(nil)
+//        self.socket?.readData(toLength: 5, withTimeout: -1, tag: 1)
       } catch {
         print(error.localizedDescription)
       }
@@ -50,11 +50,22 @@ final class TcpConnection: NSObject {
       self.socket?.write(data, withTimeout: -1, tag: Int(id))
     }
   }
+  
+  private func lendHand() {
+    Task {
+      do {
+        let _ = try await NetworkAssembly.shared.networkService.performSysInitRequest()
+      } catch {
+        print(error.localizedDescription)
+      }
+    }
+  }
 }
 
 extension TcpConnection: GCDAsyncSocketDelegate {
   func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
     print("TCP didConnectToHost: \(host), port: \(port)")
+    lendHand()
   }
   
   func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
@@ -67,13 +78,7 @@ extension TcpConnection: GCDAsyncSocketDelegate {
   
   func socketDidSecure(_ sock: GCDAsyncSocket) {
     print("socketDidSecure:")
-    Task {
-      do {
-        let _ = try await NetworkAssembly.shared.networkService.performSysInitRequest()
-      } catch {
-        print(error.localizedDescription)
-      }
-    }
+    //lendHand()
   }
   
   func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
