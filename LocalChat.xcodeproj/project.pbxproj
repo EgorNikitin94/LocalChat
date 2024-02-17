@@ -26,6 +26,11 @@
 		50128F532B52BD9800F88CC2 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50128F522B52BD9800F88CC2 /* RequestDispatcher.swift */; };
 		50128F572B52C2D300F88CC2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50128F562B52C2D300F88CC2 /* NetworkRequest.swift */; };
 		50128F592B52C34E00F88CC2 /* TCPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50128F582B52C34E00F88CC2 /* TCPRequest.swift */; };
+		501A55D22B7D5E73006E64DC /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = 501A55D12B7D5E73006E64DC /* NIO */; };
+		501A55D42B7D5E73006E64DC /* NIOConcurrencyHelpers in Frameworks */ = {isa = PBXBuildFile; productRef = 501A55D32B7D5E73006E64DC /* NIOConcurrencyHelpers */; };
+		501A55D62B7D5E73006E64DC /* NIOCore in Frameworks */ = {isa = PBXBuildFile; productRef = 501A55D52B7D5E73006E64DC /* NIOCore */; };
+		501A55D82B7D5E73006E64DC /* NIOEmbedded in Frameworks */ = {isa = PBXBuildFile; productRef = 501A55D72B7D5E73006E64DC /* NIOEmbedded */; };
+		501A55DA2B7D5E73006E64DC /* NIOFoundationCompat in Frameworks */ = {isa = PBXBuildFile; productRef = 501A55D92B7D5E73006E64DC /* NIOFoundationCompat */; };
 		50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE128F61BA90041CFFD /* ContentMessageView.swift */; };
 		50301AE428F61C280041CFFD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE328F61C280041CFFD /* MessageView.swift */; };
 		503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EA28FA0ACD00DE8ED0 /* AppColors.swift */; };
@@ -210,11 +215,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				508359292AF42B0F00AFE301 /* DataStructures in Frameworks */,
+				501A55D42B7D5E73006E64DC /* NIOConcurrencyHelpers in Frameworks */,
+				501A55D22B7D5E73006E64DC /* NIO in Frameworks */,
+				501A55D62B7D5E73006E64DC /* NIOCore in Frameworks */,
 				505121E22A917A5800EAE4B0 /* protoc-gen-swift in Frameworks */,
 				505121E02A917A5800EAE4B0 /* SwiftProtobufPluginLibrary in Frameworks */,
 				509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */,
+				501A55DA2B7D5E73006E64DC /* NIOFoundationCompat in Frameworks */,
 				509D7A952A87BFB80025C0B9 /* GRDB in Frameworks */,
 				505121DE2A917A5800EAE4B0 /* SwiftProtobuf in Frameworks */,
+				501A55D82B7D5E73006E64DC /* NIOEmbedded in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,6 +882,11 @@
 				505121DF2A917A5800EAE4B0 /* SwiftProtobufPluginLibrary */,
 				505121E12A917A5800EAE4B0 /* protoc-gen-swift */,
 				508359282AF42B0F00AFE301 /* DataStructures */,
+				501A55D12B7D5E73006E64DC /* NIO */,
+				501A55D32B7D5E73006E64DC /* NIOConcurrencyHelpers */,
+				501A55D52B7D5E73006E64DC /* NIOCore */,
+				501A55D72B7D5E73006E64DC /* NIOEmbedded */,
+				501A55D92B7D5E73006E64DC /* NIOFoundationCompat */,
 			);
 			productName = LocalChat;
 			productReference = 50DEEABF28EF8626004B5199 /* LocalChat.app */;
@@ -906,6 +921,7 @@
 				509D7A9C2A881BF80025C0B9 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
 				505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
 				508359272AF42B0F00AFE301 /* XCRemoteSwiftPackageReference "DataStructures" */,
+				501A55D02B7D5E73006E64DC /* XCRemoteSwiftPackageReference "swift-nio" */,
 			);
 			productRefGroup = 50DEEAC028EF8626004B5199 /* Products */;
 			projectDirPath = "";
@@ -1235,6 +1251,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		501A55D02B7D5E73006E64DC /* XCRemoteSwiftPackageReference "swift-nio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-nio.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.63.0;
+			};
+		};
 		505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-protobuf.git";
@@ -1270,6 +1294,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		501A55D12B7D5E73006E64DC /* NIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 501A55D02B7D5E73006E64DC /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIO;
+		};
+		501A55D32B7D5E73006E64DC /* NIOConcurrencyHelpers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 501A55D02B7D5E73006E64DC /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOConcurrencyHelpers;
+		};
+		501A55D52B7D5E73006E64DC /* NIOCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 501A55D02B7D5E73006E64DC /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOCore;
+		};
+		501A55D72B7D5E73006E64DC /* NIOEmbedded */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 501A55D02B7D5E73006E64DC /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOEmbedded;
+		};
+		501A55D92B7D5E73006E64DC /* NIOFoundationCompat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 501A55D02B7D5E73006E64DC /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOFoundationCompat;
+		};
 		505121DD2A917A5800EAE4B0 /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */;

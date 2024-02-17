@@ -6,14 +6,15 @@
 //
 
 import Foundation
-import CocoaAsyncSocket
+import NIO
 
 final class TcpConnection: NSObject {
-  private var socket: GCDAsyncSocket?
-  private let tcpQueue: DispatchQueue = DispatchQueue(label: "com.localChat.tcpQueue")
-  
   private let host = "localhost"
-  private let port: UInt16 = 8080
+  private let port: Int = 8080
+  private let group = MultiThreadedEventLoopGroup.singleton
+  
+  private var outbound: NIOAsyncChannelOutboundWriter<Data>? = nil
+  private var clientChannel: NIOAsyncChannel<Data, Data>? = nil
   
   private(set) lazy var outputSocketStream: AsyncThrowingStream<Data, Error> = {
     AsyncThrowingStream { (continuation: AsyncThrowingStream<Data, Error>.Continuation) -> Void in
@@ -24,30 +25,40 @@ final class TcpConnection: NSObject {
   private(set) var outputSocketContinuation: AsyncThrowingStream<Data, Error>.Continuation?
   
   func connect() {
-    tcpQueue.async {
-      if self.socket != nil { return }
-      self.socket = GCDAsyncSocket(delegate: self, delegateQueue: self.tcpQueue)
+    Task {
+      let resolvedAddress = try SocketAddress.makeAddressResolvingHost(host, port: port)
+      self.clientChannel = try await ClientBootstrap(group: group)
+        .channelOption(ChannelOptions.socket(SocketOptionLevel(SOL_SOCKET), SO_REUSEADDR), value: 1)
+        .connectTimeout(TimeAmount(.seconds(40)))
+        .connect(
+          to: resolvedAddress
+        ) { channel in
+          return channel.eventLoop.makeCompletedFuture {
+            return try NIOAsyncChannel<Data, Data>(
+              wrappingChannelSynchronously: channel
+            )
+          }
+        }
       
-      do {
-        try self.socket?.connect(toHost: self.host, onPort: self.port)
-//        self.socket?.startTLS(nil)
-//        self.socket?.readData(toLength: 5, withTimeout: -1, tag: 1)
-      } catch {
-        print(error.localizedDescription)
+      try await self.clientChannel?.executeThenClose { inbound, outbound in
+        self.outbound = outbound
+        
+        for try await inboundData in inbound {
+          print(inboundData)
+          outputSocketContinuation?.yield(with: .success(inboundData))
+        }
       }
     }
+    
   }
   
   func disconnect() {
-    tcpQueue.async {
-      self.socket?.disconnect()
-      self.socket = nil
-    }
+    try? group.syncShutdownGracefully()
   }
   
   func send(data: Data, id: UInt32) {
-    tcpQueue.async {
-      self.socket?.write(data, withTimeout: -1, tag: Int(id))
+    Task {
+      try await outbound?.write(data)
     }
   }
   
@@ -59,29 +70,5 @@ final class TcpConnection: NSObject {
         print(error.localizedDescription)
       }
     }
-  }
-}
-
-extension TcpConnection: GCDAsyncSocketDelegate {
-  func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-    print("TCP didConnectToHost: \(host), port: \(port)")
-    lendHand()
-  }
-  
-  func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-    outputSocketContinuation?.yield(with: .success(data))
-  }
-  
-  func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-    print("socketDidDisconnect: reason \(String(describing: err?.localizedDescription))")
-  }
-  
-  func socketDidSecure(_ sock: GCDAsyncSocket) {
-    print("socketDidSecure:")
-    //lendHand()
-  }
-  
-  func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
-    //
   }
 }
