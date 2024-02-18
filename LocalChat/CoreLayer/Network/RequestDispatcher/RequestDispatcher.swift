@@ -34,11 +34,11 @@ actor RequestDispatcher {
     }
   }
   
-  func sendRequest(_ request: NetworkRequest) async throws -> Response {
+  func sendRequest(_ request: NetworkRequest) async throws -> NetworkResponse {
     enqueue(req: request)
     
     for try await response in request.responseStream {
-      return response
+      return try request.handleResponse(protoResponse: response)
     }
     
     throw RequestDispatcherError.canceledRequest

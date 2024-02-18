@@ -21,4 +21,15 @@ class SysInitRequest: TCPRequest {
       $0.seeesionID = "3232"
     }))
   }
+  
+  override func handleResponse(protoResponse: Response) throws -> NetworkResponse {
+    guard 
+      !protoResponse.sysInited.seeesionID.isEmpty && protoResponse.sysInited.pts != 0
+    else {
+      throw NetworkResponseError.notExpectedRequest
+    }
+    let sessionId = protoResponse.sysInited.seeesionID
+    let pts = protoResponse.sysInited.pts
+    return .sysInited(sessionId: sessionId, pts: pts)
+  }
 }

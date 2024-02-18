@@ -28,4 +28,8 @@ class TCPRequest: NetworkRequest {
     request.id = self.id
     self.request = request
   }
+  
+  func handleResponse(protoResponse: Response) throws -> NetworkResponse {
+    throw NetworkResponseError.notImplementedInSubclass
+  }
 }

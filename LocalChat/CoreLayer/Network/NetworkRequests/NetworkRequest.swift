@@ -22,4 +22,6 @@ protocol NetworkRequest {
   var request: Request { get set }
   var responseStream: AsyncThrowingStream<Response, Error> { get }
   var responseContinuation: AsyncThrowingStream<Response, Error>.Continuation? { get }
+  
+  func handleResponse(protoResponse: Response) throws -> NetworkResponse
 }

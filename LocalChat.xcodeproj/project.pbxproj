@@ -73,6 +73,7 @@
 		509D7A982A87C9FF0025C0B9 /* SQLiteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */; };
 		509D7A9B2A87FA1B0025C0B9 /* MessageDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */; };
 		509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 509D7A9D2A881BF80025C0B9 /* CocoaAsyncSocket */; };
+		50A893362B8297770048F42C /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A893352B8297770048F42C /* NetworkResponse.swift */; };
 		50B3C5252919A9B70089A376 /* FileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B3C5242919A9B70089A376 /* FileStore.swift */; };
 		50D8EE2C2B38DC26005BC57B /* SQLiteMigrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8EE2B2B38DC26005BC57B /* SQLiteMigrationManager.swift */; };
 		50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAC228EF8626004B5199 /* LocalChatApp.swift */; };
@@ -168,6 +169,7 @@
 		5083C4C12B4AE71600656BEC /* RootRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteStore.swift; sourceTree = "<group>"; };
 		509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDisplayItem.swift; sourceTree = "<group>"; };
+		50A893352B8297770048F42C /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		50B3C5242919A9B70089A376 /* FileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStore.swift; sourceTree = "<group>"; };
 		50D8EE2B2B38DC26005BC57B /* SQLiteMigrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteMigrationManager.swift; sourceTree = "<group>"; };
 		50D8EE2D2B38DDBC005BC57B /* LocalChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocalChat.entitlements; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 			children = (
 				5067F50A2B540DCE0085AF56 /* NetworkAssembly */,
 				50128F552B52C2B200F88CC2 /* NetworkRequests */,
+				50A893342B8297480048F42C /* NetworkResponse */,
 				50128F542B52BDC500F88CC2 /* RequestDispatcher */,
 				503836E828FA08CF00DE8ED0 /* Transport */,
 			);
@@ -604,6 +607,14 @@
 				509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */,
 			);
 			path = DisplayItems;
+			sourceTree = "<group>";
+		};
+		50A893342B8297480048F42C /* NetworkResponse */ = {
+			isa = PBXGroup;
+			children = (
+				50A893352B8297770048F42C /* NetworkResponse.swift */,
+			);
+			path = NetworkResponse;
 			sourceTree = "<group>";
 		};
 		50DEEAB628EF8626004B5199 = {
@@ -988,6 +999,7 @@
 				077BFCEFE2B82A8B94BE5300 /* ConversationView.swift in Sources */,
 				D41EBB73E3DF069FC4F97C8E /* DialogsListAssembly.swift in Sources */,
 				503A491E2A892F3B001ACBC5 /* ChatBubbleShape.swift in Sources */,
+				50A893362B8297770048F42C /* NetworkResponse.swift in Sources */,
 				4EAF4713629BE4FAC511112D /* DialogsListIntentProtocol.swift in Sources */,
 				BF47D9FA3F35C8113BF2FAB6 /* DialogsListIntent.swift in Sources */,
 				5083C4C42B4AE71600656BEC /* RootAssembly.swift in Sources */,

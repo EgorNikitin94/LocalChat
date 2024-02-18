@@ -14,7 +14,7 @@ class AbstractService {
     self.requestDispatcher = NetworkAssembly.shared.requestDispatcher
   }
   
-  func performRequest(_ request: NetworkRequest) async throws -> Response {
+  func performRequest(_ request: NetworkRequest) async throws -> NetworkResponse {
     try await requestDispatcher.sendRequest(request)
   }
 }
