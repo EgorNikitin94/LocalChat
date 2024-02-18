@@ -10,13 +10,15 @@ import CocoaAsyncSocket
 import VarInt
 
 final class TcpConnection: NSObject {
+  weak var transport: TcpTransportInterface?
   private var socket: GCDAsyncSocket?
   private let tcpQueue: DispatchQueue = DispatchQueue(label: "com.localChat.tcpQueue")
   
   private let host = "localhost"
   private let port: UInt16 = 8080
-  
   private let headerLength: UInt = 5
+  
+  private var inputTask: Task<(), Never>?
   
   private(set) lazy var outputSocketStream: AsyncThrowingStream<Data, Error> = {
     AsyncThrowingStream { (continuation: AsyncThrowingStream<Data, Error>.Continuation) -> Void in
@@ -24,7 +26,7 @@ final class TcpConnection: NSObject {
     }
   }()
   
-  private(set) var outputSocketContinuation: AsyncThrowingStream<Data, Error>.Continuation?
+  private var outputSocketContinuation: AsyncThrowingStream<Data, Error>.Continuation?
   
   enum PacketType: Int {
     case header
@@ -52,10 +54,13 @@ final class TcpConnection: NSObject {
     }
   }
   
-  func send(data: Data, id: UInt32) {
-    tcpQueue.async {
-      let requestData = self.appendHeader(to: data)
-      self.socket?.write(requestData, withTimeout: -1, tag: Int(id))
+  private func startListenSocketInput() {
+    guard let transport = self.transport else { return }
+    inputTask = Task {
+      for await sendedData in transport.inputSocketStream {
+        let requestData = self.appendHeader(to: sendedData.data)
+        self.socket?.write(requestData, withTimeout: -1, tag: Int(sendedData.id))
+      }
     }
   }
   
@@ -66,22 +71,13 @@ final class TcpConnection: NSObject {
     let requestData = Data(buf)
     return requestData
   }
-  
-  private func lendHand() {
-    Task {
-      do {
-        let _ = try await NetworkAssembly.shared.networkService.performSysInitRequest()
-      } catch {
-        print(error.localizedDescription)
-      }
-    }
-  }
 }
 
 extension TcpConnection: GCDAsyncSocketDelegate {
   func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
     print("TCP didConnectToHost: \(host), port: \(port)")
-    lendHand()
+    startListenSocketInput()
+    transport?.socketDidSuccessConnect()
   }
   
   func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
