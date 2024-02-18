@@ -7,6 +7,7 @@
 
 import Foundation
 import CocoaAsyncSocket
+import VarInt
 
 final class TcpConnection: NSObject {
   private var socket: GCDAsyncSocket?
@@ -14,6 +15,8 @@ final class TcpConnection: NSObject {
   
   private let host = "localhost"
   private let port: UInt16 = 8080
+  
+  private let headerLength: UInt = 5
   
   private(set) lazy var outputSocketStream: AsyncThrowingStream<Data, Error> = {
     AsyncThrowingStream { (continuation: AsyncThrowingStream<Data, Error>.Continuation) -> Void in
@@ -23,6 +26,11 @@ final class TcpConnection: NSObject {
   
   private(set) var outputSocketContinuation: AsyncThrowingStream<Data, Error>.Continuation?
   
+  enum PacketType: Int {
+    case header
+    case body
+  }
+  
   func connect() {
     tcpQueue.async {
       if self.socket != nil { return }
@@ -30,8 +38,7 @@ final class TcpConnection: NSObject {
       
       do {
         try self.socket?.connect(toHost: self.host, onPort: self.port)
-//        self.socket?.startTLS(nil)
-//        self.socket?.readData(toLength: 5, withTimeout: -1, tag: 1)
+        self.socket?.readData(toLength: self.headerLength, withTimeout: -1, tag: PacketType.header.rawValue)
       } catch {
         print(error.localizedDescription)
       }
@@ -47,8 +54,17 @@ final class TcpConnection: NSObject {
   
   func send(data: Data, id: UInt32) {
     tcpQueue.async {
-      self.socket?.write(data, withTimeout: -1, tag: Int(id))
+      let requestData = self.appendHeader(to: data)
+      self.socket?.write(requestData, withTimeout: -1, tag: Int(id))
     }
+  }
+  
+  private func appendHeader(to data: Data) -> Data {
+    var buf = Data(capacity: data.count + Int(self.headerLength))
+    let header = Data(bytes: putUVarInt(UInt64(data.count)), count: Int(self.headerLength))
+    buf.append(contentsOf: header + [UInt8](data))
+    let requestData = Data(buf)
+    return requestData
   }
   
   private func lendHand() {
@@ -69,16 +85,22 @@ extension TcpConnection: GCDAsyncSocketDelegate {
   }
   
   func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
-    outputSocketContinuation?.yield(with: .success(data))
+    if tag == PacketType.header.rawValue {
+      let array = [UInt8](data)
+      let bodySize: UInt64 = uVarInt(array).value
+      if bodySize > 0 {
+        self.socket?.readData(toLength: UInt(bodySize), withTimeout: -1, tag: PacketType.body.rawValue)
+      } else {
+        self.socket?.readData(toLength: self.headerLength, withTimeout: -1, tag: PacketType.header.rawValue)
+      }
+    } else if tag == PacketType.body.rawValue {
+      outputSocketContinuation?.yield(with: .success(data))
+      self.socket?.readData(toLength: self.headerLength, withTimeout: -1, tag: PacketType.header.rawValue)
+    }
   }
   
   func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
     print("socketDidDisconnect: reason \(String(describing: err?.localizedDescription))")
-  }
-  
-  func socketDidSecure(_ sock: GCDAsyncSocket) {
-    print("socketDidSecure:")
-    //lendHand()
   }
   
   func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {

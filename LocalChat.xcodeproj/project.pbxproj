@@ -32,6 +32,7 @@
 		503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */; };
 		503836F328FA0D7700DE8ED0 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F228FA0D7700DE8ED0 /* View+extensions.swift */; };
 		503836F828FA167C00DE8ED0 /* DialogListRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */; };
+		503979E72B81674900177D68 /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = 503979E62B81674900177D68 /* VarInt */; };
 		503A491C2A892F2A001ACBC5 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A491B2A892F2A001ACBC5 /* ChatBubble.swift */; };
 		503A491E2A892F3B001ACBC5 /* ChatBubbleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A491D2A892F3B001ACBC5 /* ChatBubbleShape.swift */; };
 		50410BF72B4853F000E1D9F2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50410BF62B4853F000E1D9F2 /* User.swift */; };
@@ -213,6 +214,7 @@
 				505121E22A917A5800EAE4B0 /* protoc-gen-swift in Frameworks */,
 				505121E02A917A5800EAE4B0 /* SwiftProtobufPluginLibrary in Frameworks */,
 				509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */,
+				503979E72B81674900177D68 /* VarInt in Frameworks */,
 				509D7A952A87BFB80025C0B9 /* GRDB in Frameworks */,
 				505121DE2A917A5800EAE4B0 /* SwiftProtobuf in Frameworks */,
 			);
@@ -872,6 +874,7 @@
 				505121DF2A917A5800EAE4B0 /* SwiftProtobufPluginLibrary */,
 				505121E12A917A5800EAE4B0 /* protoc-gen-swift */,
 				508359282AF42B0F00AFE301 /* DataStructures */,
+				503979E62B81674900177D68 /* VarInt */,
 			);
 			productName = LocalChat;
 			productReference = 50DEEABF28EF8626004B5199 /* LocalChat.app */;
@@ -906,6 +909,7 @@
 				509D7A9C2A881BF80025C0B9 /* XCRemoteSwiftPackageReference "CocoaAsyncSocket" */,
 				505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
 				508359272AF42B0F00AFE301 /* XCRemoteSwiftPackageReference "DataStructures" */,
+				503979E52B81674900177D68 /* XCRemoteSwiftPackageReference "swift-varint" */,
 			);
 			productRefGroup = 50DEEAC028EF8626004B5199 /* Products */;
 			projectDirPath = "";
@@ -1235,6 +1239,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		503979E52B81674900177D68 /* XCRemoteSwiftPackageReference "swift-varint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-libp2p/swift-varint?tab=readme-ov-file";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
 		505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-protobuf.git";
@@ -1270,6 +1282,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		503979E62B81674900177D68 /* VarInt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 503979E52B81674900177D68 /* XCRemoteSwiftPackageReference "swift-varint" */;
+			productName = VarInt;
+		};
 		505121DD2A917A5800EAE4B0 /* SwiftProtobuf */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */;

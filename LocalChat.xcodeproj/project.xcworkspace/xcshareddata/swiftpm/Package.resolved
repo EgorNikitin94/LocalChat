@@ -35,6 +35,15 @@
         "revision" : "ce20dc083ee485524b802669890291c0d8090170",
         "version" : "1.22.1"
       }
+    },
+    {
+      "identity" : "swift-varint?tab=readme-ov-file",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-libp2p/swift-varint?tab=readme-ov-file",
+      "state" : {
+        "revision" : "3d1e3c9ca4824d5acaf40ff46e96c0b956599271",
+        "version" : "0.0.1"
+      }
     }
   ],
   "version" : 2

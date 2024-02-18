@@ -25,7 +25,7 @@ actor RequestDispatcher {
     do {
       let response = try Response(serializedData: data)
       if let netReq = dequeue(reqId: response.id) {
-        print("Get TCP response id: \(response.id), \n \(response.debugDescription)")
+        print("Get TCP response id: \(response.id), \n\(response.debugDescription)")
         netReq.responseContinuation?.yield(response)
         netReq.responseContinuation?.finish()
       }
@@ -51,7 +51,7 @@ actor RequestDispatcher {
     
     if let req = pendingRequests.front(), !pendingRequests.isEmpty {
       executingRequest = req
-      print("Send TCP request id: \(req.id), \n \(req.request.debugDescription)")
+      print("Send TCP request id: \(req.id), \n\(req.request.debugDescription)")
       tcpTransport.send(request: req.request)
     }
   }

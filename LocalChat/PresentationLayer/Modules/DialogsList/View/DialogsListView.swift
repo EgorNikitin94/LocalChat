@@ -25,9 +25,14 @@ struct DialogsListView: View {
               Button {
                 //
               } label: {
-                Text("закрепить")
+                Label("Закрепить", systemImage: "pin.fill")
               }
-
+              
+              Button {
+                //
+              } label: {
+                Label("Отключить уведомления", systemImage: "bell.slash.fill")
+              }
             }
             .onTapGesture {
               intent.openConversation(for: dialogVM)
