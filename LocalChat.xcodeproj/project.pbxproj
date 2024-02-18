@@ -74,6 +74,7 @@
 		509D7A9B2A87FA1B0025C0B9 /* MessageDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */; };
 		509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 509D7A9D2A881BF80025C0B9 /* CocoaAsyncSocket */; };
 		50A893362B8297770048F42C /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A893352B8297770048F42C /* NetworkResponse.swift */; };
+		50A893392B82B7BA0048F42C /* UserDefaultsStored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A893382B82B7BA0048F42C /* UserDefaultsStored.swift */; };
 		50B3C5252919A9B70089A376 /* FileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B3C5242919A9B70089A376 /* FileStore.swift */; };
 		50D8EE2C2B38DC26005BC57B /* SQLiteMigrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8EE2B2B38DC26005BC57B /* SQLiteMigrationManager.swift */; };
 		50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAC228EF8626004B5199 /* LocalChatApp.swift */; };
@@ -170,6 +171,7 @@
 		509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteStore.swift; sourceTree = "<group>"; };
 		509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDisplayItem.swift; sourceTree = "<group>"; };
 		50A893352B8297770048F42C /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		50A893382B82B7BA0048F42C /* UserDefaultsStored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStored.swift; sourceTree = "<group>"; };
 		50B3C5242919A9B70089A376 /* FileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStore.swift; sourceTree = "<group>"; };
 		50D8EE2B2B38DC26005BC57B /* SQLiteMigrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteMigrationManager.swift; sourceTree = "<group>"; };
 		50D8EE2D2B38DDBC005BC57B /* LocalChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocalChat.entitlements; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */,
 				5006DEE128FB58E200BBAC2A /* AvatarView.swift */,
 				5006DEE928FC99D600BBAC2A /* BadgeView.swift */,
+				50A893382B82B7BA0048F42C /* UserDefaultsStored.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1004,6 +1007,7 @@
 				BF47D9FA3F35C8113BF2FAB6 /* DialogsListIntent.swift in Sources */,
 				5083C4C42B4AE71600656BEC /* RootAssembly.swift in Sources */,
 				CC3AC42616D1E20AF34119E1 /* DialogsListModelProtocol.swift in Sources */,
+				50A893392B82B7BA0048F42C /* UserDefaultsStored.swift in Sources */,
 				A5C29E116FDD801BDA417C20 /* DialogsListModel.swift in Sources */,
 				DE6A51D9BD604EDCEAD75CCE /* DialogsListRouter.swift in Sources */,
 				10299AECB23133D1FC03752B /* DialogsListView.swift in Sources */,

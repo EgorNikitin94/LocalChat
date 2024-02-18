@@ -18,6 +18,13 @@ class TcpTransport {
   
   weak var requestDispatcher: RequestDispatcher?
   
+  enum ConnectionState {
+    case none
+    case conecting
+    case good
+  }
+  
+  private var currentState: ConnectionState = .none
   private var outputTask: Task<(), Never>?
   
   private(set) lazy var inputSocketStream: AsyncStream<(data: Data, id: UInt32)> = {
@@ -55,6 +62,7 @@ class TcpTransport {
   }
   
   func setupConnection() {
+    currentState = .conecting
     connection.connect()
     startListenSocketOutput()
   }
@@ -63,6 +71,7 @@ class TcpTransport {
     Task {
       do {
         let _ = try await NetworkAssembly.shared.networkService.performSysInitRequest()
+        currentState = .good
       } catch {
         print(error.localizedDescription)
       }

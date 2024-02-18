@@ -8,11 +8,13 @@
 import Foundation
 
 class NetworkService: AbstractService {
-  var pts: UInt32 = 0
-  var sessionId: String = ""
+  @UserDefaultsStored(key: "session_pts", defaultValue: 0)
+  private(set) var pts: UInt32
+  @UserDefaultsStored(key: "session_id", defaultValue: "")
+  private(set) var sessionId: String
   
   func performSysInitRequest() async throws -> (sessionId: String, pts: UInt32) {
-    let request: NetworkRequest = await SysInitRequest()
+    let request: NetworkRequest = await SysInitRequest(sessionId: sessionId)
     let response = try await performRequest(request)
     guard case let NetworkResponse.sysInited(sessionId: sessionId, pts: pts) = response  else {
       throw NetworkResponseError.notExpectedRequest
