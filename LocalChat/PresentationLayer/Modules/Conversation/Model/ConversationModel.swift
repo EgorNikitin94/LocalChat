@@ -72,7 +72,7 @@ extension ConversationModel: ConversationModelActionsProtocol {
     navTitle = peer.name
     isOnline = peer.isOnline
     if !isOnline {
-      onlineDate = "был(а) вчера"
+      onlineDate = String(localized: "was yesterday")
     }
   }
   

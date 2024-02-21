@@ -7,8 +7,24 @@
     "%@" : {
 
     },
+    "Camera" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Камера"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17,8 +33,41 @@
         }
       }
     },
+    "Chats" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chats"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чаты"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закрыть"
+          }
+        }
+      }
+    },
     "Contacts" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacts"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -29,6 +78,12 @@
     },
     "Disable notifications" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable notifications"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -39,6 +94,12 @@
     },
     "Done" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -49,6 +110,12 @@
     },
     "Enter your login" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your login"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -59,6 +126,12 @@
     },
     "Enter your password" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your password"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -67,14 +140,66 @@
         }
       }
     },
+    "Files" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файлы"
+          }
+        }
+      }
+    },
+    "Gallery" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Галлерея"
+          }
+        }
+      }
+    },
     "Hallo amo module" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hallo amo module"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Привет новый модуль"
+          }
+        }
+      }
     },
     "Hallo new amo module!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hallo new amo module!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Привет современный новый модуль"
+          }
+        }
+      }
     },
     "online" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "online"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -102,6 +227,12 @@
     },
     "Send: %lld" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send: %lld"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -112,6 +243,12 @@
     },
     "Settings" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -122,6 +259,12 @@
     },
     "Sign In" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign In"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -132,6 +275,12 @@
     },
     "Something went wrong" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -142,6 +291,12 @@
     },
     "Team" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Team"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -152,6 +307,12 @@
     },
     "today" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "today"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -160,32 +321,50 @@
         }
       }
     },
-    "Welcome!" : {
+    "was yesterday" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "was yesterday"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Добро пожаловать"
+            "value" : "был(а) вчера"
+          }
+        }
+      }
+    },
+    "Welcome!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добро пожаловать!"
           }
         }
       }
     },
     "Write a message..." : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write a message..."
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Написать сообщение"
-          }
-        }
-      }
-    },
-    "закрыть" : {
-      "localizations" : {
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "close"
           }
         }
       }

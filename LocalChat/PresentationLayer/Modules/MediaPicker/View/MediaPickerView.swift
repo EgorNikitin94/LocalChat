@@ -67,7 +67,7 @@ struct MediaPickerView: View {
           Button {
             intent.closeModule()
           } label: {
-            Text("закрыть")
+            Text("Close")
           }
         }
       }

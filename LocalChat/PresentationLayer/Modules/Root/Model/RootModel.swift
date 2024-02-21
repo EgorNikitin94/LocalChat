@@ -25,11 +25,11 @@ class RootViewTabItem: ObservableObject, Identifiable {
     self.id = type.rawValue
     self.tabBarType = type
     self.title = if type == .contacts {
-      "Contacts"
+      String(localized: "Contacts")
     } else if type == .chats {
-      "Chats"
+      String(localized: "Chats")
     } else {
-      "Settings"
+      String(localized: "Settings")
     }
     
     self.imageName = if type == .contacts {

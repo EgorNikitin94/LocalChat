@@ -24,6 +24,7 @@ struct AuthView: View {
         .frame(width: 70, height: 70)
         .cornerRadius(10)
       Text("Welcome!")
+        .multilineTextAlignment(.center)
         .font(.largeTitle)
         .bold()
       VStack(spacing: 10) {
