@@ -24,6 +24,7 @@ struct LocalChatApp: App {
     Log.app.info("Application launched")
     UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
     NetworkAssembly.shared.tcpTransport.setupConnection()
+    ServicesCatalog.shared.initalSetup()
   }
   
   var body: some Scene {

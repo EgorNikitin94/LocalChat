@@ -12,7 +12,7 @@ protocol MessageServiceProtocol {
   func getMessages(for peer: User, user: User) -> [Message]
 }
 
-class MessageService {
+class MessageService: AbstractService {
 
 }
 

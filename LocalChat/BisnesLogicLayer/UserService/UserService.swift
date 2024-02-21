@@ -15,7 +15,7 @@ protocol UserServiceProtocol {
   func getAllUsers() -> [User]
 }
 
-class UserService {
+class UserService: AbstractService {
   
 }
 

@@ -44,7 +44,7 @@ final class TcpConnection: NSObject {
         try self.socket?.connect(toHost: self.host, onPort: self.port)
         self.socket?.readData(toLength: self.headerLength, withTimeout: -1, tag: PacketType.header.rawValue)
       } catch {
-        print(error.localizedDescription)
+        self.logger.error("TCP socket create error: \(error.localizedDescription)")
       }
     }
   }

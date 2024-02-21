@@ -20,7 +20,7 @@ class DialogsService: DialogsServiceProtocol {
   }
 }
 
-class MockDialogsService: DialogsServiceProtocol {
+class MockDialogsService: AbstractService, DialogsServiceProtocol {
   
   private(set) var models: [Dialog] = []
     
