@@ -36,7 +36,7 @@ struct MediaPickerView: View {
             Button {
               intent.sendSelectedMedia()
             } label: {
-              Text("Отправить: \(model.selectedItemsCount)")
+              Text("Send: \(model.selectedItemsCount)")
             }
             .buttonStyle(.bordered)
           } else {

@@ -76,6 +76,8 @@
 		50A893362B8297770048F42C /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A893352B8297770048F42C /* NetworkResponse.swift */; };
 		50A893392B82B7BA0048F42C /* UserDefaultsStored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A893382B82B7BA0048F42C /* UserDefaultsStored.swift */; };
 		50B3C5252919A9B70089A376 /* FileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B3C5242919A9B70089A376 /* FileStore.swift */; };
+		50BCB7292B867D11001902CB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 50BCB7282B867D11001902CB /* Localizable.xcstrings */; };
+		50BCB72C2B868301001902CB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BCB72B2B868301001902CB /* Logger.swift */; };
 		50D8EE2C2B38DC26005BC57B /* SQLiteMigrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8EE2B2B38DC26005BC57B /* SQLiteMigrationManager.swift */; };
 		50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DEEAC228EF8626004B5199 /* LocalChatApp.swift */; };
 		50DEEAC728EF8629004B5199 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DEEAC628EF8629004B5199 /* Assets.xcassets */; };
@@ -173,6 +175,8 @@
 		50A893352B8297770048F42C /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		50A893382B82B7BA0048F42C /* UserDefaultsStored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStored.swift; sourceTree = "<group>"; };
 		50B3C5242919A9B70089A376 /* FileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStore.swift; sourceTree = "<group>"; };
+		50BCB7282B867D11001902CB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = LocalChat/Resources/Localizable.xcstrings; sourceTree = SOURCE_ROOT; };
+		50BCB72B2B868301001902CB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		50D8EE2B2B38DC26005BC57B /* SQLiteMigrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteMigrationManager.swift; sourceTree = "<group>"; };
 		50D8EE2D2B38DDBC005BC57B /* LocalChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocalChat.entitlements; sourceTree = "<group>"; };
 		50DEEABF28EF8626004B5199 /* LocalChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -391,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				503836EA28FA0ACD00DE8ED0 /* AppColors.swift */,
+				50BCB7282B867D11001902CB /* Localizable.xcstrings */,
 				50DEEAC628EF8629004B5199 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -425,6 +430,7 @@
 				5006DEE128FB58E200BBAC2A /* AvatarView.swift */,
 				5006DEE928FC99D600BBAC2A /* BadgeView.swift */,
 				50A893382B82B7BA0048F42C /* UserDefaultsStored.swift */,
+				50BCB72B2B868301001902CB /* Logger.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -916,6 +922,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 50DEEAB628EF8626004B5199;
 			packageReferences = (
@@ -941,6 +948,7 @@
 			files = (
 				50DEEACA28EF8629004B5199 /* Preview Assets.xcassets in Resources */,
 				50DEEAC728EF8629004B5199 /* Assets.xcassets in Resources */,
+				50BCB7292B867D11001902CB /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +990,7 @@
 				50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */,
 				5006DEE428FC973F00BBAC2A /* AuthService.swift in Sources */,
 				E13339B9670D802A2D47FE6E /* ConversationAssembly.swift in Sources */,
+				50BCB72C2B868301001902CB /* Logger.swift in Sources */,
 				5083C4C72B4AE71600656BEC /* RootView.swift in Sources */,
 				609EA7EF519A91E8229A20D7 /* ConversationIntentProtocol.swift in Sources */,
 				50128F532B52BD9800F88CC2 /* RequestDispatcher.swift in Sources */,

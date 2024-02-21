@@ -20,6 +20,8 @@ final class TcpConnection: NSObject {
   
   private var inputTask: Task<(), Never>?
   
+  private let logger = Log.custom(category: "Socket")
+  
   private(set) lazy var outputSocketStream: AsyncThrowingStream<Data, Error> = {
     AsyncThrowingStream { (continuation: AsyncThrowingStream<Data, Error>.Continuation) -> Void in
       self.outputSocketContinuation = continuation
@@ -75,7 +77,7 @@ final class TcpConnection: NSObject {
 
 extension TcpConnection: GCDAsyncSocketDelegate {
   func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-    print("TCP didConnectToHost: \(host), port: \(port)")
+    logger.info("TCP didConnectToHost: \(host), port: \(port)")
     startListenSocketInput()
     transport?.socketDidSuccessConnect()
   }
@@ -96,7 +98,7 @@ extension TcpConnection: GCDAsyncSocketDelegate {
   }
   
   func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
-    print("socketDidDisconnect: reason \(String(describing: err?.localizedDescription))")
+    logger.info("socketDidDisconnect: reason \(String(describing: err?.localizedDescription))")
   }
   
   func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {

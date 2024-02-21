@@ -37,9 +37,9 @@ struct MediaButton: Identifiable {
 
 class MediaPickerModel: ObservableObject, MediaPickerModelStateProtocol {
   @Published var imagesDisplayItems: [PhotoDisplayItem] = []
-  var buttons: [MediaButton] = [MediaButton(imageName: "photo.stack", title: "Галерея", type: .gallery),
-                                MediaButton(imageName: "camera.fill", title: "Камера", type: .camera),
-                                MediaButton(imageName: "folder.fill", title: "Файлы", type: .files)]
+  var buttons: [MediaButton] = [MediaButton(imageName: "photo.stack", title: "Gallery", type: .gallery),
+                                MediaButton(imageName: "camera.fill", title: "Camera", type: .camera),
+                                MediaButton(imageName: "folder.fill", title: "Files", type: .files)]
   @Published var selectedItemsCount: Int = 0
   let routerSubject = MediaPickerRouter.Subjects()
 }

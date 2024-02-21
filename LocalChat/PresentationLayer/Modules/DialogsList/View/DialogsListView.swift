@@ -25,13 +25,13 @@ struct DialogsListView: View {
               Button {
                 //
               } label: {
-                Label("Закрепить", systemImage: "pin.fill")
+                Label("Pin", systemImage: "pin.fill")
               }
               
               Button {
                 //
               } label: {
-                Label("Отключить уведомления", systemImage: "bell.slash.fill")
+                Label("Disable notifications", systemImage: "bell.slash.fill")
               }
             }
             .onTapGesture {

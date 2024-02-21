@@ -25,12 +25,12 @@ actor RequestDispatcher {
     do {
       let response = try Response(serializedData: data)
       if let netReq = dequeue(reqId: response.id) {
-        print("Get TCP response id: \(response.id), \n\(response.debugDescription)")
+        Log.network.info("Get TCP response id: \(response.id), \n\(response.debugDescription)")
         netReq.responseContinuation?.yield(response)
         netReq.responseContinuation?.finish()
       }
     } catch {
-      print(error.localizedDescription)
+      Log.network.error("\(error.localizedDescription)")
     }
   }
   
@@ -51,7 +51,7 @@ actor RequestDispatcher {
     
     if let req = pendingRequests.front(), !pendingRequests.isEmpty {
       executingRequest = req
-      print("Send TCP request id: \(req.id), \n\(req.request.debugDescription)")
+      Log.network.info("Send TCP request id: \(req.id), \n\(req.request.debugDescription)")
       tcpTransport.send(request: req.request)
     }
   }
