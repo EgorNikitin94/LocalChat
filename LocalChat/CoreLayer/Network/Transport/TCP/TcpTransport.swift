@@ -70,7 +70,7 @@ class TcpTransport {
   private func lendHand() {
     Task {
       do {
-        let _ = try await NetworkAssembly.shared.networkService.performSysInitRequest()
+        let _ = try await ServicesCatalog.shared.networkService.performSysInitRequest()
         currentState = .good
       } catch {
         print(error.localizedDescription)

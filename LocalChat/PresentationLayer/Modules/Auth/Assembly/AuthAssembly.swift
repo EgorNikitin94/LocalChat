@@ -25,7 +25,11 @@ class AuthAssembly {
 }
   
   private func buildIntent(model: AuthModel, moduleOutput: AuthModuleOutput?) -> AuthIntent {
-    AuthIntent(model: model, moduleOutput: moduleOutput)
+    AuthIntent(
+      model: model,
+      moduleOutput: moduleOutput,
+      authService: ServicesCatalog.shared.authService
+    )
 }
   
   private func buildView(model: AuthModel, intent: AuthIntent) -> some View {

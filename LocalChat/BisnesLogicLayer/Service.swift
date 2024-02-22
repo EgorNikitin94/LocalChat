@@ -7,11 +7,14 @@
 
 import Foundation
 
-class AbstractService {
-  var requestDispatcher: RequestDispatcher
-  
-  init() {
-    self.requestDispatcher = NetworkAssembly.shared.requestDispatcher
+protocol Service {
+  var tag: ServiceTag { get }
+  var requestDispatcher: RequestDispatcher { get }
+}
+
+extension Service {
+  var requestDispatcher: RequestDispatcher {
+    NetworkAssembly.shared.requestDispatcher
   }
   
   func performRequest(_ request: NetworkRequest) async throws -> NetworkResponse {

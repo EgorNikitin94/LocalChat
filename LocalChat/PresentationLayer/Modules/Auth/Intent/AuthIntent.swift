@@ -13,14 +13,17 @@ class AuthIntent {
   private weak var model: AuthModelActionsProtocol?
   private weak var routeModel: AuthModelRouterProtocol?
   private weak var moduleOutput: AuthModuleOutput?
+  private var authService: AuthServiceProtocol
 
   init(
     model: (AuthModelActionsProtocol & AuthModelRouterProtocol)?,
-    moduleOutput:AuthModuleOutput?
+    moduleOutput: AuthModuleOutput?,
+    authService: AuthServiceProtocol
   ) {
     self.model = model
     self.routeModel = model
     self.moduleOutput = moduleOutput
+    self.authService = authService
   }
   
 }

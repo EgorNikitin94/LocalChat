@@ -8,15 +8,16 @@
 import Foundation
 import DataStructures
 
-protocol MessageServiceProtocol {
+protocol MessageServiceProtocol: Service {
   func getMessages(for peer: User, user: User) -> [Message]
 }
 
-class MessageService: AbstractService {
+class MessageService {
 
 }
 
 class MockMessageService: MessageServiceProtocol {
+  var tag: ServiceTag = .message
   private var messages: [Message] = []
   
   func getMessages(for peer: User, user: User) -> [Message] {

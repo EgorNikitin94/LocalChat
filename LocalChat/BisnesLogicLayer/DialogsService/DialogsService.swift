@@ -8,20 +8,22 @@
 import UIKit
 import Combine
 
-protocol DialogsServiceProtocol {
+protocol DialogsServiceProtocol: Service {
   var models: [Dialog] { get }
   func getDialogsList() -> [Dialog]
 }
 
 class DialogsService: DialogsServiceProtocol {
+  var tag: ServiceTag = .dialog
+  
   private(set) var models: [Dialog] = []
   func getDialogsList() -> [Dialog] {
     return []
   }
 }
 
-class MockDialogsService: AbstractService, DialogsServiceProtocol {
-  
+class MockDialogsService: DialogsServiceProtocol {
+  let tag: ServiceTag = .dialog
   private(set) var models: [Dialog] = []
     
   func getDialogsList() -> [Dialog] {

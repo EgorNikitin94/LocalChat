@@ -7,7 +7,9 @@
 
 import Foundation
 
-class NetworkService: AbstractService {
+class NetworkService: Service {
+  var tag: ServiceTag = .network
+  
   @UserDefaultsStored(key: "session_pts", defaultValue: 0)
   private(set) var pts: UInt32
   @UserDefaultsStored(key: "session_id", defaultValue: "")

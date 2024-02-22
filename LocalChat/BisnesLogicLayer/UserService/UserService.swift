@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol UserServiceProtocol {
+protocol UserServiceProtocol: Service {
   var currentUser: User {get}
   
   func getUser(with id: String) -> User
@@ -15,11 +15,13 @@ protocol UserServiceProtocol {
   func getAllUsers() -> [User]
 }
 
-class UserService: AbstractService {
+class UserService {
   
 }
 
 class MockUserService: UserServiceProtocol {
+  let tag: ServiceTag = .user
+  
   var currentUser: User = User(type: .selfUser, name: "Egor", passsword: "123", avatar: UIImage(named: "Me"), isOnline: true)
   
   private var users: [User] = [User(type: .anotherUser, name: "John Poster", passsword: "1123", avatar: UIImage(named: "mock_1"), isOnline: true),

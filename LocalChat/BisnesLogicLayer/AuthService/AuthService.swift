@@ -13,8 +13,8 @@ protocol AuthServiceProtocol: Service {
   func sighUp(email: String, name: String) async throws -> User
 }
 
-class AuthService: AbstractService, AuthServiceProtocol {
-  let tag: ServiceTag = "AuthService"
+class AuthService: AuthServiceProtocol {
+  let tag: ServiceTag = .auth
   
   func checkLogin(_ loginStr: String) async throws -> Bool {
     true
@@ -32,7 +32,7 @@ class AuthService: AbstractService, AuthServiceProtocol {
 }
 
 class MockAuthService: AuthServiceProtocol {
-  let tag: ServiceTag = "AuthService"
+  let tag: ServiceTag = .auth
   
   func checkLogin(_ loginStr: String) async throws -> Bool {
     true

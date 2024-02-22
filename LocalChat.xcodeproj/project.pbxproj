@@ -56,7 +56,7 @@
 		5067F5082B53F88E0085AF56 /* RequestIdCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F5072B53F88E0085AF56 /* RequestIdCounter.swift */; };
 		5067F50C2B540DF20085AF56 /* NetworkAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50B2B540DF20085AF56 /* NetworkAssembly.swift */; };
 		5067F50E2B5419F30085AF56 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50D2B5419F30085AF56 /* NetworkService.swift */; };
-		5067F5102B541A0B0085AF56 /* AbstractService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50F2B541A0B0085AF56 /* AbstractService.swift */; };
+		5067F5102B541A0B0085AF56 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50F2B541A0B0085AF56 /* Service.swift */; };
 		5067F5142B541F340085AF56 /* SysInitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F5132B541F340085AF56 /* SysInitRequest.swift */; };
 		507F398A2909C678002571DB /* TcpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpConnection.swift */; };
 		508359292AF42B0F00AFE301 /* DataStructures in Frameworks */ = {isa = PBXBuildFile; productRef = 508359282AF42B0F00AFE301 /* DataStructures */; };
@@ -159,7 +159,7 @@
 		5067F5072B53F88E0085AF56 /* RequestIdCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestIdCounter.swift; sourceTree = "<group>"; };
 		5067F50B2B540DF20085AF56 /* NetworkAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAssembly.swift; sourceTree = "<group>"; };
 		5067F50D2B5419F30085AF56 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		5067F50F2B541A0B0085AF56 /* AbstractService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractService.swift; sourceTree = "<group>"; };
+		5067F50F2B541A0B0085AF56 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5067F5132B541F340085AF56 /* SysInitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysInitRequest.swift; sourceTree = "<group>"; };
 		507F39892909C678002571DB /* TcpConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpConnection.swift; sourceTree = "<group>"; };
 		5083C48A2B4ADCAE00656BEC /* View+Modify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Modify.swift"; sourceTree = "<group>"; };
@@ -370,7 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				50BCB72D2B869CC9001902CB /* ServicesCatalog.swift */,
-				5067F50F2B541A0B0085AF56 /* AbstractService.swift */,
+				5067F50F2B541A0B0085AF56 /* Service.swift */,
 				5067F5112B541F130085AF56 /* NetworkService */,
 				50BCB72F2B869D42001902CB /* AuthService */,
 				50BCB7302B869D50001902CB /* UserService */,
@@ -1026,7 +1026,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5067F5102B541A0B0085AF56 /* AbstractService.swift in Sources */,
+				5067F5102B541A0B0085AF56 /* Service.swift in Sources */,
 				5006DEEC28FC9EA700BBAC2A /* UserService.swift in Sources */,
 				5006DEE828FC976400BBAC2A /* MessageService.swift in Sources */,
 				50D8EE2C2B38DC26005BC57B /* SQLiteMigrationManager.swift in Sources */,
