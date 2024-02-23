@@ -8,7 +8,7 @@
 import Foundation
 
 class NetworkService: Service {
-  var tag: ServiceTag = .network
+  let tag: ServiceTag = .network
   
   @UserDefaultsStored(key: "session_pts", defaultValue: 0)
   private(set) var pts: UInt32

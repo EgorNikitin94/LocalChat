@@ -36,7 +36,7 @@ final class ServicesCatalog {
   }
   
   func register(service: Service) {
-    guard services.keys.contains(where: { $0 == service.tag }) else { return }
+    //guard services.keys.contains(where: { $0 == service.tag }) else { return }
     services[service.tag] = service
   }
   

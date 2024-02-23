@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Combine
+import Reachability
 
 protocol TcpTransportInterface: AnyObject {
   var inputSocketStream: AsyncStream<(data: Data, id: UInt32)> { get }
@@ -35,9 +37,15 @@ class TcpTransport {
   
   private var inputSocketContinuation: AsyncStream<(data: Data, id: UInt32)>.Continuation?
   
+  private let timer = Timer.publish(every: 40, on: .current, in: .common)
+  private var reachability: Reachability?
+  
+  private(set) var cancellableSet: Set<AnyCancellable> = []
+  
   init() {
     self.connection = TcpConnection()
     self.connection.transport = self
+    self.reachability = try? Reachability()
   }
   
   func startListenSocketOutput() {
@@ -65,6 +73,7 @@ class TcpTransport {
     currentState = .conecting
     connection.connect()
     startListenSocketOutput()
+    startObserveReachability()
   }
   
   private func lendHand() {
@@ -75,6 +84,29 @@ class TcpTransport {
       } catch {
         print(error.localizedDescription)
       }
+    }
+  }
+  
+  private func startObserveReachability() {
+    do {
+      try reachability?.startNotifier()
+      
+      NotificationCenter.default
+        .publisher(for: .reachabilityChanged)
+        .compactMap({ $0.object as? Reachability })
+        .sink { reachability in
+          switch reachability.connection {
+          case .wifi:
+            Log.network.debug("Reachability status change: WiFi")
+          case .cellular:
+            Log.network.debug("Reachability status change: Cellular")
+          default:
+            Log.network.debug("Reachability status change: No connection")
+          }
+        }
+        .store(in: &cancellableSet)
+    } catch {
+      Log.network.debug("Reachability connect error: \(error.localizedDescription)")
     }
   }
 }

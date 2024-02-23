@@ -58,6 +58,7 @@
 		5067F50E2B5419F30085AF56 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50D2B5419F30085AF56 /* NetworkService.swift */; };
 		5067F5102B541A0B0085AF56 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50F2B541A0B0085AF56 /* Service.swift */; };
 		5067F5142B541F340085AF56 /* SysInitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F5132B541F340085AF56 /* SysInitRequest.swift */; };
+		5078656D2B8891CD00BF40DA /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 5078656C2B8891CD00BF40DA /* Reachability */; };
 		507F398A2909C678002571DB /* TcpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpConnection.swift */; };
 		508359292AF42B0F00AFE301 /* DataStructures in Frameworks */ = {isa = PBXBuildFile; productRef = 508359282AF42B0F00AFE301 /* DataStructures */; };
 		5083C48B2B4ADCAE00656BEC /* View+Modify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083C48A2B4ADCAE00656BEC /* View+Modify.swift */; };
@@ -225,6 +226,7 @@
 				505121E02A917A5800EAE4B0 /* SwiftProtobufPluginLibrary in Frameworks */,
 				509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */,
 				503979E72B81674900177D68 /* VarInt in Frameworks */,
+				5078656D2B8891CD00BF40DA /* Reachability in Frameworks */,
 				509D7A952A87BFB80025C0B9 /* GRDB in Frameworks */,
 				505121DE2A917A5800EAE4B0 /* SwiftProtobuf in Frameworks */,
 			);
@@ -369,8 +371,8 @@
 		503836E528FA043300DE8ED0 /* BisnesLogicLayer */ = {
 			isa = PBXGroup;
 			children = (
-				50BCB72D2B869CC9001902CB /* ServicesCatalog.swift */,
 				5067F50F2B541A0B0085AF56 /* Service.swift */,
+				50BCB72D2B869CC9001902CB /* ServicesCatalog.swift */,
 				5067F5112B541F130085AF56 /* NetworkService */,
 				50BCB72F2B869D42001902CB /* AuthService */,
 				50BCB7302B869D50001902CB /* UserService */,
@@ -962,6 +964,7 @@
 				505121E12A917A5800EAE4B0 /* protoc-gen-swift */,
 				508359282AF42B0F00AFE301 /* DataStructures */,
 				503979E62B81674900177D68 /* VarInt */,
+				5078656C2B8891CD00BF40DA /* Reachability */,
 			);
 			productName = LocalChat;
 			productReference = 50DEEABF28EF8626004B5199 /* LocalChat.app */;
@@ -998,6 +1001,7 @@
 				505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
 				508359272AF42B0F00AFE301 /* XCRemoteSwiftPackageReference "DataStructures" */,
 				503979E52B81674900177D68 /* XCRemoteSwiftPackageReference "swift-varint" */,
+				5078656B2B8891CD00BF40DA /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = 50DEEAC028EF8626004B5199 /* Products */;
 			projectDirPath = "";
@@ -1348,6 +1352,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		5078656B2B8891CD00BF40DA /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		508359272AF42B0F00AFE301 /* XCRemoteSwiftPackageReference "DataStructures" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/EgorNikitin94/DataStructures";
@@ -1394,6 +1406,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 505121DC2A917A5800EAE4B0 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
 			productName = "protoc-gen-swift";
+		};
+		5078656C2B8891CD00BF40DA /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5078656B2B8891CD00BF40DA /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
 		};
 		508359282AF42B0F00AFE301 /* DataStructures */ = {
 			isa = XCSwiftPackageProductDependency;
