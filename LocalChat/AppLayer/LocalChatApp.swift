@@ -23,7 +23,6 @@ struct LocalChatApp: App {
   init() {
     Log.app.info("Application launched")
     UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
-    NetworkAssembly.shared.tcpTransport.setupConnection()
     ServicesCatalog.shared.initalSetup()
   }
   
@@ -51,8 +50,10 @@ struct LocalChatApp: App {
     .onChange(of: scenePhase, { _, newValue in
       switch newValue {
       case .active:
+        NetworkAssembly.shared.tcpTransport.start()
         Log.app.info("Application did enter forground")
       case .background:
+        NetworkAssembly.shared.tcpTransport.sleep()
         Log.app.info("Application did enter background")
       default: break
       }

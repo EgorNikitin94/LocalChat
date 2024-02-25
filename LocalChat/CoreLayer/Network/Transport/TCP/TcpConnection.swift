@@ -99,6 +99,7 @@ extension TcpConnection: GCDAsyncSocketDelegate {
   
   func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
     logger.info("socketDidDisconnect: reason \(String(describing: err?.localizedDescription))")
+    transport?.socketDidDisconnect()
   }
   
   func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {

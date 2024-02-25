@@ -12,6 +12,7 @@ import Reachability
 protocol TcpTransportInterface: AnyObject {
   var inputSocketStream: AsyncStream<(data: Data, id: UInt32)> { get }
   func socketDidSuccessConnect()
+  func socketDidDisconnect()
 }
 
 class TcpTransport {
@@ -27,6 +28,7 @@ class TcpTransport {
   }
   
   private var currentState: ConnectionState = .none
+  private var currentReachability: Reachability.Connection = .unavailable
   private var outputTask: Task<(), Never>?
   
   private(set) lazy var inputSocketStream: AsyncStream<(data: Data, id: UInt32)> = {
@@ -46,18 +48,9 @@ class TcpTransport {
     self.connection = TcpConnection()
     self.connection.transport = self
     self.reachability = try? Reachability()
-  }
-  
-  func startListenSocketOutput() {
-    outputTask = Task {
-      do {
-        for try await resivedData in connection.outputSocketStream {
-          await requestDispatcher?.didGet(data: resivedData)
-        }
-      } catch {
-        print(error.localizedDescription)
-      }
-    }
+    self.currentReachability = reachability?.connection ?? .unavailable
+    startObserveReachability()
+    startListenSocketOutput()
   }
   
   func send(request: Request) {
@@ -69,11 +62,37 @@ class TcpTransport {
     }
   }
   
-  func setupConnection() {
+  func start() {
+    guard currentState == .none else { return }
     currentState = .conecting
     connection.connect()
-    startListenSocketOutput()
-    startObserveReachability()
+  }
+  
+  func sleep() {
+    currentState = .none
+    stop()
+  }
+  
+  func reset() {
+    stop()
+    start()
+  }
+  
+  private func stop() {
+    currentState = .none
+    connection.disconnect()
+  }
+  
+  private func startListenSocketOutput() {
+    outputTask = Task {
+      do {
+        for try await resivedData in connection.outputSocketStream {
+          await requestDispatcher?.didGet(data: resivedData)
+        }
+      } catch {
+        print(error.localizedDescription)
+      }
+    }
   }
   
   private func lendHand() {
@@ -94,13 +113,28 @@ class TcpTransport {
       NotificationCenter.default
         .publisher(for: .reachabilityChanged)
         .compactMap({ $0.object as? Reachability })
-        .sink { reachability in
+        .filter({ [weak self] newReachability in
+          guard let self = self else { return false }
+          if self.currentReachability != newReachability.connection {
+            if (self.currentReachability == .wifi || self.currentReachability == .cellular) && newReachability.connection == .unavailable {
+              return true
+            } else if self.currentReachability == .unavailable && (newReachability.connection == .wifi || self.currentReachability == .cellular) {
+              return true
+            }
+          }
+          return false
+        })
+        .sink { [weak self] reachability in
+          self?.currentReachability = reachability.connection
           switch reachability.connection {
           case .wifi:
+            self?.start()
             Log.network.debug("Reachability status change: WiFi")
           case .cellular:
+            self?.start()
             Log.network.debug("Reachability status change: Cellular")
           default:
+            self?.stop()
             Log.network.debug("Reachability status change: No connection")
           }
         }
@@ -114,5 +148,9 @@ class TcpTransport {
 extension TcpTransport: TcpTransportInterface {
   func socketDidSuccessConnect() {
     lendHand()
+  }
+  
+  func socketDidDisconnect() {
+    reset()
   }
 }
