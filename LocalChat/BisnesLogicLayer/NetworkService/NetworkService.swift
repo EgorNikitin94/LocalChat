@@ -18,7 +18,7 @@ class NetworkService: Service {
   func performSysInitRequest() async throws -> (sessionId: String, pts: UInt32) {
     let request: NetworkRequest = await SysInitRequest(sessionId: sessionId)
     let response = try await performRequest(request)
-    guard case let NetworkResponse.sysInited(sessionId: sessionId, pts: pts) = response  else {
+    guard case let NetworkResponse.sysInited(sessionId: sessionId, pts: pts) = response else {
       throw NetworkResponseError.notExpectedRequest
     }
     self.pts = pts
