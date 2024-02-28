@@ -16,7 +16,6 @@ protocol TcpTransportInterface: AnyObject {
 }
 
 class TcpTransport {
-  static let shared = TcpTransport()
   private var connection: TcpConnection
   
   weak var requestDispatcher: RequestDispatcher?
@@ -30,6 +29,7 @@ class TcpTransport {
   private var currentState: ConnectionState = .none
   private var currentReachability: Reachability.Connection = .unavailable
   private var outputTask: Task<(), Never>?
+  private let reconectInterval = SmartReconectInterval(with: .linear(duration: .seconds(1)))
   
   private(set) lazy var inputSocketStream: AsyncStream<(data: Data, id: UInt32)> = {
     AsyncStream { (continuation: AsyncStream<(data: Data, id: UInt32)>.Continuation) -> Void in
@@ -151,6 +151,9 @@ extension TcpTransport: TcpTransportInterface {
   }
   
   func socketDidDisconnect() {
-    reset()
+    Task {
+      await reconectInterval.startAfterDelay()
+      reset()
+    }
   }
 }
