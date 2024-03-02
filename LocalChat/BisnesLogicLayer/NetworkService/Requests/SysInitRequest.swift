@@ -17,17 +17,17 @@ class SysInitRequest: TCPRequest {
     self.request.payload = .sysInit(SysInit.with({
       $0.appID = "37FF7DA9-42F4-4213-B6ED-4CF2A22A958A"
       $0.appSecret = "9FB828F0-E522-47FD-A5DF-3E05791E6AA5"
-      $0.seeesionID = sessionId
+      $0.sessionID = sessionId
     }))
   }
   
   override func handleResponse(protoResponse: Response) throws -> NetworkResponse {
-    guard 
-      !protoResponse.sysInited.seeesionID.isEmpty && protoResponse.sysInited.pts != 0
+    guard
+      !protoResponse.sysInited.sessionID.isEmpty && protoResponse.sysInited.pts != 0
     else {
       throw NetworkResponseError.notExpectedRequest
     }
-    let sessionId = protoResponse.sysInited.seeesionID
+    let sessionId = protoResponse.sysInited.sessionID
     let pts = protoResponse.sysInited.pts
     return .sysInited(sessionId: sessionId, pts: pts)
   }
