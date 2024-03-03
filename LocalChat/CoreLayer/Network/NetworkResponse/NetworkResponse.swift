@@ -14,5 +14,7 @@ enum NetworkResponseError: Error {
 
 enum NetworkResponse {
   case unknown
+  case bool(Bool)
   case sysInited(sessionId: String, pts: UInt32)
+  case pong(id: UInt32)
 }

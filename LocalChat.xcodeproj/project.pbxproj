@@ -26,6 +26,7 @@
 		50128F532B52BD9800F88CC2 /* RequestDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50128F522B52BD9800F88CC2 /* RequestDispatcher.swift */; };
 		50128F572B52C2D300F88CC2 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50128F562B52C2D300F88CC2 /* NetworkRequest.swift */; };
 		50128F592B52C34E00F88CC2 /* TCPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50128F582B52C34E00F88CC2 /* TCPRequest.swift */; };
+		5020FDE82B949CEF00115C05 /* PingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020FDE72B949CEF00115C05 /* PingRequest.swift */; };
 		502672B82B8FC2F600809785 /* SmartReconectInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502672B72B8FC2F600809785 /* SmartReconectInterval.swift */; };
 		50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE128F61BA90041CFFD /* ContentMessageView.swift */; };
 		50301AE428F61C280041CFFD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE328F61C280041CFFD /* MessageView.swift */; };
@@ -140,6 +141,7 @@
 		50128F522B52BD9800F88CC2 /* RequestDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDispatcher.swift; sourceTree = "<group>"; };
 		50128F562B52C2D300F88CC2 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		50128F582B52C34E00F88CC2 /* TCPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCPRequest.swift; sourceTree = "<group>"; };
+		5020FDE72B949CEF00115C05 /* PingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingRequest.swift; sourceTree = "<group>"; };
 		502672B72B8FC2F600809785 /* SmartReconectInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartReconectInterval.swift; sourceTree = "<group>"; };
 		50301AE128F61BA90041CFFD /* ContentMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMessageView.swift; sourceTree = "<group>"; };
 		50301AE328F61C280041CFFD /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 			isa = PBXGroup;
 			children = (
 				5067F5132B541F340085AF56 /* SysInitRequest.swift */,
+				5020FDE72B949CEF00115C05 /* PingRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -1087,6 +1090,7 @@
 				50BCB72C2B868301001902CB /* Logger.swift in Sources */,
 				5083C4C72B4AE71600656BEC /* RootView.swift in Sources */,
 				609EA7EF519A91E8229A20D7 /* ConversationIntentProtocol.swift in Sources */,
+				5020FDE82B949CEF00115C05 /* PingRequest.swift in Sources */,
 				50128F532B52BD9800F88CC2 /* RequestDispatcher.swift in Sources */,
 				50128F592B52C34E00F88CC2 /* TCPRequest.swift in Sources */,
 				5067ED0D2A843F7F00C5FA11 /* RouterCloseModifier.swift in Sources */,

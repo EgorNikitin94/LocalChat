@@ -25,4 +25,13 @@ class NetworkService: Service {
     self.sessionId = sessionId
     return (sessionId, pts)
   }
+  
+  func performPingRequest() async throws -> Bool {
+    let request: NetworkRequest = await PingRequest()
+    let response =  try await performRequest(request)
+    guard case let NetworkResponse.pong(id) = response else {
+      throw NetworkResponseError.notExpectedRequest
+    }
+    return id > 0
+  }
 }
