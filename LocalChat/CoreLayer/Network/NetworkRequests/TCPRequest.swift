@@ -29,7 +29,16 @@ class TCPRequest: NetworkRequest {
     self.request = request
   }
   
+  @discardableResult
   func handleResponse(protoResponse: Response) throws -> NetworkResponse {
-    throw NetworkResponseError.notImplementedInSubclass
+    try handleError(protoResponse: protoResponse)
+  }
+  
+  private func handleError(protoResponse: Response) throws -> NetworkResponse {
+    switch protoResponse.payload {
+    case .error(let error):
+      throw NetworkResponseError.error(NetworkError(with: error))
+    default: .unknown
+    }
   }
 }

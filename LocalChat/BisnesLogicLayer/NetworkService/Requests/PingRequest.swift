@@ -20,11 +20,13 @@ class PingRequest: TCPRequest {
   }
   
   override func handleResponse(protoResponse: Response) throws -> NetworkResponse {
+    try super.handleResponse(protoResponse: protoResponse)
     guard
-      protoResponse.pong.id != UInt32(0)
+      let payload = protoResponse.payload,
+      case let Response.OneOf_Payload.pong(pong) = payload
     else {
       throw NetworkResponseError.notExpectedRequest
     }
-    return .pong(id: protoResponse.pong.id)
+    return .pong(id: pong.id)
   }
 }
