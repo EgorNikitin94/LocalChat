@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BadgeView: View {
-  
   let size: CGFloat
   let number: Int
   var numberString: String {
@@ -21,18 +20,43 @@ struct BadgeView: View {
   }
   
     var body: some View {
-      ZStack {
-        Color.blue
-          .frame(width: number > 99 ? size + 12 : size, height: size)
-          .clipShape(RoundedRectangle(cornerRadius: 100))
-        Text(numberString)
-          .foregroundColor(.white)
-      }
+      Text(numberString)
+        .foregroundColor(.white)
+        .padding(.horizontal, 4)
+        .frame(minWidth: size, maxHeight: size)
+        .background(Color.blue)
+        .clipShape(Capsule())
+        .contentTransition(.numericText(countsDown: false))
     }
 }
 
-struct BadgeView_Previews: PreviewProvider {
-    static var previews: some View {
-        BadgeView(number: 10)
+fileprivate struct BadgeViewPreview: View {
+  @State var bage: Int = 90
+  var body: some View {
+    VStack {
+      BadgeView(number: bage)
+      
+      Button("Increment") {
+        withAnimation(.bouncy) {
+          bage += 1
+        }
+      }
+      
+      Button("Decriment") {
+        withAnimation(.bouncy) {
+          bage -= 1
+        }
+      }
+      
+      Button("Zero") {
+        withAnimation(.bouncy) {
+          bage = 0
+        }
+      }
     }
+  }
+}
+
+#Preview {
+  BadgeViewPreview()
 }
