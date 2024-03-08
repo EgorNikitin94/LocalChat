@@ -12,14 +12,16 @@ enum UserType {
   case anotherUser
 }
 
-struct User: Hashable {
-  let type: UserType
+struct User: Peer, Hashable {
+  let id: String = UUID().uuidString
+  let type: PeerType = .user
+  let userType: UserType
   let name: String
   let passsword: String
   let avatar: UIImage?
   var isOnline: Bool
   
-  var isCurrentUser: Bool {
-    return type == .selfUser
+  var isMe: Bool {
+    return userType == .selfUser
   }
 }

@@ -164,15 +164,15 @@ struct ImageContentMessageView: View {
 }
 
 #Preview("Light") {
-  let me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
-  let user3 = User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
+  let me = User(userType: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
+  let user3 = User(userType: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
   let message  = Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Leverage programmatic control over your app’s navigation behavior to set its launch state, manage transitions between size classes, respond to deep")
   return ContentMessageView(currentMessage: MessageDisplayItem(with: message))
 }
 
 #Preview("Dark") {
-  let me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
-  let user3 = User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
+  let me = User(userType: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
+  let user3 = User(userType: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
   let message  = Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Leverage programmatic control over your app’s navigation behavior to set its launch state, manage transitions between size classes, respond to deep links, and more.")
   return ContentMessageView(currentMessage: MessageDisplayItem(with: message)).preferredColorScheme(.dark)
 }

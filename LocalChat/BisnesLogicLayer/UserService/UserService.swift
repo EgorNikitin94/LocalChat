@@ -22,15 +22,15 @@ class UserService {
 class MockUserService: UserServiceProtocol {
   let tag: ServiceTag = .user
   
-  var currentUser: User = User(type: .selfUser, name: "Egor", passsword: "123", avatar: UIImage(named: "Me"), isOnline: true)
+  var currentUser: User = User(userType: .selfUser, name: "Egor", passsword: "123", avatar: UIImage(named: "Me"), isOnline: true)
   
-  private var users: [User] = [User(type: .anotherUser, name: "John Poster", passsword: "1123", avatar: UIImage(named: "mock_1"), isOnline: true),
-                               User(type: .anotherUser, name: "Bob Robins", passsword: "1123", avatar: nil, isOnline: false),
-                               User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false),
-                               User(type: .anotherUser, name: "Rob Stark", passsword: "1123", avatar: UIImage(named: "mock_3"), isOnline: true),
-                               User(type: .anotherUser, name: "Jim Bim", passsword: "1123", avatar: nil, isOnline: false),
-                               User(type: .anotherUser, name: "Antony Blinkin", passsword: "1123", avatar: nil, isOnline: true),
-                               User(type: .anotherUser, name: "Vladimir Rezanov", passsword: "1123", avatar: nil, isOnline: true)
+  private var users: [User] = [User(userType: .anotherUser, name: "John Poster", passsword: "1123", avatar: UIImage(named: "mock_1"), isOnline: true),
+                               User(userType: .anotherUser, name: "Bob Robins", passsword: "1123", avatar: nil, isOnline: false),
+                               User(userType: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false),
+                               User(userType: .anotherUser, name: "Rob Stark", passsword: "1123", avatar: UIImage(named: "mock_3"), isOnline: true),
+                               User(userType: .anotherUser, name: "Jim Bim", passsword: "1123", avatar: nil, isOnline: false),
+                               User(userType: .anotherUser, name: "Antony Blinkin", passsword: "1123", avatar: nil, isOnline: true),
+                               User(userType: .anotherUser, name: "Vladimir Rezanov", passsword: "1123", avatar: nil, isOnline: true)
   ]
   
   func getUser(with id: String) -> User {

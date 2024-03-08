@@ -21,11 +21,11 @@ class AuthService: AuthServiceProtocol {
   }
   
   func sighIn(login: String, password: String) async throws -> User {
-    User(type: .selfUser, name: "Egor", passsword: "qwerty", avatar: nil, isOnline: true)
+    User(userType: .selfUser, name: "Egor", passsword: "qwerty", avatar: nil, isOnline: true)
   }
   
   func sighUp(email: String, name: String) async throws -> User {
-    User(type: .selfUser, name: "Egor", passsword: "qwerty", avatar: nil, isOnline: true)
+    User(userType: .selfUser, name: "Egor", passsword: "qwerty", avatar: nil, isOnline: true)
   }
   
   
@@ -39,10 +39,10 @@ class MockAuthService: AuthServiceProtocol {
   }
   
   func sighIn(login: String, password: String) async throws -> User {
-    User(type: .selfUser, name: "Egor", passsword: "qwerty", avatar: nil, isOnline: true)
+    User(userType: .selfUser, name: "Egor", passsword: "qwerty", avatar: nil, isOnline: true)
   }
   
   func sighUp(email: String, name: String) async throws -> User {
-    User(type: .selfUser, name: "Egor", passsword: "qwerty", avatar: nil, isOnline: true)
+    User(userType: .selfUser, name: "Egor", passsword: "qwerty", avatar: nil, isOnline: true)
   }
 }

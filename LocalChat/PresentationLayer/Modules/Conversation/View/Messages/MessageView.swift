@@ -27,7 +27,7 @@ struct MessageView: View {
           .cornerRadius(17)
       }
       HStack(alignment: .bottom, spacing: 5) {
-        if !currentMessage.from.isCurrentUser {
+        if !currentMessage.from.isMe {
   //        if let avatar = currentMessage.from.avatar {
   //          Image(uiImage: avatar)
   //            .resizable()
@@ -52,7 +52,7 @@ struct MessageView: View {
           .padding(.horizontal, currentMessage.isEndOfSequence ? 6 : 10)
           .padding(.bottom, currentMessage.isEndOfSequence ? 8 : 0)
         
-        if !currentMessage.from.isCurrentUser {
+        if !currentMessage.from.isMe {
           Spacer(minLength: minBubleOffset)
         }
       }
@@ -62,8 +62,8 @@ struct MessageView: View {
 }
 
 struct MessageView_Previews: PreviewProvider {
-  static let me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
-  static let user3 = User(type: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
+  static let me = User(userType: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
+  static let user3 = User(userType: .anotherUser, name: "Sarra Bold", passsword: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
   static let message  = Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "There are a lot of premium iOS templates on iosapptemplates.com")
   static var previews: some View {
     MessageView(currentMessage: MessageDisplayItem(with: message))

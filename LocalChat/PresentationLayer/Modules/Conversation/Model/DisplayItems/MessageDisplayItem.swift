@@ -35,7 +35,7 @@ class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
   }
   
   var isFromCurrentUser: Bool {
-    from.isCurrentUser
+    from.isMe
   }
   
   var messageContentType: MessageContentType {

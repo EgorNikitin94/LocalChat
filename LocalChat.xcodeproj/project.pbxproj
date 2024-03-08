@@ -59,6 +59,7 @@
 		5067F50E2B5419F30085AF56 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50D2B5419F30085AF56 /* NetworkService.swift */; };
 		5067F5102B541A0B0085AF56 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50F2B541A0B0085AF56 /* Service.swift */; };
 		5067F5142B541F340085AF56 /* SysInitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F5132B541F340085AF56 /* SysInitRequest.swift */; };
+		5073DE212B9BBE1500CF8C89 /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5073DE202B9BBE1500CF8C89 /* Peer.swift */; };
 		5078656D2B8891CD00BF40DA /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 5078656C2B8891CD00BF40DA /* Reachability */; };
 		507F398A2909C678002571DB /* TcpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpConnection.swift */; };
 		508359292AF42B0F00AFE301 /* DataStructures in Frameworks */ = {isa = PBXBuildFile; productRef = 508359282AF42B0F00AFE301 /* DataStructures */; };
@@ -170,6 +171,7 @@
 		5067F50D2B5419F30085AF56 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		5067F50F2B541A0B0085AF56 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5067F5132B541F340085AF56 /* SysInitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysInitRequest.swift; sourceTree = "<group>"; };
+		5073DE202B9BBE1500CF8C89 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		507F39892909C678002571DB /* TcpConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpConnection.swift; sourceTree = "<group>"; };
 		5083C48A2B4ADCAE00656BEC /* View+Modify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Modify.swift"; sourceTree = "<group>"; };
 		5083C48C2B4ADF6100656BEC /* View+If.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+If.swift"; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 		50410BF42B4853C000E1D9F2 /* Entitys */ = {
 			isa = PBXGroup;
 			children = (
+				5073DE202B9BBE1500CF8C89 /* Peer.swift */,
 				50410BF62B4853F000E1D9F2 /* User.swift */,
 				50410BF82B4853FD00E1D9F2 /* Dialog.swift */,
 				50410BFA2B48540900E1D9F2 /* Message.swift */,
@@ -1106,6 +1109,7 @@
 				501233792A9BF50100CDF28B /* Separator.swift in Sources */,
 				5067F50E2B5419F30085AF56 /* NetworkService.swift in Sources */,
 				50B298CD2B93DF9C00E2ECF3 /* users.pb.swift in Sources */,
+				5073DE212B9BBE1500CF8C89 /* Peer.swift in Sources */,
 				55EF727C8971C458581570A2 /* ConversationIntent.swift in Sources */,
 				E9DA5AD2E69C3A0716DAD223 /* ConversationModelProtocol.swift in Sources */,
 				5058C02B2AA3AA7600A35D84 /* TrackableScrollView.swift in Sources */,
