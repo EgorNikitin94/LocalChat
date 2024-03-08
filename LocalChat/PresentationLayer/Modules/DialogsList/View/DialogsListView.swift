@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DialogsListView: View {
   
-  @StateObject var container: MVIContainer<DialogsListIntentProtocol, DialogsListModelStateProtocol>
+  @State var container: ModernMVIContainer<DialogsListIntentProtocol, DialogsListModelStateProtocol>
   
   private var intent: DialogsListIntentProtocol { container.intent }
   private var model: DialogsListModelStateProtocol { container.model }
@@ -70,10 +70,9 @@ struct DialogsListView: View {
   }
 }
 
-struct DialogsListView_Previews: PreviewProvider {
-  static var previews: some View {
-    NavigationStack {
-      DialogsListAssembly().build(moduleOutput: nil, completion: nil)
-    }
+
+#Preview {
+  NavigationStack {
+    DialogsListAssembly().build(moduleOutput: nil, completion: nil)
   }
 }

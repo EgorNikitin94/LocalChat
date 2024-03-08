@@ -11,9 +11,15 @@ import SwiftUI
 class DialogsListAssembly {
 
 // MARK: - Public
-  func build(moduleOutput: DialogsListModuleOutput?, completion: ((DialogsListModuleInput?) -> Void)?) -> some View {
+  func build(
+    moduleOutput: DialogsListModuleOutput?,
+    completion: ((DialogsListModuleInput?) -> Void)?
+  ) -> some View {
     let model = buildModel()
-    let intent = buildIntent(model: model, moduleOutput: moduleOutput)
+    let intent = buildIntent(
+      model: model,
+      moduleOutput: moduleOutput
+    )
     let view = buildView(model: model, intent: intent)
     completion?(intent as DialogsListModuleInput)
     return view
@@ -24,16 +30,26 @@ class DialogsListAssembly {
     DialogsListModel()
 }
   
-  private func buildIntent(model: DialogsListModel, moduleOutput: DialogsListModuleOutput?) -> DialogsListIntent {
-    DialogsListIntent(model: model, moduleOutput: moduleOutput, dialogService: MockDialogsService())
+  private func buildIntent(
+    model: DialogsListModel,
+    moduleOutput: DialogsListModuleOutput?
+  ) -> DialogsListIntent {
+    DialogsListIntent(
+      model: model,
+      moduleOutput: moduleOutput,
+      dialogService: MockDialogsService()
+    )
 }
   
-  private func buildView(model: DialogsListModel, intent: DialogsListIntent) -> some View {
-    let container = MVIContainer(
+  private func buildView(
+    model: DialogsListModel,
+    intent: DialogsListIntent
+  ) -> some View {
+    let modernContainer = ModernMVIContainer(
       intent: intent as DialogsListIntentProtocol,
-      model: model as DialogsListModelStateProtocol,
-      modelChangePublisher: model.objectWillChange)
-    return DialogsListView(container: container)
+      model: model as DialogsListModelStateProtocol
+    )
+    return DialogsListView(container: modernContainer)
   }
   
 }

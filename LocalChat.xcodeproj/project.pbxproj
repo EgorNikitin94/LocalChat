@@ -33,7 +33,7 @@
 		503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EA28FA0ACD00DE8ED0 /* AppColors.swift */; };
 		503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */; };
 		503836F328FA0D7700DE8ED0 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F228FA0D7700DE8ED0 /* View+extensions.swift */; };
-		503836F828FA167C00DE8ED0 /* DialogListRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */; };
+		503836F828FA167C00DE8ED0 /* DialogListDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F728FA167C00DE8ED0 /* DialogListDisplayItem.swift */; };
 		503979E72B81674900177D68 /* VarInt in Frameworks */ = {isa = PBXBuildFile; productRef = 503979E62B81674900177D68 /* VarInt */; };
 		503A491C2A892F2A001ACBC5 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A491B2A892F2A001ACBC5 /* ChatBubble.swift */; };
 		503A491E2A892F3B001ACBC5 /* ChatBubbleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503A491D2A892F3B001ACBC5 /* ChatBubbleShape.swift */; };
@@ -148,7 +148,7 @@
 		503836EA28FA0ACD00DE8ED0 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdaptiveForgroundColor.swift; sourceTree = "<group>"; };
 		503836F228FA0D7700DE8ED0 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
-		503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListRowViewModel.swift; sourceTree = "<group>"; };
+		503836F728FA167C00DE8ED0 /* DialogListDisplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListDisplayItem.swift; sourceTree = "<group>"; };
 		503A491B2A892F2A001ACBC5 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
 		503A491D2A892F3B001ACBC5 /* ChatBubbleShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleShape.swift; sourceTree = "<group>"; };
 		50410BF62B4853F000E1D9F2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -567,6 +567,14 @@
 			path = Requests;
 			sourceTree = "<group>";
 		};
+		5073DE1F2B9B60D900CF8C89 /* DisplayItems */ = {
+			isa = PBXGroup;
+			children = (
+				503836F728FA167C00DE8ED0 /* DialogListDisplayItem.swift */,
+			);
+			path = DisplayItems;
+			sourceTree = "<group>";
+		};
 		507F398B2909C6A5002571DB /* FileStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -809,6 +817,7 @@
 		841B25353B0279C6A4909404 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5073DE1F2B9B60D900CF8C89 /* DisplayItems */,
 				9EAFA470D621A91CC985AC38 /* DialogsListModelProtocol.swift */,
 				51F172826E2E07E7269C2E93 /* DialogsListModel.swift */,
 			);
@@ -933,7 +942,6 @@
 			children = (
 				58F299032538B24D18F2B045 /* DialogsListView.swift */,
 				505410A928F219D2006D4875 /* DialogListRowView.swift */,
-				503836F728FA167C00DE8ED0 /* DialogListRowViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1078,7 +1086,7 @@
 				50301AE428F61C280041CFFD /* MessageView.swift in Sources */,
 				5067ED0C2A843F7F00C5FA11 /* RouterAlertModifier.swift in Sources */,
 				503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */,
-				503836F828FA167C00DE8ED0 /* DialogListRowViewModel.swift in Sources */,
+				503836F828FA167C00DE8ED0 /* DialogListDisplayItem.swift in Sources */,
 				50B298CA2B93DF9C00E2ECF3 /* auth.pb.swift in Sources */,
 				503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */,
 				5006DEE228FB58E200BBAC2A /* AvatarView.swift in Sources */,

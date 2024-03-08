@@ -9,23 +9,32 @@ import SwiftUI
 
 struct DialogListRowView: View {
   
-  let dialogVM: DialogListRowViewModel
-  
-  @Environment(\.colorScheme) private var colorScheme
-  
-  init(dialogVM: DialogListRowViewModel) {
-    self.dialogVM = dialogVM
-  }
+  @Bindable var dialogVM: DialogListDisplayItem
   
   var body: some View {
     HStack {
-      AvatarView(displayItem: AvatarDisplayItem(with: dialogVM.baseModel.user), needShowOnline: true)
+      AvatarView(
+        displayItem: AvatarDisplayItem(
+          with: dialogVM.baseModel.user
+        ),
+        needShowOnline: true
+      )
         .frame(width: 60, height: 60)
       HStack {
         VStack(spacing: 3) {
           HStack {
-            Text(dialogVM.userName)
-              .font(.system(size: 22))
+            HStack(alignment: .lastTextBaseline, spacing: 4) {
+              Text(dialogVM.userName)
+                .font(.system(size: 22))
+              
+              if dialogVM.muted {
+                Image(systemName: "bell.slash.fill")
+                  .resizable()
+                  .frame(width: 12, height: 12)
+                  .foregroundColor(.gray)
+                  .transition(.scale.combined(with: .opacity))
+              }
+            }
             
             Spacer()
             
@@ -35,6 +44,7 @@ struct DialogListRowView: View {
                 .foregroundColor(.gray)
             }
           }
+          .animation(.bouncy, value: dialogVM.muted)
           if let message = dialogVM.lastMessageText {
             HStack {
               Text(message)
@@ -42,8 +52,15 @@ struct DialogListRowView: View {
                 .lineLimit(2)
               Spacer()
               
-              BadgeView(number: dialogVM.unreadCount)
-                .isHidden(dialogVM.unreadCount == 0)
+              if dialogVM.unreadCount != 0 {
+                BadgeView(
+                  number: Binding(
+                    badgeValue: $dialogVM.unreadCount
+                  ),
+                  muted: $dialogVM.muted,
+                  size: 30
+                )
+              }
             }
           }
         }
@@ -54,12 +71,23 @@ struct DialogListRowView: View {
   }
 }
 
-struct DialogListRowView_Previews: PreviewProvider {
-  static let me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
-  static let user = User(type: .anotherUser, name: "John", passsword: "1123", avatar: nil, isOnline: true)
-  static var previews: some View {
-    DialogListRowView(dialogVM: DialogListRowViewModel(dialog: Dialog(user: user,
-                                                                      lastMessage: Message(from: user, to: me, date: Date(), text: "Hallo! Whats the problem?"))))
-    .previewLayout(.fixed(width: 400, height: 80))
-  }
+#Preview {
+  let me = User(type: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
+  let user = User(type: .anotherUser, name: "John", passsword: "1123", avatar: nil, isOnline: true)
+  return DialogListRowView(
+    dialogVM: DialogListDisplayItem(
+      dialog: Dialog(
+        user: user,
+        lastMessage: Message(
+          from: user,
+          to: me,
+          date: Date(),
+          text: "Hallo! Whats the problem?"
+        ),
+        unreadCount: 2,
+        muted: true
+      )
+    )
+  )
+  .previewLayout(.fixed(width: 400, height: 80))
 }

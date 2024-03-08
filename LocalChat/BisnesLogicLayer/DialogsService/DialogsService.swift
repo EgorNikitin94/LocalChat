@@ -35,7 +35,7 @@ class MockDialogsService: DialogsServiceProtocol {
     dialogs.append(dialog1)
     
     let user2 = User(type: .anotherUser, name: "Bob Robins", passsword: "1123", avatar: nil, isOnline: false)
-    var dialog2 = Dialog(user: user2, lastMessage: Message(from: user2, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600), text: "OK"))
+    var dialog2 = Dialog(user: user2, lastMessage: Message(from: user2, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600), text: "OK"), muted: true)
     dialog2.unreadCount = 2
     dialogs.append(dialog2)
     

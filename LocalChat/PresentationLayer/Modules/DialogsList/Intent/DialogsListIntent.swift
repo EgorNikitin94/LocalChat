@@ -38,7 +38,7 @@ extension DialogsListIntent: DialogsListIntentProtocol {
     model?.didLoadDialogs(dialogs: dialogs)
   }
   
-  func openConversation(for vm: DialogListRowViewModel) {
+  func openConversation(for vm: DialogListDisplayItem) {
     if let user = dialogs
       .first(where: { $0.id == vm.id })
       .map({ $0.user }) {

@@ -11,5 +11,7 @@ struct Dialog {
   let id: UUID = UUID()
   let user: User
   let lastMessage: Message?
-  var unreadCount: Int = 0
+  var unreadCount: UInt = 0
+  var muted: Bool = false
+  var pined: Bool = false
 }

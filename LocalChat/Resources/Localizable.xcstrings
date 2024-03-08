@@ -76,6 +76,9 @@
         }
       }
     },
+    "Decriment" : {
+
+    },
     "Disable notifications" : {
       "localizations" : {
         "en" : {
@@ -191,6 +194,12 @@
           }
         }
       }
+    },
+    "Increment" : {
+
+    },
+    "Mute" : {
+
     },
     "online" : {
       "localizations" : {
@@ -368,6 +377,9 @@
           }
         }
       }
+    },
+    "Zero" : {
+
     }
   },
   "version" : "1.0"

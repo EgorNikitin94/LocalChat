@@ -7,13 +7,14 @@
 //
 
 import Foundation
-import Combine
+import Observation
 
-class DialogsListModel: ObservableObject, DialogsListModelStateProtocol {
+@Observable
+class DialogsListModel: DialogsListModelStateProtocol {
   
-  @Published var dialogs: [DialogListRowViewModel] = []
-  @Published var searchText: String = ""
-  @Published var isPresentedSearch: Bool = false
+  var dialogs: [DialogListDisplayItem] = []
+  var searchText: String = ""
+  var isPresentedSearch: Bool = false
   
   let routerSubject = DialogsListRouter.Subjects()
 }
@@ -22,7 +23,7 @@ class DialogsListModel: ObservableObject, DialogsListModelStateProtocol {
 extension DialogsListModel: DialogsListModelActionsProtocol {
   func didLoadDialogs(dialogs: [Dialog]) {
     self.dialogs = dialogs.map({ dialog in
-      DialogListRowViewModel(dialog: dialog)
+      DialogListDisplayItem(dialog: dialog)
     })
   }
 }

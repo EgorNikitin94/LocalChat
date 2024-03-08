@@ -13,7 +13,7 @@ protocol DialogsListModelActionsProtocol: AnyObject {
 }
 
 protocol DialogsListModelStateProtocol {
-  var dialogs: [DialogListRowViewModel] { get }
+  var dialogs: [DialogListDisplayItem] { get }
   var searchText: String { get set }
   var isPresentedSearch: Bool { get set }
   var routerSubject:DialogsListRouter.Subjects { get }
