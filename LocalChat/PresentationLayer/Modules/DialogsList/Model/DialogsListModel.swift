@@ -26,6 +26,12 @@ extension DialogsListModel: DialogsListModelActionsProtocol {
       DialogListDisplayItem(dialog: dialog)
     })
   }
+  
+  func didUpdateDialog(_ dialog: Dialog) {
+    if let dialogDisplayItenm = dialogs.first(where: { $0.id == dialog.id }) {
+      dialogDisplayItenm.update(with: dialog)
+    }
+  }
 }
 
 // MARK: - Route

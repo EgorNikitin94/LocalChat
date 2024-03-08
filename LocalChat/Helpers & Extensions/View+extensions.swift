@@ -37,4 +37,8 @@ extension View {
     let resign = #selector(UIResponder.resignFirstResponder)
     UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
   }
+  
+  @ViewBuilder func squareSize(_ size: CGFloat) -> some View {
+    self.frame(width: size, height: size)
+  }
 }

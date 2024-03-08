@@ -13,6 +13,7 @@ protocol DialogsListIntentProtocol: AnyObject {
   func openConversation(for vm: DialogListDisplayItem)
   func openProfile()
   func search(with query: String)
+  func mute(vm: DialogListDisplayItem)
 }
 
 @objc protocol DialogsListModuleInput: AnyObject {

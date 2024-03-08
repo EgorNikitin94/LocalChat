@@ -110,10 +110,10 @@ struct ConversationView: View {
           .background(content: {
             if colorScheme == .light {
               Color.white
-                .cornerRadius(20)
+                .clipShape(.rect(cornerRadius: 20))
             } else {
               Color(uiColor: .systemGray4)
-                .cornerRadius(20)
+                .clipShape(.rect(cornerRadius: 20))
             }
           })
           .overlay {
@@ -136,7 +136,7 @@ struct ConversationView: View {
       .padding(.top)
       .frame(minHeight: CGFloat(50))
       .padding([.bottom, .leading, .trailing])
-      .background(colorScheme == .light ? Color(UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 0.7)) : Color(uiColor: .systemGray6))
+      .background(.ultraThinMaterial)
     }
     .navigationBarTitleDisplayMode(.inline)
     .toolbar(content: {

@@ -29,9 +29,13 @@ struct DialogsListView: View {
               }
               
               Button {
-                //
+                intent.mute(vm: dialogVM)
               } label: {
-                Label("Disable notifications", systemImage: "bell.slash.fill")
+                if dialogVM.muted {
+                  Label("Enable notifications", systemImage: "bell.fill")
+                } else {
+                  Label("Disable notifications", systemImage: "bell.slash.fill")
+                }
               }
             }
             .onTapGesture {

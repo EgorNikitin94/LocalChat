@@ -19,7 +19,7 @@ struct DialogListRowView: View {
         ),
         needShowOnline: true
       )
-        .frame(width: 60, height: 60)
+      .squareSize(60)
       HStack {
         VStack(spacing: 3) {
           HStack {
@@ -30,7 +30,7 @@ struct DialogListRowView: View {
               if dialogVM.muted {
                 Image(systemName: "bell.slash.fill")
                   .resizable()
-                  .frame(width: 12, height: 12)
+                  .squareSize(12)
                   .foregroundColor(.gray)
                   .transition(.scale.combined(with: .opacity))
               }

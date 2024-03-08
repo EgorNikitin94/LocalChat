@@ -10,6 +10,7 @@ import Foundation
 
 protocol DialogsListModelActionsProtocol: AnyObject {
   func didLoadDialogs(dialogs: [Dialog])
+  func didUpdateDialog(_ dialog: Dialog)
 }
 
 protocol DialogsListModelStateProtocol {

@@ -55,6 +55,17 @@ extension DialogsListIntent: DialogsListIntentProtocol {
     model?.didLoadDialogs(dialogs: searchDialogs)
   }
   
+  func mute(vm: DialogListDisplayItem) {
+    if let element = dialogs
+      .enumerated()
+      .first(where: { $0.element.id == vm.id }) {
+      var dialog = element.element
+      dialog.muted.toggle()
+      dialogs[element.offset] = dialog
+      model?.didUpdateDialog(dialog)
+    }
+  }
+  
   func openProfile() {
     routeModel?.openProfile()
   }
