@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserServiceProtocol: Service {
-  var currentUser: User {get}
+  var currentUser: User { get }
   
   func getUser(with id: String) -> User
   

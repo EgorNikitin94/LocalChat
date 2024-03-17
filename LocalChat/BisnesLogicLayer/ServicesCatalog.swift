@@ -28,6 +28,10 @@ final class ServicesCatalog {
     resolve(tag: .network) as! NetworkService
   }
   
+  var userService: UserServiceProtocol {
+    resolve(tag: .user) as! UserServiceProtocol
+  }
+  
   private init() {}
   
   func initalSetup() {

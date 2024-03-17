@@ -7,9 +7,10 @@
 //
 
 import Foundation
-import Combine
+import Observation
 
-class ProfileModel: ObservableObject, ProfileModelStateProtocol {
+@Observable
+class ProfileModel: ProfileModelStateProtocol {
   let routerSubject = ProfileRouter.Subjects()
 }
 

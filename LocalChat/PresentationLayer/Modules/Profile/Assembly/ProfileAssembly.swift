@@ -11,7 +11,10 @@ import SwiftUI
 class ProfileAssembly {
 
 // MARK: - Public
-  func build(moduleOutput: ProfileModuleOutput?, completion: ((ProfileModuleInput?) -> Void)?) -> some View {
+  func build(
+    moduleOutput: ProfileModuleOutput?,
+    completion: ((ProfileModuleInput?) -> Void)?
+  ) -> some View {
     let model = buildModel()
     let intent = buildIntent(model: model, moduleOutput: moduleOutput)
     let view = buildView(model: model, intent: intent)
@@ -24,15 +27,26 @@ class ProfileAssembly {
     ProfileModel()
 }
   
-  private func buildIntent(model: ProfileModel, moduleOutput: ProfileModuleOutput?) -> ProfileIntent {
-    ProfileIntent(model: model, moduleOutput: moduleOutput)
+  private func buildIntent(
+    model: ProfileModel,
+    moduleOutput: ProfileModuleOutput?
+  ) -> ProfileIntent {
+    ServicesCatalog.shared.register(service: MockUserService())
+    return ProfileIntent(
+      model: model,
+      moduleOutput: moduleOutput,
+      userService: ServicesCatalog.shared.userService
+    )
 }
   
-  private func buildView(model: ProfileModel, intent: ProfileIntent) -> some View {
-    let container = MVIContainer(
+  private func buildView(
+    model: ProfileModel,
+    intent: ProfileIntent
+  ) -> some View {
+    let container = ModernMVIContainer(
       intent: intent as ProfileIntentProtocol,
-      model: model as ProfileModelStateProtocol,
-      modelChangePublisher: model.objectWillChange)
+      model: model as ProfileModelStateProtocol
+    )
     return ProfileView(container: container)
   }
   

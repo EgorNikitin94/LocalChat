@@ -10,14 +10,21 @@ import Foundation
 
 class ProfileIntent {
 
-  private weak var model:ProfileModelActionsProtocol?
-  private weak var routeModel:ProfileModelRouterProtocol?
-  private weak var moduleOutput:ProfileModuleOutput?
+  private weak var model: ProfileModelActionsProtocol?
+  private weak var routeModel: ProfileModelRouterProtocol?
+  private weak var moduleOutput: ProfileModuleOutput?
+  
+  private let userService: UserServiceProtocol
 
-  init(model: (ProfileModelActionsProtocol & ProfileModelRouterProtocol)?, moduleOutput:ProfileModuleOutput?) {
+  init(
+    model: (ProfileModelActionsProtocol & ProfileModelRouterProtocol)?,
+    moduleOutput:ProfileModuleOutput?,
+    userService: UserServiceProtocol
+  ) {
     self.model = model
     self.routeModel = model
     self.moduleOutput = moduleOutput
+    self.userService = userService
   }
   
 }

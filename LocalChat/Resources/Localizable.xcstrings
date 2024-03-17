@@ -7,6 +7,12 @@
     "%@" : {
 
     },
+    "About app" : {
+
+    },
+    "Appearance" : {
+
+    },
     "Camera" : {
       "localizations" : {
         "ru" : {
@@ -167,6 +173,7 @@
       }
     },
     "Hallo amo module" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -198,10 +205,25 @@
         }
       }
     },
+    "Help" : {
+
+    },
     "Increment" : {
 
     },
+    "Language" : {
+
+    },
+    "Logout" : {
+
+    },
     "Mute" : {
+
+    },
+    "Nikitin Egor" : {
+
+    },
+    "Notifications and sounds" : {
 
     },
     "online" : {
@@ -300,6 +322,9 @@
           }
         }
       }
+    },
+    "Storage" : {
+
     },
     "Team" : {
       "localizations" : {
