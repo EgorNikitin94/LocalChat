@@ -16,12 +16,18 @@ class AuthModel: AuthModelStateProtocol {
   var passwordFieldEnabled = false
   var buttonEnabled = false
   var state: State = .none
+  var focusedTextField: AuthModel.FocusedField? = nil
   let routerSubject = AuthRouter.Subjects()
   
   enum State: Int {
     case none
     case passwordFieldEnabled
     case buttonEnabled
+  }
+  
+  enum FocusedField {
+    case phone
+    case code
   }
   
   class PhoneFormatter: Formatter {

@@ -16,6 +16,7 @@ protocol AuthModelStateProtocol {
   var login: String { get set }
   var password: String { get set }
   var state: AuthModel.State { get }
+  var focusedTextField: AuthModel.FocusedField? { get set }
   var routerSubject: AuthRouter.Subjects { get }
 }
 

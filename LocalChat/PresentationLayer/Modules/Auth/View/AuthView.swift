@@ -15,14 +15,19 @@ struct AuthView: View {
   private var intent: AuthIntentProtocol { container.intent }
   private var model: AuthModelStateProtocol { container.model }
   
+  @FocusState private var focusedTextField: AuthModel.FocusedField?
+  
   @Environment(AppState.self) private var appState: AppState
   
   var body: some View {
     VStack(spacing: 20) {
       Image(.logo)
         .resizable()
-        .frame(width: 70, height: 70)
+        .squareSize(70)
         .cornerRadius(10)
+        .onTapGesture {
+          focusedTextField = nil
+        }
       Text("Welcome!")
         .multilineTextAlignment(.center)
         .font(.largeTitle)
@@ -35,6 +40,7 @@ struct AuthView: View {
         )
           .authTextFieldStyle()
           .keyboardType(.numberPad)
+          .focused($focusedTextField, equals: .phone)
           .onChange(of: model.login) { _, newValue in
             intent.didChangeLogin(with: newValue)
           }
@@ -43,6 +49,7 @@ struct AuthView: View {
           SecureField("Enter your code", text: $container.model.password)
             .authTextFieldStyle()
             .keyboardType(.numberPad)
+            .focused($focusedTextField, equals: .code)
             .onChange(of: model.password) { _, newValue in
               intent.didChangePassword(with: newValue)
             }
@@ -76,10 +83,22 @@ struct AuthView: View {
           .transition(.move(edge: .bottom).combined(with: .opacity))
         }
       }
+      .onTapGesture {}
     }
     .frame(maxWidth: 400)
     .animation(.bouncy, value: model.state)
     .padding(.horizontal, 40)
+    .onAppear { self.focusedTextField = model.focusedTextField }
+    .onChange(of: focusedTextField ?? .none, { _, newValue in
+      container.model.focusedTextField = newValue
+    })
+    .onChange(of: model.focusedTextField, { _, newValue in
+      focusedTextField = newValue
+    })
+    .contentShape(Rectangle())
+    .onTapGesture {
+      focusedTextField = nil
+    }
     .onAppear(perform: intent.viewOnAppear)
     .modifier(AuthRouter(subjects: model.routerSubject, intent: intent))
   }
