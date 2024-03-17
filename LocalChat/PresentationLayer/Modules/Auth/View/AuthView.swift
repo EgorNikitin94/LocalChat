@@ -28,15 +28,21 @@ struct AuthView: View {
         .font(.largeTitle)
         .bold()
       VStack(spacing: 10) {
-        TextField("Enter your login", text: $container.model.login)
+        TextField(
+          "Enter your phone",
+          value: $container.model.login,
+          formatter: AuthModel.PhoneFormatter()
+        )
           .authTextFieldStyle()
+          .keyboardType(.numberPad)
           .onChange(of: model.login) { _, newValue in
             intent.didChangeLogin(with: newValue)
           }
         
         if model.state.rawValue > AuthModel.State.none.rawValue {
-          SecureField("Enter your password", text: $container.model.password)
+          SecureField("Enter your code", text: $container.model.password)
             .authTextFieldStyle()
+            .keyboardType(.numberPad)
             .onChange(of: model.password) { _, newValue in
               intent.didChangePassword(with: newValue)
             }

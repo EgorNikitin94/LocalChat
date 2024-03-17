@@ -114,34 +114,34 @@
     "Enable notifications" : {
 
     },
-    "Enter your login" : {
+    "Enter your code" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enter your login"
+            "value" : "Enter your code"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введите Ваш логин"
+            "value" : "Введите Ваш коде из СМС"
           }
         }
       }
     },
-    "Enter your password" : {
+    "Enter your phone" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enter your password"
+            "value" : "Enter your phone"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введите Ваш пароль"
+            "value" : "Введите Ваш телефон"
           }
         }
       }

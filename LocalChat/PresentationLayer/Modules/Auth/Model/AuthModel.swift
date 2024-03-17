@@ -23,6 +23,38 @@ class AuthModel: AuthModelStateProtocol {
     case passwordFieldEnabled
     case buttonEnabled
   }
+  
+  class PhoneFormatter: Formatter {
+    override func string(for obj: Any?) -> String? {
+      if let string = obj as? String {
+        return formattedPhone(string)
+      }
+      return nil
+    }
+    
+    override func getObjectValue(_ obj: AutoreleasingUnsafeMutablePointer<AnyObject?>?, for string: String, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
+      obj?.pointee = string as AnyObject?
+      return true
+    }
+    
+    private func formattedPhone(_ phone: String?) -> String? {
+      guard let number = phone else { return nil }
+      let mask = "+# (###) ###-##-##"
+      return applyPatternOnNumbers(string: number, pattern: mask, replacmentCharacter: "#")
+    }
+    
+    private func applyPatternOnNumbers(string: String, pattern: String, replacmentCharacter: Character) -> String {
+      var pureNumber = string.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
+      for index in 0 ..< pattern.count {
+        guard index < pureNumber.count else { return pureNumber }
+        let stringIndex = String.Index(utf16Offset: index, in: string)
+        let patternCharacter = pattern[stringIndex]
+        guard patternCharacter != replacmentCharacter else { continue }
+        pureNumber.insert(patternCharacter, at: stringIndex)
+      }
+      return pureNumber
+    }
+  }
 }
 
 // MARK: - Actions
