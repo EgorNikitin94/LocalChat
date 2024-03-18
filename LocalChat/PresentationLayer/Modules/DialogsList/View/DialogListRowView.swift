@@ -72,8 +72,8 @@ struct DialogListRowView: View {
 }
 
 #Preview {
-  let me = User(userType: .selfUser, name: "Mike", passsword: "123", avatar: nil, isOnline: true)
-  let user = User(userType: .anotherUser, name: "John", passsword: "1123", avatar: nil, isOnline: true)
+  let me = User(userType: .selfUser, name: "Mike", phone: "123", avatar: nil, isOnline: true)
+  let user = User(userType: .anotherUser, name: "John", phone: "1123", avatar: nil, isOnline: true)
   return DialogListRowView(
     dialogVM: DialogListDisplayItem(
       dialog: Dialog(

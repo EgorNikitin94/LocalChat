@@ -17,7 +17,7 @@ struct User: Peer, Hashable {
   let type: PeerType = .user
   let userType: UserType
   let name: String
-  let passsword: String
+  let phone: String
   let avatar: UIImage?
   var isOnline: Bool
   

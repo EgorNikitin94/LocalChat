@@ -18,8 +18,19 @@ struct ProfileView: View {
   var body: some View {
     List {
       Section {
-        Label("Notifications and sounds", systemImage: "app.badge.fill")
-        Label("Storage", systemImage: "storefront.circle.fill")
+        Button(action: {
+          //
+        }, label: {
+          LabeledContent {
+            Image(systemName: "chevron.right")
+          } label: {
+            Label(
+              title: { Text("Notifications and sounds").foregroundStyle(.white) },
+              icon: { Image(systemName: "app.badge.fill").foregroundStyle(.red) }
+            )
+          }
+        })
+        Label("Storage and memory", systemImage: "storefront.circle.fill")
         Label("Appearance", systemImage: "circle.lefthalf.filled.inverse")
         Label("Language", systemImage: "globe")
       } header: {
@@ -32,6 +43,9 @@ struct ProfileView: View {
           
           Text("Nikitin Egor")
             .font(.title)
+          
+          Text("8 (999) 999-99-99")
+            .font(.subheadline)
         }
         .frame(maxWidth: .infinity)
         .padding()

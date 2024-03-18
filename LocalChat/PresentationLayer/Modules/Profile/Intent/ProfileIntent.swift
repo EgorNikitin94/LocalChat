@@ -32,7 +32,7 @@ class ProfileIntent {
 // MARK: - ProfileIntentProtocol
 extension ProfileIntent: ProfileIntentProtocol {
   func viewOnAppear() {
-    //
+    let me = userService.currentUser
   }
 }
 
