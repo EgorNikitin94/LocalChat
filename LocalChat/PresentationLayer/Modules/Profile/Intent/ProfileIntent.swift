@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum ProfileEvent {
+  case initialState(User)
+}
+
 class ProfileIntent {
 
   private weak var model: ProfileModelActionsProtocol?
@@ -33,6 +37,7 @@ class ProfileIntent {
 extension ProfileIntent: ProfileIntentProtocol {
   func viewOnAppear() {
     let me = userService.currentUser
+    model?.newEvent(.initialState(me))
   }
 }
 

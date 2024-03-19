@@ -9,11 +9,12 @@
 import Foundation
 
 protocol ProfileModelActionsProtocol: AnyObject {
-  
+  func newEvent(_ event: ProfileEvent)
 }
 
 protocol ProfileModelStateProtocol {
-  var routerSubject:ProfileRouter.Subjects { get }
+  var sections: [ProfileSectionDisplayItem] { get }
+  var routerSubject: ProfileRouter.Subjects { get }
 }
 
 // MARK: - Route

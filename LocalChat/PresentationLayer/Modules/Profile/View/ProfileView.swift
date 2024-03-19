@@ -17,59 +17,66 @@ struct ProfileView: View {
   
   var body: some View {
     List {
-      Section {
-        Button(action: {
-          //
-        }, label: {
-          LabeledContent {
-            Image(systemName: "chevron.right")
-          } label: {
-            Label(
-              title: { Text("Notifications and sounds").foregroundStyle(.white) },
-              icon: { Image(systemName: "app.badge.fill").foregroundStyle(.red) }
-            )
+      ForEach(model.sections) { section in
+        Section {
+          ForEach(section.items, id: \.self) { item in
+            switch item {
+            case .base(let title, let imageName, let imageColor):
+              Button(action: {
+                //
+              }, label: {
+                LabeledContent {
+                  Image(systemName: "chevron.right")
+                } label: {
+                  Label(
+                    title: {
+                      Text(title)
+                        .foregroundStyle(Color.primary)
+                    }, icon: {
+                      Image(systemName: imageName)
+                        .foregroundStyle(imageColor)
+                    }
+                  )
+                }
+              })
+            case .button(let title):
+              Button {
+                //
+              } label: {
+                Text(title)
+                  .foregroundStyle(.red)
+                  .frame(maxWidth: .infinity)
+              }
+            }
           }
-        })
-        Label("Storage and memory", systemImage: "storefront.circle.fill")
-        Label("Appearance", systemImage: "circle.lefthalf.filled.inverse")
-        Label("Language", systemImage: "globe")
-      } header: {
-        VStack {
-          Image(.me)
-            .resizable()
-            .scaledToFit()
-            .clipShape(Circle())
-            .squareSize(100)
-          
-          Text("Nikitin Egor")
-            .font(.title)
-          
-          Text("8 (999) 999-99-99")
-            .font(.subheadline)
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-      }
-      
-      Section {
-        Label("About app", systemImage: "iphone.gen3")
-        Label("Help", systemImage: "questionmark.circle.fill")
-      }
-      
-      Section {
-        Button {
-          //
-        } label: {
-          Text("Logout")
-            .foregroundStyle(.red)
+        } header: {
+          switch section.section {
+          case .none:
+            EmptyView()
+          case .userInfo(let avatar, let name, let phone):
+            VStack {
+              Image(uiImage: avatar)
+                .resizable()
+                .scaledToFit()
+                .clipShape(Circle())
+                .squareSize(100)
+              
+              Text(name)
+                .font(.title)
+              
+              Text(phone)
+                .font(.subheadline)
+            }
             .frame(maxWidth: .infinity)
+            .padding(.bottom)
+          }
         }
-
+        
       }
     }
     .onAppear(perform: intent.viewOnAppear)
     .modifier(ProfileRouter(subjects: model.routerSubject, intent: intent))
-    .navigationTitle("Settings")
+    //    .navigationTitle("Settings")
     .navigationBarTitleDisplayMode(.inline)
   }
 }

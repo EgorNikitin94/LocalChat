@@ -12,10 +12,10 @@ protocol ProfileIntentProtocol: AnyObject {
   func viewOnAppear()
 }
 
-@objc protocol ProfileModuleInput: AnyObject {
+protocol ProfileModuleInput: AnyObject {
   
 }
 
-@objc protocol ProfileModuleOutput: AnyObject {
+protocol ProfileModuleOutput: AnyObject {
   
 }
