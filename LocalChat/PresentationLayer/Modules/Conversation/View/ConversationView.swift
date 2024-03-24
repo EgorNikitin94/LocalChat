@@ -193,11 +193,11 @@ struct ConversationView: View {
   var dialog: Dialog {
     let me = User(userType: .selfUser, name: "Egor", phone: "123", avatar: UIImage(named: "Me"), isOnline: true)
     let user3 = User(userType: .anotherUser, name: "Sarra Bold", phone: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
-    return Dialog(user: user3, lastMessage: Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Sorry!"))
+    return Dialog(peer: user3, lastMessage: Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Sorry!"))
   }
   
   return NavigationStack {
-    ConversationAssembly().build(peer: dialog.user, moduleOutput: nil, completion: nil)
+    ConversationAssembly().build(peer: dialog.peer, moduleOutput: nil, completion: nil)
   }
 }
 
@@ -205,11 +205,11 @@ struct ConversationView: View {
   var dialog: Dialog {
     let me = User(userType: .selfUser, name: "Egor", phone: "123", avatar: UIImage(named: "Me"), isOnline: true)
     let user3 = User(userType: .anotherUser, name: "Sarra Bold", phone: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
-    return Dialog(user: user3, lastMessage: Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Sorry!"))
+    return Dialog(peer: user3, lastMessage: Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Sorry!"))
   }
   
   return NavigationStack {
-    ConversationAssembly().build(peer: dialog.user, moduleOutput: nil, completion: nil)
+    ConversationAssembly().build(peer: dialog.peer, moduleOutput: nil, completion: nil)
       .preferredColorScheme(.dark)
   }
 }

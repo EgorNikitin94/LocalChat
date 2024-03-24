@@ -76,6 +76,7 @@
 		509D7A982A87C9FF0025C0B9 /* SQLiteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */; };
 		509D7A9B2A87FA1B0025C0B9 /* MessageDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */; };
 		509D7A9E2A881BF80025C0B9 /* CocoaAsyncSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 509D7A9D2A881BF80025C0B9 /* CocoaAsyncSocket */; };
+		50A5A3742BAF45BC0045F146 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A5A3732BAF45BC0045F146 /* Chat.swift */; };
 		50A893362B8297770048F42C /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A893352B8297770048F42C /* NetworkResponse.swift */; };
 		50A893392B82B7BA0048F42C /* UserDefaultsStored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A893382B82B7BA0048F42C /* UserDefaultsStored.swift */; };
 		50B298CA2B93DF9C00E2ECF3 /* auth.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B298C42B93DF9C00E2ECF3 /* auth.pb.swift */; };
@@ -184,6 +185,7 @@
 		5083C4C12B4AE71600656BEC /* RootRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteStore.swift; sourceTree = "<group>"; };
 		509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDisplayItem.swift; sourceTree = "<group>"; };
+		50A5A3732BAF45BC0045F146 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		50A893352B8297770048F42C /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		50A893382B82B7BA0048F42C /* UserDefaultsStored.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStored.swift; sourceTree = "<group>"; };
 		50B298C22B93DAA200E2ECF3 /* protoGen.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = protoGen.sh; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 			children = (
 				5073DE202B9BBE1500CF8C89 /* Peer.swift */,
 				50410BF62B4853F000E1D9F2 /* User.swift */,
+				50A5A3732BAF45BC0045F146 /* Chat.swift */,
 				50410BF82B4853FD00E1D9F2 /* Dialog.swift */,
 				50410BFA2B48540900E1D9F2 /* Message.swift */,
 			);
@@ -1118,6 +1121,7 @@
 				5083C4C62B4AE71600656BEC /* RootIntentProtocol.swift in Sources */,
 				5067ED0B2A843F7F00C5FA11 /* RouterNavigationViewModifier.swift in Sources */,
 				50B298CE2B93DF9C00E2ECF3 /* local_chat.pb.swift in Sources */,
+				50A5A3742BAF45BC0045F146 /* Chat.swift in Sources */,
 				DB54EE370D6BDC2AC27C2F84 /* ConversationRouter.swift in Sources */,
 				077BFCEFE2B82A8B94BE5300 /* ConversationView.swift in Sources */,
 				D41EBB73E3DF069FC4F97C8E /* DialogsListAssembly.swift in Sources */,

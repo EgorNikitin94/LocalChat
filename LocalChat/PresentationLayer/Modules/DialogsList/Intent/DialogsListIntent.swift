@@ -41,7 +41,7 @@ extension DialogsListIntent: DialogsListIntentProtocol {
   func openConversation(for vm: DialogListDisplayItem) {
     if let user = dialogs
       .first(where: { $0.id == vm.id })
-      .map({ $0.user }) {
+      .map({ $0.peer }) {
       routeModel?.openConversation(for: user)
     }
   }
@@ -51,7 +51,7 @@ extension DialogsListIntent: DialogsListIntentProtocol {
       model?.didLoadDialogs(dialogs: dialogs)
       return
     }
-    let searchDialogs = dialogs.filter({ $0.user.name.contains(query) })
+    let searchDialogs = dialogs.filter({ $0.peer.name.contains(query) })
     model?.didLoadDialogs(dialogs: searchDialogs)
   }
   

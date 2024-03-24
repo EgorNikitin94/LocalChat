@@ -15,7 +15,7 @@ struct DialogListRowView: View {
     HStack {
       AvatarView(
         displayItem: AvatarDisplayItem(
-          with: dialogVM.baseModel.user
+          with: dialogVM.baseModel.peer
         ),
         needShowOnline: true
       )
@@ -77,7 +77,7 @@ struct DialogListRowView: View {
   return DialogListRowView(
     dialogVM: DialogListDisplayItem(
       dialog: Dialog(
-        user: user,
+        peer: user,
         lastMessage: Message(
           from: user,
           to: me,

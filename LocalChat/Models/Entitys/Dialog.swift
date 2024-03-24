@@ -9,7 +9,7 @@ import Foundation
 
 struct Dialog {
   let id: UUID = UUID()
-  let user: User
+  let peer: User
   let lastMessage: Message?
   var unreadCount: UInt = 0
   var muted: Bool = false

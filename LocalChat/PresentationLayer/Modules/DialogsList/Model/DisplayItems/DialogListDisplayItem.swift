@@ -24,24 +24,24 @@ class DialogListDisplayItem: Identifiable, Hashable, Equatable {
   
   init(dialog: Dialog) {
     self.id = dialog.id
-    self.userName = dialog.user.name
+    self.userName = dialog.peer.name
     self.lastMessageText = dialog.lastMessage?.text
     self.lastMessageDate = TimeManagerHalper.makeString(from: dialog.lastMessage?.date)
-    self.userAvatar = dialog.user.avatar
+    self.userAvatar = dialog.peer.avatar
     self.unreadCount = dialog.unreadCount
-    self.isUserOnline = dialog.user.isOnline
+    self.isUserOnline = dialog.peer.isOnline
     self.muted = dialog.muted
     self.pined = dialog.pined
     self.baseModel = dialog
   }
   
   func update(with dialog: Dialog) {
-    self.userName = dialog.user.name
+    self.userName = dialog.peer.name
     self.lastMessageText = dialog.lastMessage?.text
     self.lastMessageDate = TimeManagerHalper.makeString(from: dialog.lastMessage?.date)
-    self.userAvatar = dialog.user.avatar
+    self.userAvatar = dialog.peer.avatar
     self.unreadCount = dialog.unreadCount
-    self.isUserOnline = dialog.user.isOnline
+    self.isUserOnline = dialog.peer.isOnline
     self.muted = dialog.muted
     self.pined = dialog.pined
     self.baseModel = dialog

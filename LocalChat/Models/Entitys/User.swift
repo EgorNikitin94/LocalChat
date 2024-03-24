@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum UserType {
+enum UserType: Codable {
   case selfUser
   case anotherUser
 }

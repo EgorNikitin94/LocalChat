@@ -14,7 +14,7 @@ class Log {
   }()
   
   static let dataBase: Logger = {
-    Logger(subsystem: "com.EgorNikitin.LocalChat", category: "DB")
+    Logger(subsystem: "com.EgorNikitin.LocalChat", category: "SQL")
   }()
   
   static let app: Logger = {
