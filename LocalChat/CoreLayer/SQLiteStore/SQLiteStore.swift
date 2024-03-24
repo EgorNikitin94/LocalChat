@@ -72,6 +72,12 @@ class SQLiteStore {
     })
   }
   
+  func executeWrite(query: String, arguments: StatementArguments = []) async throws {
+    try await dbPool?.write({ db in
+      try db.execute(sql: query, arguments: arguments)
+    })
+  }
+  
   // MARK: - Read Models
   func fetchCount<T: SQLiteEntity>(request: QueryInterfaceRequest<T>) async throws -> Int {
     try await dbPool?.read({ db in
@@ -97,11 +103,30 @@ class SQLiteStore {
     }) ?? Set<T>()
   }
   
-//  func select<T>(request: QueryInterfaceRequest<T>) async throws -> [T] {
-//    try await dbPool?.read({ db in
-//      try request.fe
-//    })
-//  }
+  func fetch<T: DatabaseValueConvertible & StatementColumnConvertible>(sqlRequest: SQLRequest<T>) async throws -> [T] {
+    try await dbPool?.read({ db in
+      try sqlRequest.fetchAll(db)
+    }) ?? []
+  }
+  
+  func fetch<T: SQLiteEntity>(sqlRequest: SQLRequest<T>) async throws -> [T] {
+    try await dbPool?.read({ db in
+      try sqlRequest.fetchAll(db)
+    }) ?? []
+  }
+  
+  // MARK: - Select Fields from Models
+  func select<T: DatabaseValueConvertible & StatementColumnConvertible>(request: QueryInterfaceRequest<T>) async throws -> [T] {
+    try await dbPool?.read({ db in
+      try request.fetchAll(db)
+    }) ?? []
+  }
+  
+  func select(request: QueryInterfaceRequest<Row>) async throws -> [Row] {
+    try await dbPool?.read({ db in
+      try request.fetchAll(db)
+    }) ?? []
+  }
   
   // MARK: - Delete Models
   @discardableResult
@@ -126,7 +151,7 @@ class SQLiteStore {
   }
   
   // MARK: - Private
-  private func checkPoolExists() throws -> DatabasePool {
+  private func getDatabasePool() throws -> DatabasePool {
     guard let dbPool = dbPool else { throw DBError.dbPoolNotExists }
     return dbPool
   }
