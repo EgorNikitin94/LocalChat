@@ -35,6 +35,6 @@ extension Message: SQLiteEntity {
   
   static var databaseTableName: String = "message"
   
-  static let from = hasOne(User.self)
-  static let to = hasOne(User.self)
+  static let from = belongsTo(User.self)
+  static let to = belongsTo(User.self)
 }

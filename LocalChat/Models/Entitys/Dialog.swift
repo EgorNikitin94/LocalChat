@@ -9,9 +9,8 @@ import Foundation
 import GRDB
 
 struct Dialog {
-  var id: UUID = UUID()
+  var id: UUID
   let peer: User
-  let peerId: UUID
   let peerType: PeerType
   let lastMessage: Message?
   var unreadCount: UInt = 0
@@ -19,17 +18,15 @@ struct Dialog {
   var pined: Bool = false
   
   init(
-    id: UUID,
     peer: User,
     lastMessage: Message?,
     unreadCount: UInt = 0,
     muted: Bool = false,
     pined: Bool = false
   ) {
-    self.id = id
-    self.peer = peer
-    self.peerId = peer.id
+    self.id = peer.id
     self.peerType = peer.type
+    self.peer = peer
     self.lastMessage = lastMessage
     self.unreadCount = unreadCount
     self.muted = muted
@@ -39,11 +36,27 @@ struct Dialog {
 
 extension Dialog: SQLiteEntity {
   enum Columns: String, ColumnExpression {
-    case id, peer, peerId, peerType, lastMessage, unreadCount, muted, pined
+    case id, peer, peerType, lastMessage, unreadCount, muted, pined
   }
   
   static var databaseTableName: String = "dialog"
   
-  static let user = hasOne(User.self)
-  static let chat = hasOne(Chat.self)
+  static let user = belongsTo(User.self)
+  static let chat = belongsTo(Chat.self)
+  
+  static let lastMessage = belongsTo(Message.self)
+}
+
+
+struct DialogInfo: SQLiteEntity {
+  enum DialogInfoPeer: Codable {
+    case user(User)
+    case chat(Chat)
+  }
+  let id: UUID
+  let peer: DialogInfoPeer
+  let lastMessage: Message
+  var unreadCount: UInt = 0
+  var muted: Bool = false
+  var pined: Bool = false
 }

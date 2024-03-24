@@ -17,8 +17,19 @@ class DialogsService: DialogsServiceProtocol {
   var tag: ServiceTag = .dialog
   
   private(set) var models: [Dialog] = []
+  
   func getDialogsList() -> [Dialog] {
     return []
+  }
+  
+  func getDialogsFromDB() async -> [DialogInfo] {
+    let request = Dialog
+      .all()
+      .including(required: Dialog.lastMessage)
+      .including(required: Dialog.user)
+      .asRequest(of: DialogInfo.self)
+    let dialogs = try? await SQLiteStore.shared.fetch(request: request)
+    return dialogs ?? []
   }
 }
 
