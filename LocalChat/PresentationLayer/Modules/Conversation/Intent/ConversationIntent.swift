@@ -65,7 +65,7 @@ extension ConversationIntent: MediaPickerModuleOutput {
   func didSelectMedia(_ media: [UIImage]) {
     print("media select count == \(media.count)")
     var newMessage = Message(from: userService.currentUser, to: peer, date: Date(), text: "")
-    newMessage.media = media.first
+    newMessage.mediaData = media.first?.jpegData(compressionQuality: 1.0)
     realTimeMessages.append(newMessage)
     model?.didSendMessage(messsage: newMessage)
   }

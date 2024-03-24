@@ -6,16 +6,35 @@
 //
 
 import UIKit
+import GRDB
 
 struct Message: Identifiable, Hashable, Equatable {
   static func == (lhs: Message, rhs: Message) -> Bool {
     lhs.id == rhs.id
   }
   
-  let id: UUID = UUID()
+  var id: UUID = UUID()
   let from: User
   let to: User
   let date: Date
   let text: String
-  var media: UIImage? = nil
+  var mediaData: Data? = nil
+  
+  var media: UIImage? {
+    guard let mediaData = mediaData else {
+      return nil
+    }
+    return UIImage(data: mediaData)
+  }
+}
+
+extension Message: SQLiteEntity {
+  enum Columns: String, ColumnExpression {
+    case id, from, to, date, text, mediaData
+  }
+  
+  static var databaseTableName: String = "message"
+  
+  static let from = hasOne(User.self)
+  static let to = hasOne(User.self)
 }

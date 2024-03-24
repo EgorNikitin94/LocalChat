@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GRDB
 
 enum UserType: Codable {
   case selfUser
@@ -31,4 +32,12 @@ struct User: Peer, Hashable {
     }
     return UIImage(named: imageName)
   }
+}
+
+extension User {
+  enum Columns: String, ColumnExpression {
+    case id, type, userType, name, phone, avatarTitle, isOnline
+  }
+  
+  static var databaseTableName: String = "user"
 }
