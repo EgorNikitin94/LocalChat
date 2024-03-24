@@ -13,15 +13,22 @@ enum UserType: Codable {
 }
 
 struct User: Peer, Hashable {
-  let id: String = UUID().uuidString
-  let type: PeerType = .user
+  var id: UUID = UUID()
+  var type: PeerType = .user
   let userType: UserType
   let name: String
   let phone: String
-  let avatar: UIImage?
+  let avatarTitle: String?
   var isOnline: Bool
   
   var isMe: Bool {
     return userType == .selfUser
+  }
+  
+  var avatar: UIImage? {
+    guard let imageName = avatarTitle else {
+      return nil
+    }
+    return UIImage(named: imageName)
   }
 }

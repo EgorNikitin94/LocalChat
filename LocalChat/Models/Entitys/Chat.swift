@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import GRDB
 
 struct Chat: Peer {
-  let id: String
-  let type: PeerType = .chat
+  let id: UUID
+  var type: PeerType = .chat
+  
+  enum Columns: String, ColumnExpression {
+    case id, type
+  }
 }

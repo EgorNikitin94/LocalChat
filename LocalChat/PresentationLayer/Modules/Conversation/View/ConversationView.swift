@@ -191,8 +191,8 @@ struct ConversationView: View {
 
 #Preview("Light") {
   var dialog: Dialog {
-    let me = User(userType: .selfUser, name: "Egor", phone: "123", avatar: UIImage(named: "Me"), isOnline: true)
-    let user3 = User(userType: .anotherUser, name: "Sarra Bold", phone: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
+    let me = User(userType: .selfUser, name: "Egor", phone: "123", avatarTitle: "Me", isOnline: true)
+    let user3 = User(userType: .anotherUser, name: "Sarra Bold", phone: "1123", avatarTitle: "mock_2", isOnline: false)
     return Dialog(peer: user3, lastMessage: Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Sorry!"))
   }
   
@@ -203,8 +203,8 @@ struct ConversationView: View {
 
 #Preview("Dark") {
   var dialog: Dialog {
-    let me = User(userType: .selfUser, name: "Egor", phone: "123", avatar: UIImage(named: "Me"), isOnline: true)
-    let user3 = User(userType: .anotherUser, name: "Sarra Bold", phone: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
+    let me = User(userType: .selfUser, name: "Egor", phone: "123", avatarTitle: "Me", isOnline: true)
+    let user3 = User(userType: .anotherUser, name: "Sarra Bold", phone: "1123", avatarTitle: "mock_2", isOnline: false)
     return Dialog(peer: user3, lastMessage: Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "Sorry!"))
   }
   

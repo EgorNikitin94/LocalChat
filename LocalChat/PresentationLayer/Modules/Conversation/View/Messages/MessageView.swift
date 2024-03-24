@@ -62,8 +62,8 @@ struct MessageView: View {
 }
 
 struct MessageView_Previews: PreviewProvider {
-  static let me = User(userType: .selfUser, name: "Mike", phone: "123", avatar: nil, isOnline: true)
-  static let user3 = User(userType: .anotherUser, name: "Sarra Bold", phone: "1123", avatar: UIImage(named: "mock_2"), isOnline: false)
+  static let me = User(userType: .selfUser, name: "Mike", phone: "123", avatarTitle: nil, isOnline: true)
+  static let user3 = User(userType: .anotherUser, name: "Sarra Bold", phone: "1123", avatarTitle: "mock_2", isOnline: false)
   static let message  = Message(from: user3, to: me, date: Date(timeIntervalSince1970: Date().timeIntervalSince1970 - 3600 * 4), text: "There are a lot of premium iOS templates on iosapptemplates.com")
   static var previews: some View {
     MessageView(currentMessage: MessageDisplayItem(with: message))

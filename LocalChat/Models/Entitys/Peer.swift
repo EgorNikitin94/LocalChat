@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum PeerType {
+enum PeerType: Codable {
   case user
   case chat
 }
 
-protocol Peer {
-  var id: String { get }
+protocol Peer: SQLiteEntity {
+  var id: UUID { get }
   var type: PeerType { get }
 }
