@@ -8,7 +8,9 @@
 import Foundation
 import GRDB
 
-protocol SQLiteEntity: Codable, FetchableRecord, PersistableRecord {}
+protocol SQLiteEntity: SQLiteRecordEntity & SQLiteFetchEntity {}
+protocol SQLiteRecordEntity: Encodable, PersistableRecord {}
+protocol SQLiteFetchEntity: Decodable, FetchableRecord {}
 
 class SQLiteStore {
   static let shared = SQLiteStore()
@@ -58,13 +60,13 @@ class SQLiteStore {
   }
   
   // MARK: - Write Models
-  func write<T: SQLiteEntity>(model: T) async throws {
+  func write<T: SQLiteRecordEntity>(model: T) async throws {
     try await dbPool?.write({ db in
       try model.save(db)
     })
   }
   
-  func write<T: SQLiteEntity>(models: [T]) async throws {
+  func write<T: SQLiteRecordEntity>(models: [T]) async throws {
     try await dbPool?.write({ db in
       try models.forEach { model in
         try model.save(db)
@@ -79,25 +81,25 @@ class SQLiteStore {
   }
   
   // MARK: - Read Models
-  func fetchCount<T: SQLiteEntity>(request: QueryInterfaceRequest<T>) async throws -> Int {
+  func fetchCount<T: SQLiteFetchEntity>(request: QueryInterfaceRequest<T>) async throws -> Int {
     try await dbPool?.read({ db in
       try request.fetchCount(db)
     }) ?? 0
   }
   
-  func fetchOne<T: SQLiteEntity>(request: QueryInterfaceRequest<T>) async throws -> T? {
+  func fetchOne<T: SQLiteFetchEntity>(request: QueryInterfaceRequest<T>) async throws -> T? {
     try await dbPool?.read({ db in
       try request.fetchOne(db)
     })
   }
   
-  func fetch<T: SQLiteEntity>(request: QueryInterfaceRequest<T>) async throws -> [T] {
+  func fetch<T: SQLiteFetchEntity>(request: QueryInterfaceRequest<T>) async throws -> [T] {
     try await dbPool?.read({ db in
       try request.fetchAll(db)
     }) ?? []
   }
   
-  func fetchSet<T: SQLiteEntity>(request: QueryInterfaceRequest<T>) async throws -> Set<T> {
+  func fetchSet<T: SQLiteFetchEntity>(request: QueryInterfaceRequest<T>) async throws -> Set<T> {
     try await dbPool?.read({ db in
       try request.fetchSet(db)
     }) ?? Set<T>()
@@ -109,7 +111,7 @@ class SQLiteStore {
     }) ?? []
   }
   
-  func fetch<T: SQLiteEntity>(sqlRequest: SQLRequest<T>) async throws -> [T] {
+  func fetch<T: SQLiteFetchEntity>(sqlRequest: SQLRequest<T>) async throws -> [T] {
     try await dbPool?.read({ db in
       try sqlRequest.fetchAll(db)
     }) ?? []
@@ -130,13 +132,13 @@ class SQLiteStore {
   
   // MARK: - Delete Models
   @discardableResult
-  func delete<T: SQLiteEntity>(model: T) async throws -> Bool {
+  func delete<T: SQLiteRecordEntity>(model: T) async throws -> Bool {
     return try await dbPool?.write({ db in
       try model.delete(db)
     }) ?? false
   }
   
-  func delete<T: SQLiteEntity>(models: [T]) async throws {
+  func delete<T: SQLiteRecordEntity>(models: [T]) async throws {
     let _ = try await dbPool?.write({ db in
       try models.forEach { model in
         try model.delete(db)
@@ -144,8 +146,8 @@ class SQLiteStore {
     })
   }
   
-  func delete<T: SQLiteEntity>(request: QueryInterfaceRequest<T>) async throws -> Int {
-    try await dbPool?.read({ db in
+  func delete<T: SQLiteRecordEntity>(request: QueryInterfaceRequest<T>) async throws -> Int {
+    try await dbPool?.write({ db in
       try request.deleteAll(db)
     }) ?? 0
   }
