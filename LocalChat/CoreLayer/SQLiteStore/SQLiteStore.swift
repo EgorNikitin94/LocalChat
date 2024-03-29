@@ -80,6 +80,38 @@ class SQLiteStore {
     })
   }
   
+  // MARK: - Update Models
+  @discardableResult
+  func update<T: SQLiteFetchEntity>(
+    request: QueryInterfaceRequest<T>,
+    onConflict conflictResolution: Database.ConflictResolution? = nil,
+    _ assignments: ColumnAssignment...
+  ) async throws -> Int {
+    try await dbPool?.write({ db in
+      try request.updateAll(db, onConflict: conflictResolution, assignments)
+    }) ?? 0
+  }
+  
+  func updateAndFetchAll<T: SQLiteEntity>(
+    request: QueryInterfaceRequest<T>,
+    onConflict conflictResolution: Database.ConflictResolution? = nil,
+    _ assignments: ColumnAssignment...
+  ) async throws -> [T] {
+    try await dbPool?.write({ db in
+      try request.updateAndFetchAll(db, onConflict: conflictResolution, assignments)
+    }) ?? []
+  }
+  
+  func updateAndFetchSet<T: SQLiteEntity>(
+    request: QueryInterfaceRequest<T>,
+    onConflict conflictResolution: Database.ConflictResolution? = nil,
+    _ assignments: ColumnAssignment...
+  ) async throws -> Set<T> {
+    try await dbPool?.write({ db in
+      try request.updateAndFetchSet(db, onConflict: conflictResolution, assignments)
+    }) ?? Set<T>()
+  }
+  
   // MARK: - Read Models
   func fetchCount<T: SQLiteFetchEntity>(request: QueryInterfaceRequest<T>) async throws -> Int {
     try await dbPool?.read({ db in
@@ -116,6 +148,13 @@ class SQLiteStore {
       try sqlRequest.fetchAll(db)
     }) ?? []
   }
+  
+//  func fetch<each T: SQLiteFetchEntity>(_ requests: repeat QueryInterfaceRequest<each T>) async throws -> (repeat [each T]) {
+//    let dbPool = try getDatabasePool()
+//    try await dbPool.read({ db in
+//      return (try repeat (each requests).fetchAll(db))
+//    })
+//  }
   
   // MARK: - Select Fields from Models
   func select<T: DatabaseValueConvertible & StatementColumnConvertible>(request: QueryInterfaceRequest<T>) async throws -> [T] {
