@@ -13,7 +13,7 @@ enum UserType: Codable {
   case anotherUser
 }
 
-struct User: Peer, Hashable {
+struct User: Peer {
   var id: UUID = UUID()
   var type: PeerType = .user
   let userType: UserType
@@ -21,6 +21,10 @@ struct User: Peer, Hashable {
   let phone: String
   let avatarTitle: String?
   var isOnline: Bool
+  
+  var title: String {
+    name
+  }
   
   var isMe: Bool {
     return userType == .selfUser
@@ -31,6 +35,12 @@ struct User: Peer, Hashable {
       return nil
     }
     return UIImage(named: imageName)
+  }
+}
+
+extension User: Hashable {
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
   }
 }
 

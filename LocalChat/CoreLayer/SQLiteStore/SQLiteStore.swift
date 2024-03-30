@@ -131,13 +131,26 @@ class SQLiteStore {
     }) ?? []
   }
   
+  func fetch<T: SQLiteFetchEntity, U: SQLiteFetchEntity>(
+    firstRequest: QueryInterfaceRequest<T>,
+    secondRequest: QueryInterfaceRequest<U>
+  ) async throws -> ([T],[U]) {
+    try await dbPool?.read({ db in
+      let firstRes = try firstRequest.fetchAll(db)
+      let secondRes = try secondRequest.fetchAll(db)
+      return (firstRes, secondRes)
+    }) ?? ([], [])
+  }
+  
   func fetchSet<T: SQLiteFetchEntity>(request: QueryInterfaceRequest<T>) async throws -> Set<T> {
     try await dbPool?.read({ db in
       try request.fetchSet(db)
     }) ?? Set<T>()
   }
   
-  func fetch<T: DatabaseValueConvertible & StatementColumnConvertible>(sqlRequest: SQLRequest<T>) async throws -> [T] {
+  func fetch<T>(
+    sqlRequest: SQLRequest<T>
+  ) async throws -> [T] where T: DatabaseValueConvertible & StatementColumnConvertible {
     try await dbPool?.read({ db in
       try sqlRequest.fetchAll(db)
     }) ?? []
@@ -149,15 +162,18 @@ class SQLiteStore {
     }) ?? []
   }
   
-//  func fetch<each T: SQLiteFetchEntity>(_ requests: repeat QueryInterfaceRequest<each T>) async throws -> (repeat [each T]) {
-//    let dbPool = try getDatabasePool()
-//    try await dbPool.read({ db in
-//      return (try repeat (each requests).fetchAll(db))
-//    })
-//  }
-  
   // MARK: - Select Fields from Models
-  func select<T: DatabaseValueConvertible & StatementColumnConvertible>(request: QueryInterfaceRequest<T>) async throws -> [T] {
+  func select<T>(
+    request: QueryInterfaceRequest<T>
+  ) async throws -> [T] where T: DatabaseValueConvertible & StatementColumnConvertible {
+    try await dbPool?.read({ db in
+      try request.fetchAll(db)
+    }) ?? []
+  }
+  
+  func select<T>(
+    request: QueryInterfaceRequest<T>
+  ) async throws -> [T] where T: SQLiteFetchEntity {
     try await dbPool?.read({ db in
       try request.fetchAll(db)
     }) ?? []

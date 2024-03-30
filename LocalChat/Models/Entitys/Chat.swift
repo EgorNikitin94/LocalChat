@@ -22,6 +22,12 @@ struct Chat: Peer {
   }
 }
 
+extension Chat: Hashable {
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+  }
+}
+
 extension Chat {
   enum Columns: String, ColumnExpression {
     case id, type
