@@ -7,6 +7,9 @@
     "%@" : {
 
     },
+    "All" : {
+
+    },
     "Camera" : {
       "localizations" : {
         "ru" : {
@@ -77,6 +80,9 @@
       }
     },
     "Decriment" : {
+
+    },
+    "Directs" : {
 
     },
     "Disable notifications" : {
@@ -165,6 +171,9 @@
           }
         }
       }
+    },
+    "Groups" : {
+
     },
     "Hallo amo module" : {
       "extractionState" : "stale",

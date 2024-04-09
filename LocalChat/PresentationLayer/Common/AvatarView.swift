@@ -48,6 +48,8 @@ struct AvatarView: View {
             .foregroundColor(colorScheme == .light ? .white : .black)
             .font(.largeTitle)
             .bold()
+            .padding(3)
+            .minimumScaleFactor(0.3)
         }
       }
       ZStack {

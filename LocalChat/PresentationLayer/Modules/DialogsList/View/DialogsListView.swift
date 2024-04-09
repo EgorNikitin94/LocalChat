@@ -15,36 +15,59 @@ struct DialogsListView: View {
   private var intent: DialogsListIntentProtocol { container.intent }
   private var model: DialogsListModelStateProtocol { container.model }
   
+  @Environment(\.colorScheme) private var colorScheme
+  
   var body: some View {
     ScrollView(.vertical) {
-      LazyVStack(spacing: .zero) {
-        ForEach(model.dialogs) { dialogVM in
-          DialogListRowView(dialogVM: dialogVM)
-            .padding(.vertical, 15)
-            .contextMenu {
-              Button {
-                //
-              } label: {
-                Label("Pin", systemImage: "pin.fill")
-              }
-              
-              Button {
-                intent.mute(vm: dialogVM)
-              } label: {
-                if dialogVM.muted {
-                  Label("Enable notifications", systemImage: "bell.fill")
-                } else {
-                  Label("Disable notifications", systemImage: "bell.slash.fill")
+      LazyVStack(spacing: .zero, pinnedViews: .sectionHeaders) {
+        Section {
+          ForEach(model.dialogs) { dialogVM in
+            DialogListRowView(dialogVM: dialogVM)
+              .padding(.vertical, 15)
+              .contextMenu {
+                Button {
+                  //
+                } label: {
+                  Label("Pin", systemImage: "pin.fill")
+                }
+                
+                Button {
+                  intent.mute(vm: dialogVM)
+                } label: {
+                  if dialogVM.muted {
+                    Label("Enable notifications", systemImage: "bell.fill")
+                  } else {
+                    Label("Disable notifications", systemImage: "bell.slash.fill")
+                  }
                 }
               }
+              .onTapGesture {
+                intent.openConversation(for: dialogVM)
+              }
+          }
+          .separator(showLast : false) { item in
+            Divider()
+              .padding(.leading, 15)
+          }
+        } header: {
+          HStack {
+            Group {
+              Button("All") {
+                //
+              }
+              Button("Directs") {
+                //
+              }
+              Button("Groups") {
+                //
+              }
+              Spacer()
             }
-            .onTapGesture {
-              intent.openConversation(for: dialogVM)
-            }
-        }
-        .separator(showLast : false) { item in
-          Divider()
-            .padding(.leading, 15)
+            .foregroundStyle(.blue)
+          }
+          .padding()
+          .frame(height: 40)
+          .background(.thinMaterial, in: Rectangle())
         }
       }
     }
@@ -78,5 +101,6 @@ struct DialogsListView: View {
 #Preview {
   NavigationStack {
     DialogsListAssembly().build(moduleOutput: nil, completion: nil)
+      .preferredColorScheme(.dark)
   }
 }
