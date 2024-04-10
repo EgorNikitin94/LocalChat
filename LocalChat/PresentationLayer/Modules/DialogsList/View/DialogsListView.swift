@@ -15,7 +15,8 @@ struct DialogsListView: View {
   private var intent: DialogsListIntentProtocol { container.intent }
   private var model: DialogsListModelStateProtocol { container.model }
   
-  @Environment(\.colorScheme) private var colorScheme
+  @State var badge: String = "9"
+  @State var muted: Bool = false
   
   var body: some View {
     ScrollView(.vertical) {
@@ -50,24 +51,43 @@ struct DialogsListView: View {
               .padding(.leading, 15)
           }
         } header: {
-          HStack {
-            Group {
-              Button("All") {
-                //
+          VStack(alignment: .leading) {
+            HStack(spacing: 20) {
+              Group {
+                Button(action: {}, label: {
+                  HStack(spacing: 5) {
+                    Text("All")
+                    BadgeView(number: $badge, muted: $muted, size: 17)
+                  }
+                })
+                
+                Button(action: {}, label: {
+                  HStack(spacing: 5) {
+                    Text("Directs")
+                    BadgeView(number: $badge, muted: $muted, size: 17)
+                  }
+                })
+                
+                Button(action: {}, label: {
+                  HStack(spacing: 5) {
+                    Text("Groups")
+                    BadgeView(number: $badge, muted: $muted, size: 17)
+                  }
+                })
+                Spacer()
               }
-              Button("Directs") {
-                //
-              }
-              Button("Groups") {
-                //
-              }
-              Spacer()
+              .foregroundStyle(.blue)
             }
-            .foregroundStyle(.blue)
+            
+            
+            Capsule(style: .continuous)
+              .fill(.blue)
+              .frame(width: 40, height: 3)
           }
-          .padding()
-          .frame(height: 40)
-          .background(.thinMaterial, in: Rectangle())
+          .padding(.vertical, 5)
+          .padding(.horizontal, 15)
+          .frame(maxHeight: 40)
+          .background(.background, in: Rectangle())
         }
       }
     }
@@ -92,6 +112,8 @@ struct DialogsListView: View {
           .foregroundColor(.secondary)
       }
     }
+    .toolbarBackground(.automatic, for: .navigationBar)
+    .toolbarBackground(.background, for: .navigationBar)
     .onAppear(perform: intent.viewOnAppear)
     .modifier(DialogsListRouter(subjects: model.routerSubject, intent: intent))
   }

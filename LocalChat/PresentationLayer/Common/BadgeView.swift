@@ -39,6 +39,7 @@ struct BadgeView: View {
       .clipShape(Capsule())
       .contentTransition(.numericText(countsDown: false))
       .animation(.easeIn, value: muted)
+      .minimumScaleFactor(0.7)
   }
 }
 
