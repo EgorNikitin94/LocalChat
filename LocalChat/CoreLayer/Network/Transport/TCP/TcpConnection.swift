@@ -8,6 +8,7 @@
 import Foundation
 import CocoaAsyncSocket
 import VarInt
+import NIO
 
 final class TcpConnection: NSObject {
   weak var transport: TcpTransportInterface?
@@ -15,10 +16,15 @@ final class TcpConnection: NSObject {
   private let tcpQueue: DispatchQueue = DispatchQueue(label: "com.localChat.tcpQueue")
   
   private let host = "localhost"
-  private let port: UInt16 = 8080
+  private let port: Int = 8080
   private let headerLength: UInt = 5
   
   private var inputTask: Task<(), Never>?
+  
+  private let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
+  
+  private var outbound: NIOAsyncChannelOutboundWriter<ByteBuffer>? = nil
+  private var clientChannel: NIOAsyncChannel<ByteBuffer, ByteBuffer>? = nil
   
   private let logger = Log.custom(category: "Socket")
   
@@ -36,24 +42,46 @@ final class TcpConnection: NSObject {
   }
   
   func connect() {
-    tcpQueue.async {
-      if self.socket != nil { return }
-      self.socket = GCDAsyncSocket(delegate: self, delegateQueue: self.tcpQueue)
-      
+    Task {
       do {
-        try self.socket?.connect(toHost: self.host, onPort: self.port)
-        self.socket?.readData(toLength: self.headerLength, withTimeout: -1, tag: PacketType.header.rawValue)
+        self.clientChannel = try await ClientBootstrap(group: group)
+          .connect(
+            host: host,
+            port: port
+          ) { channel in
+            return channel.eventLoop.makeCompletedFuture {
+              return try NIOAsyncChannel<ByteBuffer, ByteBuffer>(
+                wrappingChannelSynchronously: channel
+              )
+            }
+          }
+        
+        try await self.clientChannel?.executeThenClose { inbound, outbound in
+          self.outbound = outbound
+          startListenSocketInput()
+          transport?.socketDidSuccessConnect()
+          
+          for try await inboundData in inbound {
+            var res = inboundData
+            if let header = res.readBytes(length: Int(headerLength)) {
+              let bodySize: UInt64 = uVarInt(header).value
+              
+              if let body = res.readBytes(length: Int(bodySize)) {
+                let data = Data.init(body)
+                outputSocketContinuation?.yield(with: .success(data))
+              }
+            }
+          }
+        }
       } catch {
-        self.logger.error("TCP socket create error: \(error.localizedDescription)")
+        print(error.localizedDescription)
       }
     }
   }
   
   func disconnect() {
-    tcpQueue.async {
-      self.socket?.disconnect()
-      self.socket = nil
-    }
+    let _ =  self.clientChannel?.channel.close(mode: .all)
+    self.clientChannel = nil
   }
   
   private func startListenSocketInput() {
@@ -61,7 +89,7 @@ final class TcpConnection: NSObject {
     inputTask = Task {
       for await sendedData in transport.inputSocketStream {
         let requestData = self.appendHeader(to: sendedData.data)
-        self.socket?.write(requestData, withTimeout: -1, tag: Int(sendedData.id))
+        try? await outbound?.write(ByteBuffer(bytes: requestData))
       }
     }
   }
