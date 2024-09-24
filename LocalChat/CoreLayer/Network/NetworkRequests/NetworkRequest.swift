@@ -16,7 +16,7 @@ enum RequestPriority {
   case sysInit
 }
 
-protocol NetworkRequest {
+protocol NetworkRequest: Sendable {
   var id: UInt32 { get }
   var priority: RequestPriority { get }
   var request: Request { get set }

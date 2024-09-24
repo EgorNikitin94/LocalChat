@@ -6,19 +6,19 @@
 //
 
 import Foundation
-import GRDB
+@preconcurrency import GRDB
 
 protocol SQLiteEntity: SQLiteRecordEntity & SQLiteFetchEntity {}
-protocol SQLiteRecordEntity: Encodable, PersistableRecord {}
-protocol SQLiteFetchEntity: Decodable, FetchableRecord {}
+protocol SQLiteRecordEntity: Encodable, Sendable, PersistableRecord {}
+protocol SQLiteFetchEntity: Decodable, Sendable, FetchableRecord {}
 
-class SQLiteStore {
+final class SQLiteStore: Sendable {
   static let shared = SQLiteStore()
   
   private let sharedAppGroup = "group.com.localChat"
   private let dataBaseName = "localChatDB.sqlite"
   
-  private var dbPool: DatabasePool?
+  nonisolated(unsafe) private var dbPool: DatabasePool?
   
   private let enableLogs: Bool = false
   

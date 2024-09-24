@@ -15,7 +15,7 @@ protocol TcpTransportInterface: AnyObject {
   func socketDidDisconnect()
 }
 
-class TcpTransport {
+class TcpTransport: @unchecked Sendable {
   private var connection: TcpConnection
   
   weak var requestDispatcher: RequestDispatcher?

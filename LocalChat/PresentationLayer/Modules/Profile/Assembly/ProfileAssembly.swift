@@ -11,7 +11,7 @@ import SwiftUI
 class ProfileAssembly {
 
 // MARK: - Public
-  func build(
+  @MainActor func build(
     moduleOutput: ProfileModuleOutput?,
     completion: ((ProfileModuleInput?) -> Void)?
   ) -> some View {
@@ -39,7 +39,7 @@ class ProfileAssembly {
     )
 }
   
-  private func buildView(
+  @MainActor private func buildView(
     model: ProfileModel,
     intent: ProfileIntent
   ) -> some View {

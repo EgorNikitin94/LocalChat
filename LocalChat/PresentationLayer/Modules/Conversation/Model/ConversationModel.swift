@@ -80,9 +80,10 @@ extension ConversationModel: ConversationModelActionsProtocol {
     let displayItems = messages.reversed().map({ MessageDisplayItem(with: $0) })
     realTimeMessages = prepareDisplayItems(displayItems)
     
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-      self.isInitialState.toggle()
-    }
+//    Task {
+//      try await Task.sleep(for: .microseconds(500))
+//      self.isInitialState.toggle()
+//    }
   }
   
   func didSendMessage(messsage: Message) {

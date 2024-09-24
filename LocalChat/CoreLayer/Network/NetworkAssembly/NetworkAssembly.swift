@@ -7,8 +7,8 @@
 
 import Foundation
 
-class NetworkAssembly {
-  static let shared = NetworkAssembly()
+final class NetworkAssembly {
+  nonisolated(unsafe) static let shared = NetworkAssembly()
   
   lazy var requestDispatcher: RequestDispatcher = {
     let tcpTrasport = self.tcpTransport

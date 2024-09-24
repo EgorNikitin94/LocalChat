@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import CocoaAsyncSocket
+@preconcurrency import CocoaAsyncSocket
 import VarInt
 import NIO
 
-final class TcpConnection: NSObject {
+final class TcpConnection: NSObject, @unchecked Sendable {
   weak var transport: TcpTransportInterface?
   private var socket: GCDAsyncSocket?
   private let tcpQueue: DispatchQueue = DispatchQueue(label: "com.localChat.tcpQueue")

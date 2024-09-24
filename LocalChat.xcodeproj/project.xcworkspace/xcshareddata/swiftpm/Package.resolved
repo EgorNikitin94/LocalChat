@@ -1,5 +1,5 @@
 {
-  "originHash" : "1ce6e56f71726d415a0325755e5f427535566fe225f6d1433bbaad5c2063a0b9",
+  "originHash" : "13c593500075e82ef47ea2925bf13fe21e0b3aa3d39d5e08889365e12075432e",
   "pins" : [
     {
       "identity" : "cocoaasyncsocket",
@@ -25,7 +25,7 @@
       "location" : "https://github.com/groue/GRDB.swift.git",
       "state" : {
         "branch" : "master",
-        "revision" : "e83f3eb25ef4d5a36a13dbee98f8ac67e24e5c8f"
+        "revision" : "2cf6c756e1e5ef6901ebae16576a7e4e4b834622"
       }
     },
     {

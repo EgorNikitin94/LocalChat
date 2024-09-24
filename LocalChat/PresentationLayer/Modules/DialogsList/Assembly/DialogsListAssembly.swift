@@ -11,7 +11,7 @@ import SwiftUI
 class DialogsListAssembly {
 
 // MARK: - Public
-  func build(
+  @MainActor func build(
     moduleOutput: DialogsListModuleOutput?,
     completion: ((DialogsListModuleInput?) -> Void)?
   ) -> some View {
@@ -41,7 +41,7 @@ class DialogsListAssembly {
     )
 }
   
-  private func buildView(
+  @MainActor private func buildView(
     model: DialogsListModel,
     intent: DialogsListIntent
   ) -> some View {

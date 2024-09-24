@@ -29,7 +29,7 @@ struct ForEachWithSeparator<Data: RandomAccessCollection, Content: View, Separat
 }
 
 extension ForEach where Data.Element: Hashable, Content: View {
-  func separator<Separator: View>(showLast: Bool = true,
+  @MainActor func separator<Separator: View>(showLast: Bool = true,
                                   @ViewBuilder separator: @escaping (Data.Element) -> Separator) -> some View {
     ForEachWithSeparator(data: data,
                          content: content,

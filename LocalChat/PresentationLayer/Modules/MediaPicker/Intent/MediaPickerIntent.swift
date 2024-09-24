@@ -15,7 +15,7 @@ import Photos
   case files
 }
 
-class MediaPickerIntent {
+class MediaPickerIntent: @unchecked Sendable {
 
   private weak var model: MediaPickerModelActionsProtocol?
   private weak var routeModel: MediaPickerModelRouterProtocol?

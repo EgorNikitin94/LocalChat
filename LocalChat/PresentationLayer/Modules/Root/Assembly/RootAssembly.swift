@@ -10,7 +10,7 @@ import SwiftUI
 class RootAssembly {
   
   // MARK: - Public
-  func build(moduleOutput: RootModuleOutput?, completion: ((RootModuleInput?) -> Void)?) -> some View {
+  @MainActor func build(moduleOutput: RootModuleOutput?, completion: ((RootModuleInput?) -> Void)?) -> some View {
     let model = buildModel()
     let intent = buildIntent(model: model, moduleOutput: moduleOutput)
     let view = buildView(model: model, intent: intent)
@@ -27,7 +27,7 @@ class RootAssembly {
     RootIntent(model: model, moduleOutput: moduleOutput)
   }
   
-  private func buildView(model: RootModel, intent: RootIntent) -> some View {
+  @MainActor private func buildView(model: RootModel, intent: RootIntent) -> some View {
     let container = MVIContainer(
       intent: intent as RootIntentProtocol,
       model: model as RootModelStateProtocol,
@@ -43,7 +43,7 @@ class RootAssembly {
     )
   }
   
-  func buildChildSubmodules(with intent: RootIntent) -> (contactsView: some View, dialogsList: some View, settings: some View) {
+  @MainActor func buildChildSubmodules(with intent: RootIntent) -> (contactsView: some View, dialogsList: some View, settings: some View) {
     let contacts = Text("Contacts")
     let dialogs = DialogsListAssembly().build(moduleOutput: intent) { input in
       intent.dialigsListInput = input

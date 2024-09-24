@@ -49,5 +49,5 @@ extension User {
     case id, type, userType, name, phone, avatarTitle, isOnline
   }
   
-  static var databaseTableName: String = "user"
+  static let databaseTableName: String = "user"
 }

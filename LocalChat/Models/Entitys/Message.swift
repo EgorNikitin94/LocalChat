@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import GRDB
+@preconcurrency import GRDB
 
 struct Message: Identifiable, Hashable, Equatable {
   static func == (lhs: Message, rhs: Message) -> Bool {
@@ -33,7 +33,7 @@ extension Message: SQLiteEntity {
     case id, from, to, date, text, mediaData
   }
   
-  static var databaseTableName: String = "message"
+  static let databaseTableName: String = "message"
   
   static let from = belongsTo(User.self)
   static let to = belongsTo(User.self)

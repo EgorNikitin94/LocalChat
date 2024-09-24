@@ -16,7 +16,7 @@ enum ServiceTag {
 }
 
 final class ServicesCatalog {
-  static let shared: ServicesCatalog = ServicesCatalog()
+  nonisolated(unsafe) static let shared: ServicesCatalog = ServicesCatalog()
   
   private lazy var services: [ServiceTag: Service] = [:]
   

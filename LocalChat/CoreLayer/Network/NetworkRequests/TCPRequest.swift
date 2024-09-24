@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TCPRequest: NetworkRequest {
+class TCPRequest: NetworkRequest, @unchecked Sendable {
   let id: UInt32
   var request: Request
   var priority: RequestPriority {

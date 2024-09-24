@@ -34,5 +34,5 @@ extension Chat {
   }
   
   
-  static var databaseTableName: String = "chat"
+  static let databaseTableName: String = "chat"
 }

@@ -11,7 +11,7 @@ import SwiftUI
 class AuthAssembly {
 
 // MARK: - Public
-  func build(moduleOutput: AuthModuleOutput?, completion: ((AuthModuleInput?) -> Void)?) -> some View {
+  @MainActor func build(moduleOutput: AuthModuleOutput?, completion: ((AuthModuleInput?) -> Void)?) -> some View {
     let model = buildModel()
     let intent = buildIntent(model: model, moduleOutput: moduleOutput)
     let view = buildView(model: model, intent: intent)
@@ -32,7 +32,7 @@ class AuthAssembly {
     )
 }
   
-  private func buildView(model: AuthModel, intent: AuthIntent) -> some View {
+  @MainActor private func buildView(model: AuthModel, intent: AuthIntent) -> some View {
     let container = ModernMVIContainer(
       intent: intent as AuthIntentProtocol,
       model: model as AuthModelStateProtocol

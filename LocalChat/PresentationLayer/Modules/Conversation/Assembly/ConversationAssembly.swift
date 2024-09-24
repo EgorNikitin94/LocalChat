@@ -11,7 +11,7 @@ import SwiftUI
 class ConversationAssembly {
 
 // MARK: - Public
-  func build(peer: User, moduleOutput: ConversationModuleOutput?, completion: ((ConversationModuleInput?) -> Void)?) -> some View {
+  @MainActor func build(peer: User, moduleOutput: ConversationModuleOutput?, completion: ((ConversationModuleInput?) -> Void)?) -> some View {
     let model = buildModel()
     let intent = buildIntent(peer: peer, model: model, moduleOutput: moduleOutput)
     let view = buildView(model: model, intent: intent)
@@ -28,7 +28,7 @@ class ConversationAssembly {
     ConversationIntent(peer: peer, model: model, moduleOutput: moduleOutput)
 }
   
-  private func buildView(model: ConversationModel, intent: ConversationIntent) -> some View {
+  @MainActor private func buildView(model: ConversationModel, intent: ConversationIntent) -> some View {
     let container = MVIContainer(
       intent: intent as ConversationIntentProtocol,
       model: model as ConversationModelStateProtocol,

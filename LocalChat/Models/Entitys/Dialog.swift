@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import GRDB
+@preconcurrency import GRDB
 
 struct Dialog {
   var id: UUID
@@ -39,7 +39,7 @@ extension Dialog: SQLiteEntity {
     case id, peer, peerType, lastMessage, unreadCount, muted, pined
   }
   
-  static var databaseTableName: String = "dialog"
+  static let databaseTableName: String = "dialog"
   
   static let user = belongsTo(User.self)
   static let chat = belongsTo(Chat.self)
