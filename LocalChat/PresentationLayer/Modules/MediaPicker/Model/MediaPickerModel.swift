@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import Combine
+import Observation
 
-class PhotoDisplayItem: ObservableObject, Hashable, Equatable, Identifiable {
+@Observable
+class PhotoDisplayItem: Hashable, Equatable, Identifiable {
   static func == (lhs: PhotoDisplayItem, rhs: PhotoDisplayItem) -> Bool {
     lhs.id == rhs.id && lhs.selected == rhs.selected
   }
@@ -18,10 +19,10 @@ class PhotoDisplayItem: ObservableObject, Hashable, Equatable, Identifiable {
     hasher.combine(id)
   }
   
-  let id: UUID = UUID()
-  let image: UIImage
-  @Published var selected: Bool = false
-  @Published var number: String? = nil
+  @ObservationIgnored let id: UUID = UUID()
+  @ObservationIgnored let image: UIImage
+  var selected: Bool = false
+  var number: String? = nil
   
   init(image: UIImage) {
     self.image = image
@@ -35,12 +36,13 @@ struct MediaButton: Identifiable {
   let type: MediaButtonType
 }
 
-class MediaPickerModel: ObservableObject, MediaPickerModelStateProtocol {
-  @Published var imagesDisplayItems: [PhotoDisplayItem] = []
-  var buttons: [MediaButton] = [MediaButton(imageName: "photo.stack", title: String(localized:"Gallery"), type: .gallery),
+@Observable
+class MediaPickerModel: MediaPickerModelStateProtocol {
+  var imagesDisplayItems: [PhotoDisplayItem] = []
+  @ObservationIgnored var buttons: [MediaButton] = [MediaButton(imageName: "photo.stack", title: String(localized:"Gallery"), type: .gallery),
                                 MediaButton(imageName: "camera.fill", title: String(localized:"Camera"), type: .camera),
                                 MediaButton(imageName: "folder.fill", title: String(localized:"Files"), type: .files)]
-  @Published var selectedItemsCount: Int = 0
+  var selectedItemsCount: Int = 0
   let routerSubject = MediaPickerRouter.Subjects()
 }
 

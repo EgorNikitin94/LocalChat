@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MediaPickerView: View {
   
-  @StateObject var container: MVIContainer<MediaPickerIntentProtocol, MediaPickerModelStateProtocol>
+  @State var container: ModernMVIContainer<MediaPickerIntentProtocol, MediaPickerModelStateProtocol>
   
   private var intent: MediaPickerIntentProtocol { container.intent }
   private var model: MediaPickerModelStateProtocol { container.model }
@@ -130,7 +130,7 @@ struct PhotoViewer: View {
 }
 
 struct PhotoItem: View {
-  @StateObject var item: PhotoDisplayItem
+  @State var item: PhotoDisplayItem
   var intent: MediaPickerIntentProtocol
   
   var body: some View {

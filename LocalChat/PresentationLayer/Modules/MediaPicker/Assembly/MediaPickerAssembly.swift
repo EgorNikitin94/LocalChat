@@ -11,7 +11,7 @@ import SwiftUI
 class MediaPickerAssembly {
 
 // MARK: - Public
-  func build(moduleOutput: MediaPickerModuleOutput?, completion: ((MediaPickerModuleInput?) -> Void)?) -> some View {
+  @MainActor func build(moduleOutput: MediaPickerModuleOutput?, completion: ((MediaPickerModuleInput?) -> Void)?) -> some View {
     let model = buildModel()
     let intent = buildIntent(model: model, moduleOutput: moduleOutput)
     let view = buildView(model: model, intent: intent)
@@ -28,11 +28,11 @@ class MediaPickerAssembly {
     MediaPickerIntent(model: model, moduleOutput: moduleOutput)
 }
   
-  private func buildView(model: MediaPickerModel, intent: MediaPickerIntent) -> some View {
-    let container = MVIContainer(
+  @MainActor private func buildView(model: MediaPickerModel, intent: MediaPickerIntent) -> some View {
+    let container = ModernMVIContainer(
       intent: intent as MediaPickerIntentProtocol,
-      model: model as MediaPickerModelStateProtocol,
-      modelChangePublisher: model.objectWillChange)
+      model: model as MediaPickerModelStateProtocol
+    )
     return MediaPickerView(container: container)
   }
   
