@@ -28,10 +28,10 @@ class RootAssembly {
   }
   
   @MainActor private func buildView(model: RootModel, intent: RootIntent) -> some View {
-    let container = MVIContainer(
+    let container = ModernMVIContainer(
       intent: intent as RootIntentProtocol,
-      model: model as RootModelStateProtocol,
-      modelChangePublisher: model.objectWillChange)
+      model: model as RootModelStateProtocol
+    )
     
     let childViews = buildChildSubmodules(with: intent)
     

@@ -6,14 +6,15 @@
 //
 
 import UIKit
-import Combine
+import Observation
 
-class RootViewTabItem: ObservableObject, Identifiable {
-  let id: Int
-  let tabBarType: TabBarItemType
-  let title: String
-  let imageName: String
-  @Published var animationTrigger: Bool = false
+@Observable
+class RootViewTabItem: Identifiable {
+  @ObservationIgnored let id: Int
+  @ObservationIgnored let tabBarType: TabBarItemType
+  @ObservationIgnored let title: String
+  @ObservationIgnored let imageName: String
+  var animationTrigger: Bool = false
   
   enum TabBarItemType: Int {
     case contacts
@@ -42,9 +43,10 @@ class RootViewTabItem: ObservableObject, Identifiable {
   }
 }
 
-class RootModel: ObservableObject, RootModelStateProtocol {
-  @Published var state: RootViewTabItem.TabBarItemType = .chats
-  @Published var tabBarItems: [RootViewTabItem] = [
+@Observable
+class RootModel: RootModelStateProtocol {
+  var state: RootViewTabItem.TabBarItemType = .chats
+  var tabBarItems: [RootViewTabItem] = [
     RootViewTabItem(type: .contacts),
     RootViewTabItem(type: .chats),
     RootViewTabItem(type: .profile)

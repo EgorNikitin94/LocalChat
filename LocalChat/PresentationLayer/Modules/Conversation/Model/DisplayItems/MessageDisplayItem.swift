@@ -6,23 +6,24 @@
 //
 
 import SwiftUI
-import Combine
+import Observation
 
 enum MessageContentType {
   case text
   case image
 }
 
-class MessageDisplayItem: ObservableObject, Identifiable, Hashable, Equatable {
-  let id: UUID
-  let from: User
-  let to: User
-  var textContent: String
-  let dateText: String
-  var topDateCapsuleText: String?
-  var needShowTopDateCapsuleText: Bool = false
-  var media: UIImage? = nil
-  @Published var isEndOfSequence: Bool = false
+@Observable
+class MessageDisplayItem: Identifiable, Hashable, Equatable {
+  @ObservationIgnored let id: UUID
+  @ObservationIgnored let from: User
+  @ObservationIgnored let to: User
+  @ObservationIgnored var textContent: String
+  @ObservationIgnored let dateText: String
+  @ObservationIgnored var topDateCapsuleText: String?
+  @ObservationIgnored var needShowTopDateCapsuleText: Bool = false
+  @ObservationIgnored var media: UIImage? = nil
+  var isEndOfSequence: Bool = false
   
   var attributedString: AttributedString {
     let attributes: [NSAttributedString.Key: Any] = [

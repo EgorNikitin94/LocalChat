@@ -142,6 +142,16 @@ final class SQLiteStore: Sendable {
     }) ?? ([], [])
   }
   
+//  func fetch<each T: SQLiteFetchEntity>(
+//    _ requests: repeat QueryInterfaceRequest<each T>
+//  ) async throws -> (repeat [each T]) {
+//      let dbPool = try getDatabasePool()
+//      return try await dbPool.read({ db in
+//        (try repeat (each requests).fetchAll(db))
+//      })
+//    }
+  
+  
   func fetchSet<T: SQLiteFetchEntity>(request: QueryInterfaceRequest<T>) async throws -> Set<T> {
     try await dbPool?.read({ db in
       try request.fetchSet(db)

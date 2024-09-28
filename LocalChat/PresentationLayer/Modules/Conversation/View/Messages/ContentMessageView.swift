@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentMessageView: View {
-  @StateObject var currentMessage: MessageDisplayItem
+  @State var currentMessage: MessageDisplayItem
   
   @Environment(\.colorScheme) private var colorScheme
   
@@ -63,7 +63,7 @@ struct TextContentMessageView: View {
     case hstack
     case zstack
   }
-  @StateObject var currentMessage: MessageDisplayItem
+  @State var currentMessage: MessageDisplayItem
   
   @Environment(\.colorScheme) private var colorScheme
   
@@ -136,7 +136,7 @@ struct TextContentMessageView: View {
 }
 
 struct ImageContentMessageView: View {
-  @StateObject var currentMessage: MessageDisplayItem
+  @State var currentMessage: MessageDisplayItem
   
   @Environment(\.colorScheme) private var colorScheme
   

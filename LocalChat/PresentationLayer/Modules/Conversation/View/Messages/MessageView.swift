@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MessageView: View {
-  @StateObject var currentMessage: MessageDisplayItem
+  @State var currentMessage: MessageDisplayItem
   @Environment(\.colorScheme) private var colorScheme
   
   var minBubleOffset: CGFloat = 30.0

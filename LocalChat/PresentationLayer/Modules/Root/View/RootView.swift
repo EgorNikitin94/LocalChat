@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView<Contacts: View, Dialogs: View, Settings: View>: View {
   
-  @StateObject var container: MVIContainer<RootIntentProtocol, RootModelStateProtocol>
+  @State var container: ModernMVIContainer<RootIntentProtocol, RootModelStateProtocol>
   
   private var intent: RootIntentProtocol { container.intent }
   private var model: RootModelStateProtocol { container.model }

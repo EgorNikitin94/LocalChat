@@ -29,10 +29,10 @@ class ConversationAssembly {
 }
   
   @MainActor private func buildView(model: ConversationModel, intent: ConversationIntent) -> some View {
-    let container = MVIContainer(
+    let container = ModernMVIContainer(
       intent: intent as ConversationIntentProtocol,
-      model: model as ConversationModelStateProtocol,
-      modelChangePublisher: model.objectWillChange)
+      model: model as ConversationModelStateProtocol
+    )
     return ConversationView(container: container)
   }
   

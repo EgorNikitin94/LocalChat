@@ -11,7 +11,7 @@ import Combine
 
 struct ConversationView: View {
   
-  @StateObject var container: MVIContainer<ConversationIntentProtocol, ConversationModelStateProtocol>
+  @State var container: ModernMVIContainer<ConversationIntentProtocol, ConversationModelStateProtocol>
   
   private var intent: ConversationIntentProtocol { container.intent }
   private var model: ConversationModelStateProtocol { container.model }

@@ -7,39 +7,27 @@
 //
 
 import SwiftUI
-import Combine
+import Observation
 
-class ConversationModel: ObservableObject, ConversationModelStateProtocol {
-  @Published var avatarDisplayItem: AvatarDisplayItem?
-  @Published var realTimeMessages: [MessageDisplayItem] = []
-  @Published var isInitialState: Bool = true
-  @Published var inputText: String = ""
-  @Published var hideSendButton: Bool = true
-  @Published var chatImage: UIImage?
-  @Published var navTitle: String = ""
-  @Published var onlineDate: String = ""
-  @Published var isOnline: Bool = false
+@Observable 
+final class ConversationModel: ConversationModelStateProtocol {
+  var avatarDisplayItem: AvatarDisplayItem?
+  var realTimeMessages: [MessageDisplayItem] = []
+  var isInitialState: Bool = true
+  var inputText: String = "" {
+    didSet {
+      hideSendButton = !(inputText.count > 0)
+    }
+  }
+  var hideSendButton: Bool = true
+  var chatImage: UIImage?
+  var navTitle: String = ""
+  var onlineDate: String = ""
+  var isOnline: Bool = false
   
   let routerSubject = ConversationRouter.Subjects()
   
-  private(set) var cancellableSet: Set<AnyCancellable> = []
-  
-  init() {
-    isShowSendButtonPublisher
-      .receive(on: RunLoop.main)
-      .assign(to: \.hideSendButton, on: self)
-      .store(in: &cancellableSet)
-  }
-  
-  private var isShowSendButtonPublisher: AnyPublisher<Bool, Never> {
-    $inputText
-      .debounce(for: 0.1, scheduler: RunLoop.main)
-      .removeDuplicates()
-      .map { input in
-        return !(input.count > 0)
-      }
-      .eraseToAnyPublisher()
-  }
+  init() {}
   
   private func prepareDisplayItems(_ displayItems: [MessageDisplayItem]) -> [MessageDisplayItem] {
     var array: [MessageDisplayItem] = []
@@ -66,7 +54,7 @@ class ConversationModel: ObservableObject, ConversationModelStateProtocol {
 }
 
 // MARK: - Actions
-extension ConversationModel: ConversationModelActionsProtocol {  
+extension ConversationModel: @preconcurrency ConversationModelActionsProtocol {  
   func configure(with peer: User) {
     avatarDisplayItem = AvatarDisplayItem(with: peer)
     navTitle = peer.name
@@ -76,14 +64,15 @@ extension ConversationModel: ConversationModelActionsProtocol {
     }
   }
   
+  @MainActor
   func didLoad(messages: [Message]) {
     let displayItems = messages.reversed().map({ MessageDisplayItem(with: $0) })
     realTimeMessages = prepareDisplayItems(displayItems)
     
-//    Task {
-//      try await Task.sleep(for: .microseconds(500))
-//      self.isInitialState.toggle()
-//    }
+    Task {
+      try await Task.sleep(for: .microseconds(500))
+      self.isInitialState.toggle()
+    }
   }
   
   func didSendMessage(messsage: Message) {
