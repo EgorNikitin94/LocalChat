@@ -6,7 +6,7 @@
 //  Copyright © 2023 Egor Nikitin. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 protocol MediaPickerModelActionsProtocol: AnyObject {
   func didLoadPhotosFromLibrary(_ images: [UIImage])
@@ -22,6 +22,6 @@ protocol MediaPickerModelStateProtocol {
 
 // MARK: - Route
 protocol MediaPickerModelRouterProtocol: AnyObject {
-  func presentPhotoViewer(_ item: PhotoDisplayItem)
+  func presentPhotoViewer(_ item: PhotoDisplayItem, namespace: Namespace.ID)
   func closeModule()
 }

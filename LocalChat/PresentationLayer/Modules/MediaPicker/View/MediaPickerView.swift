@@ -132,6 +132,7 @@ struct PhotoViewer: View {
 struct PhotoItem: View {
   @State var item: PhotoDisplayItem
   var intent: MediaPickerIntentProtocol
+  @Namespace private var namespace
   
   var body: some View {
     ZStack(alignment: .topTrailing) {
@@ -139,9 +140,8 @@ struct PhotoItem: View {
         .resizable()
         .frame(height: 100)
         .cornerRadius(5)
-//        .matchedGeometryEffect(id: "1", in: namespace)
         .onTapGesture {
-          intent.didTapOn(item)
+          intent.didTapOn(item, namespace: namespace)
         }
       
       Button {
@@ -172,6 +172,7 @@ struct PhotoItem: View {
       }//.buttonStyle(ScaleButtonStyle())
       
     }
+    .matchedTransitionSource(id: item.id, in: namespace)
   }
 }
 

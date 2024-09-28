@@ -6,7 +6,7 @@
 //  Copyright © 2023 Egor Nikitin. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 import Photos
 
 @objc enum MediaButtonType: Int {
@@ -88,9 +88,8 @@ extension MediaPickerIntent: MediaPickerIntentProtocol {
     model?.didSelectItem(item)
   }
   
-  func didTapOn(_ item: PhotoDisplayItem) {
-    
-    routeModel?.presentPhotoViewer(item)
+  func didTapOn(_ item: PhotoDisplayItem, namespace: Namespace.ID) {
+    routeModel?.presentPhotoViewer(item, namespace: namespace)
   }
   
   func sendSelectedMedia() {

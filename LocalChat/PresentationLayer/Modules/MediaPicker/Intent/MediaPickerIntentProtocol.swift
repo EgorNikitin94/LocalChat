@@ -6,12 +6,12 @@
 //  Copyright © 2023 Egor Nikitin. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 protocol MediaPickerIntentProtocol: AnyObject {
   func viewOnAppear()
   func didSelectItem(_ item: PhotoDisplayItem)
-  func didTapOn(_ item: PhotoDisplayItem)
+  func didTapOn(_ item: PhotoDisplayItem, namespace: Namespace.ID)
   func sendSelectedMedia()
   func didTapOn(buttonType: MediaButtonType)
   func closeModule()

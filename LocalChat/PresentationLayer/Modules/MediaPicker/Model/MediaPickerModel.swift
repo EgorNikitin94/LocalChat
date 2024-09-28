@@ -6,7 +6,7 @@
 //  Copyright © 2023 Egor Nikitin. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 import Observation
 
 @Observable
@@ -75,8 +75,8 @@ extension MediaPickerModel: MediaPickerModelActionsProtocol {
 
 // MARK: - Route
 extension MediaPickerModel: MediaPickerModelRouterProtocol {
-  func presentPhotoViewer(_ item: PhotoDisplayItem) {
-    routerSubject.screen.send(.photoViewer(image: item.image))
+  func presentPhotoViewer(_ item: PhotoDisplayItem, namespace: Namespace.ID) {
+    routerSubject.screen.send(.photoViewer(id: item.id, image: item.image, namespace: namespace))
   }
   
   func closeModule() {
