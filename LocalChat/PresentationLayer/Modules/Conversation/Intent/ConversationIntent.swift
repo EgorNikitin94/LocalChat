@@ -20,7 +20,11 @@ class ConversationIntent {
   private var peer: User
   private var realTimeMessages: [Message] = []
 
-  init(peer: User, model: (ConversationModelActionsProtocol & ConversationModelRouterProtocol)?, moduleOutput: ConversationModuleOutput?) {
+  init(
+    peer: User,
+    model: (ConversationModelActionsProtocol & ConversationModelRouterProtocol)?,
+    moduleOutput: ConversationModuleOutput?
+  ) {
     self.model = model
     self.routeModel = model
     self.moduleOutput = moduleOutput
