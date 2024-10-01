@@ -17,34 +17,31 @@ struct ConversationView: View {
   private var model: ConversationModelStateProtocol { container.model }
   
   @State var showScrollToTopButton: Bool = false
-  private let scrollProgressPublisher: PassthroughSubject<CGFloat, Never> = PassthroughSubject<CGFloat, Never>()
   
   @FocusState var isFocusedInput: Bool
+  @State var scrollPosition = ScrollPosition(edge: .bottom)
   
   @Environment(\.colorScheme) private var colorScheme
   
   var body: some View {
     ScrollViewReader { scrollView in
-      TrackableScrollView(
-        .vertical,
-        showIndicators: false,
-        scrollProgressPublisher: scrollProgressPublisher
+      ScrollView(
+        .vertical
       ) {
         LazyVStack(alignment: .leading) {
           ForEach(model.realTimeMessages) { msg in
             MessageView(currentMessage: msg)
               .scaleEffect(x: 1, y: -1, anchor: .center)
+              .onScrollVisibilityChange({ visible in
+                if msg.id == model.realTimeMessages.first?.id {
+                  showScrollToTopButton = !visible
+                }
+              })
               .id(msg.id)
           }
         }
         .padding(.vertical, 10)
       }
-      .onReceive(scrollProgressPublisher, perform: { progress in
-        if progress > 0.8 {
-          print("Load Next Batch")
-        }
-        showScrollToTopButton = progress > 0.2 ? true : false
-      })
       .onTapGesture {
         hideKeyboard()
       }
@@ -52,6 +49,7 @@ struct ConversationView: View {
         if let newViewModel = model.realTimeMessages.first, newViewModel.isFromCurrentUser {
           withAnimation(.spring()) {
             scrollView.scrollTo(newViewModel.id, anchor: .bottom)
+//            scrollPosition.scrollTo(newViewModel.id, anchor: .bottom)
           }
         }
       })
@@ -61,6 +59,7 @@ struct ConversationView: View {
           Button {
             withAnimation(.spring()) {
               scrollView.scrollTo(model.realTimeMessages.first?.id, anchor: .bottom)
+//              scrollPosition.scrollTo(model.realTimeMessages.first?.id, anchor: .bottom)
             }
           } label: {
             Image(systemName: "chevron.down.circle.fill")
