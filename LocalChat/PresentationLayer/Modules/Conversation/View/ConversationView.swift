@@ -20,7 +20,7 @@ struct ConversationView: View {
   
   @FocusState var isFocusedInput: Bool
   
-  @State private var scrollPosition: UUID? = nil
+  @State private var scrollPosition = ScrollPosition(idType: MessageDisplayItem.ID.self)
   
   @Environment(\.colorScheme) private var colorScheme
   
@@ -48,7 +48,7 @@ struct ConversationView: View {
     .onChange(of: model.realTimeMessages, {  _, newValue in
       if let newViewModel = model.realTimeMessages.first, newViewModel.isFromCurrentUser {
         withAnimation(.spring()) {
-          scrollPosition = newViewModel.id
+          scrollPosition.scrollTo(id: newViewModel.id, anchor: .bottom)
         }
       }
     })
@@ -57,7 +57,7 @@ struct ConversationView: View {
       if showScrollToTopButton {
         Button {
           withAnimation(.spring()) {
-            scrollPosition = model.realTimeMessages.first?.id
+            scrollPosition.scrollTo(edge: .top)
           }
         } label: {
           Image(systemName: "chevron.down.circle.fill")
@@ -80,7 +80,7 @@ struct ConversationView: View {
         .transition(.scale.combined(with: .opacity))
       }
     })
-    .scrollPosition(id: $scrollPosition, anchor: .bottom)
+    .scrollPosition($scrollPosition)
     .animation(.spring(), value: showScrollToTopButton)
     .scaleEffect(x: 1, y: -1, anchor: .center)
     .animation(model.isInitialState ? nil : .spring(), value: model.realTimeMessages)
