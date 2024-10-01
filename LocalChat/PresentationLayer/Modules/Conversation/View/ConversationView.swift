@@ -19,70 +19,68 @@ struct ConversationView: View {
   @State var showScrollToTopButton: Bool = false
   
   @FocusState var isFocusedInput: Bool
-  @State var scrollPosition = ScrollPosition(edge: .bottom)
+  
+  @State private var scrollPosition: UUID? = nil
   
   @Environment(\.colorScheme) private var colorScheme
   
   var body: some View {
-    ScrollViewReader { scrollView in
-      ScrollView(
-        .vertical
-      ) {
-        LazyVStack(alignment: .leading) {
-          ForEach(model.realTimeMessages) { msg in
-            MessageView(currentMessage: msg)
-              .scaleEffect(x: 1, y: -1, anchor: .center)
-              .onScrollVisibilityChange({ visible in
-                if msg.id == model.realTimeMessages.first?.id {
-                  showScrollToTopButton = !visible
-                }
-              })
-              .id(msg.id)
-          }
+    ScrollView(
+      .vertical
+    ) {
+      LazyVStack(alignment: .leading) {
+        ForEach(model.realTimeMessages) { msg in
+          MessageView(currentMessage: msg)
+            .scaleEffect(x: 1, y: -1, anchor: .center)
+            .onScrollVisibilityChange({ visible in
+              if msg.id == model.realTimeMessages.first?.id {
+                showScrollToTopButton = !visible
+              }
+            })
         }
-        .padding(.vertical, 10)
+        .scrollTargetLayout()
       }
-      .onTapGesture {
-        hideKeyboard()
-      }
-      .onChange(of: model.realTimeMessages, {  _, newValue in
-        if let newViewModel = model.realTimeMessages.first, newViewModel.isFromCurrentUser {
-          withAnimation(.spring()) {
-            scrollView.scrollTo(newViewModel.id, anchor: .bottom)
-//            scrollPosition.scrollTo(newViewModel.id, anchor: .bottom)
-          }
-        }
-      })
-      
-      .overlay(alignment: .topTrailing, content: {
-        if showScrollToTopButton {
-          Button {
-            withAnimation(.spring()) {
-              scrollView.scrollTo(model.realTimeMessages.first?.id, anchor: .bottom)
-//              scrollPosition.scrollTo(model.realTimeMessages.first?.id, anchor: .bottom)
-            }
-          } label: {
-            Image(systemName: "chevron.down.circle.fill")
-              .resizable()
-              .frame(width: 35, height: 35)
-              .foregroundColor(.gray)
-              .scaleEffect(x: 1, y: -1, anchor: .center)
-              .background(content: {
-                Group {
-                  if colorScheme == .dark {
-                    Color.black
-                  } else {
-                    Color.white
-                  }
-                }
-                .clipShape(Circle())
-              })
-              .padding(5)
-          }
-          .transition(.scale.combined(with: .opacity))
-        }
-      })
+      .padding(.vertical, 10)
     }
+    .onTapGesture {
+      hideKeyboard()
+    }
+    .onChange(of: model.realTimeMessages, {  _, newValue in
+      if let newViewModel = model.realTimeMessages.first, newViewModel.isFromCurrentUser {
+        withAnimation(.spring()) {
+          scrollPosition = newViewModel.id
+        }
+      }
+    })
+    
+    .overlay(alignment: .topTrailing, content: {
+      if showScrollToTopButton {
+        Button {
+          withAnimation(.spring()) {
+            scrollPosition = model.realTimeMessages.first?.id
+          }
+        } label: {
+          Image(systemName: "chevron.down.circle.fill")
+            .resizable()
+            .frame(width: 35, height: 35)
+            .foregroundColor(.gray)
+            .scaleEffect(x: 1, y: -1, anchor: .center)
+            .background(content: {
+              Group {
+                if colorScheme == .dark {
+                  Color.black
+                } else {
+                  Color.white
+                }
+              }
+              .clipShape(Circle())
+            })
+            .padding(5)
+        }
+        .transition(.scale.combined(with: .opacity))
+      }
+    })
+    .scrollPosition(id: $scrollPosition, anchor: .bottom)
     .animation(.spring(), value: showScrollToTopButton)
     .scaleEffect(x: 1, y: -1, anchor: .center)
     .animation(model.isInitialState ? nil : .spring(), value: model.realTimeMessages)
