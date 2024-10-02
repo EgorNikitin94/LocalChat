@@ -33,6 +33,9 @@
 		50301AE428F61C280041CFFD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE328F61C280041CFFD /* MessageView.swift */; };
 		50329EAE2CADCF8E003C65C3 /* Monochrome.metal in Sources */ = {isa = PBXBuildFile; fileRef = 50329EAD2CADCF8E003C65C3 /* Monochrome.metal */; };
 		50329EB02CADD089003C65C3 /* ShaderLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50329EAF2CADD089003C65C3 /* ShaderLibrary.swift */; };
+		50329EB32CADDD81003C65C3 /* PhotosLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50329EB22CADDD81003C65C3 /* PhotosLoader.swift */; };
+		50329EB52CADE3CB003C65C3 /* MediaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50329EB42CADE3CB003C65C3 /* MediaAsset.swift */; };
+		50329EB82CADE9A5003C65C3 /* PHPhotoAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50329EB72CADE9A5003C65C3 /* PHPhotoAsset.swift */; };
 		503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EA28FA0ACD00DE8ED0 /* AppColors.swift */; };
 		503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */; };
 		503836F328FA0D7700DE8ED0 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F228FA0D7700DE8ED0 /* View+extensions.swift */; };
@@ -158,6 +161,9 @@
 		50301AE328F61C280041CFFD /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		50329EAD2CADCF8E003C65C3 /* Monochrome.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Monochrome.metal; sourceTree = "<group>"; };
 		50329EAF2CADD089003C65C3 /* ShaderLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderLibrary.swift; sourceTree = "<group>"; };
+		50329EB22CADDD81003C65C3 /* PhotosLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosLoader.swift; sourceTree = "<group>"; };
+		50329EB42CADE3CB003C65C3 /* MediaAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAsset.swift; sourceTree = "<group>"; };
+		50329EB72CADE9A5003C65C3 /* PHPhotoAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHPhotoAsset.swift; sourceTree = "<group>"; };
 		503836EA28FA0ACD00DE8ED0 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdaptiveForgroundColor.swift; sourceTree = "<group>"; };
 		503836F228FA0D7700DE8ED0 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
@@ -375,6 +381,23 @@
 			path = MetalShaders;
 			sourceTree = "<group>";
 		};
+		50329EB12CADDD2F003C65C3 /* PhotosLoader */ = {
+			isa = PBXGroup;
+			children = (
+				50329EB22CADDD81003C65C3 /* PhotosLoader.swift */,
+			);
+			path = PhotosLoader;
+			sourceTree = "<group>";
+		};
+		50329EB62CADE993003C65C3 /* MediaAssets */ = {
+			isa = PBXGroup;
+			children = (
+				50329EB42CADE3CB003C65C3 /* MediaAsset.swift */,
+				50329EB72CADE9A5003C65C3 /* PHPhotoAsset.swift */,
+			);
+			path = MediaAssets;
+			sourceTree = "<group>";
+		};
 		503410F72A897210002E9CEF /* Messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +445,7 @@
 				50BCB7302B869D50001902CB /* UserService */,
 				50BCB7312B869D58001902CB /* DialogsService */,
 				50BCB7322B869D63001902CB /* MessageService */,
+				50329EB12CADDD2F003C65C3 /* PhotosLoader */,
 			);
 			path = BisnesLogicLayer;
 			sourceTree = "<group>";
@@ -513,6 +537,7 @@
 				50A5A3732BAF45BC0045F146 /* Chat.swift */,
 				50410BF82B4853FD00E1D9F2 /* Dialog.swift */,
 				50410BFA2B48540900E1D9F2 /* Message.swift */,
+				50329EB62CADE993003C65C3 /* MediaAssets */,
 			);
 			path = Entitys;
 			sourceTree = "<group>";
@@ -1126,10 +1151,12 @@
 				5067ED0C2A843F7F00C5FA11 /* RouterAlertModifier.swift in Sources */,
 				503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */,
 				503836F828FA167C00DE8ED0 /* DialogListDisplayItem.swift in Sources */,
+				50329EB32CADDD81003C65C3 /* PhotosLoader.swift in Sources */,
 				50B298CA2B93DF9C00E2ECF3 /* auth.pb.swift in Sources */,
 				503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */,
 				5006DEE228FB58E200BBAC2A /* AvatarView.swift in Sources */,
 				505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */,
+				50329EB52CADE3CB003C65C3 /* MediaAsset.swift in Sources */,
 				50329EB02CADD089003C65C3 /* ShaderLibrary.swift in Sources */,
 				5083C4C22B4AE71600656BEC /* RootModelProtocol.swift in Sources */,
 				50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */,
@@ -1188,6 +1215,7 @@
 				A9C95046EF0F612A0D8CF98A /* ProfileIntentProtocol.swift in Sources */,
 				5067F5082B53F88E0085AF56 /* RequestIdCounter.swift in Sources */,
 				FFA7A2AEFECB62C478732EC3 /* ProfileIntent.swift in Sources */,
+				50329EB82CADE9A5003C65C3 /* PHPhotoAsset.swift in Sources */,
 				50B298CB2B93DF9C00E2ECF3 /* dialogs.pb.swift in Sources */,
 				50410BF72B4853F000E1D9F2 /* User.swift in Sources */,
 				FF0F26E83CA9C629BAAC4C54 /* ProfileModelProtocol.swift in Sources */,
