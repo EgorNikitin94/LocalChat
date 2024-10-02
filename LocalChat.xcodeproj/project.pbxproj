@@ -31,6 +31,8 @@
 		502672B82B8FC2F600809785 /* SmartReconectInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502672B72B8FC2F600809785 /* SmartReconectInterval.swift */; };
 		50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE128F61BA90041CFFD /* ContentMessageView.swift */; };
 		50301AE428F61C280041CFFD /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50301AE328F61C280041CFFD /* MessageView.swift */; };
+		50329EAE2CADCF8E003C65C3 /* Monochrome.metal in Sources */ = {isa = PBXBuildFile; fileRef = 50329EAD2CADCF8E003C65C3 /* Monochrome.metal */; };
+		50329EB02CADD089003C65C3 /* ShaderLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50329EAF2CADD089003C65C3 /* ShaderLibrary.swift */; };
 		503836EB28FA0ACD00DE8ED0 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EA28FA0ACD00DE8ED0 /* AppColors.swift */; };
 		503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */; };
 		503836F328FA0D7700DE8ED0 /* View+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503836F228FA0D7700DE8ED0 /* View+extensions.swift */; };
@@ -154,6 +156,8 @@
 		502672B72B8FC2F600809785 /* SmartReconectInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartReconectInterval.swift; sourceTree = "<group>"; };
 		50301AE128F61BA90041CFFD /* ContentMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentMessageView.swift; sourceTree = "<group>"; };
 		50301AE328F61C280041CFFD /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		50329EAD2CADCF8E003C65C3 /* Monochrome.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Monochrome.metal; sourceTree = "<group>"; };
+		50329EAF2CADD089003C65C3 /* ShaderLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderLibrary.swift; sourceTree = "<group>"; };
 		503836EA28FA0ACD00DE8ED0 /* AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		503836EC28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdaptiveForgroundColor.swift; sourceTree = "<group>"; };
 		503836F228FA0D7700DE8ED0 /* View+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+extensions.swift"; sourceTree = "<group>"; };
@@ -362,6 +366,15 @@
 			path = NetworkRequests;
 			sourceTree = "<group>";
 		};
+		50329EAC2CADCF65003C65C3 /* MetalShaders */ = {
+			isa = PBXGroup;
+			children = (
+				50329EAF2CADD089003C65C3 /* ShaderLibrary.swift */,
+				50329EAD2CADCF8E003C65C3 /* Monochrome.metal */,
+			);
+			path = MetalShaders;
+			sourceTree = "<group>";
+		};
 		503410F72A897210002E9CEF /* Messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +474,7 @@
 		503836F028FA0C0500DE8ED0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				50329EAC2CADCF65003C65C3 /* MetalShaders */,
 				5067ECFC2A843F7F00C5FA11 /* MVIComponents */,
 				50DEEAD928EF8C6D004B5199 /* BackgroundView.swift */,
 				5006DEE128FB58E200BBAC2A /* AvatarView.swift */,
@@ -1116,6 +1130,7 @@
 				503836ED28FA0AD600DE8ED0 /* AdaptiveForgroundColor.swift in Sources */,
 				5006DEE228FB58E200BBAC2A /* AvatarView.swift in Sources */,
 				505410AA28F219D2006D4875 /* DialogListRowView.swift in Sources */,
+				50329EB02CADD089003C65C3 /* ShaderLibrary.swift in Sources */,
 				5083C4C22B4AE71600656BEC /* RootModelProtocol.swift in Sources */,
 				50DEEAC328EF8626004B5199 /* LocalChatApp.swift in Sources */,
 				5006DEE428FC973F00BBAC2A /* AuthService.swift in Sources */,
@@ -1164,6 +1179,7 @@
 				B57501DCDA7FD7067F3356C0 /* AuthModel.swift in Sources */,
 				50410BFB2B48540900E1D9F2 /* Message.swift in Sources */,
 				50B298CC2B93DF9C00E2ECF3 /* messages.pb.swift in Sources */,
+				50329EAE2CADCF8E003C65C3 /* Monochrome.metal in Sources */,
 				FEC07D5FB2E1E7F96C82B5AF /* AuthRouter.swift in Sources */,
 				6F2FEDFEAB1DABC2A5C13AF1 /* AuthView.swift in Sources */,
 				5083C4C32B4AE71600656BEC /* RootModel.swift in Sources */,
