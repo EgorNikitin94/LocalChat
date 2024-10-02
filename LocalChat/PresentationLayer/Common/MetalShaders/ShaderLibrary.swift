@@ -20,14 +20,21 @@ struct ShaderLibrary {
 }
 
 struct Monochrome: ViewModifier {
+  @Binding var isOn: Bool
+  
   func body(content: Content) -> some View {
     content
-      .colorEffect(ShaderLibrary.monochrome())
+      .colorEffect(
+        ShaderLibrary.monochrome(),
+        isEnabled: isOn
+      )
   }
 }
 
 extension View {
-  func monochrome() -> some View {
-    modifier(Monochrome())
+  func monochrome(
+    isOn: Binding<Bool> = .constant(true)
+  ) -> some View {
+    modifier(Monochrome(isOn: isOn))
   }
 }
