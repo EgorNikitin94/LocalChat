@@ -20,12 +20,13 @@ class PhotoDisplayItem: Hashable, Equatable, Identifiable {
   }
   
   @ObservationIgnored let id: UUID = UUID()
-  @ObservationIgnored let image: UIImage
+  @ObservationIgnored let asset: any PHMediaAsset
+  @ObservationIgnored var image: UIImage? = nil
   var selected: Bool = false
   var number: String? = nil
   
-  init(image: UIImage) {
-    self.image = image
+  init(asset: any PHMediaAsset) {
+    self.asset = asset
   }
 }
 
@@ -48,8 +49,8 @@ class MediaPickerModel: MediaPickerModelStateProtocol {
 
 // MARK: - Actions
 extension MediaPickerModel: MediaPickerModelActionsProtocol {
-  func didLoadPhotosFromLibrary(_ images: [UIImage]) {
-    imagesDisplayItems = images.map({ PhotoDisplayItem(image: $0) })
+  func didLoadPhotosFromLibrary(_ assets: [any PHMediaAsset]) {
+    imagesDisplayItems = assets.map({ PhotoDisplayItem(asset: $0) })
   }
   
   func didSelectItem(_ item: PhotoDisplayItem) {
@@ -76,7 +77,16 @@ extension MediaPickerModel: MediaPickerModelActionsProtocol {
 // MARK: - Route
 extension MediaPickerModel: MediaPickerModelRouterProtocol {
   func presentPhotoViewer(_ item: PhotoDisplayItem, namespace: Namespace.ID) {
-    routerSubject.screen.send(.photoViewer(id: item.id, image: item.image, namespace: namespace))
+    if let phPhotoAsset = item.asset as? PHPhotoAsset, let image = item.image {
+      routerSubject.screen.send(
+        .photoViewer(
+          id: item.id,
+          asset: phPhotoAsset,
+          image: image,
+          namespace: namespace
+        )
+      )
+    }
   }
   
   func closeModule() {

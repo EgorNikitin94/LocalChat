@@ -12,9 +12,12 @@ enum PHPhotoRequestError: Error {
   case noImage
 }
 
-struct PHPhotoAsset: MediaAsset {
-  typealias Source = PHAsset
-  
+protocol PHMediaAsset: Sendable, MediaAsset where Source == PHAsset {
+  init(with source: Source)
+  func requestImage(with targetSize: CGSize) async throws(PHPhotoRequestError) -> UIImage
+}
+
+struct PHPhotoAsset: PHMediaAsset {
   let id: UUID
   let name: String
   let mediaType: MediaType = .image

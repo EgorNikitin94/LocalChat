@@ -20,47 +20,24 @@ class MediaPickerIntent: @unchecked Sendable {
   private weak var model: MediaPickerModelActionsProtocol?
   private weak var routeModel: MediaPickerModelRouterProtocol?
   private weak var moduleOutput: MediaPickerModuleOutput?
+  private let photosLoader: PhotosLoader
   
-  private var allPhotos: [UIImage] = []
-  private var selectedPhotos: [UIImage] = []
+  private var allAssets: [any PHMediaAsset] = []
+  private var selectedPhotos: [any PHMediaAsset] = []
   
-  private var result: PHFetchResult<PHAsset>?
 
-  init(model: (MediaPickerModelActionsProtocol & MediaPickerModelRouterProtocol)?, moduleOutput:MediaPickerModuleOutput?) {
+  init(
+    model: (MediaPickerModelActionsProtocol & MediaPickerModelRouterProtocol)?,
+    moduleOutput:MediaPickerModuleOutput?
+  ) {
     self.model = model
     self.routeModel = model
     self.moduleOutput = moduleOutput
+    self.photosLoader = PhotosLoader()
   }
   
-  private func getPhotosFromLibrary() async -> [UIImage] {
-    let manager = PHImageManager.default()
-    let requestOptions = PHImageRequestOptions()
-    requestOptions.isSynchronous = false
-    requestOptions.deliveryMode = .highQualityFormat
-    let fetchOptions = PHFetchOptions()
-    fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-    
-    let results: PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-    result = results
-    
-    var findedImages: [UIImage] = []
-    
-    for index in 0...results.count - 1 {
-      let asset = results.object(at: index)
-      let size = CGSize(width: 200, height: 200)
-      let image = await withCheckedContinuation { continuation in
-        manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: requestOptions) { image, info in
-          if let image = image {
-            continuation.resume(returning: image)
-          } else {
-            print("error asset to image")
-          }
-        }
-      }
-      findedImages.append(image)
-    }
-    
-    return findedImages
+  private func getPhotosFromLibrary() async throws -> [any PHMediaAsset] {
+    return try await photosLoader.getGalleryMediaAsset()
   }
   
 }
@@ -68,23 +45,19 @@ class MediaPickerIntent: @unchecked Sendable {
 // MARK: - MediaPickerIntentProtocol
 extension MediaPickerIntent: MediaPickerIntentProtocol {
   func viewOnAppear() {
-    PHPhotoLibrary.requestAuthorization(for: .addOnly) { status in
-      switch status {
-      case .authorized:
-        Task {
-          self.allPhotos = await self.getPhotosFromLibrary()
-          self.model?.didLoadPhotosFromLibrary(self.allPhotos)
-        }
-      case .limited, .denied, .restricted, .notDetermined:
-        break
-      @unknown default:
-        break
+    Task {
+      do {
+        self.allAssets = try await self.getPhotosFromLibrary()
+        self.model?.didLoadPhotosFromLibrary(self.allAssets)
+      } catch {
+        Log.custom(category: "MediaPickerIntent")
+          .error("Error loading photos from library: \(error)")
       }
     }
   }
   
   func didSelectItem(_ item: PhotoDisplayItem) {
-    selectedPhotos.append(item.image)
+    selectedPhotos.append(item.asset)
     model?.didSelectItem(item)
   }
   
@@ -93,7 +66,18 @@ extension MediaPickerIntent: MediaPickerIntentProtocol {
   }
   
   func sendSelectedMedia() {
-    moduleOutput?.didSelectMedia(selectedPhotos)
+    Task {
+      var photos = [UIImage]()
+      let assets = selectedPhotos
+        .compactMap({ $0 as? PHPhotoAsset })
+      
+      for asset in assets {
+        let size = asset.originalSize
+        let image = try await asset.requestImage(with: size)
+        photos.append(image)
+      }
+      moduleOutput?.didSelectMedia(photos)
+    }
     routeModel?.closeModule()
   }
   

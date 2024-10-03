@@ -21,7 +21,7 @@ protocol MediaPickerIntentProtocol: AnyObject {
   
 }
 
-@objc protocol MediaPickerModuleOutput: AnyObject {
+protocol MediaPickerModuleOutput: AnyObject {
   func didSelectMedia(_ media: [UIImage])
   func didTapOn(buttonType: MediaButtonType)
 }

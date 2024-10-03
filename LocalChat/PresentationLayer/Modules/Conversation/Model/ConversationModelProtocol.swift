@@ -8,6 +8,7 @@
 
 import Foundation
 
+@MainActor
 protocol ConversationModelActionsProtocol: AnyObject {
   func configure(with peer: User)
   func didLoad(messages: [Message])

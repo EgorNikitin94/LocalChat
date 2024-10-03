@@ -15,16 +15,33 @@ enum PhotosLoaderError: Error {
 
 actor PhotosLoader {
   
-  let manager: PHImageManager
+  private let manager: PHImageManager
+  private var offsetDate: Date = .now
   
   init() {
     manager = .init()
   }
   
-  func getGalleryPHAssets(
-    with offsetDate: Date = .now,
+  func getGalleryMediaAsset(
     limit: Int = 25
-  ) async throws -> ([PHAsset], nextOffset: Date) {
+  ) async throws -> [any PHMediaAsset] {
+    let result = try await getGalleryPHAssets(limit: limit)
+    let mesiaAssets = result.compactMap {
+      switch $0.mediaType {
+      case .image:
+        return PHPhotoAsset(with: $0)
+      case .video:
+        return nil
+      default:
+        return nil
+      }
+    }
+    return mesiaAssets
+  }
+  
+  func getGalleryPHAssets(
+    limit: Int = 25
+  ) async throws -> [PHAsset] {
     let status = await PHPhotoLibrary.requestAuthorization(for: .addOnly)
     switch status {
     case .authorized:
@@ -38,7 +55,7 @@ actor PhotosLoader {
       )]
       fetchOptions.predicate = NSPredicate(
         format: "creationDate < %@",
-        [offsetDate]
+        argumentArray: [offsetDate]
       )
       fetchOptions.fetchLimit = limit
       
@@ -49,7 +66,8 @@ actor PhotosLoader {
         assets.append(asset)
       }
       let newOffsetDate = assets.last?.creationDate ?? .now
-      return (assets, newOffsetDate)
+      offsetDate = newOffsetDate
+      return assets
     case .limited, .denied, .restricted, .notDetermined:
       throw PhotosLoaderError.noAccess
     @unknown default:

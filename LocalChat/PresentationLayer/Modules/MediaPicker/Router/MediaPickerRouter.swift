@@ -20,11 +20,11 @@ struct MediaPickerRouter: RouterProtocol {
 
 extension MediaPickerRouter {
   enum ScreenType: RouterScreenProtocol {
-    case photoViewer(id: UUID, image: UIImage, namespace: Namespace.ID)
+    case photoViewer(id: UUID, asset: PHPhotoAsset, image: UIImage, namespace: Namespace.ID)
     
     var routeType: RouterScreenPresentationType {
       switch self {
-      case .photoViewer(_, _, _):
+      case .photoViewer(_, _, _, _):
         return .fullScreenCover
       }
     }
@@ -33,8 +33,8 @@ extension MediaPickerRouter {
   @ViewBuilder
   func makeScreen(type: RouterScreenType) -> some View {
     switch type {
-    case .photoViewer(let id, let image, let namespace):
-      PhotoViewer(image: image)
+    case .photoViewer(let id, let asset, let image, let namespace):
+      PhotoViewer(asset: asset, image: image)
         .navigationTransition(.zoom(sourceID: id, in: namespace))
     }
   }

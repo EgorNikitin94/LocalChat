@@ -9,7 +9,7 @@
 import SwiftUI
 
 protocol MediaPickerModelActionsProtocol: AnyObject {
-  func didLoadPhotosFromLibrary(_ images: [UIImage])
+  func didLoadPhotosFromLibrary(_ assets: [any PHMediaAsset])
   func didSelectItem(_ item: PhotoDisplayItem)
 }
 

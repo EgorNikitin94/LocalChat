@@ -47,6 +47,8 @@
 		50410BF92B4853FD00E1D9F2 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50410BF82B4853FD00E1D9F2 /* Dialog.swift */; };
 		50410BFB2B48540900E1D9F2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50410BFA2B48540900E1D9F2 /* Message.swift */; };
 		50410BFD2B4855C500E1D9F2 /* TcpTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50410BFC2B4855C500E1D9F2 /* TcpTransport.swift */; };
+		5043176D2CAF3C1200AEBC18 /* PhotoViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5043176C2CAF3C1200AEBC18 /* PhotoViewer.swift */; };
+		5043176F2CAF3C4000AEBC18 /* PhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5043176E2CAF3C4000AEBC18 /* PhotoItem.swift */; };
 		505121DE2A917A5800EAE4B0 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 505121DD2A917A5800EAE4B0 /* SwiftProtobuf */; };
 		505121E02A917A5800EAE4B0 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 505121DF2A917A5800EAE4B0 /* SwiftProtobufPluginLibrary */; };
 		505121E22A917A5800EAE4B0 /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 505121E12A917A5800EAE4B0 /* protoc-gen-swift */; };
@@ -174,6 +176,8 @@
 		50410BF82B4853FD00E1D9F2 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
 		50410BFA2B48540900E1D9F2 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		50410BFC2B4855C500E1D9F2 /* TcpTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpTransport.swift; sourceTree = "<group>"; };
+		5043176C2CAF3C1200AEBC18 /* PhotoViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewer.swift; sourceTree = "<group>"; };
+		5043176E2CAF3C4000AEBC18 /* PhotoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoItem.swift; sourceTree = "<group>"; };
 		505410A928F219D2006D4875 /* DialogListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogListRowView.swift; sourceTree = "<group>"; };
 		5058C02A2AA3AA7600A35D84 /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
 		5067ECFD2A843F7F00C5FA11 /* MVIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVIContainer.swift; sourceTree = "<group>"; };
@@ -491,6 +495,7 @@
 				E24047286C92E703DEA172A6 /* DialogsList */,
 				AF3F67D4803C98CEC801CBD3 /* Conversation */,
 				6D9AF4AD6B93AF9DA2BEA1C2 /* MediaPicker */,
+				5043176B2CAF3BF800AEBC18 /* PhotoViewer */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -554,6 +559,14 @@
 				50B298C72B93DF9C00E2ECF3 /* users.pb.swift */,
 			);
 			path = ProtoModels;
+			sourceTree = "<group>";
+		};
+		5043176B2CAF3BF800AEBC18 /* PhotoViewer */ = {
+			isa = PBXGroup;
+			children = (
+				5043176C2CAF3C1200AEBC18 /* PhotoViewer.swift */,
+			);
+			path = PhotoViewer;
 			sourceTree = "<group>";
 		};
 		5067ECFC2A843F7F00C5FA11 /* MVIComponents */ = {
@@ -903,6 +916,7 @@
 		94BDE1D2D441668BF1C29A1D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5043176E2CAF3C4000AEBC18 /* PhotoItem.swift */,
 				CDF6228007A28B530A93E0E3 /* MediaPickerView.swift */,
 			);
 			path = View;
@@ -1142,6 +1156,7 @@
 				50DEEADA28EF8C6D004B5199 /* BackgroundView.swift in Sources */,
 				50B3C5252919A9B70089A376 /* FileStore.swift in Sources */,
 				5006DEEA28FC99D600BBAC2A /* BadgeView.swift in Sources */,
+				5043176F2CAF3C4000AEBC18 /* PhotoItem.swift in Sources */,
 				5006DEE628FC975300BBAC2A /* DialogsService.swift in Sources */,
 				502672B82B8FC2F600809785 /* SmartReconectInterval.swift in Sources */,
 				50410BF92B4853FD00E1D9F2 /* Dialog.swift in Sources */,
@@ -1199,6 +1214,7 @@
 				10299AECB23133D1FC03752B /* DialogsListView.swift in Sources */,
 				D4D3781E053C53E7CD0C28A4 /* AuthAssembly.swift in Sources */,
 				5083C48B2B4ADCAE00656BEC /* View+Modify.swift in Sources */,
+				5043176D2CAF3C1200AEBC18 /* PhotoViewer.swift in Sources */,
 				B3888F1D68552FD227650DC6 /* AuthIntentProtocol.swift in Sources */,
 				50410BFD2B4855C500E1D9F2 /* TcpTransport.swift in Sources */,
 				F1FBFEAF04F94FF45BDF1AA1 /* AuthIntent.swift in Sources */,

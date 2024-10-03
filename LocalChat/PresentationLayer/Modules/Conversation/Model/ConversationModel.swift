@@ -54,7 +54,8 @@ final class ConversationModel: ConversationModelStateProtocol {
 }
 
 // MARK: - Actions
-extension ConversationModel: @preconcurrency ConversationModelActionsProtocol {  
+extension ConversationModel: ConversationModelActionsProtocol {
+  @MainActor
   func configure(with peer: User) {
     avatarDisplayItem = AvatarDisplayItem(with: peer)
     navTitle = peer.name
@@ -75,6 +76,7 @@ extension ConversationModel: @preconcurrency ConversationModelActionsProtocol {
     }
   }
   
+  @MainActor
   func didSendMessage(messsage: Message) {
     defer {
       inputText = ""

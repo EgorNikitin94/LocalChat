@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConversationIntent {
+class ConversationIntent: @unchecked Sendable {
 
   private weak var model: ConversationModelActionsProtocol?
   private weak var routeModel: ConversationModelRouterProtocol?
@@ -36,15 +36,19 @@ class ConversationIntent {
 // MARK: - ConversationIntentProtocol
 extension ConversationIntent: ConversationIntentProtocol {
   func viewOnAppear() {
-    model?.configure(with: peer)
-    realTimeMessages = messgeService.getMessages(for: peer, user: userService.currentUser)
-    model?.didLoad(messages: realTimeMessages)
+    Task {
+      await model?.configure(with: peer)
+      realTimeMessages = messgeService.getMessages(for: peer, user: userService.currentUser)
+      await model?.didLoad(messages: realTimeMessages)
+    }
   }
   
   func sendMessage(with inputText: String) {
     let newMessage = Message(from: userService.currentUser, to: peer, date: Date(), text: inputText)
     realTimeMessages.append(newMessage)
-    model?.didSendMessage(messsage: newMessage)
+    Task {
+      await model?.didSendMessage(messsage: newMessage)
+    }
   }
   
   func openMediaPicker() {
@@ -54,7 +58,9 @@ extension ConversationIntent: ConversationIntentProtocol {
   func onTestIncomeMessageEvent() {
     let newMessage = Message(from: peer, to: peer, date: Date(), text: "Some test message")
     realTimeMessages.append(newMessage)
-    model?.didSendMessage(messsage: newMessage)
+    Task {
+      await model?.didSendMessage(messsage: newMessage)
+    }
   }
 }
 
@@ -71,7 +77,9 @@ extension ConversationIntent: MediaPickerModuleOutput {
     var newMessage = Message(from: userService.currentUser, to: peer, date: Date(), text: "")
     newMessage.mediaData = media.first?.jpegData(compressionQuality: 1.0)
     realTimeMessages.append(newMessage)
-    model?.didSendMessage(messsage: newMessage)
+    Task {
+      await model?.didSendMessage(messsage: newMessage)
+    }
   }
   
   func didTapOn(buttonType: MediaButtonType) {
