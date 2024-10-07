@@ -59,16 +59,25 @@ struct PhotoViewer: View {
         .toolbar {
           ToolbarItem(placement: .automatic) {
             Text(asset.name)
+              .font(.caption)
               .frame(maxWidth: 300)
               .lineLimit(1)
           }
-          ToolbarItem(placement: .navigationBarLeading) {
+          ToolbarItem(placement: .topBarLeading) {
             Button {
               presentationMode.wrappedValue.dismiss()
             } label: {
               Text("Done")
             }
           }
+//          ToolbarItem(placement: .topBarTrailing) {
+//            Button {
+//              //
+//            } label: {
+//              Image(systemName: "square.and.arrow.up.circle.fill")
+//                .imageScale(.medium)
+//            }
+//          }
         }
     }
   }

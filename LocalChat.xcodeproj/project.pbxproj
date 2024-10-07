@@ -80,6 +80,13 @@
 		5083C4C62B4AE71600656BEC /* RootIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083C4BD2B4AE71600656BEC /* RootIntentProtocol.swift */; };
 		5083C4C72B4AE71600656BEC /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083C4BF2B4AE71600656BEC /* RootView.swift */; };
 		5083C4C82B4AE71600656BEC /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5083C4C12B4AE71600656BEC /* RootRouter.swift */; };
+		508E60412CB47D51005D6A1E /* PhotoViewerIntentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E60382CB47D51005D6A1E /* PhotoViewerIntentProtocol.swift */; };
+		508E60422CB47D51005D6A1E /* PhotoViewerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E603A2CB47D51005D6A1E /* PhotoViewerModel.swift */; };
+		508E60432CB47D51005D6A1E /* PhotoViewerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E60352CB47D51005D6A1E /* PhotoViewerAssembly.swift */; };
+		508E60442CB47D51005D6A1E /* PhotoViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E603F2CB47D51005D6A1E /* PhotoViewerView.swift */; };
+		508E60452CB47D51005D6A1E /* PhotoViewerIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E60372CB47D51005D6A1E /* PhotoViewerIntent.swift */; };
+		508E60462CB47D51005D6A1E /* PhotoViewerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E603D2CB47D51005D6A1E /* PhotoViewerRouter.swift */; };
+		508E60472CB47D51005D6A1E /* PhotoViewerModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E603B2CB47D51005D6A1E /* PhotoViewerModelProtocol.swift */; };
 		509D7A952A87BFB80025C0B9 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 509D7A942A87BFB80025C0B9 /* GRDB */; };
 		509D7A982A87C9FF0025C0B9 /* SQLiteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */; };
 		509D7A9B2A87FA1B0025C0B9 /* MessageDisplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */; };
@@ -204,6 +211,13 @@
 		5083C4BD2B4AE71600656BEC /* RootIntentProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootIntentProtocol.swift; sourceTree = "<group>"; };
 		5083C4BF2B4AE71600656BEC /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		5083C4C12B4AE71600656BEC /* RootRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		508E60352CB47D51005D6A1E /* PhotoViewerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerAssembly.swift; sourceTree = "<group>"; };
+		508E60372CB47D51005D6A1E /* PhotoViewerIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerIntent.swift; sourceTree = "<group>"; };
+		508E60382CB47D51005D6A1E /* PhotoViewerIntentProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerIntentProtocol.swift; sourceTree = "<group>"; };
+		508E603A2CB47D51005D6A1E /* PhotoViewerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerModel.swift; sourceTree = "<group>"; };
+		508E603B2CB47D51005D6A1E /* PhotoViewerModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerModelProtocol.swift; sourceTree = "<group>"; };
+		508E603D2CB47D51005D6A1E /* PhotoViewerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerRouter.swift; sourceTree = "<group>"; };
+		508E603F2CB47D51005D6A1E /* PhotoViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerView.swift; sourceTree = "<group>"; };
 		509D7A972A87C9FF0025C0B9 /* SQLiteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteStore.swift; sourceTree = "<group>"; };
 		509D7A9A2A87FA1B0025C0B9 /* MessageDisplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDisplayItem.swift; sourceTree = "<group>"; };
 		50A5A3732BAF45BC0045F146 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
@@ -565,6 +579,11 @@
 			isa = PBXGroup;
 			children = (
 				5043176C2CAF3C1200AEBC18 /* PhotoViewer.swift */,
+				508E60362CB47D51005D6A1E /* Assembly */,
+				508E60392CB47D51005D6A1E /* Intent */,
+				508E603C2CB47D51005D6A1E /* Model */,
+				508E603E2CB47D51005D6A1E /* Router */,
+				508E60402CB47D51005D6A1E /* View */,
 			);
 			path = PhotoViewer;
 			sourceTree = "<group>";
@@ -706,6 +725,48 @@
 				5083C4C12B4AE71600656BEC /* RootRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		508E60362CB47D51005D6A1E /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				508E60352CB47D51005D6A1E /* PhotoViewerAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		508E60392CB47D51005D6A1E /* Intent */ = {
+			isa = PBXGroup;
+			children = (
+				508E60372CB47D51005D6A1E /* PhotoViewerIntent.swift */,
+				508E60382CB47D51005D6A1E /* PhotoViewerIntentProtocol.swift */,
+			);
+			path = Intent;
+			sourceTree = "<group>";
+		};
+		508E603C2CB47D51005D6A1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				508E603A2CB47D51005D6A1E /* PhotoViewerModel.swift */,
+				508E603B2CB47D51005D6A1E /* PhotoViewerModelProtocol.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		508E603E2CB47D51005D6A1E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				508E603D2CB47D51005D6A1E /* PhotoViewerRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		508E60402CB47D51005D6A1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				508E603F2CB47D51005D6A1E /* PhotoViewerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		509D7A962A87C9E00025C0B9 /* SQLiteStore */ = {
@@ -1145,6 +1206,13 @@
 				50D8EE2C2B38DC26005BC57B /* SQLiteMigrationManager.swift in Sources */,
 				509D7A982A87C9FF0025C0B9 /* SQLiteStore.swift in Sources */,
 				50BCB72E2B869CC9001902CB /* ServicesCatalog.swift in Sources */,
+				508E60412CB47D51005D6A1E /* PhotoViewerIntentProtocol.swift in Sources */,
+				508E60422CB47D51005D6A1E /* PhotoViewerModel.swift in Sources */,
+				508E60432CB47D51005D6A1E /* PhotoViewerAssembly.swift in Sources */,
+				508E60442CB47D51005D6A1E /* PhotoViewerView.swift in Sources */,
+				508E60452CB47D51005D6A1E /* PhotoViewerIntent.swift in Sources */,
+				508E60462CB47D51005D6A1E /* PhotoViewerRouter.swift in Sources */,
+				508E60472CB47D51005D6A1E /* PhotoViewerModelProtocol.swift in Sources */,
 				50301AE228F61BAA0041CFFD /* ContentMessageView.swift in Sources */,
 				5067ED092A843F7F00C5FA11 /* RouterSheetModifier.swift in Sources */,
 				5083C4C52B4AE71600656BEC /* RootIntent.swift in Sources */,

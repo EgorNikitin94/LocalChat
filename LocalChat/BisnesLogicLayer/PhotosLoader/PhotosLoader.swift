@@ -13,19 +13,41 @@ enum PhotosLoaderError: Error {
   case noImages
 }
 
+enum Direction {
+  case older, newer
+}
+
 actor PhotosLoader {
-  
   private let manager: PHImageManager
-  private var offsetDate: Date = .now
+  private var offsetRange: ClosedRange<Date> = (.now)...(.now)
   
   init() {
     manager = .init()
   }
   
-  func getGalleryMediaAsset(
+  func getGalleryMediaAssets(
+    around date: Date,
+    eachDirectionLimit: Int
+  ) async throws -> [any PHMediaAsset] {
+    async let older = try await getGalleryMediaAssets(
+      direction: .older,
+      limit: eachDirectionLimit
+    )
+    async let newer = try await getGalleryMediaAssets(
+      direction: .newer,
+      limit: eachDirectionLimit
+    )
+    return try await (newer + older)
+  }
+  
+  func getGalleryMediaAssets(
+    direction: Direction,
     limit: Int = 25
   ) async throws -> [any PHMediaAsset] {
-    let result = try await getGalleryPHAssets(limit: limit)
+    let result = try await getGalleryPHAssets(
+      direction: direction,
+      limit: limit
+    )
     let mesiaAssets = result.compactMap {
       switch $0.mediaType {
       case .image:
@@ -39,7 +61,8 @@ actor PhotosLoader {
     return mesiaAssets
   }
   
-  func getGalleryPHAssets(
+  private func getGalleryPHAssets(
+    direction: Direction,
     limit: Int = 25
   ) async throws -> [PHAsset] {
     let status = await PHPhotoLibrary.requestAuthorization(for: .addOnly)
@@ -53,10 +76,18 @@ actor PhotosLoader {
         key: "creationDate",
         ascending: false
       )]
-      fetchOptions.predicate = NSPredicate(
-        format: "creationDate < %@",
-        argumentArray: [offsetDate]
-      )
+      fetchOptions.predicate = switch direction {
+      case .older:
+        NSPredicate(
+          format: "creationDate < %@",
+          argumentArray: [offsetRange.lowerBound]
+        )
+      case .newer:
+        NSPredicate(
+          format: "creationDate > %@",
+          argumentArray: [offsetRange.upperBound]
+        )
+      }
       fetchOptions.fetchLimit = limit
       
       let results: PHFetchResult = PHAsset.fetchAssets(with: fetchOptions)
@@ -65,8 +96,19 @@ actor PhotosLoader {
       results.enumerateObjects { asset, index, ptr in
         assets.append(asset)
       }
-      let newOffsetDate = assets.last?.creationDate ?? .now
-      offsetDate = newOffsetDate
+      let newOffsetDate = switch direction {
+      case .older:
+        assets.last?.creationDate ?? .now
+      case .newer:
+        assets.first?.creationDate ?? .now
+      }
+        
+      offsetRange = switch direction {
+      case .older:
+        newOffsetDate...offsetRange.upperBound
+      case .newer:
+        offsetRange.lowerBound...newOffsetDate
+      }
       return assets
     case .limited, .denied, .restricted, .notDetermined:
       throw PhotosLoaderError.noAccess

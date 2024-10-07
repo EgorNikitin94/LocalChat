@@ -176,7 +176,6 @@
 
     },
     "Hallo amo module" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

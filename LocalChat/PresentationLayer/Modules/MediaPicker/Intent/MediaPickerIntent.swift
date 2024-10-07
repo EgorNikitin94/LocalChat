@@ -9,7 +9,7 @@
 import SwiftUI
 import Photos
 
-@objc enum MediaButtonType: Int {
+enum MediaButtonType {
   case gallery
   case camera
   case files
@@ -37,7 +37,7 @@ class MediaPickerIntent: @unchecked Sendable {
   }
   
   private func getPhotosFromLibrary() async throws -> [any PHMediaAsset] {
-    return try await photosLoader.getGalleryMediaAsset()
+    return try await photosLoader.getGalleryMediaAssets(direction: .older)
   }
   
 }
