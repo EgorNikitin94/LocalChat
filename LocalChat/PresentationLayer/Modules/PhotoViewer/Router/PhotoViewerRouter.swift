@@ -12,7 +12,7 @@ struct PhotoViewerRouter: RouterProtocol {
   typealias RouterAlertType = AlertScreen
   
   let subjects: Subjects
-  let intent: PhotoViewerIntentProtocol
+  let input: PhotoViewerModuleInput
 }
 
 // MARK: - Navigation Screens

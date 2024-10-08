@@ -9,15 +9,15 @@ import SwiftUI
 
 struct PhotoViewerView: View {
   
-  @State var container: ModernMVIContainer<PhotoViewerIntentProtocol, PhotoViewerModelStateProtocol>
+  @State var vm: PhotoViewerViewModel
   
-  private var intent: PhotoViewerIntentProtocol { container.intent }
-  private var model: PhotoViewerModelStateProtocol { container.model }
+  private var state: PhotoViewerState { vm }
+  private var intent: PhotoViewerIntent { vm }
   
   var body: some View {
     Text("Hallo amo module")
       .onAppear(perform: intent.viewOnAppear)
-      .modifier(PhotoViewerRouter(subjects: model.routerSubject, intent: intent))
+      .modifier(PhotoViewerRouter(subjects: state.routerSubject, input: vm))
   }
 }
 

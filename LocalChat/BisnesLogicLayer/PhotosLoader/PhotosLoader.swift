@@ -48,12 +48,12 @@ actor PhotosLoader {
       direction: direction,
       limit: limit
     )
-    let mesiaAssets = result.compactMap {
+    let mesiaAssets: [any PHMediaAsset] = result.compactMap {
       switch $0.mediaType {
       case .image:
         return PHPhotoAsset(with: $0)
       case .video:
-        return nil
+        return PHVideoAsset(with: $0)
       default:
         return nil
       }
