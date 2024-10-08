@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PhotoViewer: View {
+struct PhotoAssetView: View {
   @State var asset: PHPhotoAsset
   @State var image: UIImage
   @State private var scale: CGFloat = 1.0

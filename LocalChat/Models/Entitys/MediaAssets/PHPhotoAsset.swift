@@ -13,7 +13,7 @@ enum PHMediaAssetError: Error {
   case noVideo
 }
 
-protocol PHMediaAsset: Sendable, MediaAsset where Source == PHAsset {
+protocol PHMediaAsset: Sendable, Identifiable, MediaAsset where Source == PHAsset {
   init(with source: Source)
   func requestImage(with targetSize: CGSize) async throws(PHMediaAssetError) -> UIImage
 }

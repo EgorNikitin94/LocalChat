@@ -34,7 +34,7 @@ extension MediaPickerRouter {
   func makeScreen(type: RouterScreenType) -> some View {
     switch type {
     case .photoViewer(let id, let asset, let image, let namespace):
-      PhotoViewer(asset: asset, image: image)
+      PhotoAssetView(asset: asset, image: image)
         .navigationTransition(.zoom(sourceID: id, in: namespace))
     }
   }
