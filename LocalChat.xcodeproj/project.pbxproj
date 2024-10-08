@@ -58,7 +58,6 @@
 		5067ED082A843F7F00C5FA11 /* RouterScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ECFF2A843F7F00C5FA11 /* RouterScreenProtocol.swift */; };
 		5067ED092A843F7F00C5FA11 /* RouterSheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED012A843F7F00C5FA11 /* RouterSheetModifier.swift */; };
 		5067ED0A2A843F7F00C5FA11 /* RouterNavigationStackModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED022A843F7F00C5FA11 /* RouterNavigationStackModifier.swift */; };
-		5067ED0B2A843F7F00C5FA11 /* RouterNavigationViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED032A843F7F00C5FA11 /* RouterNavigationViewModifier.swift */; };
 		5067ED0C2A843F7F00C5FA11 /* RouterAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED042A843F7F00C5FA11 /* RouterAlertModifier.swift */; };
 		5067ED0D2A843F7F00C5FA11 /* RouterCloseModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */; };
 		5067ED0E2A843F7F00C5FA11 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */; };
@@ -67,6 +66,7 @@
 		5067F50E2B5419F30085AF56 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50D2B5419F30085AF56 /* NetworkService.swift */; };
 		5067F5102B541A0B0085AF56 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F50F2B541A0B0085AF56 /* Service.swift */; };
 		5067F5142B541F340085AF56 /* SysInitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5067F5132B541F340085AF56 /* SysInitRequest.swift */; };
+		5072A9B72CB5C16E00FAC521 /* RouterZoomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5072A9B62CB5C15C00FAC521 /* RouterZoomModifier.swift */; };
 		5073DE212B9BBE1500CF8C89 /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5073DE202B9BBE1500CF8C89 /* Peer.swift */; };
 		5078656D2B8891CD00BF40DA /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 5078656C2B8891CD00BF40DA /* Reachability */; };
 		507F398A2909C678002571DB /* TcpConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F39892909C678002571DB /* TcpConnection.swift */; };
@@ -189,7 +189,6 @@
 		5067ECFF2A843F7F00C5FA11 /* RouterScreenProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterScreenProtocol.swift; sourceTree = "<group>"; };
 		5067ED012A843F7F00C5FA11 /* RouterSheetModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterSheetModifier.swift; sourceTree = "<group>"; };
 		5067ED022A843F7F00C5FA11 /* RouterNavigationStackModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterNavigationStackModifier.swift; sourceTree = "<group>"; };
-		5067ED032A843F7F00C5FA11 /* RouterNavigationViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterNavigationViewModifier.swift; sourceTree = "<group>"; };
 		5067ED042A843F7F00C5FA11 /* RouterAlertModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterAlertModifier.swift; sourceTree = "<group>"; };
 		5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterCloseModifier.swift; sourceTree = "<group>"; };
 		5067ED062A843F7F00C5FA11 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
@@ -198,6 +197,7 @@
 		5067F50D2B5419F30085AF56 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		5067F50F2B541A0B0085AF56 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5067F5132B541F340085AF56 /* SysInitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysInitRequest.swift; sourceTree = "<group>"; };
+		5072A9B62CB5C15C00FAC521 /* RouterZoomModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterZoomModifier.swift; sourceTree = "<group>"; };
 		5073DE202B9BBE1500CF8C89 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		507F39892909C678002571DB /* TcpConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcpConnection.swift; sourceTree = "<group>"; };
 		5083C48A2B4ADCAE00656BEC /* View+Modify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Modify.swift"; sourceTree = "<group>"; };
@@ -608,7 +608,7 @@
 			children = (
 				5067ED012A843F7F00C5FA11 /* RouterSheetModifier.swift */,
 				5067ED022A843F7F00C5FA11 /* RouterNavigationStackModifier.swift */,
-				5067ED032A843F7F00C5FA11 /* RouterNavigationViewModifier.swift */,
+				5072A9B62CB5C15C00FAC521 /* RouterZoomModifier.swift */,
 				5067ED042A843F7F00C5FA11 /* RouterAlertModifier.swift */,
 				5067ED052A843F7F00C5FA11 /* RouterCloseModifier.swift */,
 			);
@@ -1141,7 +1141,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					50DEEABE28EF8626004B5199 = {
 						CreatedOnToolsVersion = 14.0.1;
@@ -1252,10 +1252,10 @@
 				55EF727C8971C458581570A2 /* ConversationIntent.swift in Sources */,
 				E9DA5AD2E69C3A0716DAD223 /* ConversationModelProtocol.swift in Sources */,
 				5058C02B2AA3AA7600A35D84 /* TrackableScrollView.swift in Sources */,
+				5072A9B72CB5C16E00FAC521 /* RouterZoomModifier.swift in Sources */,
 				5067ED082A843F7F00C5FA11 /* RouterScreenProtocol.swift in Sources */,
 				6CFAA4D9C05D313C85C64E2E /* ConversationModel.swift in Sources */,
 				5083C4C62B4AE71600656BEC /* RootIntentProtocol.swift in Sources */,
-				5067ED0B2A843F7F00C5FA11 /* RouterNavigationViewModifier.swift in Sources */,
 				50B298CE2B93DF9C00E2ECF3 /* local_chat.pb.swift in Sources */,
 				50A5A3742BAF45BC0045F146 /* Chat.swift in Sources */,
 				DB54EE370D6BDC2AC27C2F84 /* ConversationRouter.swift in Sources */,
@@ -1321,6 +1321,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1383,6 +1384,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

@@ -24,7 +24,7 @@ extension RootRouter {
     var routeType: RouterScreenPresentationType {
       switch self {
       case .testNavigation:
-        return .navigationLink
+        return .navigationDestination
       }
     }
   }

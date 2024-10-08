@@ -24,7 +24,7 @@ extension PhotoViewerRouter {
     var routeType: RouterScreenPresentationType {
       switch self {
       case .testNavigation:
-        return .navigationLink
+        return .navigationDestination
       }
     }
   }

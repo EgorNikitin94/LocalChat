@@ -25,7 +25,7 @@ extension ProfileRouter {
     var routeType: RouterScreenPresentationType {
       switch self {
       case .testNavigation:
-        return .navigationLink
+        return .navigationDestination
       }
     }
   }

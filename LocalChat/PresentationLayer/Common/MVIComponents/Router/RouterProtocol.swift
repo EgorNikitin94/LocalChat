@@ -29,10 +29,6 @@ protocol RouterProtocol: ViewModifier {
 extension RouterProtocol {
   func body(content: Content) -> some View {
     content
-      .modifier(RouterNavigationViewModifier(
-        publisher: subjects.screen.filter { $0.routeType == .navigationLink }.eraseToAnyPublisher(),
-        screen: makeScreen,
-        onDismiss: onDismiss))
       .modifier(RouterNavigationStackModifier(
         publisher: subjects.screen.filter { $0.routeType == .navigationDestination }.eraseToAnyPublisher(),
         screen: makeScreen,
