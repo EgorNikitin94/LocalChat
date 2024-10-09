@@ -12,18 +12,22 @@ class PhotoViewerAssembly {
   // MARK: - Public
   @MainActor
   func build(
+    input: (any PHMediaAsset, UIImage)? = nil,
     moduleOutput: PhotoViewerModuleOutput?,
     completion: ((PhotoViewerModuleInput?) -> Void)?
   ) -> some View {
-    let model = buildModel(moduleOutput: moduleOutput)
+    let model = buildModel(moduleOutput: moduleOutput, input: input)
     let view = buildView(model: model)
     completion?(model as PhotoViewerModuleInput)
     return view
   }
   
   // MARK: - Private
-  private func buildModel(moduleOutput: PhotoViewerModuleOutput?) -> PhotoViewerViewModel {
-    PhotoViewerViewModelImpl(moduleOutput: moduleOutput)
+  private func buildModel(
+    moduleOutput: PhotoViewerModuleOutput?,
+    input: (any PHMediaAsset, UIImage)? = nil
+  ) -> PhotoViewerViewModel {
+    PhotoViewerViewModelImpl(moduleOutput: moduleOutput, input: input)
   }
   
   @MainActor

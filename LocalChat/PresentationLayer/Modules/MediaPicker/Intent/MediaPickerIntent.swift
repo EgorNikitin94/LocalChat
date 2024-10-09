@@ -20,6 +20,7 @@ class MediaPickerIntent: @unchecked Sendable {
   private weak var model: MediaPickerModelActionsProtocol?
   private weak var routeModel: MediaPickerModelRouterProtocol?
   private weak var moduleOutput: MediaPickerModuleOutput?
+  var viewerModule: PhotoViewerModuleInput?
   private let photosLoader: PhotosLoader
   
   private var allAssets: [any PHMediaAsset] = []
@@ -94,6 +95,11 @@ extension MediaPickerIntent: MediaPickerIntentProtocol {
 
 // MARK: - MediaPickerModuleInput
 extension MediaPickerIntent: MediaPickerModuleInput {
+  
+}
+
+// MARK: - PhotoViewerModuleOutput
+extension MediaPickerIntent: PhotoViewerModuleOutput {
   
 }
 

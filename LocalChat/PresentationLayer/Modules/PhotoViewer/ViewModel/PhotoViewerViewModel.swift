@@ -5,7 +5,7 @@
 //  Created by Егор Никитин on 10/7/24.
 //
 
-import Foundation
+import UIKit
 import Observation
 
 typealias PhotoViewerViewModel = PhotoViewerState & PhotoViewerIntent & PhotoViewerModuleInput
@@ -31,11 +31,11 @@ protocol PhotoViewerModuleOutput: AnyObject {
 enum PhotoViewerAsset: Identifiable {
   var id: UUID {
     switch self {
-      case .photo(let asset): return asset.id
+      case .photo(let asset, _): return asset.id
       case .video(let asset): return asset.id
     }
   }
-  case photo(PHPhotoAsset)
+  case photo(PHPhotoAsset, UIImage)
   case video(PHVideoAsset)
 }
 
@@ -47,9 +47,13 @@ class PhotoViewerViewModelImpl: PhotoViewerState {
   private weak var moduleOutput: PhotoViewerModuleOutput?
   private let assetsLoader: PhotosLoader
   
-  init(moduleOutput: PhotoViewerModuleOutput?) {
+  init(moduleOutput: PhotoViewerModuleOutput?, input: (any PHMediaAsset, UIImage)? = nil) {
     self.moduleOutput = moduleOutput
     self.assetsLoader = .init()
+    if let input, let photoAsset = input.0 as? PHPhotoAsset {
+      let asset: PhotoViewerAsset = .photo(photoAsset, input.1)
+      self.assets = [asset]
+    }
   }
 }
 
@@ -60,7 +64,10 @@ extension PhotoViewerViewModelImpl: PhotoViewerIntent {
   }
   
   func reduce(_ action: PhotoViewerAction) {
-    //
+    switch action {
+    case .didTapClose:
+      routerSubject.close.send()
+    }
   }
 }
 
